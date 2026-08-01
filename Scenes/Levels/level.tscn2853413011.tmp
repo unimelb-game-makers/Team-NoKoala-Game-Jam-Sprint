@@ -1,0 +1,34 @@
+[gd_scene format=4 uid="uid://c4j3rt14mhgou"]
+
+[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level.gd" id="1_tq1so"]
+[ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="1_yjxcc"]
+[ext_resource type="Script" uid="uid://udolrjtno00s" path="res://Scripts/tile_map_layer.gd" id="2_tq1so"]
+[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
+[ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/bug_factory.gd" id="5_lhx7y"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
+texture = ExtResource("1_yjxcc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_b136p"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_rv5g2")
+
+[node name="Level" type="Node2D" unique_id=738170765]
+script = ExtResource("1_tq1so")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_b136p")
+script = ExtResource("2_tq1so")
+spawnpoint = Vector2i(-3, 2)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
+zoom = Vector2(0.58, 0.58)
+
+[node name="MovementController" type="Node" parent="." unique_id=2045647148]
+script = ExtResource("4_rv5g2")
+
+[node name="BugFactory" type="Node" parent="." unique_id=726149244]
+script = ExtResource("5_lhx7y")
