@@ -23,7 +23,7 @@ func move(direction: Vector2i) -> void:
 		print("Movement Error: Tile is Occupied")
 		return
 	
-	if next_cell == level_data.start_cell:
+	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
 		return
 	
