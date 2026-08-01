@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clowneuh02f8d"]
 
-[ext_resource type="Script" uid="uid://cxmmhkttsu3lf" path="res://Scripts/caterpillar.gd" id="1_mv0ib"]
+[ext_resource type="Script" uid="uid://cxmmhkttsu3lf" path="res://Scripts/Entities/caterpillar.gd" id="1_mv0ib"]
 [ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="2_5ftgt"]
 [ext_resource type="Texture2D" uid="uid://7bfdy7a6orvj" path="res://Sprites/caterbodyt.png" id="3_qw07f"]
 

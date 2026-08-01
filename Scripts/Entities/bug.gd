@@ -1,0 +1,26 @@
+@abstract
+extends Node2D
+class_name Bug
+
+@onready var level_manager: LevelManager = get_tree().get_first_node_in_group("level_manager")
+var segment_sprites: Array[Sprite2D]
+var segment_cells: Array[Vector2i]
+
+func _ready() -> void:
+	init_segments()
+
+func teleport(cell: Vector2i) -> void:
+	var delta := cell - segment_cells[0]
+	for i in segment_cells.size():
+		segment_cells[i] += delta
+	
+	var tile_map := level_manager.tile_map_layer
+	for i in segment_cells.size():
+		var segment_cell := segment_cells[i]
+		segment_sprites[i].position = tile_map.to_global(tile_map.map_to_local(segment_cell))
+
+@abstract
+func init_segments() -> void
+
+@abstract
+func move(direction: Vector2i) -> void
