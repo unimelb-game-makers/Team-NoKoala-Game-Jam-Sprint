@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var hovered_fruits: Array[Area2D] = []
 var active_fruit: Area2D = null
 

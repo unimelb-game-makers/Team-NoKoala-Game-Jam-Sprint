@@ -2,6 +2,8 @@ extends Area2D
 
 @export var bugged_texture: Texture2D
 @export var grayscale_shader: ShaderMaterial
+@export var fruit_level_scene: PackedScene
+@export var camera: Camera2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -42,4 +44,17 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			set_active()
 		else:
 			set_bugged()
-			
+		
+		load_level()
+
+func load_level() -> void:
+	# zoom camera
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(camera, "zoom", Vector2(4, 4), 1.0).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(camera, "global_position", $CollisionShape2D.global_position, 1.0).set_ease(Tween.EASE_IN)
+	await tween.finished
+	
+	# change scene
+	if (fruit_level_scene):
+			get_tree().change_scene_to_packed(fruit_level_scene)
