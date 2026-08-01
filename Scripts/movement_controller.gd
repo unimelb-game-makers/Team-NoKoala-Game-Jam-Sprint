@@ -1,14 +1,14 @@
 extends Node
+class_name MovementController
 
-# Stores the currently controlled bug so players aren't controlling multiple bugs at once
-var current_bug: Bug
+@onready var level_manager: LevelManager = get_parent()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up"):
-		current_bug.move(Bug.Directions.UP)
+		level_manager.current_bug.move(Directions.UP)
 	elif event.is_action_pressed("left"):
-		current_bug.move(Bug.Directions.LEFT)
+		level_manager.current_bug.move(Directions.LEFT)
 	elif event.is_action_pressed("down"):
-		current_bug.move(Bug.Directions.DOWN)
+		level_manager.current_bug.move(Directions.DOWN)
 	elif event.is_action_pressed("right"):
-		current_bug.move(Bug.Directions.RIGHT)
+		level_manager.current_bug.move(Directions.RIGHT)
