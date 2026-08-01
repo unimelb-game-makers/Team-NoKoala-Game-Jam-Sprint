@@ -10,7 +10,11 @@ var segment_cells: Array[Vector2i]
 func _ready() -> void:
 	init_segments()
 
-func spawn() -> void:
+func teleport(cell: Vector2i) -> void:
+	var delta := cell - segment_cells[0]
+	for i in segment_cells.size():
+		segment_cells[i] += delta
+	
 	var tile_map := level_manager.tile_map_layer
 	for i in segment_cells.size():
 		var segment_cell := segment_cells[i]
@@ -18,11 +22,6 @@ func spawn() -> void:
 
 @abstract
 func init_segments() -> void
-
-func teleport(cell: Vector2i) -> void:
-	var delta = cell - segment_cells[0]
-	for i in segment_cells.size():
-		segment_cells[i] += delta
 
 @abstract
 func move(direction: Vector2i) -> void

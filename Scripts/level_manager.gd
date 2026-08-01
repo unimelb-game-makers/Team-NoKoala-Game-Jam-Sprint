@@ -17,4 +17,3 @@ func spawn_bug() -> void:
 	add_child(bug)
 	current_bug = bug
 	bug.teleport(level_data.start_cell)
-	bug.spawn()
