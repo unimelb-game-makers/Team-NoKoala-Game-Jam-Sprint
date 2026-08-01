@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://chmxx2aoqqnfo"]
+
+[ext_resource type="Texture2D" uid="uid://dj4wi4d5fijij" path="res://Sprites/FruitBowl/bowl.png" id="1_s6o25"]
+[ext_resource type="Texture2D" uid="uid://ou7l34nb2huc" path="res://Sprites/FruitBowl/melon.png" id="2_kb5mc"]
+[ext_resource type="Texture2D" uid="uid://crl3w0ju5gr8u" path="res://Sprites/FruitBowl/orange.png" id="3_qnihq"]
+[ext_resource type="Texture2D" uid="uid://chsi2froariao" path="res://Sprites/FruitBowl/grapes.png" id="4_tgoug"]
+[ext_resource type="Texture2D" uid="uid://bmiw1yjisj1jf" path="res://Sprites/FruitBowl/banana.png" id="5_x038j"]
+[ext_resource type="Texture2D" uid="uid://d1wk46bs4tk0s" path="res://Sprites/FruitBowl/apple.png" id="6_mlwxk"]
+
+[node name="LevelSelect" type="Node2D" unique_id=251411106]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=96404894]
+zoom = Vector2(0.58, 0.58)
+
+[node name="FruitBowl" type="Node2D" parent="." unique_id=476594395]
+
+[node name="Bowl" type="Sprite2D" parent="FruitBowl" unique_id=216416692]
+texture = ExtResource("1_s6o25")
+
+[node name="Melon" type="Sprite2D" parent="FruitBowl" unique_id=383196216]
+texture = ExtResource("2_kb5mc")
+
+[node name="Orange" type="Sprite2D" parent="FruitBowl" unique_id=1855494357]
+texture = ExtResource("3_qnihq")
+
+[node name="Grapes" type="Sprite2D" parent="FruitBowl" unique_id=749920850]
+texture = ExtResource("4_tgoug")
+
+[node name="Banana" type="Sprite2D" parent="FruitBowl" unique_id=318004561]
+texture = ExtResource("5_x038j")
+
+[node name="Apple" type="Sprite2D" parent="FruitBowl" unique_id=468155039]
+texture = ExtResource("6_mlwxk")
