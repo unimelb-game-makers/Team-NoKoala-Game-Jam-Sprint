@@ -1,11 +1,24 @@
 [gd_scene format=3 uid="uid://chmxx2aoqqnfo"]
 
+[ext_resource type="Script" uid="uid://ewrgot0dxbkg" path="res://Scripts/fruit_bowl.gd" id="1_qnihq"]
 [ext_resource type="Texture2D" uid="uid://dj4wi4d5fijij" path="res://Sprites/FruitBowl/bowl.png" id="1_s6o25"]
 [ext_resource type="Texture2D" uid="uid://ou7l34nb2huc" path="res://Sprites/FruitBowl/melon.png" id="2_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://crl3w0ju5gr8u" path="res://Sprites/FruitBowl/orange.png" id="3_qnihq"]
 [ext_resource type="Texture2D" uid="uid://chsi2froariao" path="res://Sprites/FruitBowl/grapes.png" id="4_tgoug"]
 [ext_resource type="Texture2D" uid="uid://bmiw1yjisj1jf" path="res://Sprites/FruitBowl/banana.png" id="5_x038j"]
+[ext_resource type="Script" uid="uid://darx1xp4kg2ep" path="res://Scripts/level_fruit.gd" id="6_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://d1wk46bs4tk0s" path="res://Sprites/FruitBowl/apple.png" id="6_mlwxk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ts2w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_owhf0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ts2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owhf0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_130qg"]
+radius = 101.00495
 
 [node name="LevelSelect" type="Node2D" unique_id=251411106]
 
@@ -13,21 +26,75 @@
 zoom = Vector2(0.58, 0.58)
 
 [node name="FruitBowl" type="Node2D" parent="." unique_id=476594395]
+script = ExtResource("1_qnihq")
 
 [node name="Bowl" type="Sprite2D" parent="FruitBowl" unique_id=216416692]
 texture = ExtResource("1_s6o25")
 
-[node name="Melon" type="Sprite2D" parent="FruitBowl" unique_id=383196216]
+[node name="Melon" type="Area2D" parent="FruitBowl" unique_id=1109297241]
+script = ExtResource("6_kb5mc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Melon" unique_id=257785814]
+position = Vector2(110, -76)
+scale = Vector2(17.085, 17.085)
+shape = SubResource("CircleShape2D_8ts2w")
+
+[node name="Melon" type="Sprite2D" parent="FruitBowl/Melon" unique_id=383196216]
 texture = ExtResource("2_kb5mc")
 
-[node name="Orange" type="Sprite2D" parent="FruitBowl" unique_id=1855494357]
+[node name="Orange" type="Area2D" parent="FruitBowl" unique_id=65314712]
+script = ExtResource("6_kb5mc")
+
+[node name="Orange" type="Sprite2D" parent="FruitBowl/Orange" unique_id=1855494357]
 texture = ExtResource("3_qnihq")
 
-[node name="Grapes" type="Sprite2D" parent="FruitBowl" unique_id=749920850]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Orange" unique_id=1575107317]
+position = Vector2(197, 67)
+scale = Vector2(9.545, 9.545)
+shape = SubResource("CircleShape2D_owhf0")
+
+[node name="Grapes" type="Area2D" parent="FruitBowl" unique_id=1540730669]
+script = ExtResource("6_kb5mc")
+
+[node name="Grapes" type="Sprite2D" parent="FruitBowl/Grapes" unique_id=749920850]
 texture = ExtResource("4_tgoug")
 
-[node name="Banana" type="Sprite2D" parent="FruitBowl" unique_id=318004561]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Grapes" unique_id=1183297534]
+position = Vector2(-88.00001, -43.000004)
+rotation = -0.116937056
+scale = Vector2(8.395, 8.395)
+shape = SubResource("CapsuleShape2D_8ts2w")
+
+[node name="Banana" type="Area2D" parent="FruitBowl" unique_id=1689828589]
+script = ExtResource("6_kb5mc")
+
+[node name="Banana" type="Sprite2D" parent="FruitBowl/Banana" unique_id=318004561]
 texture = ExtResource("5_x038j")
 
-[node name="Apple" type="Sprite2D" parent="FruitBowl" unique_id=468155039]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Banana" unique_id=1106818217]
+position = Vector2(58, 67)
+rotation = 0.9302605
+scale = Vector2(6.135, 9.935)
+shape = SubResource("CapsuleShape2D_owhf0")
+
+[node name="Apple" type="Area2D" parent="FruitBowl" unique_id=830928385]
+script = ExtResource("6_kb5mc")
+
+[node name="Apple" type="Sprite2D" parent="FruitBowl/Apple" unique_id=468155039]
 texture = ExtResource("6_mlwxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Apple" unique_id=785375223]
+position = Vector2(-165.00002, 68)
+scale = Vector2(1.315, 0.885)
+shape = SubResource("CircleShape2D_130qg")
+
+[connection signal="mouse_entered" from="FruitBowl/Melon" to="FruitBowl/Melon" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FruitBowl/Melon" to="FruitBowl/Melon" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="FruitBowl/Orange" to="FruitBowl/Orange" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FruitBowl/Orange" to="FruitBowl/Orange" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="FruitBowl/Grapes" to="FruitBowl/Grapes" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FruitBowl/Grapes" to="FruitBowl/Grapes" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="FruitBowl/Banana" to="FruitBowl/Banana" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FruitBowl/Banana" to="FruitBowl/Banana" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="FruitBowl/Apple" to="FruitBowl/Apple" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="FruitBowl/Apple" to="FruitBowl/Apple" method="_on_mouse_exited"]
