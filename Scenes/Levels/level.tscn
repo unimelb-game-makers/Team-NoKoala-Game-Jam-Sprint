@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="3_tq1so"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
 [ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="5_lhx7y"]
+[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
+[ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
+[ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -28,7 +31,7 @@ sources/1 = SubResource("TileSetAtlasSource_lhx7y")
 script = ExtResource("1_tq1so")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD9/wIAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD9/wIAAQAAAAAAAAD+//3/AQAAAAAAAAACAAEAAQAAAAAAAAACAP7/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_b136p")
 script = ExtResource("3_tq1so")
 
@@ -40,3 +43,29 @@ script = ExtResource("4_rv5g2")
 
 [node name="BugFactory" type="Node" parent="." unique_id=726149244]
 script = ExtResource("5_lhx7y")
+
+[node name="Interface" type="Control" parent="." unique_id=1310635634]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BoardDropArea" type="Control" parent="Interface" unique_id=376667881]
+layout_mode = 1
+anchor_left = -2.144
+anchor_top = -1.4130001
+offset_left = -900.24
+offset_top = -502.47998
+offset_right = 993.0
+offset_bottom = 557.0
+mouse_filter = 1
+script = ExtResource("9_jbixu")
+
+[node name="caterpillarDragIcon" type="TextureRect" parent="Interface" unique_id=329117434]
+layout_mode = 0
+offset_left = 792.0
+offset_top = -473.0
+offset_right = 920.0
+offset_bottom = -345.0
+texture = ExtResource("7_lhx7y")
+script = ExtResource("8_i5435")

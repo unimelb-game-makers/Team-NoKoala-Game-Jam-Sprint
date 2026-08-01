@@ -12,14 +12,10 @@ var current_bug: Bug
 func _ready() -> void:
 	level_data = tile_map_layer.read_level_from_tilemap()
 	level_data.print_debug_map()
-	spawn_bug()
 
-func spawn_bug() -> void:
-	var bug = bug_factory.create_bug(GlobalVars.BugTypes.CATERPILLAR)
+
+func spawn_bug(bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.CATERPILLAR) -> Bug:
+	var bug = bug_factory.create_bug(bug_type)
 	add_child(bug)
 	current_bug = bug
-	var entries := level_data.get_cells_by_type(
-		LevelData.LevelTileData.Type.ENTRY
-	)
-	if entries:
-		bug.teleport(entries[0])
+	return bug
