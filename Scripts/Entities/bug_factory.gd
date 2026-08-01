@@ -9,10 +9,10 @@ const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
 var bug_scenes: Dictionary = {
-	GlobalVars.Bugs.CATERPILLAR: CATERPILLAR_SCENE
+	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SCENE
 }
 
 # Usage example: create_bug(Bugs.CATERPILLAR) to create a Caterpillar
-func create_bug(bug_type: GlobalVars.Bugs) -> Bug: 
+func create_bug(bug_type: GlobalVars.BugTypes) -> Bug: 
 	var bug = bug_scenes[bug_type].instantiate()
 	return bug

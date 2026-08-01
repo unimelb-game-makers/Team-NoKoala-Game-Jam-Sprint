@@ -2,6 +2,6 @@ extends Node
 # Globally accessible variables. Access in other files as "GlobalVars"
 
 # Enum of bug types:
-enum Bugs {
+enum BugTypes {
 	CATERPILLAR
 }
