@@ -2,24 +2,35 @@
 
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
 [ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="1_yjxcc"]
+[ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/entry_tile.png" id="3_rv5g2"]
+[ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="3_tq1so"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
 [ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="5_lhx7y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
+resource_name = "normal_cell"
 texture = ExtResource("1_yjxcc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
+resource_name = "entry_cell"
+texture = ExtResource("3_rv5g2")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_b136p"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_rv5g2")
+sources/1 = SubResource("TileSetAtlasSource_lhx7y")
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_tq1so")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD9/wIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_b136p")
+script = ExtResource("3_tq1so")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
 zoom = Vector2(0.58, 0.58)
