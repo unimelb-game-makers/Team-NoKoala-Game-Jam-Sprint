@@ -1,8 +1,9 @@
 class_name BoardDropArea
 extends Control
 
-@onready var level_manager: LevelManager = get_parent().get_parent()
-
+@onready var level_manager := (
+	get_tree().get_first_node_in_group(&"level_manager") as LevelManager
+)
 
 
 func _can_drop_data(_position: Vector2, data: Variant) -> bool:

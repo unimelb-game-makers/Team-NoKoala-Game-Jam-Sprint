@@ -9,6 +9,9 @@ var current_bug: Bug
 @onready var bug_factory: BugFactory = $BugFactory
 @onready var tile_map_layer: LevelTileMap = $TileMapLayer
 
+func _enter_tree() -> void:
+	add_to_group(&"level_manager")
+		
 func _ready() -> void:
 	level_data = tile_map_layer.read_level_from_tilemap()
 	level_data.print_debug_map()

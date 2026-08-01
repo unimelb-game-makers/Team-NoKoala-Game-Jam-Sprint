@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
 [ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
 [ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
+[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -44,28 +45,41 @@ script = ExtResource("4_rv5g2")
 [node name="BugFactory" type="Node" parent="." unique_id=726149244]
 script = ExtResource("5_lhx7y")
 
-[node name="Interface" type="Control" parent="." unique_id=1310635634]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]
+layer = 10
 
-[node name="BoardDropArea" type="Control" parent="Interface" unique_id=376667881]
+[node name="Interface" type="Control" parent="CanvasLayer" unique_id=1310635634]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoardDropArea" type="Control" parent="CanvasLayer/Interface" unique_id=376667881]
 layout_mode = 1
-anchor_left = -2.144
-anchor_top = -1.4130001
-offset_left = -900.24
-offset_top = -502.47998
-offset_right = 993.0
-offset_bottom = 557.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("9_jbixu")
 
-[node name="caterpillarDragIcon" type="TextureRect" parent="Interface" unique_id=329117434]
-layout_mode = 0
-offset_left = 792.0
-offset_top = -473.0
-offset_right = 920.0
-offset_bottom = -345.0
+[node name="caterpillarDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=329117434]
+layout_mode = 1
+offset_left = 1001.0
+offset_top = 48.0
+offset_right = 1129.0
+offset_bottom = 176.0
+scale = Vector2(0.695, 0.695)
 texture = ExtResource("7_lhx7y")
 script = ExtResource("8_i5435")
+
+[node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 31.0
+offset_right = 520.0
+offset_bottom = 54.0
+script = ExtResource("10_rxcld")
