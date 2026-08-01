@@ -13,11 +13,6 @@ func _ready() -> void:
 	return 
 
 func _input(event: InputEvent) -> void:
-	if level_manager.current_bug == null:
-		return
-	if current_move <= 0:
-		print("Movement Error: Run out of Moves")
-		return 
 	if event.is_action_pressed("up"):
 		commit_move(Directions.UP)
 	elif event.is_action_pressed("left"):
@@ -28,6 +23,11 @@ func _input(event: InputEvent) -> void:
 		commit_move(Directions.RIGHT)
 	
 func commit_move(direction: Vector2i) -> bool:
+	if level_manager.current_bug == null:
+		return false
+	if current_move <= 0:
+		print("Movement Error: Run out of Moves")
+		return false
 	if !level_manager.current_bug.move(direction):
 		return false
 	current_move -= 1
