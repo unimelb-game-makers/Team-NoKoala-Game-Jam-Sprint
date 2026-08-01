@@ -38,25 +38,24 @@ func move(direction: Directions) -> void:
 		print("Movement Error: Can't move back out of fruit")
 		return
 	
-	# BELOW: Move the caterpillar
-	''' 
+	# Move caterpillar segments
+	move_segment(2, segment_local_pos[segments[1]], Vector2(segment_local_pos[segments[0]]) - Vector2(segment_local_pos[segments[1]]))
+	move_segment(1, segment_local_pos[segments[0]], Vector2(segment_local_pos[segments[0]] + direction_vector - segment_local_pos[segments[2]]))
+	move_segment(0, segment_local_pos[segments[0]] + direction_vector, direction_vector)
+
+''' 
+Move the caterpillar:
 	- Move individual segments
 	- Erase tilemap references to a segment when a segment leaves that tile
 	- Add tilemap reference to a segment when a segment enters that tile
-	'''
+'''
+func move_segment(segment_num: int, next_segment_pos: Vector2i, move_diff: Vector2) -> void:
+	var tween = create_tween()
+	tween.set_parallel(true)
 	
-	tilemap.tile_data[segment_local_pos[segments[2]]].erase(segments[2])
-	
-	segment_local_pos[segments[2]] = segment_local_pos[segments[1]]
-	segments[2].position = tilemap.map_to_local(segment_local_pos[segments[2]])
-	tilemap.tile_data[segment_local_pos[segments[2]]].append(segments[2])
-	
-	tilemap.tile_data[segment_local_pos[segments[1]]].erase(segments[1])
-	segment_local_pos[segments[1]] = segment_local_pos[segments[0]]
-	segments[1].position = tilemap.map_to_local(segment_local_pos[segments[1]])
-	tilemap.tile_data[segment_local_pos[segments[1]]].append(segments[1])
-	
-	tilemap.tile_data[segment_local_pos[segments[0]]].erase(segments[0])
-	segment_local_pos[segments[0]] += direction_vector
-	segments[0].position = tilemap.map_to_local(segment_local_pos[segments[0]])
-	tilemap.tile_data[segment_local_pos[segments[0]]].append(segments[0])
+	tilemap.tile_data[segment_local_pos[segments[segment_num]]].erase(segments[segment_num])
+	segment_local_pos[segments[segment_num]] = next_segment_pos #segment_local_pos[segments[next_segment_num]]
+	tween.tween_property(segments[segment_num], "position", tilemap.map_to_local(segment_local_pos[segments[segment_num]]), 0.15).set_trans(Tween.TRANS_SINE)
+	tilemap.tile_data[segment_local_pos[segments[segment_num]]].append(segments[segment_num])
+	var rotate_angle = wrapf(atan2(move_diff.y, move_diff.x) - segments[segment_num].rotation, -PI, PI)
+	tween.tween_property(segments[segment_num], "rotation", rotate_angle + segments[segment_num].rotation, 0.2)
