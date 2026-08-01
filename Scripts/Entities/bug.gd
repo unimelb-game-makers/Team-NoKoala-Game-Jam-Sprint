@@ -4,7 +4,6 @@ class_name Bug
 
 @onready var level_manager: LevelManager = get_tree().get_first_node_in_group("level_manager")
 var segment_sprites: Array[Sprite2D]
-## The position of each segment relative to the head. The head is always at (0,0).
 var segment_cells: Array[Vector2i]
 
 func _ready() -> void:
