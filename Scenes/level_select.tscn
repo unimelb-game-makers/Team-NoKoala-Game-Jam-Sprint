@@ -4,11 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://dj4wi4d5fijij" path="res://Sprites/FruitBowl/bowl.png" id="1_s6o25"]
 [ext_resource type="Texture2D" uid="uid://ou7l34nb2huc" path="res://Sprites/FruitBowl/melon.png" id="2_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://crl3w0ju5gr8u" path="res://Sprites/FruitBowl/orange.png" id="3_qnihq"]
+[ext_resource type="Texture2D" uid="uid://xga0yve5ouqg" path="res://Sprites/FruitBowl/moldy_melon.png" id="4_07bvh"]
 [ext_resource type="Texture2D" uid="uid://chsi2froariao" path="res://Sprites/FruitBowl/grapes.png" id="4_tgoug"]
 [ext_resource type="Shader" uid="uid://dyqialhhxtnni" path="res://Shaders/grayscale.gdshader" id="5_tgoug"]
 [ext_resource type="Texture2D" uid="uid://bmiw1yjisj1jf" path="res://Sprites/FruitBowl/banana.png" id="5_x038j"]
 [ext_resource type="Script" uid="uid://darx1xp4kg2ep" path="res://Scripts/level_fruit.gd" id="6_kb5mc"]
 [ext_resource type="Texture2D" uid="uid://d1wk46bs4tk0s" path="res://Sprites/FruitBowl/apple.png" id="6_mlwxk"]
+[ext_resource type="Texture2D" uid="uid://wi57m1puakvw" path="res://Sprites/FruitBowl/moldy_orange.png" id="7_ciagn"]
+[ext_resource type="Texture2D" uid="uid://cm23m8exu8k5m" path="res://Sprites/FruitBowl/moldy_grapes.png" id="9_yx562"]
+[ext_resource type="Texture2D" uid="uid://b1280tuw8xuv4" path="res://Sprites/FruitBowl/moldy_banana.png" id="11_wn3si"]
+[ext_resource type="Texture2D" uid="uid://cpokdhxjxjwvh" path="res://Sprites/FruitBowl/moldy_apple.png" id="13_r2u0r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgoug"]
 shader = ExtResource("5_tgoug")
@@ -52,6 +57,7 @@ radius = 101.00495
 zoom = Vector2(0.58, 0.58)
 
 [node name="FruitBowl" type="Node2D" parent="." unique_id=476594395]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_qnihq")
 
 [node name="Bowl" type="Sprite2D" parent="FruitBowl" unique_id=216416692]
@@ -59,6 +65,7 @@ texture = ExtResource("1_s6o25")
 
 [node name="Melon" type="Area2D" parent="FruitBowl" unique_id=1109297241]
 script = ExtResource("6_kb5mc")
+bugged_texture = ExtResource("4_07bvh")
 grayscale_shader = SubResource("ShaderMaterial_tgoug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Melon" unique_id=257785814]
@@ -71,6 +78,7 @@ texture = ExtResource("2_kb5mc")
 
 [node name="Orange" type="Area2D" parent="FruitBowl" unique_id=65314712]
 script = ExtResource("6_kb5mc")
+bugged_texture = ExtResource("7_ciagn")
 grayscale_shader = SubResource("ShaderMaterial_x038j")
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Orange" unique_id=1855494357]
@@ -83,6 +91,7 @@ shape = SubResource("CircleShape2D_owhf0")
 
 [node name="Grapes" type="Area2D" parent="FruitBowl" unique_id=1540730669]
 script = ExtResource("6_kb5mc")
+bugged_texture = ExtResource("9_yx562")
 grayscale_shader = SubResource("ShaderMaterial_mlwxk")
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Grapes" unique_id=749920850]
@@ -96,6 +105,7 @@ shape = SubResource("CapsuleShape2D_8ts2w")
 
 [node name="Banana" type="Area2D" parent="FruitBowl" unique_id=1689828589]
 script = ExtResource("6_kb5mc")
+bugged_texture = ExtResource("11_wn3si")
 grayscale_shader = SubResource("ShaderMaterial_npf18")
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Banana" unique_id=318004561]
@@ -109,6 +119,7 @@ shape = SubResource("CapsuleShape2D_owhf0")
 
 [node name="Apple" type="Area2D" parent="FruitBowl" unique_id=830928385]
 script = ExtResource("6_kb5mc")
+bugged_texture = ExtResource("13_r2u0r")
 grayscale_shader = SubResource("ShaderMaterial_bpfon")
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Apple" unique_id=468155039]
