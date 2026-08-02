@@ -3,8 +3,8 @@ class_name StagBeetle
 
 var facing_direction = Directions.RIGHT
 
-var break_on_rotate: bool = false
-var check_in_between_tiles: bool = false
+@export var break_on_rotate: bool = false
+@export var check_in_between_tiles: bool = false
 
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body]
@@ -21,7 +21,6 @@ func move(direction: Vector2i) -> bool:
 	
 	# If heading same direction as facing: move forward 1 tile
 	if direction == facing_direction:
-		
 		
 		if tile_data == null: 
 			print("Movement Error: Outside of Play Space")
@@ -56,34 +55,23 @@ func move(direction: Vector2i) -> bool:
 	
 	# Otherwise rotate around head as pivot
 	else:
+		#segment_cells[0] + facing_direction
+		if check_in_between_tiles:
+			#for x in range()
+			
+			print("yeaea")
+			var corner_1 = segment_cells[0] + (segment_cells[1] + direction)
+			print(corner_1)
+			print(segment_cells[0])
+			print(segment_cells[1] + direction)
+			var temp_tile_data = level_data.get_tile_data(corner_1)
+			if not check_tile(temp_tile_data, direction): print("mewo"); return false
+		
+		
 		tile_data = level_data.get_tile_data(segment_cells[1] + direction)
 		
-		if tile_data == null: 
-			print("Movement Error: Outside of Play Space")
-			return false
+		if not check_tile(tile_data, direction): return false
 		
-		if not tile_data.is_empty():
-			for bug in tile_data.bugs:
-				if not bug.get_name() == "Slug":
-					print("Movement Error: Tile is Occupied")
-					return false
-		
-		if tile_data.type == LevelData.LevelTileData.Type.INDESTRUCTIBLE:
-			print("Movement Error: Can't move into hard tiles")
-			return false
-		
-		if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
-			print("Movement Error: Can't move back out of fruit")
-			return false
-		
-		if tile_data.type == LevelData.LevelTileData.Type.HARD:
-			if break_on_rotate:
-				var tilemap := level_manager.tile_map_layer
-				tilemap.set_cell(segment_cells[1] + direction, 3, Vector2i(0, 0), 0)
-				level_data.set_tile_data(segment_cells[1] + direction, LevelData.LevelTileData.Type.HARD_BROKEN)
-			else:
-				print("Movement Error: Can't move into hard tiles")
-				return false
 		
 		level_data.remove_bug(self)
 		move_segment(0, segment_cells[1] + direction, direction)
@@ -103,3 +91,33 @@ func move_segment(index: int, next_cell: Vector2i, move_diff: Vector2) -> void:
 	var tilemap := level_manager.tile_map_layer
 	segment_cells[index] = next_cell
 	segment_sprites[index].position = tilemap.map_to_local(segment_cells[index])
+
+func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i) -> bool:
+	if tile_data == null: 
+			print("Movement Error: Outside of Play Space")
+			return false
+		
+	if not tile_data.is_empty():
+		for bug in tile_data.bugs:
+			if not bug.get_name() == "Slug":
+				print("Movement Error: Tile is Occupied")
+				return false
+	
+	if tile_data.type == LevelData.LevelTileData.Type.INDESTRUCTIBLE:
+		print("Movement Error: Can't move into hard tiles")
+		return false
+	
+	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
+		print("Movement Error: Can't move back out of fruit")
+		return false
+	
+	if tile_data.type == LevelData.LevelTileData.Type.HARD:
+		if break_on_rotate:
+			var tilemap := level_manager.tile_map_layer
+			tilemap.set_cell(segment_cells[1] + direction, 3, Vector2i(0, 0), 0)
+			level_manager.level_data.set_tile_data(segment_cells[1] + direction, LevelData.LevelTileData.Type.HARD_BROKEN)
+			return true
+		else:
+			print("Movement Error: Can't move into hard tiles")
+			return false
+	return true
