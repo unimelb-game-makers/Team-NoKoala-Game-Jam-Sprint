@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/entry_tile.png" id="3_rv5g2"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="6_c5s4o"]
-[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
-[ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
-[ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
@@ -57,28 +54,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="BoardDropArea" type="Control" parent="CanvasLayer/Interface" unique_id=376667881]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("9_jbixu")
-
-[node name="caterpillarDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=329117434]
-visible = false
-layout_mode = 1
-offset_left = 1001.0
-offset_top = 48.0
-offset_right = 1129.0
-offset_bottom = 176.0
-scale = Vector2(0.695, 0.695)
-texture = ExtResource("7_lhx7y")
-script = ExtResource("8_i5435")
 
 [node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
 layout_mode = 0

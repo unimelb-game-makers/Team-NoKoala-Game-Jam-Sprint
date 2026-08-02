@@ -17,9 +17,10 @@ func _enter_tree() -> void:
 	add_to_group(&"level_manager")
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			try_place_bug(event.position)
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		# Pressing supports the existing click-to-place flow. Releasing supports
+		# dragging a bug directly from its jar onto an entry tile.
+		try_place_bug(event.position)
 
 func _ready() -> void:
 	level_data = LevelData.from_tilemap(tile_map_layer).with_config_from_file(level_config_file)
