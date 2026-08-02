@@ -25,6 +25,8 @@ func _input(event: InputEvent) -> void:
 func commit_move(direction: Vector2i) -> bool:
 	if level_manager.current_bug == null:
 		return false
+	if !level_manager.current_bug.is_placed:
+		return false
 	if current_move <= 0:
 		print("Movement Error: Run out of Moves")
 		return false
