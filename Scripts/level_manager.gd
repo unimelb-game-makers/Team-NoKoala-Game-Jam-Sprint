@@ -7,6 +7,7 @@ var current_bug: Bug
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
+@export_file("*.json") var level_config: String
 @onready var movement_controller: MovementController = $MovementController
 @onready var bug_factory: BugFactory = $BugFactory
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
@@ -20,8 +21,9 @@ func _input(event: InputEvent) -> void:
 		spawn_bug(GlobalVars.BugTypes.SLUG)
 
 func _ready() -> void:
-	level_data = tile_map_layer.read_level_from_tilemap()
+	level_data = LevelData.from_tilemap(tile_map_layer).with_config_from_file(level_config)
 	level_data.print_debug_map()
+	print(level_data.config.serialize())
 	spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
 
 func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> Bug:
@@ -36,7 +38,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		exit_level()
 
 func exit_level() -> void:
-	
 	# zoom out slightly
 	var tween = create_tween()
 	tween.set_parallel(true)

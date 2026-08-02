@@ -24,26 +24,41 @@ class LevelTileData:
 		bugs.erase(bug)
 
 var _grid: Dictionary[Vector2i, LevelTileData]
-
-func get_cells() -> Array[Vector2i]:
-	var cells: Array[Vector2i] = []
-
-	for cell: Vector2i in _grid:
-		cells.append(cell)
-
-	return cells
-	
-func get_cells_by_type(tile_type: LevelTileData.Type) -> Array[Vector2i]:
-	var cells: Array[Vector2i] = []
-
-	for cell: Vector2i in _grid:
-		if _grid[cell].type == tile_type:
-			cells.append(cell)
-
-	return cells
+var config: LevelConfig
 	
 func _init():
 	_grid = {}
+	config = LevelConfig.new()
+
+static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
+	var level := LevelData.new()
+
+	for cell in tilemap.get_used_cells():
+		var source_id := tilemap.get_cell_source_id(cell)
+
+		if source_id == -1:
+			continue
+
+		var source := tilemap.tile_set.get_source(source_id)
+		var tile_name := source.resource_name
+
+		match tile_name:
+			"normal_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.NORMAL
+				)
+
+			"entry_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.ENTRY
+				)
+
+			_:
+				push_warning("Unknown tile source: " + tile_name)
+	
+	return level
 
 func add_rectangle_region(c1: Vector2i, c2: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.NORMAL) -> LevelData:
 	var sx = [c1.x, c2.x]
@@ -60,6 +75,15 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 	if !_grid.has(cell):
 		_grid[cell] = LevelTileData.new(tileType)
 	return self
+
+func with_config(p_config: LevelConfig) -> LevelData:
+	config = p_config
+	return self
+
+func with_config_from_file(path: String) -> LevelData:
+	var file := FileAccess.open(path, FileAccess.READ)
+	var content := file.get_as_text()
+	return with_config(LevelConfig.deserialize(content))
 
 ## Returns null if the cell is outside of play space
 func get_tile_data(cell: Vector2i) -> LevelTileData:
