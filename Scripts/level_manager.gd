@@ -14,14 +14,18 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 
 func _enter_tree() -> void:
 	add_to_group(&"level_manager")
-		
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("next_bug_debug"):
+		spawn_bug(GlobalVars.BugTypes.SLUG)
+
 func _ready() -> void:
 	level_data = tile_map_layer.read_level_from_tilemap()
 	level_data.print_debug_map()
+	spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
 
-
-func spawn_bug(bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.CATERPILLAR) -> Bug:
-	var bug = bug_factory.create_bug(bug_type)
+func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> void:
+	var bug = bug_factory.create_bug(bug_type, length)
 	add_child(bug)
 	current_bug = bug
 	return bug
