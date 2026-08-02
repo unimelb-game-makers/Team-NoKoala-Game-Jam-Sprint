@@ -3,6 +3,9 @@ class_name StagBeetle
 
 var facing_direction = Directions.RIGHT
 
+var break_on_rotate: bool = false
+var check_in_between_tiles: bool = false
+
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body]
 	segment_cells = [
@@ -74,9 +77,13 @@ func move(direction: Vector2i) -> bool:
 			return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.HARD:
-			var tilemap := level_manager.tile_map_layer
-			tilemap.set_cell(segment_cells[1] + direction, 3, Vector2i(0, 0), 0)
-			level_data.set_tile_data(segment_cells[1] + direction, LevelData.LevelTileData.Type.HARD_BROKEN)
+			if break_on_rotate:
+				var tilemap := level_manager.tile_map_layer
+				tilemap.set_cell(segment_cells[1] + direction, 3, Vector2i(0, 0), 0)
+				level_data.set_tile_data(segment_cells[1] + direction, LevelData.LevelTileData.Type.HARD_BROKEN)
+			else:
+				print("Movement Error: Can't move into hard tiles")
+				return false
 		
 		level_data.remove_bug(self)
 		move_segment(0, segment_cells[1] + direction, direction)
