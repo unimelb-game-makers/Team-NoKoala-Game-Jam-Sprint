@@ -44,7 +44,7 @@ func get_cells_by_type(tile_type: LevelTileData.Type) -> Array[Vector2i]:
 			cells.append(cell)
 
 	return cells
-	
+
 func _init():
 	_grid = {}
 
@@ -67,6 +67,10 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 ## Returns null if the cell is outside of play space
 func get_tile_data(cell: Vector2i) -> LevelTileData:
 	return _grid.get(cell)
+
+func set_tile_data(cell: Vector2i, new_tile_type: LevelTileData.Type) -> void:
+	var tile = _grid.get(cell)
+	tile.type = new_tile_type
 
 func add_bug(bug: Bug) -> void:
 	for segment_cell in bug.segment_cells:

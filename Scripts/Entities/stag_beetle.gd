@@ -1,5 +1,5 @@
 extends Bug
-class_name Ant
+class_name StagBeetle
 
 var facing_direction = Directions.RIGHT
 
@@ -30,13 +30,19 @@ func move(direction: Vector2i) -> bool:
 					print("Movement Error: Tile is Occupied")
 					return false
 		
-		if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
-			print("Movement Error: Can't move into hard tiles")
+		if tile_data.type == LevelData.LevelTileData.Type.INDESTRUCTIBLE:
+			print("Movement Error: Can't move into indestructible tiles")
 			return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 			print("Movement Error: Can't move back out of fruit")
 			return false
+		
+		if tile_data.type == LevelData.LevelTileData.Type.HARD:
+			var tilemap := level_manager.tile_map_layer
+			tilemap.set_cell(next_cell, 3, Vector2i(0, 0), 0)
+			level_data.set_tile_data(next_cell, LevelData.LevelTileData.Type.HARD_BROKEN)
+			
 		
 		# Move caterpillar segments
 		level_data.remove_bug(self)
@@ -59,13 +65,18 @@ func move(direction: Vector2i) -> bool:
 					print("Movement Error: Tile is Occupied")
 					return false
 		
-		if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+		if tile_data.type == LevelData.LevelTileData.Type.INDESTRUCTIBLE:
 			print("Movement Error: Can't move into hard tiles")
 			return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 			print("Movement Error: Can't move back out of fruit")
 			return false
+		
+		if tile_data.type == LevelData.LevelTileData.Type.HARD:
+			var tilemap := level_manager.tile_map_layer
+			tilemap.set_cell(segment_cells[1] + direction, 3, Vector2i(0, 0), 0)
+			level_data.set_tile_data(segment_cells[1] + direction, LevelData.LevelTileData.Type.HARD_BROKEN)
 		
 		level_data.remove_bug(self)
 		move_segment(0, segment_cells[1] + direction, direction)

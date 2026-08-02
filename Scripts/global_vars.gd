@@ -5,5 +5,6 @@ extends Node
 enum BugTypes {
 	CATERPILLAR,
 	SLUG,
-	ANT
+	ANT,
+	STAG_BEETLE
 }

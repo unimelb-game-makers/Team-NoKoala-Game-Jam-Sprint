@@ -7,13 +7,15 @@ class_name BugFactory
 const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
 const SLUG_SCENE = preload("res://Scenes/Bugs/slug.tscn")
 const ANT_SCENE = preload("res://Scenes/Bugs/ant.tscn")
+const STAG_BEETLE_SCENE = preload("res://Scenes/Bugs/stag_beetle.tscn")
 
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
 var bug_scenes: Dictionary = {
 	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SCENE,
 	GlobalVars.BugTypes.SLUG: SLUG_SCENE,
-	GlobalVars.BugTypes.ANT: ANT_SCENE
+	GlobalVars.BugTypes.ANT: ANT_SCENE,
+	GlobalVars.BugTypes.STAG_BEETLE: STAG_BEETLE_SCENE
 }
 
 # Usage example: create_bug(Bugs.CATERPILLAR) to create a Caterpillar

@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
 [ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="13_kogc4"]
 [ext_resource type="Texture2D" uid="uid://sooo0k5aghr1" path="res://Sprites/ant_head.png" id="14_on2c6"]
+[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/stag_beetle_head.png" id="15_vn0m0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -58,7 +59,7 @@ sources/4 = SubResource("TileSetAtlasSource_r0lyn")
 script = ExtResource("1_tq1so")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD//wAAAgAAAAAAAAAAAAEAAAAAAAAAAAD///7/AAAAAAAAAAAAAAAAAAAAAAAAAAD+//7/AAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAAAAAAAAAAD9/wEAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAD/////AgAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAEAAAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAABAAAAAAAAAAAAAAABAP//BAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAAAAAAAAAAD9/wEAAQAAAAAAAAAAAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_b136p")
 script = ExtResource("3_tq1so")
 
@@ -123,6 +124,17 @@ scale = Vector2(0.695, 0.695)
 texture = ExtResource("14_on2c6")
 script = ExtResource("8_i5435")
 bug_type = 2
+
+[node name="stagBeetleDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=1983541862]
+layout_mode = 1
+offset_left = 998.00006
+offset_top = 401.0
+offset_right = 1126.0
+offset_bottom = 529.0
+scale = Vector2(0.695, 0.695)
+texture = ExtResource("15_vn0m0")
+script = ExtResource("8_i5435")
+bug_type = 3
 
 [node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
 layout_mode = 0
