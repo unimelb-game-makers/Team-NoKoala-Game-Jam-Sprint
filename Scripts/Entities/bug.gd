@@ -26,4 +26,4 @@ func teleport(cell: Vector2i) -> void:
 func init_segments() -> void
 
 @abstract
-func move(direction: Vector2i) -> void
+func move(direction: Vector2i) -> bool

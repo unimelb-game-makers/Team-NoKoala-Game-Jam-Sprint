@@ -10,7 +10,7 @@ func init_segments() -> void:
 	]
 
 # Update positions of each segment
-func move(direction: Vector2i) -> void:
+func move(direction: Vector2i) -> bool:
 	# Catch invalid movements
 	var next_cell := segment_cells[0] + direction
 	var level_data := level_manager.level_data
@@ -18,17 +18,17 @@ func move(direction: Vector2i) -> void:
 	
 	if tile_data == null: 
 		print("Movement Error: Outside of Play Space")
-		return
+		return false
 	
 	if not tile_data.is_empty():
 		for bug in tile_data.bugs:
 			if not bug.get_name() == "Slug":
 				print("Movement Error: Tile is Occupied")
-				return
+				return false
 	
 	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
-		return
+		return false
 	
 	# Move caterpillar segments
 	level_data.remove_bug(self)
@@ -36,6 +36,7 @@ func move(direction: Vector2i) -> void:
 	move_segment(1, segment_cells[0], Vector2(segment_cells[0] + direction - segment_cells[2]))
 	move_segment(0, segment_cells[0] + direction, direction)
 	level_data.add_bug(self)
+	return true
 
 ''' 
 Move the caterpillar:
