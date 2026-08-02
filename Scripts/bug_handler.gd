@@ -32,8 +32,21 @@ func _generate_collision_shapes() -> void:
 		area.add_child(shape_node)
 
 func _on_selected():
+	level_manager.begin_bug_selection(bug, self)
+
+func begin_selection() -> void:
+	visible = false
+	area.input_pickable = false
 	bug.reparent(level_manager.tile_map_layer, false)
-	level_manager.current_bug = bug
+
+func cancel_selection() -> void:
+	bug.reparent(self, false)
+	bug.set_free_position(Vector2.ZERO)
+	visible = true
+	area.input_pickable = true
+	_set_hovered(false)
+
+func complete_selection() -> void:
 	queue_free()
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
