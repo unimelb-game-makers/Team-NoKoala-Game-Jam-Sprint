@@ -23,6 +23,10 @@ func move(direction: Vector2i) -> void:
 		print("Movement Error: Tile is Occupied")
 		return
 	
+	if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+		print("Movement Error: Can't move into hard tiles")
+		return
+	
 	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
 		return

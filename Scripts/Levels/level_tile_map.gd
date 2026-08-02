@@ -26,6 +26,24 @@ func read_level_from_tilemap() -> LevelData:
 					LevelData.LevelTileData.Type.ENTRY
 				)
 
+			"hard_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD
+				)
+
+			"hard_broken_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD_BROKEN
+				)
+
+			"indestructible_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.INDESTRUCTIBLE
+				)
+
 			_:
 				push_warning("Unknown tile source: " + tile_name)
 	return level

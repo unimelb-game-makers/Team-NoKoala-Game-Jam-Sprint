@@ -3,7 +3,10 @@ class_name LevelData
 class LevelTileData:
 	enum Type { 
 		NORMAL,
-		ENTRY 
+		ENTRY,
+		HARD,
+		HARD_BROKEN,
+		INDESTRUCTIBLE
 	}
 
 	var type: Type
@@ -112,6 +115,12 @@ func print_debug_map() -> void:
 						row += "."
 					LevelTileData.Type.ENTRY:
 						row += "E"
+					LevelTileData.Type.HARD:
+						row += "H"
+					LevelTileData.Type.HARD_BROKEN:
+						row += "B"
+					LevelTileData.Type.INDESTRUCTIBLE:
+						row += "I"
 					_:
 						row += "?"
 
