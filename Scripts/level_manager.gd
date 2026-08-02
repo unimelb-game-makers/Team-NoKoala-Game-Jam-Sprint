@@ -36,7 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		exit_level()
 
 func exit_level() -> void:
-	
+	get_tree().paused = false
+
 	# zoom out slightly
 	var tween = create_tween()
 	tween.set_parallel(true)
