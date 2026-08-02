@@ -15,6 +15,7 @@ var bug_scenes: Dictionary = {
 }
 
 # Usage example: create_bug(Bugs.CATERPILLAR) to create a Caterpillar
-func create_bug(bug_type: GlobalVars.BugTypes) -> Bug: 
+func create_bug(bug_type: GlobalVars.BugTypes, bug_length: int = -1) -> Bug: 
 	var bug = bug_scenes[bug_type].instantiate()
+	bug.length = bug_length
 	return bug

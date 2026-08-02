@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://pkm6ou2i806p"]
 
 [ext_resource type="Script" uid="uid://dtye3xf3684w1" path="res://Scripts/Entities/slug.gd" id="1_jap24"]
-[ext_resource type="Texture2D" uid="uid://m4nbo3r4w0w7" path="res://Sprites/slug_head.png" id="2_jap24"]
-[ext_resource type="Texture2D" uid="uid://cjvscydk8srea" path="res://Sprites/slug_body.png" id="3_euaek"]
-[ext_resource type="Texture2D" uid="uid://cp27hnt0vq38" path="res://Sprites/slug_tail.png" id="4_lr4kt"]
+[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="2_jap24"]
 
 [node name="Slug" type="Node2D" unique_id=721379921]
 script = ExtResource("1_jap24")
@@ -11,9 +9,3 @@ script = ExtResource("1_jap24")
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
 z_index = 1
 texture = ExtResource("2_jap24")
-
-[node name="Body" type="Sprite2D" parent="." unique_id=706890678]
-texture = ExtResource("3_euaek")
-
-[node name="Tail" type="Sprite2D" parent="." unique_id=85632085]
-texture = ExtResource("4_lr4kt")

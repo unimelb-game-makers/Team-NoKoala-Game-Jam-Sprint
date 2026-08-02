@@ -13,7 +13,7 @@ func _ready() -> void:
 	spawn_bug()
 
 func spawn_bug() -> void:
-	var bug = bug_factory.create_bug(GlobalVars.BugTypes.SLUG)
+	var bug = bug_factory.create_bug(GlobalVars.BugTypes.SLUG, 3)
 	add_child(bug)
 	current_bug = bug
 	bug.teleport(level_data.start_cell)

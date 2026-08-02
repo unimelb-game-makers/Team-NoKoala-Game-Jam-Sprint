@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gmnjmf75bhw6"
-path="res://.godot/imported/slug_corner.png-ef41d36721130715986ccea8a15a70ae.ctex"
+uid="uid://cdyryqq6cvio6"
+path="res://.godot/imported/slug_body_topdown.png-ecaea8357cb0b4bac5ed8306da90692e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/slug_corner.png"
-dest_files=["res://.godot/imported/slug_corner.png-ef41d36721130715986ccea8a15a70ae.ctex"]
+source_file="res://Sprites/slug_body_topdown.png"
+dest_files=["res://.godot/imported/slug_body_topdown.png-ecaea8357cb0b4bac5ed8306da90692e.ctex"]
 
 [params]
 

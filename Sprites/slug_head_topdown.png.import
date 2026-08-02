@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp27hnt0vq38"
-path="res://.godot/imported/slug_tail.png-90561fec6e35c73474c117f3c890c2c3.ctex"
+uid="uid://blkxh3hbv8asy"
+path="res://.godot/imported/slug_head_topdown.png-7d6ded5783fd5ccda6292cb2642a9693.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/slug_tail.png"
-dest_files=["res://.godot/imported/slug_tail.png-90561fec6e35c73474c117f3c890c2c3.ctex"]
+source_file="res://Sprites/slug_head_topdown.png"
+dest_files=["res://.godot/imported/slug_head_topdown.png-7d6ded5783fd5ccda6292cb2642a9693.ctex"]
 
 [params]
 
