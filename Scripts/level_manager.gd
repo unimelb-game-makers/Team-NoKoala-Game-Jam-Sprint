@@ -24,7 +24,6 @@ func spawn_bug(bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.CATERPILLAR) 
 	var bug = bug_factory.create_bug(bug_type)
 	add_child(bug)
 	current_bug = bug
-	bug.teleport(level_data.start_cell)
 	return bug
 
 func _unhandled_input(event: InputEvent) -> void:
