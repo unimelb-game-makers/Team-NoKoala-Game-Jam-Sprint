@@ -1,11 +1,5 @@
 extends Caterpillar
 
-@export var cocoon: Texture2D
-@export var butterfly: Texture2D
-
-var isCocoon: bool = false
-var isButterfly: bool = false
-
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body, $Body2, $Body3, $Tail]
 	segment_cells = [
@@ -17,24 +11,22 @@ func init_segments() -> void:
 	]
 
 # Update positions of each segment
-func move(direction: Vector2i) -> void:
-	if isCocoon:
-		return
+func move(direction: Vector2i) -> bool:
 	# Catch invalid movements
 	var next_cell := segment_cells[0] + direction
 	var level_data := level_manager.level_data
 	var tile_data := level_data.get_tile_data(next_cell)
 	if tile_data == null: 
 		print("Movement Error: Outside of Play Space")
-		return
+		return false
 	
 	if not tile_data.is_empty():
 		print("Movement Error: Tile is Occupied")
-		return
+		return false
 	
 	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
-		return
+		return false
 	
 	# Move caterpillar segments
 	level_data.remove_bug(self)
@@ -58,6 +50,7 @@ func move(direction: Vector2i) -> void:
 	
 	move_segment(0, old_cells[0] + direction, Vector2(direction))
 	level_data.add_bug(self)
+	return true
 
 ''' 
 Move the caterpillar:
@@ -75,10 +68,10 @@ func move_segment(index: int, next_cell: Vector2i, move_diff: Vector2) -> void:
 	var rotate_angle = wrapf(atan2(move_diff.y, move_diff.x) - segment_sprites[index].rotation, -PI, PI)
 	tween.tween_property(segment_sprites[index], "rotation", rotate_angle + segment_sprites[index].rotation, 0.2)
 
-func _unhandled_input(event: InputEvent) -> void:
-	# placeholder until actual transform logic
-	if event is InputEventKey and event.pressed and event.keycode == KEY_E:
-		transform_cocoon()
+#func _unhandled_input(event: InputEvent) -> void:
+	## placeholder until actual transform logic
+	#if event is InputEventKey and event.pressed and event.keycode == KEY_E:
+		#transform_cocoon()
 
 func transform_cocoon() -> void:
 	var tilemap = level_manager.tile_map_layer
@@ -108,10 +101,10 @@ func transform_cocoon() -> void:
 		absorbed_segment.queue_free()
 	
 	# change head texture
-	segment_sprites[0].texture = cocoon
-	segment_sprites[0].rotation = 0
-	isCocoon = true
-	level_data.print_debug_map()
+	#segment_sprites[0].texture = cocoon
+	#segment_sprites[0].rotation = 0
+	#isCocoon = true
+	#level_data.print_debug_map()
 
 func transform_butterfly() -> void:
 	return
