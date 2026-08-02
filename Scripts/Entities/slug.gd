@@ -30,7 +30,7 @@ func init_segments() -> void:
 	segment_sprites.append(tail_segment)
 
 # Update positions of each segment
-func move(direction: Vector2i) -> void:
+func move(direction: Vector2i) -> bool:
 	# Catch invalid movements
 	var next_cell := segment_cells[0] + direction
 	var level_data := level_manager.level_data
@@ -38,15 +38,15 @@ func move(direction: Vector2i) -> void:
 	
 	if tile_data == null: 
 		print("Movement Error: Outside of Play Space")
-		return
+		return false
 	
 	if self in tile_data.bugs:
 		print("Movement Error: Cannot overlap self")
-		return
+		return false
 	
 	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
-		return
+		return false
 	
 	# Move caterpillar segments
 	level_data.remove_bug(self)
@@ -99,6 +99,7 @@ func move(direction: Vector2i) -> void:
 						segment_sprites[segment].rotation = 0
 	
 	level_data.add_bug(self)
+	return true
 
 ''' 
 Move the caterpillar:
