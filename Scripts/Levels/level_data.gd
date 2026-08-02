@@ -24,11 +24,9 @@ class LevelTileData:
 		bugs.erase(bug)
 
 var _grid: Dictionary[Vector2i, LevelTileData]
-var config: LevelConfig
 	
 func _init():
 	_grid = {}
-	config = LevelConfig.new()
 
 static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
 	var level := LevelData.new()
@@ -75,15 +73,6 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 	if !_grid.has(cell):
 		_grid[cell] = LevelTileData.new(tileType)
 	return self
-
-func with_config(p_config: LevelConfig) -> LevelData:
-	config = p_config
-	return self
-
-func with_config_from_file(path: String) -> LevelData:
-	var file := FileAccess.open(path, FileAccess.READ)
-	var content := file.get_as_text()
-	return with_config(LevelConfig.deserialize(content))
 
 ## Returns null if the cell is outside of play space
 func get_tile_data(cell: Vector2i) -> LevelTileData:

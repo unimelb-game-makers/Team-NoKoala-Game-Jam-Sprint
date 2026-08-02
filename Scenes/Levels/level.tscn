@@ -2,10 +2,20 @@
 
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
 [ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="1_yjxcc"]
+[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_lhx7y"]
 [ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/entry_tile.png" id="3_rv5g2"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="6_c5s4o"]
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
+
+[sub_resource type="Resource" id="Resource_rxcld"]
+script = ExtResource("2_lhx7y")
+available_bugs = Dictionary[int, int]({
+0: 3,
+1: 5
+})
+max_move = 50
+metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -26,7 +36,7 @@ sources/1 = SubResource("TileSetAtlasSource_lhx7y")
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_tq1so")
-level_config_file = "res://Configs/level_1.json"
+level_config = SubResource("Resource_rxcld")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
 position = Vector2(-300, 0)

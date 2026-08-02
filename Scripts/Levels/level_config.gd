@@ -1,7 +1,8 @@
 class_name LevelConfig
+extends Resource
 
-var available_bugs: Dictionary[GlobalVars.BugTypes, int] = {}
-var max_move: int
+@export var available_bugs: Dictionary[GlobalVars.BugTypes, int] = {}
+@export var max_move: int
 
 static func deserialize(json_string: String) -> LevelConfig:
 	var dict: Dictionary = JSON.parse_string(json_string)

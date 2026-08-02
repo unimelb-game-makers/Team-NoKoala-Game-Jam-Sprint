@@ -9,11 +9,11 @@ var current_bug_handler: BugHandler
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
-@export_file("*.json") var level_config_file: String
+@export var level_config: LevelConfig
 @onready var movement_controller: MovementController = $MovementController
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
-signal config_changed(candidates: Array[GlobalVars.BugTypes])
+signal config_changed(config: LevelConfig)
 
 func _enter_tree() -> void:
 	add_to_group(&"level_manager")
@@ -28,10 +28,10 @@ func _input(event: InputEvent) -> void:
 			try_place_bug(event.position)
 
 func _ready() -> void:
-	level_data = LevelData.from_tilemap(tile_map_layer).with_config_from_file(level_config_file)
+	level_data = LevelData.from_tilemap(tile_map_layer)
 	level_data.print_debug_map()
-	print(level_data.config.serialize())
-	config_changed.emit(level_data.config)
+	print(level_config.serialize())
+	config_changed.emit(level_config)
 
 func _process(_delta: float) -> void:
 	if current_bug != null && !current_bug.is_placed:
