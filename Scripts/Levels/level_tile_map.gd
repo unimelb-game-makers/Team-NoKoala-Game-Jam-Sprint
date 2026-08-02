@@ -44,6 +44,36 @@ func read_level_from_tilemap() -> LevelData:
 					LevelData.LevelTileData.Type.INDESTRUCTIBLE
 				)
 
+			"ant_star":
+				level.add_bonus_star(
+					cell,
+					GlobalVars.BugTypes.ANT
+				)
+				
+			"caterpillar_star":
+				level.add_bonus_star(
+					cell,
+					GlobalVars.BugTypes.CATERPILLAR_REAL
+				)
+				
+			"centipede_star":
+				level.add_bonus_star(
+					cell,
+					GlobalVars.BugTypes.CATERPILLAR
+				)
+				
+			"worm_star":
+				level.add_bonus_star(
+					cell,
+					GlobalVars.BugTypes.WORM
+				)
+				
+			"rolypoly_star":
+				level.add_bonus_star(
+					cell,
+					GlobalVars.BugTypes.ROLY_POLY
+				)
+
 			_:
 				push_warning("Unknown tile source: " + tile_name)
 	return level

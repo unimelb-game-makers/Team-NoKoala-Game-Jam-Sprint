@@ -10,6 +10,7 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var movement_controller: MovementController = $MovementController
 @onready var bug_factory: BugFactory = $BugFactory
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
+@onready var level_tile_map: LevelTileMap = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
 
 func _enter_tree() -> void:
@@ -22,6 +23,9 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	level_data = tile_map_layer.read_level_from_tilemap()
 	level_data.print_debug_map()
+	
+	level_data.bonus_star_activated.connect(_on_bonus_star_activated)
+	level_data.bonus_star_deactivated.connect(_on_bonus_star_deactivated)
 	#spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
 
 func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> Bug:
@@ -34,6 +38,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		exit_level()
+
+func _on_bonus_star_activated(cell: Vector2i) -> void:
+	print("Bonus star activated")
+
+func _on_bonus_star_deactivated(cell: Vector2i) -> void:
+	print("Bonus star deactivated")
 
 func exit_level() -> void:
 	

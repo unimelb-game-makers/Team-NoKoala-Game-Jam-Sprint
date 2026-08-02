@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck5kr8cov2r3c"
-path="res://.godot/imported/tile_hard.png-284f1355466e0f9019bb3b0d5ac0cf15.ctex"
+uid="uid://barl6tqbqptbn"
+path="res://.godot/imported/caterpillar_star_activated.png-c69bed3db1692698b6483b2de30a4a6f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tile_hard.png"
-dest_files=["res://.godot/imported/tile_hard.png-284f1355466e0f9019bb3b0d5ac0cf15.ctex"]
+source_file="res://Sprites/Tiles/caterpillar_star_activated.png"
+dest_files=["res://.godot/imported/caterpillar_star_activated.png-c69bed3db1692698b6483b2de30a4a6f.ctex"]
 
 [params]
 

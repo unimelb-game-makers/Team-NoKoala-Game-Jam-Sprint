@@ -8,6 +8,8 @@ var segment_sprites: Array[Sprite2D]
 var segment_cells: Array[Vector2i]
 var length = -1
 
+var type: GlobalVars.BugTypes
+
 func _ready() -> void:
 	init_segments()
 	for sprite in segment_sprites:
