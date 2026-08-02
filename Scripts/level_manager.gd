@@ -1,7 +1,7 @@
 extends Node2D
 class_name LevelManager
 
-var level_data: LevelData = AllLevels.LEVEL_1
+var level_data: LevelData 
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
 
@@ -12,14 +12,20 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
 
+func _enter_tree() -> void:
+	add_to_group(&"level_manager")
+		
 func _ready() -> void:
-	spawn_bug()
+	level_data = tile_map_layer.read_level_from_tilemap()
+	level_data.print_debug_map()
 
-func spawn_bug() -> void:
-	var bug = bug_factory.create_bug(GlobalVars.BugTypes.CATERPILLAR)
+
+func spawn_bug(bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.CATERPILLAR) -> Bug:
+	var bug = bug_factory.create_bug(bug_type)
 	add_child(bug)
 	current_bug = bug
 	bug.teleport(level_data.start_cell)
+	return bug
 
 func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic
