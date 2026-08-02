@@ -3,11 +3,22 @@ class_name Caterpillar
 
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body, $Tail]
-	segment_cells = [
-		Vector2i(0, 0),
-		Vector2i(-1, 0),
-		Vector2i(-2, 0)
-	]
+	segment_cells = []
+	
+	for i in range(3):
+		match entry_point_direction:
+			Directions.RIGHT:
+				segment_cells.append(Vector2i(-i, 0))
+			Directions.LEFT:
+				segment_cells.append(Vector2i(i, 0))
+			Directions.UP:
+				segment_cells.append(Vector2i(0, i))
+			Directions.DOWN:
+				segment_cells.append(Vector2i(0, -i))
+	
+	segment_sprites[2].rotation = atan2((Vector2(segment_cells[0]) - Vector2(segment_cells[1])).y, (Vector2(segment_cells[0]) - Vector2(segment_cells[1])).x)
+	segment_sprites[1].rotation = atan2(Vector2(segment_cells[0] + entry_point_direction - segment_cells[2]).y, (Vector2(segment_cells[0] + entry_point_direction - segment_cells[2])).x)
+	segment_sprites[0].rotation = atan2(entry_point_direction.y, entry_point_direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -26,7 +37,10 @@ func move(direction: Vector2i) -> bool:
 				print("Movement Error: Tile is Occupied")
 				return false
 	
-	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
+	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
+	 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
+						LevelData.LevelTileData.Type.ENTRY_LEFT, \
+						LevelData.LevelTileData.Type.ENTRY_RIGHT]:
 		print("Movement Error: Can't move back out of fruit")
 		return false
 	

@@ -3,7 +3,10 @@ class_name LevelData
 class LevelTileData:
 	enum Type { 
 		NORMAL,
-		ENTRY 
+		ENTRY_UP,
+		ENTRY_DOWN,
+		ENTRY_LEFT,
+		ENTRY_RIGHT
 	}
 
 	var type: Type
@@ -110,7 +113,8 @@ func print_debug_map() -> void:
 				match tile_data.type:
 					LevelTileData.Type.NORMAL:
 						row += "."
-					LevelTileData.Type.ENTRY:
+					LevelTileData.Type.ENTRY_UP, LevelTileData.Type.ENTRY_DOWN, \
+					LevelTileData.Type.ENTRY_LEFT, LevelTileData.Type.ENTRY_RIGHT:
 						row += "E"
 					_:
 						row += "?"
