@@ -40,7 +40,7 @@ zoom = Vector2(0.58, 0.58)
 script = ExtResource("4_rv5g2")
 
 [node name="JarManager" type="Node2D" parent="." unique_id=957168039]
-position = Vector2(620, -295)
+position = Vector2(320, -374)
 script = ExtResource("6_c5s4o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]

@@ -15,6 +15,10 @@ func _on_config_changed(config: LevelConfig) -> void:
 		var jar: Jar = JAR_SCENE.instantiate()
 		jar.bug_type = bug_type
 		jar.bug_count = config.available_bugs[bug_type]
-		jar.position.y = i * 500
+		if i % 2 == 0:
+			jar.position.y = i * 380
+		else:
+			jar.position.x = 400
+			jar.position.y = (i - 1) * 380
 		add_child(jar)
 		i += 1
