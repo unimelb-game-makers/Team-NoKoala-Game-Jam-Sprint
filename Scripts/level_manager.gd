@@ -52,7 +52,7 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 				current_bug_handler = null
 
 func begin_bug_selection(bug: Bug, handler: BugHandler) -> void:
-	if current_bug != null and !current_bug.is_placed:
+	if current_bug_handler != null:
 		cancel_bug_selection()
 
 	current_bug = bug

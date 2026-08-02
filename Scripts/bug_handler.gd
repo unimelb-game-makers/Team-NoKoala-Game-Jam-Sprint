@@ -11,6 +11,9 @@ const SCALE_TRANSITION_DURATION := 0.15
 var bug: Bug
 var scale_tween: Tween
 var is_hovered := false
+var collision_layer_before_selection: int
+var bug_z_index_before_selection: int
+var bug_z_as_relative_before_selection: bool
 
 func _ready() -> void:
 	add_child(bug)
@@ -37,17 +40,32 @@ func _on_selected():
 func begin_selection() -> void:
 	visible = false
 	area.input_pickable = false
+	collision_layer_before_selection = area.collision_layer
+	area.collision_layer = 0
+	bug_z_index_before_selection = bug.z_index
+	bug_z_as_relative_before_selection = bug.z_as_relative
 	bug.reparent(level_manager.tile_map_layer, false)
+	bug.z_as_relative = false
+	bug.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+	_set_hovered(false)
+	call_deferred(&"_update_hovered_bug")
 
 func cancel_selection() -> void:
 	bug.reparent(self, false)
 	bug.set_free_position(Vector2.ZERO)
+	_restore_bug_draw_order()
 	visible = true
 	area.input_pickable = true
+	area.collision_layer = collision_layer_before_selection
 	_set_hovered(false)
 
 func complete_selection() -> void:
+	_restore_bug_draw_order()
 	queue_free()
+
+func _restore_bug_draw_order() -> void:
+	bug.z_index = bug_z_index_before_selection
+	bug.z_as_relative = bug_z_as_relative_before_selection
 
 func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	_update_hovered_bug()
