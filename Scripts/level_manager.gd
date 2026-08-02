@@ -15,7 +15,7 @@ func _ready() -> void:
 	spawn_bug()
 
 func spawn_bug() -> void:
-	var bug = bug_factory.create_bug(GlobalVars.BugTypes.CATERPILLAR)
+	var bug = bug_factory.create_bug(GlobalVars.BugTypes.CATERPILLAR_REAL)
 	add_child(bug)
 	current_bug = bug
 	var entries := level_data.get_cells_by_type(
