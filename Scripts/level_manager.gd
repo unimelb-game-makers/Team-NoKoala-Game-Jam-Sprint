@@ -24,7 +24,7 @@ func _ready() -> void:
 	level_data.print_debug_map()
 	spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
 
-func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> void:
+func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> Bug:
 	var bug = bug_factory.create_bug(bug_type, length)
 	add_child(bug)
 	current_bug = bug
