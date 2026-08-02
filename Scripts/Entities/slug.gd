@@ -35,6 +35,7 @@ func move(direction: Vector2i) -> void:
 	var next_cell := segment_cells[0] + direction
 	var level_data := level_manager.level_data
 	var tile_data := level_data.get_tile_data(next_cell)
+	
 	if tile_data == null: 
 		print("Movement Error: Outside of Play Space")
 		return
@@ -43,7 +44,7 @@ func move(direction: Vector2i) -> void:
 		print("Movement Error: Cannot overlap self")
 		return
 	
-	if next_cell == level_data.start_cell:
+	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
 		print("Movement Error: Can't move back out of fruit")
 		return
 	
