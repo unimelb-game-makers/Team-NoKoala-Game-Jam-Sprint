@@ -155,6 +155,8 @@ func print_debug_map() -> void:
 						row += "B"
 					LevelTileData.Type.INDESTRUCTIBLE:
 						row += "I"
+					LevelTileData.Type.BONUS_STAR:
+						row += "*"
 					_:
 						row += "?"
 
