@@ -13,16 +13,20 @@ func init_segments() -> void:
 	for i in range(length):
 		segment_cells.append(Vector2i(-i, 0))
 		
+		# Spawn body segments based on length
 		if i > 1: 
 			var body_segment = Sprite2D.new()
+			body_segment.z_index = 0
 			add_child(body_segment)
 			segment_sprites.append(body_segment)
 			body_segment.texture = BODY_REGULAR_SPRITE
-	var tail_segment = Sprite2D.new()
 	
+	# Add tail segment 
+	var tail_segment = Sprite2D.new()
 	tail_segment.name = "Tail"
 	tail_segment.texture = TAIL_SPRITE
 	add_child(tail_segment)
+	tail_segment.z_index = 0
 	segment_sprites.append(tail_segment)
 
 # Update positions of each segment
@@ -35,8 +39,8 @@ func move(direction: Vector2i) -> void:
 		print("Movement Error: Outside of Play Space")
 		return
 	
-	if not tile_data.is_empty():
-		print("Movement Error: Tile is Occupied")
+	if self in tile_data.bugs:
+		print("Movement Error: Cannot overlap self")
 		return
 	
 	if next_cell == level_data.start_cell:
@@ -50,27 +54,35 @@ func move(direction: Vector2i) -> void:
 		move_segment(length-i-2, segment_cells[length-i-3], Vector2(segment_cells[0+i] + direction - segment_cells[1+i]))
 	move_segment(0, segment_cells[0] + direction, direction)
 	
+	# Segment rotation logic 
 	for segment in range(len(segment_sprites)):
+		
+		# Rotate Head 
 		if segment == 0: 
 			var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
 			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
 			continue
+		# Rotate Tail
 		elif segment == len(segment_cells) - 1:
 			var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
 			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
 			break
-		segment_sprites[segment].texture = BODY_REGULAR_SPRITE
+		
+		# Body Rotation/Sprite Logic
 		var corner_direction: Vector2i = segment_cells[segment + 1] - segment_cells[segment - 1]
+		
+		# Check if the body segment is not on a corner
 		if corner_direction not in [Vector2i(1,1), Vector2i(-1,-1), Vector2i(-1,1), Vector2i(1,-1)]: 
 			segment_sprites[segment].texture = BODY_REGULAR_SPRITE
-			if corner_direction in [Vector2i(2,0), Vector2i(-2,0)]: 
-				segment_sprites[segment + 1].rotation = 0
+			
+			if corner_direction in [Vector2i(2,0), Vector2i(-2,0)]:
 				segment_sprites[segment].rotation = 0
 			else: segment_sprites[segment].rotation = PI/2
+		# It is a corner
 		else: 
 			segment_sprites[segment].texture = BODY_CORNER_SPRITE
-			segment_sprites[segment + 1].rotation = PI/2
 			
+			# Determine rotation of corner piece
 			if (segment_cells[segment].y > segment_cells[segment + 1].y and segment_cells[segment].x == segment_cells[segment + 1].x) \
 				or (segment_cells[segment].y > segment_cells[segment - 1].y and segment_cells[segment].x == segment_cells[segment - 1].x):
 					if (segment_cells[segment].x < segment_cells[segment + 1].x) or (segment_cells[segment].x < segment_cells[segment - 1].x):
@@ -84,6 +96,7 @@ func move(direction: Vector2i) -> void:
 						segment_sprites[segment].rotation = 3*PI/2
 					else:
 						segment_sprites[segment].rotation = 0
+	
 	level_data.add_bug(self)
 
 ''' 

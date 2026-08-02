@@ -9,11 +9,15 @@ var current_bug: Bug
 @onready var bug_factory: BugFactory = $BugFactory
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 
-func _ready() -> void:
-	spawn_bug()
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("next_bug_debug"):
+		spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
 
-func spawn_bug() -> void:
-	var bug = bug_factory.create_bug(GlobalVars.BugTypes.SLUG, 3)
+func _ready() -> void:
+	spawn_bug(GlobalVars.BugTypes.SLUG, 3)
+
+func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> void:
+	var bug = bug_factory.create_bug(bug_type, length)
 	add_child(bug)
 	current_bug = bug
 	bug.teleport(level_data.start_cell)

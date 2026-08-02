@@ -6,7 +6,7 @@ func init_segments() -> void:
 	segment_cells = [
 		Vector2i(0, 0),
 		Vector2i(-1, 0),
-		Vector2i(-2, 0),
+		Vector2i(-2, 0)
 	]
 
 # Update positions of each segment
@@ -20,8 +20,10 @@ func move(direction: Vector2i) -> void:
 		return
 	
 	if not tile_data.is_empty():
-		print("Movement Error: Tile is Occupied")
-		return
+		for bug in tile_data.bugs:
+			if not bug.get_name() == "Slug":
+				print("Movement Error: Tile is Occupied")
+				return
 	
 	if next_cell == level_data.start_cell:
 		print("Movement Error: Can't move back out of fruit")
