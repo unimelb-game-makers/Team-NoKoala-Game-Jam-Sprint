@@ -68,7 +68,10 @@ texture = ExtResource("1_s6o25")
 script = ExtResource("6_kb5mc")
 bugged_texture = ExtResource("4_07bvh")
 grayscale_shader = SubResource("ShaderMaterial_tgoug")
+fruit_level_scene = ExtResource("14_ciagn")
 camera = NodePath("../../Camera2D")
+fade_colour = Color(0.43137255, 0.9372549, 0.5647059, 1)
+fruit_id = "melon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Melon" unique_id=257785814]
 position = Vector2(110, -76)
@@ -82,7 +85,10 @@ texture = ExtResource("2_kb5mc")
 script = ExtResource("6_kb5mc")
 bugged_texture = ExtResource("7_ciagn")
 grayscale_shader = SubResource("ShaderMaterial_x038j")
+fruit_level_scene = ExtResource("14_ciagn")
 camera = NodePath("../../Camera2D")
+fade_colour = Color(0.96862745, 0.40392157, 0.015686275, 1)
+fruit_id = "orange"
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Orange" unique_id=1855494357]
 texture = ExtResource("3_qnihq")
@@ -96,7 +102,10 @@ shape = SubResource("CircleShape2D_owhf0")
 script = ExtResource("6_kb5mc")
 bugged_texture = ExtResource("9_yx562")
 grayscale_shader = SubResource("ShaderMaterial_mlwxk")
+fruit_level_scene = ExtResource("14_ciagn")
 camera = NodePath("../../Camera2D")
+fade_colour = Color(0.6431373, 0.043137256, 0.8745098, 1)
+fruit_id = "grape"
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Grapes" unique_id=749920850]
 texture = ExtResource("4_tgoug")
@@ -111,7 +120,10 @@ shape = SubResource("CapsuleShape2D_8ts2w")
 script = ExtResource("6_kb5mc")
 bugged_texture = ExtResource("11_wn3si")
 grayscale_shader = SubResource("ShaderMaterial_npf18")
+fruit_level_scene = ExtResource("14_ciagn")
 camera = NodePath("../../Camera2D")
+fade_colour = Color(0.9843137, 0.74509805, 0.21176471, 1)
+fruit_id = "banana"
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Banana" unique_id=318004561]
 texture = ExtResource("5_x038j")
@@ -128,6 +140,8 @@ bugged_texture = ExtResource("13_r2u0r")
 grayscale_shader = SubResource("ShaderMaterial_bpfon")
 fruit_level_scene = ExtResource("14_ciagn")
 camera = NodePath("../../Camera2D")
+fade_colour = Color(0.8901961, 0, 0, 1)
+fruit_id = "apple"
 
 [node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Apple" unique_id=468155039]
 texture = ExtResource("6_mlwxk")
