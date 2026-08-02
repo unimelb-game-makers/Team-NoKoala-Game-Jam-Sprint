@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://7jk6whh3pyl4"]
+
+[ext_resource type="Script" uid="uid://c42oos17ml86y" path="res://Scripts/Entities/rolypoly.gd" id="1_iarrc"]
+[ext_resource type="Texture2D" uid="uid://bspfumenmo3ve" path="res://Sprites/rolypoyl.png" id="1_n43rg"]
+
+[node name="Rolypoly" type="Node2D" unique_id=969696181]
+script = ExtResource("1_iarrc")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=550233098]
+texture = ExtResource("1_n43rg")
