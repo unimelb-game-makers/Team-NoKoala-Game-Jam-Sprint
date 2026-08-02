@@ -1,4 +1,8 @@
 {
     "place_mode": 0,
-    "candidates": ["SLUG"]
+    "available_bugs": {
+        "SLUG": 3,
+        "CATERPILLAR": 5
+    },
+    "max_move": 50
 }

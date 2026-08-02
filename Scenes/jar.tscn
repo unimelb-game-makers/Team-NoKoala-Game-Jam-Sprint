@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://1abxjq2abjgl"]
+
+[ext_resource type="Texture2D" uid="uid://4vb8q5441nco" path="res://Sprites/jar.png" id="1_hltw0"]
+[ext_resource type="Script" uid="uid://c25511w7nfhu" path="res://Scripts/jar.gd" id="1_p4hh4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hly03"]
+radius = 150.0
+
+[node name="Jar" type="Node2D" unique_id=550265229]
+script = ExtResource("1_p4hh4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2074618700]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2069675327]
+shape = SubResource("CircleShape2D_hly03")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1457789823]
+texture = ExtResource("1_hltw0")
+
+[node name="Bugs" type="Node2D" parent="." unique_id=105893641]

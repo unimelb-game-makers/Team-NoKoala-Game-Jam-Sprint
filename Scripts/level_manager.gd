@@ -1,33 +1,49 @@
 extends Node2D
 class_name LevelManager
 
-var level_data: LevelData 
+var level_data: LevelData
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
-@export_file("*.json") var level_config: String
+@export_file("*.json") var level_config_file: String
 @onready var movement_controller: MovementController = $MovementController
-@onready var bug_factory: BugFactory = $BugFactory
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
+signal config_changed(candidates: Array[GlobalVars.BugTypes])
 
 func _enter_tree() -> void:
 	add_to_group(&"level_manager")
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("next_bug_debug"):
-		spawn_bug(GlobalVars.BugTypes.SLUG)
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			try_place_bug(event.position)
 
 func _ready() -> void:
-	level_data = LevelData.from_tilemap(tile_map_layer).with_config_from_file(level_config)
+	level_data = LevelData.from_tilemap(tile_map_layer).with_config_from_file(level_config_file)
 	level_data.print_debug_map()
 	print(level_data.config.serialize())
-	spawn_bug(GlobalVars.BugTypes.CATERPILLAR)
+	config_changed.emit(level_data.config)
+
+func _process(_delta: float) -> void:
+	if current_bug != null && !current_bug.is_placed:
+		current_bug.set_free_position(tile_map_layer.to_local(get_global_mouse_position()))
+
+func try_place_bug(mouse_pos: Vector2) -> void:
+	if current_bug != null && !current_bug.is_placed:
+		var pos_local := (
+			tile_map_layer.get_global_transform_with_canvas().affine_inverse()
+			* mouse_pos
+		)
+		var cell := tile_map_layer.local_to_map(pos_local)
+		var tile_data := level_data.get_tile_data(cell)
+		if tile_data != null and tile_data.is_empty() and tile_data.type == LevelData.LevelTileData.Type.ENTRY:
+			current_bug.place(cell)
 
 func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> Bug:
-	var bug = bug_factory.create_bug(bug_type, length)
+	var bug = BugFactory.create_bug(bug_type, length)
 	add_child(bug)
 	current_bug = bug
 	return bug

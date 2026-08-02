@@ -10,10 +10,16 @@ var length = -1
 
 func _ready() -> void:
 	init_segments()
-	for sprite in segment_sprites:
-		sprite.visible = false
 
-func teleport(cell: Vector2i) -> void:
+func set_free_position(pos: Vector2) -> void:
+	var tile_map := level_manager.tile_map_layer
+	var head_cell := segment_cells[0]
+	for i in segment_cells.size():
+		var segment_cell := segment_cells[i]
+		var segment_pos := pos + Vector2((segment_cell - head_cell) * tile_map.tile_set.tile_size)
+		segment_sprites[i].position = segment_pos
+
+func place(cell: Vector2i) -> void:
 	var delta := cell - segment_cells[0]
 	for i in segment_cells.size():
 		segment_cells[i] += delta
@@ -21,7 +27,7 @@ func teleport(cell: Vector2i) -> void:
 	var tile_map := level_manager.tile_map_layer
 	for i in segment_cells.size():
 		var segment_cell := segment_cells[i]
-		segment_sprites[i].position = tile_map.to_global(tile_map.map_to_local(segment_cell))
+		segment_sprites[i].position = tile_map.map_to_local(segment_cell)
 
 	if !is_placed:
 		is_placed = true

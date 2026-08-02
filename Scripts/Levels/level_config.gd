@@ -1,27 +1,24 @@
 class_name LevelConfig
 
-enum PlaceMode {
-	SEQUENCE,
-	INVENTORY,
-	FREE,
-}
-
-var place_mode: PlaceMode = PlaceMode.FREE
-var candidates: Array[GlobalVars.BugTypes] = []
+var available_bugs: Dictionary[GlobalVars.BugTypes, int] = {}
+var max_move: int
 
 static func deserialize(json_string: String) -> LevelConfig:
 	var dict: Dictionary = JSON.parse_string(json_string)
 	var config := LevelConfig.new()
 
-	config.place_mode = dict["place_mode"]
-	var parsed_candidates: Array[GlobalVars.BugTypes] = []
-	for candidate_name in dict["candidates"]:
-		parsed_candidates.append(GlobalVars.bug_type_from_name(candidate_name))
-	config.candidates = parsed_candidates
+	var parsed_available_bugs: Dictionary[GlobalVars.BugTypes, int] = {}
+	for id in dict["available_bugs"]:
+		parsed_available_bugs.set(GlobalVars.bug_type_from_id(id), dict["available_bugs"][id])
+	config.available_bugs = parsed_available_bugs
+	config.max_move = dict["max_move"]
 	return config
 
 func serialize() -> String:
 	var dict := {}
-	dict["place_mode"] = place_mode
-	dict["candidates"] = candidates.map(GlobalVars.bug_type_name)
+	var serialized_available_bugs: Dictionary[String, int] = {}
+	for id in available_bugs:
+		serialized_available_bugs.set(GlobalVars.bug_type_id(id), available_bugs[id])
+	dict["available_bugs"] = serialized_available_bugs
+	dict["max_move"] = max_move
 	return JSON.stringify(dict)

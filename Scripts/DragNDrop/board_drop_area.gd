@@ -5,7 +5,6 @@ extends Control
 	get_tree().get_first_node_in_group(&"level_manager") as LevelManager
 )
 
-
 func _can_drop_data(_position: Vector2, data: Variant) -> bool:
 	if not data is Dictionary:
 		print("no data in dictionary")
@@ -38,6 +37,4 @@ func get_mouse_cell() -> Vector2i:
 
 func place_bug(bug_type: GlobalVars.BugTypes, cell: Vector2i) -> void:
 	var bug := level_manager.spawn_bug(bug_type)
-	var tile_map = level_manager.tile_map_layer
-
-	bug.teleport(cell)
+	bug.place(cell)
