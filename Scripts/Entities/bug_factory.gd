@@ -5,16 +5,17 @@ class_name BugFactory
 
 # Define bug scenes here:
 const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
-const CATERPILLAR_REAL_SCENE = preload("res://Scenes/Bugs/caterpillar_real.tscn")
+const SLUG_SCENE = preload("res://Scenes/Bugs/slug.tscn")
 
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
 var bug_scenes: Dictionary = {
 	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SCENE,
-	GlobalVars.BugTypes.CATERPILLAR_REAL: CATERPILLAR_REAL_SCENE
+	GlobalVars.BugTypes.SLUG: SLUG_SCENE
 }
 
 # Usage example: create_bug(Bugs.CATERPILLAR) to create a Caterpillar
-func create_bug(bug_type: GlobalVars.BugTypes) -> Bug: 
+func create_bug(bug_type: GlobalVars.BugTypes, bug_length: int = -1) -> Bug: 
 	var bug = bug_scenes[bug_type].instantiate()
+	bug.length = bug_length
 	return bug

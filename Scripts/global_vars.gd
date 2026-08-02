@@ -4,5 +4,5 @@ extends Node
 # Enum of bug types:
 enum BugTypes {
 	CATERPILLAR,
-	CATERPILLAR_REAL
+	SLUG
 }
