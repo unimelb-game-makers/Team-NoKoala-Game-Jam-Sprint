@@ -53,16 +53,16 @@ func move(direction: Vector2i) -> bool:
 		print("Movement Error: Cannot overlap self")
 		return false
 	
-	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
+	if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+		print("Movement Error: Can't move into hard tiles")
+		return false
+
+	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
+	 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
+						LevelData.LevelTileData.Type.ENTRY_LEFT, \
+						LevelData.LevelTileData.Type.ENTRY_RIGHT]:
 		print("Movement Error: Can't move back out of fruit")
 		return false
-	
-	while tile_data != null:
-		if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
-			break
-
-		if not tile_data.is_empty():
-			break
 
 		destination = next_cell
 		next_cell += direction
