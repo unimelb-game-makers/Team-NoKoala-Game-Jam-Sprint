@@ -9,7 +9,9 @@
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_ci7i2")
+level_key = "apple"
 available_bugs = Dictionary[int, int]({
+0: 1,
 1: 1,
 2: 2,
 4: 2,
