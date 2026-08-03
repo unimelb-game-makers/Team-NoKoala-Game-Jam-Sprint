@@ -7,6 +7,7 @@ var current_bug: Bug
 ## Retained until placement is committed so a selection can return to its jar.
 var current_bug_handler: BugHandler
 var previous_bug_before_selection: Bug
+var star_count: int = 0
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 

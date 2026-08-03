@@ -18,7 +18,7 @@ available_bugs = Dictionary[int, int]({
 5: 2,
 6: 1
 })
-max_move = 50
+max_move = 250
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 
 [sub_resource type="Theme" id="Theme_kogc4"]
