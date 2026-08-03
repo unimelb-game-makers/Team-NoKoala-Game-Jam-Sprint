@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cex547tk3hek0"]
+
+[ext_resource type="Script" uid="uid://ci0i4ijnodsmc" path="res://Scripts/Entities/worm.gd" id="1_1txc0"]
+[ext_resource type="Texture2D" uid="uid://xrhi0wq6b76b" path="res://Sprites/worm-head.png" id="2_1txc0"]
+[ext_resource type="Texture2D" uid="uid://duq56yrkg8kfp" path="res://Sprites/worm-curved-med.png" id="2_71byr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_71byr"]
+load_path = "res://.godot/imported/worm-curved.png-5f1f291db265737845e60421305843d1.ctex"
+
+[node name="Worm" type="Node2D" unique_id=721379921]
+z_index = 2
+script = ExtResource("1_1txc0")
+curve_alt = ExtResource("2_71byr")
+curve = SubResource("CompressedTexture2D_71byr")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=202062952]
+texture = ExtResource("2_1txc0")

@@ -20,8 +20,12 @@ func set_entry_point_direction(direction: Vector2i) -> void:
 	for i in segment_cells.size():
 		segment_cells[i] = -direction * i
 	rotate_segments()
+	set_facing_direction()
 
 func rotate_segments() -> void:
+	pass
+
+func set_facing_direction() -> void:
 	pass
 
 func create_movement_tween() -> Tween:
