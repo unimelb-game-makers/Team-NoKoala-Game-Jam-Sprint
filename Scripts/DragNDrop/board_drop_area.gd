@@ -17,7 +17,12 @@ func _can_drop_data(_position: Vector2, data: Variant) -> bool:
 
 	var cell := get_mouse_cell()
 	var tile_data := level_manager.level_data.get_tile_data(cell)
-	return tile_data != null and tile_data.is_empty() and tile_data.type == LevelData.LevelTileData.Type.ENTRY
+	return tile_data != null and tile_data.is_empty() and tile_data.type in [
+		LevelData.LevelTileData.Type.ENTRY_UP,
+		LevelData.LevelTileData.Type.ENTRY_DOWN,
+		LevelData.LevelTileData.Type.ENTRY_LEFT,
+		LevelData.LevelTileData.Type.ENTRY_RIGHT
+	]
 
 
 func _drop_data(_position: Vector2, data: Variant) -> void:
@@ -37,7 +42,7 @@ func get_mouse_cell() -> Vector2i:
 
 
 func place_bug(bug_type: GlobalVars.BugTypes, cell: Vector2i) -> void:
-	var bug := level_manager.spawn_bug(bug_type)
+	var bug := level_manager.spawn_bug(bug_type, cell)
 	var tile_map = level_manager.tile_map_layer
 
 	bug.teleport(cell)

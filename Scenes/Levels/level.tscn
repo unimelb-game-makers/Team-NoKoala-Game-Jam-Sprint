@@ -2,13 +2,14 @@
 
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
 [ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="1_yjxcc"]
-[ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/entry_tile.png" id="3_rv5g2"]
+[ext_resource type="Texture2D" uid="uid://ckb8i0m2rau81" path="res://Sprites/entry_tile_sheet.png" id="3_rxcld"]
 [ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="3_tq1so"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
 [ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="5_lhx7y"]
 [ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
 [ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
 [ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
+[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="10_j3yal"]
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
@@ -17,22 +18,25 @@ texture = ExtResource("1_yjxcc")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3yal"]
 resource_name = "entry_cell"
-texture = ExtResource("3_rv5g2")
+texture = ExtResource("3_rxcld")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_b136p"]
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_rv5g2")
-sources/1 = SubResource("TileSetAtlasSource_lhx7y")
+sources/2 = SubResource("TileSetAtlasSource_j3yal")
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_tq1so")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD9/wIAAQAAAAAAAAD+//3/AQAAAAAAAAACAAEAAQAAAAAAAAACAP7/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD/////AAAAAAAAAAD///7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD9/wIAAgAAAAEAAAD+//3/AgAAAAAAAAACAAEAAgABAAEAAAACAP7/AgABAAEAAAAAAAMAAgABAAAAAAAAAP3/AgAAAAAAAAD9////AgAAAAEAAAA=")
 tile_set = SubResource("TileSet_b136p")
 script = ExtResource("3_tq1so")
 
@@ -75,6 +79,17 @@ offset_bottom = 176.0
 scale = Vector2(0.695, 0.695)
 texture = ExtResource("7_lhx7y")
 script = ExtResource("8_i5435")
+
+[node name="slugDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=167223923]
+layout_mode = 1
+offset_left = 1009.00006
+offset_top = 163.0
+offset_right = 1137.0
+offset_bottom = 291.0
+scale = Vector2(0.695, 0.695)
+texture = ExtResource("10_j3yal")
+script = ExtResource("8_i5435")
+bug_type = 1
 
 [node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
 layout_mode = 0
