@@ -15,6 +15,11 @@ var type: GlobalVars.BugTypes
 func _ready() -> void:
 	init_segments()
 
+func _exit_tree() -> void:
+	if is_placed and is_instance_valid(level_manager) and level_manager.level_data != null:
+		level_manager.level_data.remove_bug(self)
+		is_placed = false
+
 func set_facing_direction(direction: Vector2i) -> void:
 	facing_direction = direction
 	for i in segment_cells.size():

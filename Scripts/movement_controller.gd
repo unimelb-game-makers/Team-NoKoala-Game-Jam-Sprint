@@ -13,6 +13,10 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
+	# Restrict movement when roly poly/worm is animating
+	if GlobalVars.protect_movement == true:
+		return
+		
 	if event.is_action_pressed("undo"):
 		undo()
 	elif event.is_action_pressed("up"):
@@ -47,6 +51,9 @@ func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	undo_stack.append(action)
 
 func undo() -> bool:
+	if level_manager.current_bug != null and not level_manager.current_bug.is_placed:
+		level_manager.cancel_bug_selection()
+
 	if undo_stack.is_empty():
 		return false
 
