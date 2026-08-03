@@ -46,10 +46,10 @@ func capture_state() -> Dictionary:
 		&"is_placed": is_placed,
 		&"rotations": rotations,
 		&"textures": textures,
-		&"additional": capture_additional_state(),
+		&"additional": _capture_additional_state(),
 	}
 
-func capture_additional_state() -> Dictionary:
+func _capture_additional_state() -> Dictionary:
 	return {}
 
 func restore_state(state: Dictionary) -> void:
@@ -73,11 +73,11 @@ func restore_state(state: Dictionary) -> void:
 		segment_sprites[i].rotation = rotations[i]
 		segment_sprites[i].texture = textures[i]
 
-	restore_additional_state(state[&"additional"])
+	_restore_additional_state(state[&"additional"])
 	if is_placed:
 		level_manager.level_data.add_bug(self)
 
-func restore_additional_state(_state: Dictionary) -> void:
+func _restore_additional_state(_state: Dictionary) -> void:
 	pass
 
 func set_free_position(pos: Vector2) -> void:

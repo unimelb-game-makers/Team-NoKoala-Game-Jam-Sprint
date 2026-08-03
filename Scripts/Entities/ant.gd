@@ -12,10 +12,10 @@ func init_segments() -> void:
 		Vector2i(-1, 0)
 	]
 
-func capture_additional_state() -> Dictionary:
+func _capture_additional_state() -> Dictionary:
 	return {&"facing_direction": facing_direction}
 
-func restore_additional_state(state: Dictionary) -> void:
+func _restore_additional_state(state: Dictionary) -> void:
 	facing_direction = state[&"facing_direction"]
 
 func set_entry_point_direction(direction: Vector2i) -> void:
