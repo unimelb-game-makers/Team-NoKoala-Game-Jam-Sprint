@@ -3,8 +3,8 @@ class_name StagBeetle
 
 var facing_direction = Directions.RIGHT
 
-@export var break_on_rotate: bool = false
-@export var check_in_between_tiles: bool = false
+@export var break_on_rotate: bool = true
+@export var check_in_between_tiles: bool = true
 
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body]
@@ -22,29 +22,12 @@ func move(direction: Vector2i) -> bool:
 	# If heading same direction as facing: move forward 1 tile
 	if direction == facing_direction:
 		
-		if tile_data == null: 
-			print("Movement Error: Outside of Play Space")
-			return false
-		
-		if not tile_data.is_empty():
-			for bug in tile_data.bugs:
-				if not bug.get_name() == "Slug":
-					print("Movement Error: Tile is Occupied")
-					return false
-		
-		if tile_data.type == LevelData.LevelTileData.Type.INDESTRUCTIBLE:
-			print("Movement Error: Can't move into indestructible tiles")
-			return false
-		
-		if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
-			print("Movement Error: Can't move back out of fruit")
-			return false
+		if not check_tile(tile_data, direction, false): return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.HARD:
 			var tilemap := level_manager.tile_map_layer
 			tilemap.set_cell(next_cell, 3, Vector2i(0, 0), 0)
 			level_data.set_tile_data(next_cell, LevelData.LevelTileData.Type.HARD_BROKEN)
-			
 		
 		# Move caterpillar segments
 		level_data.remove_bug(self)
@@ -55,23 +38,40 @@ func move(direction: Vector2i) -> bool:
 	
 	# Otherwise rotate around head as pivot
 	else:
-		#segment_cells[0] + facing_direction
 		if check_in_between_tiles:
-			#for x in range()
 			
-			print("yeaea")
-			var corner_1 = segment_cells[0] + (segment_cells[1] + direction)
-			print(corner_1)
-			print(segment_cells[0])
-			print(segment_cells[1] + direction)
-			var temp_tile_data = level_data.get_tile_data(corner_1)
-			if not check_tile(temp_tile_data, direction): print("mewo"); return false
-		
-		
+			# Doing a 180 degree turn - will check in both directions
+			if direction == -facing_direction:
+				var tile_1 = segment_cells[1] + direction
+				var tile_2 = segment_cells[0] + Vector2i(direction.y, -direction.x)
+				
+				var check_1 = turn_check(tile_1, tile_2, direction, level_data)
+				
+				tile_2 = segment_cells[0]+Vector2i(-direction.y, direction.x)
+				var check_2 = turn_check(tile_1, tile_2, direction, level_data)
+				
+				if not (check_1 == 0 or check_2 == 0): return false
+				
+			# Doing a 90 degree turn - need to check 90 deg turn and 270 deg turn
+			else:
+				# 90 degree turn
+				var tile_1 = segment_cells[0]
+				var tile_2 = segment_cells[1]+direction
+				
+				var check_1 = turn_check(tile_1, tile_2, direction, level_data)
+				
+				# 270 degree turn
+				tile_1 = segment_cells[1] + Vector2i(-1, -1)
+				tile_2 = segment_cells[1] + Vector2i(1, 1)
+				
+				var check_2 = turn_check(tile_1, tile_2, direction, level_data)
+				
+				if check_1 > 0:
+					if check_2 > 1: return false
+				
 		tile_data = level_data.get_tile_data(segment_cells[1] + direction)
 		
-		if not check_tile(tile_data, direction): return false
-		
+		if not check_tile(tile_data, direction, false): return false
 		
 		level_data.remove_bug(self)
 		move_segment(0, segment_cells[1] + direction, direction)
@@ -81,6 +81,7 @@ func move(direction: Vector2i) -> bool:
 		segment_sprites[0].rotation = atan2(direction.y, direction.x)
 		segment_sprites[1].rotation = atan2(direction.y, direction.x)
 		return true
+
 ''' 
 Move the caterpillar:
 	- Move individual segments
@@ -92,14 +93,14 @@ func move_segment(index: int, next_cell: Vector2i, move_diff: Vector2) -> void:
 	segment_cells[index] = next_cell
 	segment_sprites[index].position = tilemap.map_to_local(segment_cells[index])
 
-func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i) -> bool:
+func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i, rotating: bool) -> bool:
 	if tile_data == null: 
 			print("Movement Error: Outside of Play Space")
 			return false
-		
+	
 	if not tile_data.is_empty():
 		for bug in tile_data.bugs:
-			if not bug.get_name() == "Slug":
+			if not bug.get_name() == "Slug" and not (rotating and bug == self):
 				print("Movement Error: Tile is Occupied")
 				return false
 	
@@ -121,3 +122,13 @@ func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i) -> bool
 			print("Movement Error: Can't move into hard tiles")
 			return false
 	return true
+
+func turn_check(tile_1: Vector2i, tile_2: Vector2i, direction: Vector2i, level_data) -> int:
+	var temp_tile_data
+	var blocked_tile_count = 0
+	for x in range(min(tile_1.x, tile_2.x), max(tile_1.x, tile_2.x)+1):
+		for y in range(min(tile_1.y, tile_2.y), max(tile_1.y, tile_2.y)+1):
+			temp_tile_data = level_data.get_tile_data(Vector2i(x, y))
+			#print("x, y: " + str(x)+ ", " +str(y))
+			if not check_tile(temp_tile_data, direction, true): blocked_tile_count += 1
+	return blocked_tile_count
