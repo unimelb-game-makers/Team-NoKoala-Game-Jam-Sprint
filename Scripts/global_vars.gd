@@ -4,7 +4,9 @@ extends Node
 # Enum of bug types:
 enum BugTypes {
 	CATERPILLAR,
-	SLUG
+	SLUG,
+	ANT,
+	STAG_BEETLE
 }
 
 func bug_type_id(bug_type: BugTypes) -> String:

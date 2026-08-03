@@ -6,7 +6,10 @@ class LevelTileData:
 		ENTRY_UP,
 		ENTRY_DOWN,
 		ENTRY_LEFT,
-		ENTRY_RIGHT
+		ENTRY_RIGHT,
+		HARD,
+		HARD_BROKEN,
+		INDESTRUCTIBLE
 	}
 
 	var type: Type
@@ -27,7 +30,24 @@ class LevelTileData:
 		bugs.erase(bug)
 
 var _grid: Dictionary[Vector2i, LevelTileData]
+
+func get_cells() -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+
+	for cell: Vector2i in _grid:
+		cells.append(cell)
+
+	return cells
 	
+func get_cells_by_type(tile_type: LevelTileData.Type) -> Array[Vector2i]:
+	var cells: Array[Vector2i] = []
+
+	for cell: Vector2i in _grid:
+		if _grid[cell].type == tile_type:
+			cells.append(cell)
+
+	return cells
+
 func _init():
 	_grid = {}
 
@@ -78,6 +98,24 @@ static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
 					#	LevelData.LevelTileData.Type.ENTRY
 					#)
 
+			"hard_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD
+				)
+
+			"hard_broken_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD_BROKEN
+				)
+
+			"indestructible_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.INDESTRUCTIBLE
+				)
+
 			_:
 				push_warning("Unknown tile source: " + tile_name)
 	
@@ -102,6 +140,10 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 ## Returns null if the cell is outside of play space
 func get_tile_data(cell: Vector2i) -> LevelTileData:
 	return _grid.get(cell)
+
+func set_tile_data(cell: Vector2i, new_tile_type: LevelTileData.Type) -> void:
+	var tile = _grid.get(cell)
+	tile.type = new_tile_type
 
 func add_bug(bug: Bug) -> void:
 	for segment_cell in bug.segment_cells:
@@ -153,6 +195,12 @@ func print_debug_map() -> void:
 					LevelTileData.Type.ENTRY_UP, LevelTileData.Type.ENTRY_DOWN, \
 					LevelTileData.Type.ENTRY_LEFT, LevelTileData.Type.ENTRY_RIGHT:
 						row += "E"
+					LevelTileData.Type.HARD:
+						row += "H"
+					LevelTileData.Type.HARD_BROKEN:
+						row += "B"
+					LevelTileData.Type.INDESTRUCTIBLE:
+						row += "I"
 					_:
 						row += "?"
 

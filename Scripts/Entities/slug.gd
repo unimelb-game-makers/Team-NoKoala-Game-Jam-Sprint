@@ -53,6 +53,10 @@ func move(direction: Vector2i) -> bool:
 		print("Movement Error: Cannot overlap self")
 		return false
 	
+	if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+		print("Movement Error: Can't move into hard tiles")
+		return false
+
 	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
 	 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
 						LevelData.LevelTileData.Type.ENTRY_LEFT, \

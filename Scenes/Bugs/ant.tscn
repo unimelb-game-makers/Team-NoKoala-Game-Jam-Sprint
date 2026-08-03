@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bu66mduisk6yl"]
+
+[ext_resource type="Script" uid="uid://3m2gxtma03yq" path="res://Scripts/Entities/ant.gd" id="1_d0x5p"]
+[ext_resource type="Texture2D" uid="uid://sooo0k5aghr1" path="res://Sprites/ant_head.png" id="2_y3nqo"]
+[ext_resource type="Texture2D" uid="uid://bopl72mcbvqs5" path="res://Sprites/ant_body.png" id="3_jcsnt"]
+
+[node name="Ant" type="Node2D" unique_id=721379921]
+script = ExtResource("1_d0x5p")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=202062952]
+z_index = 1
+texture = ExtResource("2_y3nqo")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=706890678]
+texture = ExtResource("3_jcsnt")
