@@ -9,12 +9,13 @@ script = ExtResource("1_mv0ib")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
 z_index = 1
+position = Vector2(1, 0)
 texture = ExtResource("2_5ftgt")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
 texture = ExtResource("3_qw07f")
 
-[node name="Body2" type="Sprite2D" parent="."]
+[node name="Body2" type="Sprite2D" parent="." unique_id=139511658]
 texture = ExtResource("3_qw07f")
 
 [node name="Tail" type="Sprite2D" parent="." unique_id=85632085]

@@ -17,12 +17,13 @@ const CATERPILLAR_SPINE_SCENE = preload("res://Scenes/Bugs/caterpillar_spine.tsc
 const CATERPILLAR_MESH_SCENE = preload("res://Scenes/Bugs/caterpillar_mesh_sprite.tscn")
 const WORM_MESH_SCENE = preload("res://Scenes/Bugs/worm_mesh_sprite.tscn")
 const SLUG_MESH_SCENE = preload("res://Scenes/Bugs/slug_mesh_sprite.tscn")
+const CENTIPEDE_MESH_SCENE = preload("res://Scenes/Bugs/centipede_mesh_sprite.tscn")
 
 
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
 const bug_scenes: Dictionary = {
-	GlobalVars.BugTypes.CENTIPEDE: CENTIPEDE_SCENE,
+	GlobalVars.BugTypes.CENTIPEDE: CENTIPEDE_MESH_SCENE,
 	GlobalVars.BugTypes.SLUG: SLUG_MESH_SCENE,
 	GlobalVars.BugTypes.ROLY_POLY: ROLY_POLY_SCENE,
 	GlobalVars.BugTypes.WORM: WORM_MESH_SCENE,
