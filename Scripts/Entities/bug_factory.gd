@@ -1,4 +1,3 @@
-extends Node
 class_name BugFactory
 
 # This node spawns new bugs as children of this node
@@ -9,13 +8,13 @@ const SLUG_SCENE = preload("res://Scenes/Bugs/slug.tscn")
 
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
-var bug_scenes: Dictionary = {
+const bug_scenes: Dictionary = {
 	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SCENE,
 	GlobalVars.BugTypes.SLUG: SLUG_SCENE
 }
 
 # Usage example: create_bug(Bugs.CATERPILLAR) to create a Caterpillar
-func create_bug(bug_type: GlobalVars.BugTypes, bug_length: int = -1) -> Bug: 
+static func create_bug(bug_type: GlobalVars.BugTypes, bug_length: int = -1) -> Bug: 
 	var bug = bug_scenes[bug_type].instantiate()
 	bug.length = bug_length
 	return bug

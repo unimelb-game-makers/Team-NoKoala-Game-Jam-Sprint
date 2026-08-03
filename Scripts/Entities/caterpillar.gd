@@ -16,8 +16,13 @@ func init_segments() -> void:
 			Directions.DOWN:
 				segment_cells.append(Vector2i(0, -i))
 	
-	segment_sprites[2].rotation = atan2((Vector2(segment_cells[0]) - Vector2(segment_cells[1])).y, (Vector2(segment_cells[0]) - Vector2(segment_cells[1])).x)
-	segment_sprites[1].rotation = atan2(Vector2(segment_cells[0] + entry_point_direction - segment_cells[2]).y, (Vector2(segment_cells[0] + entry_point_direction - segment_cells[2])).x)
+	rotate_segments()
+
+func rotate_segments() -> void:
+	var tail_direction := segment_cells[0] - segment_cells[1]
+	var body_direction := segment_cells[0] + entry_point_direction - segment_cells[2]
+	segment_sprites[2].rotation = atan2(tail_direction.y, tail_direction.x)
+	segment_sprites[1].rotation = atan2(body_direction.y, body_direction.x)
 	segment_sprites[0].rotation = atan2(entry_point_direction.y, entry_point_direction.x)
 
 # Update positions of each segment
