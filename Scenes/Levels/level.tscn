@@ -10,10 +10,10 @@
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_lhx7y")
 available_bugs = Dictionary[int, int]({
-0: 3,
-1: 5,
-2: 5,
-3: 5
+0: 1,
+1: 2,
+2: 3,
+3: 3
 })
 max_move = 50
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
