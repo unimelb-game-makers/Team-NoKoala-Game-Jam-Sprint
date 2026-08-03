@@ -6,7 +6,7 @@ func init_segments() -> void:
 	segment_cells = []
 	
 	for i in range(3):
-		match entry_point_direction:
+		match facing_direction:
 			Directions.RIGHT:
 				segment_cells.append(Vector2i(-i, 0))
 			Directions.LEFT:
@@ -20,10 +20,10 @@ func init_segments() -> void:
 
 func rotate_segments() -> void:
 	var tail_direction := segment_cells[0] - segment_cells[1]
-	var body_direction := segment_cells[0] + entry_point_direction - segment_cells[2]
+	var body_direction := segment_cells[0] + facing_direction - segment_cells[2]
 	segment_sprites[2].rotation = atan2(tail_direction.y, tail_direction.x)
 	segment_sprites[1].rotation = atan2(body_direction.y, body_direction.x)
-	segment_sprites[0].rotation = atan2(entry_point_direction.y, entry_point_direction.x)
+	segment_sprites[0].rotation = atan2(facing_direction.y, facing_direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:

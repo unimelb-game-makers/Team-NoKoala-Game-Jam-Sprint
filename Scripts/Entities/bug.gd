@@ -7,7 +7,7 @@ var is_placed: bool = false
 var segment_sprites: Array[Sprite2D]
 var segment_cells: Array[Vector2i]
 var length = -1
-var entry_point_direction: Vector2i = Directions.RIGHT
+var facing_direction: Vector2i = Directions.RIGHT
 var active_movement_tweens: Array[Tween] = []
 
 var type: GlobalVars.BugTypes
@@ -15,17 +15,13 @@ var type: GlobalVars.BugTypes
 func _ready() -> void:
 	init_segments()
 
-func set_entry_point_direction(direction: Vector2i) -> void:
-	entry_point_direction = direction
+func set_facing_direction(direction: Vector2i) -> void:
+	facing_direction = direction
 	for i in segment_cells.size():
 		segment_cells[i] = -direction * i
 	rotate_segments()
-	set_facing_direction()
 
 func rotate_segments() -> void:
-	pass
-
-func set_facing_direction() -> void:
 	pass
 
 func create_movement_tween() -> Tween:
@@ -46,15 +42,11 @@ func capture_state() -> Dictionary:
 
 	return {
 		&"segment_cells": segment_cells.duplicate(),
-		&"entry_point_direction": entry_point_direction,
+		&"facing_direction": facing_direction,
 		&"is_placed": is_placed,
 		&"rotations": rotations,
 		&"textures": textures,
-		&"additional": _capture_additional_state(),
 	}
-
-func _capture_additional_state() -> Dictionary:
-	return {}
 
 func restore_state(state: Dictionary) -> void:
 	for tween in active_movement_tweens:
@@ -66,7 +58,7 @@ func restore_state(state: Dictionary) -> void:
 		level_manager.level_data.remove_bug(self)
 
 	segment_cells.assign(state[&"segment_cells"])
-	entry_point_direction = state[&"entry_point_direction"]
+	facing_direction = state[&"facing_direction"]
 	is_placed = state[&"is_placed"]
 
 	var tile_map := level_manager.tile_map_layer
@@ -77,12 +69,8 @@ func restore_state(state: Dictionary) -> void:
 		segment_sprites[i].rotation = rotations[i]
 		segment_sprites[i].texture = textures[i]
 
-	_restore_additional_state(state[&"additional"])
 	if is_placed:
 		level_manager.level_data.add_bug(self)
-
-func _restore_additional_state(_state: Dictionary) -> void:
-	pass
 
 func set_free_position(pos: Vector2) -> void:
 	var tile_map := level_manager.tile_map_layer

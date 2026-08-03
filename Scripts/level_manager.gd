@@ -61,13 +61,13 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 		
 		match tile_data.type:
 			LevelData.LevelTileData.Type.ENTRY_UP:
-				current_bug.set_entry_point_direction(Directions.UP)
+				current_bug.set_facing_direction(Directions.UP)
 			LevelData.LevelTileData.Type.ENTRY_DOWN:
-				current_bug.set_entry_point_direction(Directions.DOWN)
+				current_bug.set_facing_direction(Directions.DOWN)
 			LevelData.LevelTileData.Type.ENTRY_LEFT:
-				current_bug.set_entry_point_direction(Directions.LEFT)
+				current_bug.set_facing_direction(Directions.LEFT)
 			LevelData.LevelTileData.Type.ENTRY_RIGHT:
-				current_bug.set_entry_point_direction(Directions.RIGHT)
+				current_bug.set_facing_direction(Directions.RIGHT)
 			_:
 				return
 
