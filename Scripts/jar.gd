@@ -11,13 +11,16 @@ var bug_count: int
 
 func _ready() -> void:
 	for i in bug_count:
-		var bug = BugFactory.create_bug(bug_type)
-		var handler: BugHandler = BUG_HANDLER_SCENE.instantiate()
-		handler.rotation = randf_range(0, TAU)
-		handler.position = random_position()
-		handler.scale = Vector2(0.5, 0.5)
-		handler.bug = bug
-		add_child(handler)
+		create_handler_for_bug(BugFactory.create_bug(bug_type))
+
+func create_handler_for_bug(bug: Bug) -> BugHandler:
+	var handler: BugHandler = BUG_HANDLER_SCENE.instantiate()
+	handler.rotation = randf_range(0, TAU)
+	handler.position = random_position()
+	handler.scale = Vector2(0.5, 0.5)
+	handler.bug = bug
+	add_child(handler)
+	return handler
 		
 func random_position() -> Vector2:
 	var shape = collision_shape.shape as CircleShape2D

@@ -16,7 +16,10 @@ var bug_z_index_before_selection: int
 var bug_z_as_relative_before_selection: bool
 
 func _ready() -> void:
-	add_child(bug)
+	if bug.get_parent() == null:
+		add_child(bug)
+	elif bug.get_parent() != self:
+		bug.reparent(self, false)
 	bug.set_free_position(Vector2(0, 0))
 	_generate_collision_shapes()
 
