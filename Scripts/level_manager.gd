@@ -4,8 +4,6 @@ class_name LevelManager
 var level_data: LevelData
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
-## Retained until placement is committed so a selection can return to its jar.
-var current_bug_handler: BugHandler
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
@@ -18,6 +16,7 @@ var star_count: int = 0
 
 const ACTIVATED_ALT_ID = 1
 const DEACTIVATED_ID = 0
+const SELECTED_BUG_Z_INDEX = 100
 
 signal config_changed(config: LevelConfig)
 
@@ -29,8 +28,6 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 			cancel_bug_selection()
 		elif event.button_index == MOUSE_BUTTON_LEFT:
-			# Pressing supports the existing click-to-place flow. Releasing supports
-			# dragging a bug directly from its jar onto an entry tile.
 			try_place_bug(event.position)
 
 func _ready() -> void:
@@ -70,26 +67,23 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 			_:
 				return
 		
+		current_bug.z_index = 0
 		current_bug.place(cell)
-		if current_bug_handler != null:
-			current_bug_handler.complete_selection()
-			current_bug_handler = null
 
-func begin_bug_selection(bug: Bug, handler: BugHandler) -> void:
-	if current_bug_handler != null:
+func begin_bug_selection(bug: Bug) -> void:
+	if current_bug != null and not current_bug.is_placed:
 		cancel_bug_selection()
 
+	tile_map_layer.add_child(bug)
+	bug.z_index = SELECTED_BUG_Z_INDEX
 	current_bug = bug
-	current_bug_handler = handler
-	handler.begin_selection()
 
 func cancel_bug_selection() -> void:
-	if current_bug == null or current_bug.is_placed or current_bug_handler == null:
+	if current_bug == null or current_bug.is_placed:
 		return
 
-	current_bug_handler.cancel_selection()
+	current_bug.queue_free()
 	current_bug = null
-	current_bug_handler = null
 
 func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic

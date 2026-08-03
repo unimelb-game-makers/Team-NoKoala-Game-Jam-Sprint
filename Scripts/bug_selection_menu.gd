@@ -1,4 +1,4 @@
-class_name BugSelectionMenu
+class_name JarManager
 extends Node2D
 
 @onready var level_manager: LevelManager = get_tree().get_first_node_in_group(&"level_manager")
