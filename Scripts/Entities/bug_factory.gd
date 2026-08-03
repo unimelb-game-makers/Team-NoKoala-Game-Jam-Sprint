@@ -7,7 +7,6 @@ const CENTIPEDE_SCENE = preload("res://Scenes/Bugs/centipede.tscn")
 const SLUG_SCENE = preload("res://Scenes/Bugs/slug.tscn")
 const ROLY_POLY_SCENE = preload("res://Scenes/Bugs/rolypoly.tscn")
 const WORM_SCENE = preload("res://Scenes/Bugs/worm.tscn")
-const WORM_MESH_SCENE = preload("res://Scenes/Bugs/worm_mesh_sprite.tscn")
 const ANT_SCENE = preload("res://Scenes/Bugs/ant.tscn")
 const STAG_BEETLE_SCENE = preload("res://Scenes/Bugs/stag_beetle.tscn")
 const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
@@ -16,6 +15,7 @@ const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
 #Experiemental Spine-Based Bug Scenes
 const CATERPILLAR_SPINE_SCENE = preload("res://Scenes/Bugs/caterpillar_spine.tscn")
 const CATERPILLAR_MESH_SCENE = preload("res://Scenes/Bugs/caterpillar_mesh_sprite.tscn")
+const WORM_MESH_SCENE = preload("res://Scenes/Bugs/worm_mesh_sprite.tscn")
 
 
 # Associate bugs with their relevant scene here:
