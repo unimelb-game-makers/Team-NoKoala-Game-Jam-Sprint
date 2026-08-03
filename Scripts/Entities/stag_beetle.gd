@@ -10,8 +10,17 @@ func init_segments() -> void:
 	segment_sprites = [$Head, $Body]
 	segment_cells = [
 		Vector2i(0, 0),
-		Vector2i(-1, 0)
 	]
+	
+	match entry_point_direction:
+		Directions.RIGHT:
+			segment_cells.append(Vector2i(-1, 0))
+		Directions.LEFT:
+			segment_cells.append(Vector2i(1, 0))
+		Directions.UP:
+			segment_cells.append(Vector2i(0, 1))
+		Directions.DOWN:
+			segment_cells.append(Vector2i(0, -1))
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -138,3 +147,20 @@ func turn_check(tile_1: Vector2i, tile_2: Vector2i, direction: Vector2i, level_d
 			else:
 				if not check_tile(temp_tile_data, direction, true, Vector2i(x, y), false): blocked_tile_count += 1
 	return blocked_tile_count
+
+func set_facing_direction() -> void:
+	facing_direction = entry_point_direction
+
+func rotate_segments() -> void:
+	for segment in range(len(segment_sprites)):
+		
+		# Rotate Head 
+		if segment == 0: 
+			var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			continue
+		# Rotate Tail
+		elif segment == len(segment_cells) - 1:
+			var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			break

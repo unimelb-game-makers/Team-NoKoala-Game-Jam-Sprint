@@ -117,3 +117,20 @@ func turn_check(tile_1: Vector2i, tile_2: Vector2i, direction: Vector2i, level_d
 			temp_tile_data = level_data.get_tile_data(Vector2i(x, y))
 			if not check_tile(temp_tile_data, direction, true): blocked_tile_count += 1
 	return blocked_tile_count
+
+func set_facing_direction() -> void:
+	facing_direction = entry_point_direction
+
+func rotate_segments() -> void:
+	for segment in range(len(segment_sprites)):
+		
+		# Rotate Head 
+		if segment == 0: 
+			var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			continue
+		# Rotate Tail
+		elif segment == len(segment_cells) - 1:
+			var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			break
