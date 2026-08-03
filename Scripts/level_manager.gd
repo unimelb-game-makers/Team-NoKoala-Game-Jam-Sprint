@@ -13,6 +13,8 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var level_tile_map: LevelTileMap = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
 
+var star_count: int = 0
+
 const ACTIVATED_ALT_ID = 1
 const DEACTIVATED_ID = 0
 
@@ -46,11 +48,13 @@ func _on_bonus_star_activated(cell: Vector2i) -> void:
 	var source_id = tile_map_layer.get_cell_source_id(cell)
 	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
 	tile_map_layer.set_cell(cell, source_id, atlas_coords, ACTIVATED_ALT_ID)
+	star_count += 1
 
 func _on_bonus_star_deactivated(cell: Vector2i) -> void:
 	var source_id = tile_map_layer.get_cell_source_id(cell)
 	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
 	tile_map_layer.set_cell(cell, source_id, atlas_coords, DEACTIVATED_ID)
+	star_count -= 1
 
 func exit_level() -> void:
 	
