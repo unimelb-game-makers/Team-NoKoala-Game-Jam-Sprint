@@ -2,10 +2,10 @@ extends Bug
 class_name Centipede
 
 func init_segments() -> void:
-	segment_sprites = [$Head, $Body, $Tail]
+	segment_sprites = [$Head, $Body, $Body2, $Tail]
 	segment_cells = []
 
-	for i in range(3):
+	for i in range(4):
 		match facing_direction:
 			Directions.RIGHT:
 				segment_cells.append(Vector2i(-i, 0))
@@ -19,11 +19,8 @@ func init_segments() -> void:
 	rotate_segments()
 
 func rotate_segments() -> void:
-	var tail_direction := segment_cells[0] - segment_cells[1]
-	var body_direction := segment_cells[0] + facing_direction - segment_cells[2]
-	segment_sprites[2].rotation = atan2(tail_direction.y, tail_direction.x)
-	segment_sprites[1].rotation = atan2(body_direction.y, body_direction.x)
-	segment_sprites[0].rotation = atan2(facing_direction.y, facing_direction.x)
+	for segment_sprite in segment_sprites:
+		segment_sprite.rotation = atan2(facing_direction.y, facing_direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -55,9 +52,11 @@ func move(direction: Vector2i) -> bool:
 
 	# Move centipede segments
 	level_data.remove_bug(self)
-	move_segment(2, segment_cells[1], Vector2(segment_cells[0]) - Vector2(segment_cells[1]))
-	move_segment(1, segment_cells[0], Vector2(segment_cells[0] + direction - segment_cells[2]))
-	move_segment(0, segment_cells[0] + direction, direction)
+	var old_cells := segment_cells.duplicate()
+	move_segment(3, old_cells[2], Vector2(old_cells[1] - old_cells[2]))
+	move_segment(2, old_cells[1], Vector2(old_cells[0] - old_cells[1]))
+	move_segment(1, old_cells[0], Vector2(old_cells[0] + direction - old_cells[2]))
+	move_segment(0, old_cells[0] + direction, direction)
 	level_data.add_bug(self)
 	return true
 

@@ -1,13 +1,11 @@
 extends Centipede
 
 func init_segments() -> void:
-	segment_sprites = [$Head, $Body, $Body2, $Body3, $Tail]
+	segment_sprites = [$Head, $Body, $Tail]
 	segment_cells = [
 		Vector2i(0, 0),
 		Vector2i(-1, 0),
 		Vector2i(-2, 0),
-		Vector2i(-3, 0),
-		Vector2i(-4, 0),
 	]
 
 # Update positions of each segment
