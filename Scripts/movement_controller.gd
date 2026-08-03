@@ -4,7 +4,7 @@ class_name MovementController
 @onready var level_manager: LevelManager = get_parent()
 func _enter_tree() -> void: add_to_group(&"movement_controller")
 
-@export var max_move: int = 50
+var max_move: int = 50
 var current_move: int 
 signal move_committed(current: float, maximum: float)
 

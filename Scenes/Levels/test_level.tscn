@@ -2,11 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_xxcax"]
 [ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_sufl4"]
-[ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="3_rkdv3"]
-[ext_resource type="Texture2D" uid="uid://ckb8i0m2rau81" path="res://Sprites/entry_tile_sheet.png" id="4_xnpcw"]
-[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/tile_hard.png" id="5_3bggx"]
-[ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/tile_hard_broken.png" id="6_ch0ib"]
-[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/tile_indestructible.png" id="7_4tft1"]
+[ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_l7ek2"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="8_7hwwp"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="9_wunx2"]
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_k0p41"]
@@ -23,47 +19,6 @@ available_bugs = Dictionary[int, int]({
 })
 max_move = 50
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
-resource_name = "normal_cell"
-texture = ExtResource("3_rkdv3")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
-resource_name = "entry_cell"
-texture = ExtResource("4_xnpcw")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-1:0/0 = 0
-1:1/0 = 0
-0:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
-resource_name = "hard_cell"
-texture = ExtResource("5_3bggx")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3yal"]
-resource_name = "hard_broken_cell"
-texture = ExtResource("6_ch0ib")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0lyn"]
-resource_name = "indestructible_cell"
-texture = ExtResource("7_4tft1")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_b136p"]
-tile_size = Vector2i(128, 128)
-sources/0 = SubResource("TileSetAtlasSource_rv5g2")
-sources/1 = SubResource("TileSetAtlasSource_lhx7y")
-sources/2 = SubResource("TileSetAtlasSource_rxcld")
-sources/3 = SubResource("TileSetAtlasSource_j3yal")
-sources/4 = SubResource("TileSetAtlasSource_r0lyn")
 
 [sub_resource type="Theme" id="Theme_kogc4"]
 
@@ -82,7 +37,7 @@ level_config = SubResource("Resource_rxcld")
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
 position = Vector2(-300, 0)
 tile_map_data = PackedByteArray(0, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 253, 255, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-tile_set = SubResource("TileSet_b136p")
+tile_set = ExtResource("3_l7ek2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
 zoom = Vector2(0.58, 0.58)
