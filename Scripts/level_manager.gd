@@ -105,6 +105,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		exit_level()
+	elif event.is_action_pressed("reset"):
+		reset_level()
+
+func reset_level() -> void:
+	get_tree().reload_current_scene()
 
 func _on_bonus_star_activated(cell: Vector2i) -> void:
 	var source_id = tile_map_layer.get_cell_source_id(cell)
