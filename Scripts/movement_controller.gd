@@ -9,8 +9,7 @@ var current_move: int
 signal move_committed(current: float, maximum: float)
 
 func _ready() -> void:
-	current_move = max_move
-	return 
+	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("up"):
@@ -35,3 +34,8 @@ func commit_move(direction: Vector2i) -> bool:
 	current_move -= 1
 	move_committed.emit(current_move, max_move)
 	return true
+
+func _on_config_changed(config: LevelConfig) -> void:
+	max_move = config.max_move
+	current_move = max_move
+	move_committed.emit(current_move, max_move)
