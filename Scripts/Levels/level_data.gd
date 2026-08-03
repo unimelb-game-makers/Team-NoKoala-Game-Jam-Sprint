@@ -3,7 +3,10 @@ class_name LevelData
 class LevelTileData:
 	enum Type { 
 		NORMAL,
-		ENTRY,
+		ENTRY_UP,
+		ENTRY_DOWN,
+		ENTRY_LEFT,
+		ENTRY_RIGHT,
 		HARD,
 		HARD_BROKEN,
 		INDESTRUCTIBLE
@@ -47,6 +50,76 @@ func get_cells_by_type(tile_type: LevelTileData.Type) -> Array[Vector2i]:
 
 func _init():
 	_grid = {}
+
+static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
+	var level := LevelData.new()
+
+	for cell in tilemap.get_used_cells():
+		var source_id := tilemap.get_cell_source_id(cell)
+
+		if source_id == -1:
+			continue
+
+		var source := tilemap.tile_set.get_source(source_id)
+		var tile_name := source.resource_name
+		var atlas_coordinates := tilemap.get_cell_atlas_coords(cell)
+
+		match tile_name:
+			"normal_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.NORMAL
+				)
+
+			"entry_cell":
+				match atlas_coordinates:
+					Vector2i(0,0):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_DOWN
+						)
+					Vector2i(1,0):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_UP
+						)
+					Vector2i(0,1):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_RIGHT
+						)
+					Vector2i(1,1):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_LEFT
+						)
+					#level.add_tile(
+					#	cell,
+					#	LevelData.LevelTileData.Type.ENTRY
+					#)
+
+			"hard_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD
+				)
+
+			"hard_broken_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.HARD_BROKEN
+				)
+
+			"indestructible_cell":
+				level.add_tile(
+					cell,
+					LevelData.LevelTileData.Type.INDESTRUCTIBLE
+				)
+
+			_:
+				push_warning("Unknown tile source: " + tile_name)
+	
+	return level
 
 func add_rectangle_region(c1: Vector2i, c2: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.NORMAL) -> LevelData:
 	var sx = [c1.x, c2.x]
@@ -119,7 +192,8 @@ func print_debug_map() -> void:
 				match tile_data.type:
 					LevelTileData.Type.NORMAL:
 						row += "."
-					LevelTileData.Type.ENTRY:
+					LevelTileData.Type.ENTRY_UP, LevelTileData.Type.ENTRY_DOWN, \
+					LevelTileData.Type.ENTRY_LEFT, LevelTileData.Type.ENTRY_RIGHT:
 						row += "E"
 					LevelTileData.Type.HARD:
 						row += "H"

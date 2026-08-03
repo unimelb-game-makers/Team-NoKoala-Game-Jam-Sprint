@@ -4,14 +4,21 @@ class_name Slug
 const BODY_REGULAR_SPRITE = preload("res://Sprites/slug_body_topdown.png")
 const BODY_CORNER_SPRITE = preload("res://Sprites/slug_corner_topdown.png")
 const TAIL_SPRITE = preload("res://Sprites/slug_tail_topdown.png")
-var alternate: bool = false
 
 func init_segments() -> void:
 	if length < 3: length = 3
 	segment_sprites = [$Head]
 	segment_cells = []
 	for i in range(length):
-		segment_cells.append(Vector2i(-i, 0))
+		match entry_point_direction:
+			Directions.RIGHT:
+				segment_cells.append(Vector2i(-i, 0))
+			Directions.LEFT:
+				segment_cells.append(Vector2i(i, 0))
+			Directions.UP:
+				segment_cells.append(Vector2i(0, i))
+			Directions.DOWN:
+				segment_cells.append(Vector2i(0, -i))
 		
 		# Spawn body segments based on length
 		if i > 1: 
@@ -28,6 +35,8 @@ func init_segments() -> void:
 	add_child(tail_segment)
 	tail_segment.z_index = 0
 	segment_sprites.append(tail_segment)
+	
+	rotate_segments()
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -48,7 +57,10 @@ func move(direction: Vector2i) -> bool:
 		print("Movement Error: Can't move into hard tiles")
 		return false
 
-	if tile_data.type == LevelData.LevelTileData.Type.ENTRY:
+	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
+	 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
+						LevelData.LevelTileData.Type.ENTRY_LEFT, \
+						LevelData.LevelTileData.Type.ENTRY_RIGHT]:
 		print("Movement Error: Can't move back out of fruit")
 		return false
 	
@@ -59,6 +71,12 @@ func move(direction: Vector2i) -> bool:
 		move_segment(length-i-2, segment_cells[length-i-3], Vector2(segment_cells[0+i] + direction - segment_cells[1+i]))
 	move_segment(0, segment_cells[0] + direction, direction)
 	
+	rotate_segments()
+	
+	level_data.add_bug(self)
+	return true
+
+func rotate_segments() -> void:
 	# Segment rotation logic 
 	for segment in range(len(segment_sprites)):
 		
@@ -101,9 +119,6 @@ func move(direction: Vector2i) -> bool:
 						segment_sprites[segment].rotation = 3*PI/2
 					else:
 						segment_sprites[segment].rotation = 0
-	
-	level_data.add_bug(self)
-	return true
 
 ''' 
 Move the caterpillar:
