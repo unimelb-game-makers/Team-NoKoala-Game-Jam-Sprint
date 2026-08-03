@@ -16,9 +16,11 @@ func _on_config_changed(config: LevelConfig) -> void:
 		jar.bug_type = bug_type
 		jar.bug_count = config.available_bugs[bug_type]
 		if i % 2 == 0:
-			jar.position.y = i * 380
+			@warning_ignore("integer_division")
+			jar.position.y = (i / 2) * 380
 		else:
 			jar.position.x = 400
-			jar.position.y = (i - 1) * 380
+			@warning_ignore("integer_division")
+			jar.position.y = (i - 1) / 2 * 380
 		add_child(jar)
 		i += 1
