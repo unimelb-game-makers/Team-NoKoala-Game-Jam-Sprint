@@ -13,6 +13,10 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
+	# Restrict movement when roly poly/worm is animating
+	if GlobalVars.protect_movement == true:
+		return
+		
 	if event.is_action_pressed("undo"):
 		undo()
 	elif event.is_action_pressed("up"):
