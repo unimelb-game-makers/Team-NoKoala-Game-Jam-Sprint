@@ -41,6 +41,7 @@ func place(cell: Vector2i) -> void:
 
 	if !is_placed:
 		is_placed = true
+		level_manager.level_data.add_bug(self)
 		for sprite in segment_sprites:
 			sprite.visible = true
 
