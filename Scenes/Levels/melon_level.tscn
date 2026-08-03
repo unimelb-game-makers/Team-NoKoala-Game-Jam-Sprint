@@ -40,4 +40,4 @@ script = ExtResource("4_q3si1")
 position = Vector2(320, -374)
 script = ExtResource("5_ohspq")
 
-[node name="UI" parent="." unique_id=656714832 instance=ExtResource("6_ui")]
+[node name="UI" parent="." unique_id=1524154751 instance=ExtResource("6_ui")]
