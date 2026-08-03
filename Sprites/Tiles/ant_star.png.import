@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6fxuawpkipcm"
-path="res://.godot/imported/tile_hard_broken.png-e2c7af881a9ac6850bf8d902b0b945b8.ctex"
+uid="uid://bejxyndg08crl"
+path="res://.godot/imported/ant_star.png-5a6263dc372f9cbee5d7ffdcc47b8143.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tile_hard_broken.png"
-dest_files=["res://.godot/imported/tile_hard_broken.png-e2c7af881a9ac6850bf8d902b0b945b8.ctex"]
+source_file="res://Sprites/Tiles/ant_star.png"
+dest_files=["res://.godot/imported/ant_star.png-5a6263dc372f9cbee5d7ffdcc47b8143.ctex"]
 
 [params]
 

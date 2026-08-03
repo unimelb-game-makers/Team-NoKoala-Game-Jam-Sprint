@@ -9,6 +9,8 @@ var segment_cells: Array[Vector2i]
 var length = -1
 var entry_point_direction: Vector2i = Directions.RIGHT
 
+var type: GlobalVars.BugTypes
+
 func _ready() -> void:
 	init_segments()
 

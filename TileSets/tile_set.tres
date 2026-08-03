@@ -1,0 +1,139 @@
+[gd_resource type="TileSet" format=3 uid="uid://dmyanylx80e78"]
+
+[ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/Tiles/tile.png" id="1_chnd6"]
+[ext_resource type="Texture2D" uid="uid://ckb8i0m2rau81" path="res://Sprites/entry_tile_sheet.png" id="2_kml1y"]
+[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/tile_hard.png" id="3_aev0y"]
+[ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/Tiles/tile_hard_broken.png" id="4_ojch6"]
+[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/tile_indestructible.png" id="5_kkmao"]
+[ext_resource type="Shader" uid="uid://klk8tp7vvjj3" path="res://Shaders/glow.gdshader" id="6_glow"]
+[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="7_ant_star"]
+[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="8_caterpillar_star"]
+[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="9_centipede_star"]
+[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="10_rolypoly_star"]
+[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="11_worm_star"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
+resource_name = "normal_cell"
+texture = ExtResource("1_chnd6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
+resource_name = "entry_cell"
+texture = ExtResource("2_kml1y")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
+resource_name = "hard_cell"
+texture = ExtResource("3_aev0y")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3yal"]
+resource_name = "hard_broken_cell"
+texture = ExtResource("4_ojch6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0lyn"]
+resource_name = "indestructible_cell"
+texture = ExtResource("5_kkmao")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ant_star"]
+shader = ExtResource("6_glow")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ant_star"]
+resource_name = "ant_star"
+texture = ExtResource("7_ant_star")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_ant_star")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caterpillar_star"]
+shader = ExtResource("6_glow")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_caterpillar_star"]
+resource_name = "caterpillar_star"
+texture = ExtResource("8_caterpillar_star")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_caterpillar_star")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_centipede_star"]
+shader = ExtResource("6_glow")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_centipede_star"]
+resource_name = "centipede_star"
+texture = ExtResource("9_centipede_star")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_centipede_star")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rolypoly_star"]
+shader = ExtResource("6_glow")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rolypoly_star"]
+resource_name = "rolypoly_star"
+texture = ExtResource("10_rolypoly_star")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_rolypoly_star")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_worm_star"]
+shader = ExtResource("6_glow")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
+shader_parameter/intensity = 1.5
+shader_parameter/spread = 1.0
+shader_parameter/pulse_speed = 1.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_worm_star"]
+resource_name = "worm_star"
+texture = ExtResource("11_worm_star")
+texture_region_size = Vector2i(128, 128)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_worm_star")
+
+[resource]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_rv5g2")
+sources/1 = SubResource("TileSetAtlasSource_lhx7y")
+sources/2 = SubResource("TileSetAtlasSource_rxcld")
+sources/3 = SubResource("TileSetAtlasSource_j3yal")
+sources/4 = SubResource("TileSetAtlasSource_r0lyn")
+sources/5 = SubResource("TileSetAtlasSource_ant_star")
+sources/6 = SubResource("TileSetAtlasSource_caterpillar_star")
+sources/7 = SubResource("TileSetAtlasSource_centipede_star")
+sources/8 = SubResource("TileSetAtlasSource_rolypoly_star")
+sources/9 = SubResource("TileSetAtlasSource_worm_star")

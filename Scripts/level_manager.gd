@@ -13,6 +13,12 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var movement_controller: MovementController = $MovementController
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
+
+var star_count: int = 0
+
+const ACTIVATED_ALT_ID = 1
+const DEACTIVATED_ID = 0
+
 signal config_changed(config: LevelConfig)
 
 func _enter_tree() -> void:
@@ -31,6 +37,9 @@ func _ready() -> void:
 	level_data = LevelData.from_tilemap(tile_map_layer)
 	level_data.print_debug_map()
 	print(level_config.serialize())
+
+	level_data.bonus_star_activated.connect(_on_bonus_star_activated)
+	level_data.bonus_star_deactivated.connect(_on_bonus_star_deactivated)
 	config_changed.emit(level_config)
 
 func _process(_delta: float) -> void:
@@ -86,6 +95,18 @@ func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		exit_level()
+
+func _on_bonus_star_activated(cell: Vector2i) -> void:
+	var source_id = tile_map_layer.get_cell_source_id(cell)
+	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
+	tile_map_layer.set_cell(cell, source_id, atlas_coords, ACTIVATED_ALT_ID)
+	star_count += 1
+
+func _on_bonus_star_deactivated(cell: Vector2i) -> void:
+	var source_id = tile_map_layer.get_cell_source_id(cell)
+	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
+	tile_map_layer.set_cell(cell, source_id, atlas_coords, DEACTIVATED_ID)
+	star_count -= 1
 
 func exit_level() -> void:
 	get_tree().paused = false

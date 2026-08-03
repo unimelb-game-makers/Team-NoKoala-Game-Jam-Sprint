@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do23pe1ik3us5"
-path="res://.godot/imported/entry_tile.png-d7a60a2cfa756a75e7045d1ea727f914.ctex"
+uid="uid://bc7fw804xt8lw"
+path="res://.godot/imported/centipede_star_activated.png-1485e31d90eadd487f5cf41d94c093fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/entry_tile.png"
-dest_files=["res://.godot/imported/entry_tile.png-d7a60a2cfa756a75e7045d1ea727f914.ctex"]
+source_file="res://Sprites/Tiles/centipede_star_activated.png"
+dest_files=["res://.godot/imported/centipede_star_activated.png-1485e31d90eadd487f5cf41d94c093fa.ctex"]
 
 [params]
 

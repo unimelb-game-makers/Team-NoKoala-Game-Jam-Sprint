@@ -6,7 +6,10 @@ enum BugTypes {
 	CATERPILLAR,
 	SLUG,
 	ANT,
-	STAG_BEETLE
+	STAG_BEETLE,
+	CATERPILLAR_REAL,
+	ROLY_POLY,
+	WORM
 }
 
 func bug_type_id(bug_type: BugTypes) -> String:
