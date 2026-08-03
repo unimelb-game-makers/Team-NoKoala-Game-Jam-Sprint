@@ -1,6 +1,6 @@
 extends CurvedMeshBug
 
-var SEGMENT_LENGTH := 4
+@export var SEGMENT_LENGTH := 4
 
 @onready var head_mesh: MeshInstance2D = $Head
 @onready var body_mesh: MeshInstance2D = $Body

@@ -1,6 +1,6 @@
 extends CurvedMeshBug
 
-const MIN_SEGMENT_LENGTH := 3
+@export var MIN_SEGMENT_LENGTH := 3
 
 var is_moving := false
 
