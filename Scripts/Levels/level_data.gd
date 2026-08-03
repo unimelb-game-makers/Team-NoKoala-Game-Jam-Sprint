@@ -46,7 +46,8 @@ class LevelTileData:
 		return false
 
 var _grid: Dictionary[Vector2i, LevelTileData]
-	
+
+var _bonus_stars: Dictionary[Vector2i,Array]
 func get_cells() -> Array[Vector2i]:
 	var cells: Array[Vector2i] = []
 
@@ -189,6 +190,7 @@ func add_bonus_star(cell: Vector2i, required_bug_type: int) -> LevelData:
 		print("making it to cell")
 		_grid[cell] = LevelTileData.new(LevelTileData.Type.BONUS_STAR, required_bug_type)
 		print("cell", _grid[cell], " req=", _grid[cell].required_bug_type)
+	_bonus_stars[cell] = [required_bug_type, false]
 	return self
 
 ## Returns null if the cell is outside of play space
@@ -211,6 +213,7 @@ func add_bug(bug: Bug) -> void:
 			var was_active = tile_data.is_bonus_active()
 			tile_data.add_bug(bug)
 			if tile_data.is_bonus_active() and not was_active:
+				_bonus_stars[segment_cell][1] = true 
 				bonus_star_activated.emit(segment_cell)
 				
 func remove_bug(bug: Bug) -> void:
@@ -220,6 +223,7 @@ func remove_bug(bug: Bug) -> void:
 			var was_active = tile_data.is_bonus_active()
 			tile_data.remove_bug(bug)
 			if !tile_data.is_bonus_active() and was_active:
+				_bonus_stars[segment_cell][1] = false
 				bonus_star_deactivated.emit(segment_cell)
 				
 func print_debug_map() -> void:
