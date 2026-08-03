@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c1r7ey3epk408"]
 
 [ext_resource type="Script" uid="uid://caoj03c2sijtq" path="res://Scripts/Entities/caterpillar.gd" id="1_382te"]
-[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/catepillar_head.png" id="1_x0fvk"]
-[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/catepillar_body.png" id="2_382te"]
+[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/Bugs/Beta/catepillar_head.png" id="1_x0fvk"]
+[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/Bugs/Beta/catepillar_body.png" id="2_382te"]
 
 [node name="Caterpillar" type="Node2D" unique_id=95702695]
 script = ExtResource("1_382te")
