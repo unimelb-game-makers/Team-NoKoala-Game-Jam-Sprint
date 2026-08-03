@@ -15,6 +15,9 @@ func win_detect(current: float, maximum: float) -> bool:
 		if (tile_data.type == LevelData.LevelTileData.Type.NORMAL 
 			and tile_data.bugs.is_empty() ):
 				return false
+				
+	await get_tree().create_timer(0.3).timeout
+
 	get_tree().paused = true
 	complete_screen.show()
 
