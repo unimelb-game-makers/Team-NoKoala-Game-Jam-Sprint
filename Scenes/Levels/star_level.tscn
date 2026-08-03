@@ -1,60 +1,60 @@
 [gd_scene format=4 uid="uid://c4j3rt14mhgou"]
 
-[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
-[ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/Tiles/tile.png" id="1_yjxcc"]
-[ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/Tiles/entry_tile.png" id="3_rv5g2"]
-[ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="3_tq1so"]
-[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/tile_hard.png" id="4_i5435"]
-[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
-[ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/Tiles/tile_hard_broken.png" id="5_jbixu"]
-[ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="5_lhx7y"]
-[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/tile_indestructible.png" id="6_jbixu"]
-[ext_resource type="Shader" uid="uid://klk8tp7vvjj3" path="res://Shaders/glow.gdshader" id="7_kfsb8"]
-[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
-[ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="8_td4xt"]
-[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="9_3i231"]
-[ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
-[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
-[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="10_xraro"]
-[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="11_3i231"]
-[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="12_xraro"]
-[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="13_kogc4"]
-[ext_resource type="Texture2D" uid="uid://sooo0k5aghr1" path="res://Sprites/ant_head.png" id="14_on2c6"]
-[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/stag_beetle_head.png" id="15_vn0m0"]
+[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_omw27"]
+[ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/Tiles/tile.png" id="2_0uahy"]
+[ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/Tiles/entry_tile.png" id="3_3orn8"]
+[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/tile_hard.png" id="4_0tb70"]
+[ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/Tiles/tile_hard_broken.png" id="5_ineqk"]
+[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/tile_indestructible.png" id="6_smcx7"]
+[ext_resource type="Shader" uid="uid://klk8tp7vvjj3" path="res://Shaders/glow.gdshader" id="7_86tie"]
+[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="8_fr5in"]
+[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="9_ygvxi"]
+[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="10_2qm0q"]
+[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="11_b31ov"]
+[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="12_qjwcc"]
+[ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="13_a3ub3"]
+[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="14_beu6a"]
+[ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="15_8wma8"]
+[ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="16_aay3e"]
+[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="17_808nx"]
+[ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="18_s3liv"]
+[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="19_pxetd"]
+[ext_resource type="Texture2D" uid="uid://sooo0k5aghr1" path="res://Sprites/ant_head.png" id="20_ctmsu"]
+[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/stag_beetle_head.png" id="21_ld4xp"]
+[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="22_1o3sq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
-texture = ExtResource("1_yjxcc")
+texture = ExtResource("2_0uahy")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
 resource_name = "entry_cell"
-texture = ExtResource("3_rv5g2")
+texture = ExtResource("3_3orn8")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
 resource_name = "hard_cell"
-texture = ExtResource("4_i5435")
+texture = ExtResource("4_0tb70")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3yal"]
 resource_name = "hard_broken_cell"
-texture = ExtResource("5_jbixu")
+texture = ExtResource("5_ineqk")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0lyn"]
 resource_name = "indestructible_cell"
-texture = ExtResource("6_jbixu")
+texture = ExtResource("6_smcx7")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t5sx7"]
-shader = ExtResource("7_kfsb8")
+shader = ExtResource("7_86tie")
 shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
 shader_parameter/intensity = 1.5
 shader_parameter/spread = 1.0
@@ -62,7 +62,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jlsip"]
 resource_name = "ant_star"
-texture = ExtResource("8_td4xt")
+texture = ExtResource("8_fr5in")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -70,7 +70,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/1/material = SubResource("ShaderMaterial_t5sx7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pg1s4"]
-shader = ExtResource("7_kfsb8")
+shader = ExtResource("7_86tie")
 shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
 shader_parameter/intensity = 1.5
 shader_parameter/spread = 1.0
@@ -78,7 +78,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vyiab"]
 resource_name = "caterpillar_star"
-texture = ExtResource("9_3i231")
+texture = ExtResource("9_ygvxi")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -86,7 +86,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/1/material = SubResource("ShaderMaterial_pg1s4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjypw"]
-shader = ExtResource("7_kfsb8")
+shader = ExtResource("7_86tie")
 shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
 shader_parameter/intensity = 1.5
 shader_parameter/spread = 1.0
@@ -94,7 +94,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_se2ba"]
 resource_name = "centipede_star"
-texture = ExtResource("10_xraro")
+texture = ExtResource("10_2qm0q")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -102,7 +102,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/1/material = SubResource("ShaderMaterial_qjypw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyiab"]
-shader = ExtResource("7_kfsb8")
+shader = ExtResource("7_86tie")
 shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
 shader_parameter/intensity = 1.5
 shader_parameter/spread = 1.0
@@ -110,7 +110,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjypw"]
 resource_name = "rolypoly_star"
-texture = ExtResource("11_3i231")
+texture = ExtResource("11_b31ov")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -118,7 +118,7 @@ texture_region_size = Vector2i(128, 128)
 0:0/1/material = SubResource("ShaderMaterial_vyiab")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_se2ba"]
-shader = ExtResource("7_kfsb8")
+shader = ExtResource("7_86tie")
 shader_parameter/glow_color = Color(1, 0.9, 0.5, 1)
 shader_parameter/intensity = 1.5
 shader_parameter/spread = 1.0
@@ -126,7 +126,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3vidx"]
 resource_name = "worm_star"
-texture = ExtResource("12_xraro")
+texture = ExtResource("12_qjwcc")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -147,21 +147,21 @@ sources/8 = SubResource("TileSetAtlasSource_qjypw")
 sources/9 = SubResource("TileSetAtlasSource_3vidx")
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
-script = ExtResource("1_tq1so")
+script = ExtResource("1_omw27")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
 tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////BgAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAEABQAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAABAAAAAAAAAAAAAAABAP//BAAAAAAAAAD+/wIAAAAAAAAAAAACAAIABwAAAAAAAAD9/wEAAQAAAAAAAAAAAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_b136p")
-script = ExtResource("3_tq1so")
+script = ExtResource("13_a3ub3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
 zoom = Vector2(0.58, 0.58)
 
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
-script = ExtResource("4_rv5g2")
+script = ExtResource("14_beu6a")
 
 [node name="BugFactory" type="Node" parent="." unique_id=726149244]
-script = ExtResource("5_lhx7y")
+script = ExtResource("15_8wma8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]
 layer = 10
@@ -182,7 +182,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("9_jbixu")
+script = ExtResource("16_aay3e")
 
 [node name="caterpillarDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=329117434]
 layout_mode = 1
@@ -191,8 +191,8 @@ offset_top = 48.0
 offset_right = 1129.0
 offset_bottom = 176.0
 scale = Vector2(0.695, 0.695)
-texture = ExtResource("7_lhx7y")
-script = ExtResource("8_i5435")
+texture = ExtResource("17_808nx")
+script = ExtResource("18_s3liv")
 
 [node name="slugDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=945225595]
 layout_mode = 1
@@ -201,8 +201,8 @@ offset_top = 165.0
 offset_right = 1129.0
 offset_bottom = 293.0
 scale = Vector2(0.695, 0.695)
-texture = ExtResource("13_kogc4")
-script = ExtResource("8_i5435")
+texture = ExtResource("19_pxetd")
+script = ExtResource("18_s3liv")
 bug_type = 1
 
 [node name="antDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=365017516]
@@ -212,8 +212,8 @@ offset_top = 274.0
 offset_right = 1129.0
 offset_bottom = 402.0
 scale = Vector2(0.695, 0.695)
-texture = ExtResource("14_on2c6")
-script = ExtResource("8_i5435")
+texture = ExtResource("20_ctmsu")
+script = ExtResource("18_s3liv")
 bug_type = 2
 
 [node name="stagBeetleDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=1983541862]
@@ -223,8 +223,8 @@ offset_top = 401.0
 offset_right = 1126.0
 offset_bottom = 529.0
 scale = Vector2(0.695, 0.695)
-texture = ExtResource("15_vn0m0")
-script = ExtResource("8_i5435")
+texture = ExtResource("21_ld4xp")
+script = ExtResource("18_s3liv")
 bug_type = 3
 
 [node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
@@ -233,4 +233,4 @@ offset_left = 480.0
 offset_top = 31.0
 offset_right = 520.0
 offset_bottom = 54.0
-script = ExtResource("10_rxcld")
+script = ExtResource("22_1o3sq")
