@@ -21,7 +21,13 @@ func move(direction: Vector2i) -> bool:
 		return false
 	
 	if not tile_data.is_empty():
-		print("Movement Error: Tile is Occupied")
+		for bug in tile_data.bugs:
+			if not bug.get_name() == "Slug":
+				print("Movement Error: Tile is Occupied")
+				return false
+	
+	if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+		print("Movement Error: Can't move into hard tiles")
 		return false
 	
 	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
