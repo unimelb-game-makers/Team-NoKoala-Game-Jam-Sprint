@@ -1,9 +1,9 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://Scripts/Entities/slug_mesh_sprite.gd" id="1_slug"]
-[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/slug_head_topdown.png" id="2_head"]
-[ext_resource type="Texture2D" path="res://Sprites/slug_body_topdown.png" id="3_body"]
-[ext_resource type="Texture2D" path="res://Sprites/slug_tail_topdown.png" id="4_tail"]
+[ext_resource type="Script" uid="uid://8iq213p2rc7" path="res://Scripts/Entities/slug_mesh_sprite.gd" id="1_slug"]
+[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/Bugs/Beta/slug_head_topdown.png" id="2_head"]
+[ext_resource type="Texture2D" uid="uid://cdyryqq6cvio6" path="res://Sprites/Bugs/Beta/slug_body_topdown.png" id="3_body"]
+[ext_resource type="Texture2D" uid="uid://bgmdlspmwmgum" path="res://Sprites/Bugs/Beta/slug_tail_topdown.png" id="4_tail"]
 
 [node name="Slug" type="Node2D"]
 modulate = Color(1, 1, 1, 0.627451)

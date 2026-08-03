@@ -1,9 +1,9 @@
 extends Bug
 class_name Slug
 
-const BODY_REGULAR_SPRITE = preload("res://Sprites/slug_body_topdown.png")
-const BODY_CORNER_SPRITE = preload("res://Sprites/slug_corner_topdown.png")
-const TAIL_SPRITE = preload("res://Sprites/slug_tail_topdown.png")
+const BODY_REGULAR_SPRITE = preload("res://Sprites/Bugs/Beta/slug_body_topdown.png")
+const BODY_CORNER_SPRITE = preload("res://Sprites/Bugs/Beta/slug_corner_topdown.png")
+const TAIL_SPRITE = preload("res://Sprites/Bugs/Beta/slug_tail_topdown.png")
 
 func init_segments() -> void:
 	if length < 3: length = 3
