@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://bhtfpxcqrwo3x"]
+
+[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_wwl4s"]
+[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_qsnvy"]
+[ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_ymmya"]
+[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_72ym4"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_qcwwm"]
+[ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
+
+[sub_resource type="Resource" id="Resource_rxcld"]
+script = ExtResource("2_qsnvy")
+available_bugs = Dictionary[int, int]({
+0: 2,
+1: 1,
+2: 2,
+4: 3,
+5: 1,
+6: 1
+})
+max_move = 50
+metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
+
+[node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
+script = ExtResource("1_wwl4s")
+level_config = SubResource("Resource_rxcld")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
+position = Vector2(-300, 0)
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAEAAAAAAAAAAAAEAAAACQAAAAAAAAAEAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEABQAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAD/////BwAAAAAAAAAAAP//AAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAD+//7/AQAAAAEAAAAFAAMAAQABAAAAAAACAAMAAQABAAEAAAA=")
+tile_set = ExtResource("3_ymmya")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
+zoom = Vector2(0.58, 0.58)
+
+[node name="MovementController" type="Node" parent="." unique_id=2045647148]
+script = ExtResource("4_72ym4")
+
+[node name="BugSelectionMenu" type="Node2D" parent="." unique_id=957168039]
+position = Vector2(320, -374)
+script = ExtResource("5_qcwwm")
+
+[node name="UI" parent="." instance=ExtResource("6_ui")]

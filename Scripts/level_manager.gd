@@ -4,6 +4,7 @@ class_name LevelManager
 var level_data: LevelData
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
+var previous_bug_before_selection: Bug
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
@@ -12,7 +13,6 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
 
-var star_count: int = 0
 
 const ACTIVATED_ALT_ID = 1
 const DEACTIVATED_ID = 0
@@ -57,18 +57,26 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 		
 		match tile_data.type:
 			LevelData.LevelTileData.Type.ENTRY_UP:
-				current_bug.set_entry_point_direction(Directions.UP)
+				current_bug.set_facing_direction(Directions.UP)
 			LevelData.LevelTileData.Type.ENTRY_DOWN:
-				current_bug.set_entry_point_direction(Directions.DOWN)
+				current_bug.set_facing_direction(Directions.DOWN)
 			LevelData.LevelTileData.Type.ENTRY_LEFT:
-				current_bug.set_entry_point_direction(Directions.LEFT)
+				current_bug.set_facing_direction(Directions.LEFT)
 			LevelData.LevelTileData.Type.ENTRY_RIGHT:
-				current_bug.set_entry_point_direction(Directions.RIGHT)
+				current_bug.set_facing_direction(Directions.RIGHT)
 			_:
 				return
-		
+
+		movement_controller.record_placement(
+			current_bug,
+			previous_bug_before_selection
+		)
 		current_bug.z_index = 0
 		current_bug.place(cell)
+		var selection_menu := get_tree().get_first_node_in_group(&"bug_selection_menu") as BugSelectionMenu
+		if selection_menu != null:
+			selection_menu.consume_bug(current_bug.type)
+		previous_bug_before_selection = null
 
 func begin_bug_selection(bug_type: GlobalVars.BugTypes) -> void:
 	if _has_occupied_entry_point():
@@ -77,6 +85,7 @@ func begin_bug_selection(bug_type: GlobalVars.BugTypes) -> void:
 	if current_bug != null and not current_bug.is_placed:
 		cancel_bug_selection()
 
+	previous_bug_before_selection = current_bug
 	var bug := BugFactory.create_bug(bug_type)
 	tile_map_layer.add_child(bug)
 	bug.z_index = SELECTED_BUG_Z_INDEX
@@ -99,24 +108,28 @@ func cancel_bug_selection() -> void:
 		return
 
 	current_bug.queue_free()
-	current_bug = null
+	current_bug = previous_bug_before_selection
+	previous_bug_before_selection = null
 
 func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
 		exit_level()
+	elif event.is_action_pressed("reset"):
+		reset_level()
+
+func reset_level() -> void:
+	get_tree().reload_current_scene()
 
 func _on_bonus_star_activated(cell: Vector2i) -> void:
 	var source_id = tile_map_layer.get_cell_source_id(cell)
 	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
 	tile_map_layer.set_cell(cell, source_id, atlas_coords, ACTIVATED_ALT_ID)
-	star_count += 1
 
 func _on_bonus_star_deactivated(cell: Vector2i) -> void:
 	var source_id = tile_map_layer.get_cell_source_id(cell)
 	var atlas_coords = tile_map_layer.get_cell_atlas_coords(cell)
 	tile_map_layer.set_cell(cell, source_id, atlas_coords, DEACTIVATED_ID)
-	star_count -= 1
 
 func exit_level() -> void:
 	get_tree().paused = false

@@ -1,0 +1,42 @@
+[gd_scene format=4 uid="uid://kn80x1rpgnlv"]
+
+[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_3opr3"]
+[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_2be2k"]
+[ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_basjs"]
+[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_go8hj"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_ly64e"]
+[ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
+
+[sub_resource type="Resource" id="Resource_rxcld"]
+script = ExtResource("2_2be2k")
+available_bugs = Dictionary[int, int]({
+0: 1,
+1: 1,
+2: 1,
+4: 1,
+5: 1,
+6: 1
+})
+max_move = 50
+metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
+
+[node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
+script = ExtResource("1_3opr3")
+level_config = SubResource("Resource_rxcld")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
+position = Vector2(-300, 0)
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP//AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAACQAAAAAAAAD+////BAAAAAAAAAD+//7/BAAAAAAAAAABAAAABAAAAAAAAAABAP//AQABAAEAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//BwAAAAAAAAAFAP7/AAAAAAAAAAADAP7/AQAAAAAAAAAEAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("3_basjs")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
+zoom = Vector2(0.58, 0.58)
+
+[node name="MovementController" type="Node" parent="." unique_id=2045647148]
+script = ExtResource("4_go8hj")
+
+[node name="BugSelectionMenu" type="Node2D" parent="." unique_id=1488638985]
+position = Vector2(850, -425)
+script = ExtResource("5_ly64e")
+
+[node name="UI" parent="." instance=ExtResource("6_ui")]

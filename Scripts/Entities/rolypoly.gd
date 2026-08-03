@@ -30,14 +30,22 @@ func move(direction: Vector2i) -> bool:
 	if tile_data == null:
 		print("Movement Error: Outside of Play Space")
 		return false
-
-	if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
-	 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
-						LevelData.LevelTileData.Type.ENTRY_LEFT, \
-						LevelData.LevelTileData.Type.ENTRY_RIGHT]:
-		print("Movement Error: Can't move back out of fruit")
-		return false
-
+	
+	while tile_data != null:
+		if tile_data.type in [LevelData.LevelTileData.Type.ENTRY_UP, \
+		 					LevelData.LevelTileData.Type.ENTRY_DOWN, \
+							LevelData.LevelTileData.Type.ENTRY_LEFT, \
+							LevelData.LevelTileData.Type.ENTRY_RIGHT]:
+			print("Movement Error: Can't move back out of fruit")
+			break
+		
+		if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
+			print("Movement Error: Can't move into hard tiles")
+			break
+		
+		if not tile_data.is_empty():
+			break
+		
 		destination = next_cell
 		next_cell += direction
 		tile_data = level_data.get_tile_data(next_cell)

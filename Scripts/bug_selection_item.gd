@@ -16,7 +16,7 @@ var scale_tween: Tween
 var is_hovered := false
 
 func _ready() -> void:
-	label.text = "x%d" % bug_count
+	set_bug_count(bug_count)
 	icon.scale = Vector2(0.5, 0.5)
 	var bug := BugFactory.create_bug(bug_type)
 	icon.add_child(bug)
@@ -35,7 +35,14 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			_on_selected()
 
 func _on_selected():
-	level_manager.begin_bug_selection(bug_type)
+	if bug_count > 0:
+		level_manager.begin_bug_selection(bug_type)
+
+func set_bug_count(value: int) -> void:
+	bug_count = maxi(value, 0)
+	label.text = "x%d" % bug_count
+	area.input_pickable = bug_count > 0
+	modulate.a = 1.0 if bug_count > 0 else 0.5
 
 func _generate_collision_shapes(bug: Bug) -> void:
 	var tile_size: Vector2 = bug.level_manager.tile_map_layer.tile_set.tile_size

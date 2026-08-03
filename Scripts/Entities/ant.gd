@@ -1,8 +1,6 @@
 extends Bug
 class_name Ant
 
-var facing_direction = Directions.RIGHT
-
 @export var check_in_between_tiles: bool = true
 
 func init_segments() -> void:
@@ -11,6 +9,11 @@ func init_segments() -> void:
 		Vector2i(0, 0),
 		Vector2i(-1, 0)
 	]
+
+func set_facing_direction(direction: Vector2i) -> void:
+	super.set_facing_direction(direction)
+	for sprite in segment_sprites:
+		sprite.rotation = atan2(direction.y, direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -117,9 +120,6 @@ func turn_check(tile_1: Vector2i, tile_2: Vector2i, direction: Vector2i, level_d
 			temp_tile_data = level_data.get_tile_data(Vector2i(x, y))
 			if not check_tile(temp_tile_data, direction, true): blocked_tile_count += 1
 	return blocked_tile_count
-
-func set_facing_direction() -> void:
-	facing_direction = entry_point_direction
 
 func rotate_segments() -> void:
 	for segment in range(len(segment_sprites)):
