@@ -12,13 +12,16 @@ func _ready() -> void:
 func win_detect(current: float, maximum: float) -> bool:
 	var level_data = level_manager.level_data
 	for tile_data : LevelData.LevelTileData in level_data.get_tile_datas():
-		if (tile_data.type == LevelData.LevelTileData.Type.NORMAL 
+		if ((tile_data.type == LevelData.LevelTileData.Type.NORMAL or 
+		tile_data.type == LevelData.LevelTileData.Type.BONUS_STAR)
 			and tile_data.bugs.is_empty() ):
+				
 				return false
 				
 	await get_tree().create_timer(0.3).timeout
 
 	get_tree().paused = true
+	complete_screen._instantiate_stars()
 	complete_screen.show()
 
 	return true

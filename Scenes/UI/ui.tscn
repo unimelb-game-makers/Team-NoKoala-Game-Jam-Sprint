@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://cv5fhihqmka7"]
+
+[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="1_fy0us"]
+[ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="2_h6tq4"]
+[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="3_t7te2"]
+[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="4_56q1t"]
+[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="5_fevae"]
+[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="6_ny3ap"]
+[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="7_vqjbf"]
+[ext_resource type="Texture2D" uid="uid://byee6ao1tboi2" path="res://Sprites/Tiles/centipede_star.png" id="8_cqvjp"]
+[ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/ant_star.png" id="9_hfaco"]
+[ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/caterpillar_star.png" id="10_1eb8u"]
+[ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/rolypoly_star.png" id="11_vhchw"]
+[ext_resource type="Texture2D" uid="uid://x5hbj82ejc06" path="res://Sprites/Tiles/worm_star.png" id="12_jx4bj"]
+[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
+
+[sub_resource type="Theme" id="Theme_b31ov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjwcc"]
+bg_color = Color(0.3057823, 0.6538776, 0.74725175, 1)
+
+[sub_resource type="Theme" id="Theme_a3ub3"]
+
+[sub_resource type="Theme" id="Theme_beu6a"]
+
+[sub_resource type="Theme" id="Theme_8wma8"]
+default_font_size = 50
+
+[node name="UI" type="CanvasLayer" unique_id=1709876479]
+layer = 10
+
+[node name="Interface" type="Control" parent="." unique_id=1622249462]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MoveTracker" type="Label" parent="Interface" unique_id=1557268048]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 31.0
+offset_right = 520.0
+offset_bottom = 54.0
+script = ExtResource("1_fy0us")
+
+[node name="LevelCompleteUI" type="Control" parent="." unique_id=200456765]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_h6tq4")
+starCollectedIcon = Dictionary[int, Texture2D]({
+0: ExtResource("3_t7te2"),
+2: ExtResource("4_56q1t"),
+4: ExtResource("5_fevae"),
+5: ExtResource("6_ny3ap"),
+6: ExtResource("7_vqjbf")
+})
+starUnCollectedIcon = Dictionary[int, Texture2D]({
+0: ExtResource("8_cqvjp"),
+2: ExtResource("9_hfaco"),
+4: ExtResource("10_1eb8u"),
+5: ExtResource("11_vhchw"),
+6: ExtResource("12_jx4bj")
+})
+
+[node name="Panel" type="Panel" parent="LevelCompleteUI" unique_id=1168239731]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5599951, 0.5980705)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = SubResource("Theme_b31ov")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qjwcc")
+
+[node name="StarContainer" type="HBoxContainer" parent="LevelCompleteUI" unique_id=1335288216]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 286.0
+offset_right = 790.0
+offset_bottom = 361.0
+theme = SubResource("Theme_a3ub3")
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="WinDetect" type="Node" parent="LevelCompleteUI" unique_id=1765581322]
+script = ExtResource("13_rdq6y")
+
+[node name="NextLevelButton" type="Button" parent="LevelCompleteUI" unique_id=213613086]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.0
+offset_top = 394.0
+offset_right = 61.20996
+offset_bottom = 446.45
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = SubResource("Theme_beu6a")
+text = "Back To Main "
+
+[node name="Title" type="Label" parent="LevelCompleteUI" unique_id=1502047214]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_top = 196.0
+offset_right = 186.0
+offset_bottom = 265.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme = SubResource("Theme_8wma8")
+text = "Level Complete"

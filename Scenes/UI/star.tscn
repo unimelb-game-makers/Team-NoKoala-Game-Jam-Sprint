@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://2jp5rbxdn731"]
+
+[node name="Star1" type="Panel" unique_id=1838543989]
+custom_minimum_size = Vector2(75, 0)
