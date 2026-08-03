@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://cv5fhihqmka7"]
 
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="1_fy0us"]
+[ext_resource type="Texture2D" uid="uid://du30j2de12ns3" path="res://Sprites/UI/settings_menu_btn_temp.png" id="2_fevae"]
 [ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="2_h6tq4"]
+[ext_resource type="Script" uid="uid://yyny7laibg72" path="res://Scripts/ingame_buttons_container.gd" id="2_ny3ap"]
+[ext_resource type="Texture2D" uid="uid://cp7vcy36pc425" path="res://Sprites/UI/undo_btn_temp.png" id="3_ny3ap"]
 [ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="3_t7te2"]
 [ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="4_56q1t"]
+[ext_resource type="Texture2D" uid="uid://cie7078m3k6p1" path="res://Sprites/UI/reset_btn_temp.png" id="4_vqjbf"]
+[ext_resource type="Texture2D" uid="uid://8awnuvqjmfso" path="res://Sprites/UI/encyclopedia_btn_temp.png" id="5_cqvjp"]
 [ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="5_fevae"]
 [ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="6_ny3ap"]
 [ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="7_vqjbf"]
@@ -45,6 +50,30 @@ offset_top = 31.0
 offset_right = 520.0
 offset_bottom = 54.0
 script = ExtResource("1_fy0us")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface" unique_id=1529250170]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/separation = 16
+script = ExtResource("2_ny3ap")
+
+[node name="PauseMenuBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=170128663]
+layout_mode = 2
+texture_normal = ExtResource("2_fevae")
+
+[node name="UndoBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=1910455435]
+layout_mode = 2
+texture_normal = ExtResource("3_ny3ap")
+
+[node name="ResetBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=130189294]
+layout_mode = 2
+texture_normal = ExtResource("4_vqjbf")
+
+[node name="EncyclopediaBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=266714847]
+layout_mode = 2
+texture_normal = ExtResource("5_cqvjp")
 
 [node name="LevelCompleteUI" type="Control" parent="." unique_id=200456765]
 unique_name_in_owner = true
@@ -124,3 +153,6 @@ grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = SubResource("Theme_8wma8")
 text = "Level Complete"
+
+[connection signal="pressed" from="Interface/HBoxContainer/UndoBtn" to="Interface/MoveTracker" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="Interface/HBoxContainer/ResetBtn" to="Interface/HBoxContainer" method="_on_reset_btn_pressed"]
