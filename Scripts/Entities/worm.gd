@@ -16,7 +16,15 @@ func init_segments() -> void:
 	segment_sprites = [$Head]
 	segment_cells = []
 	for i in range(length):
-		segment_cells.append(Vector2i(-i, 0))
+		match facing_direction:
+			Directions.RIGHT:
+				segment_cells.append(Vector2i(-i, 0))
+			Directions.LEFT:
+				segment_cells.append(Vector2i(i, 0))
+			Directions.UP:
+				segment_cells.append(Vector2i(0, i))
+			Directions.DOWN:
+				segment_cells.append(Vector2i(0, -i))
 		
 		# Spawn body segments based on length
 		if i > 1: 
@@ -33,6 +41,9 @@ func init_segments() -> void:
 	add_child(tail_segment)
 	tail_segment.z_index = 0
 	segment_sprites.append(tail_segment)
+	
+	for segment in range(len(segment_sprites)):
+		_update_segment_rotations(segment)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -55,7 +66,8 @@ func move(direction: Vector2i) -> bool:
 			break
 		
 		if not tile_data.is_empty():
-			break
+			if len(tile_data.bugs.filter(func(bug): return bug.get_name() != "Slug")) > 0:
+				break
 		
 		if tile_data.type in [LevelData.LevelTileData.Type.HARD, LevelData.LevelTileData.Type.INDESTRUCTIBLE]:
 			print("Movement Error: Can't move into hard tiles")
@@ -156,3 +168,47 @@ func _update_segment_rotations(index: int) -> void:
 					segment_sprites[segment].rotation = 3*PI/2
 				else:
 					segment_sprites[segment].rotation = 0
+
+func rotate_segments() -> void:
+	# Segment rotation logic 
+	for segment in range(len(segment_sprites)):
+		
+		# Rotate Head 
+		if segment == 0: 
+			var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			continue
+		# Rotate Tail
+		elif segment == len(segment_cells) - 1:
+			var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
+			segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+			break
+		
+		# Body Rotation/Sprite Logic
+		var corner_direction: Vector2i = segment_cells[segment + 1] - segment_cells[segment - 1]
+		
+		# Check if the body segment is not on a corner
+		if corner_direction not in [Vector2i(1,1), Vector2i(-1,-1), Vector2i(-1,1), Vector2i(1,-1)]: 
+			segment_sprites[segment].texture = BODY_REGULAR_SPRITE
+			
+			if corner_direction in [Vector2i(2,0), Vector2i(-2,0)]:
+				segment_sprites[segment].rotation = 0
+			else: segment_sprites[segment].rotation = PI/2
+		# It is a corner
+		else: 
+			segment_sprites[segment].texture = BODY_CORNER_SPRITE
+			
+			# Determine rotation of corner piece
+			if (segment_cells[segment].y > segment_cells[segment + 1].y and segment_cells[segment].x == segment_cells[segment + 1].x) \
+				or (segment_cells[segment].y > segment_cells[segment - 1].y and segment_cells[segment].x == segment_cells[segment - 1].x):
+					if (segment_cells[segment].x < segment_cells[segment + 1].x) or (segment_cells[segment].x < segment_cells[segment - 1].x):
+						segment_sprites[segment].rotation = PI
+					else:
+						segment_sprites[segment].rotation = PI/2
+			
+			elif (segment_cells[segment].y < segment_cells[segment + 1].y and segment_cells[segment].x == segment_cells[segment + 1].x) \
+				or (segment_cells[segment].y < segment_cells[segment - 1].y and segment_cells[segment].x == segment_cells[segment - 1].x):
+					if (segment_cells[segment].x < segment_cells[segment + 1].x) or (segment_cells[segment].x < segment_cells[segment - 1].x):
+						segment_sprites[segment].rotation = 3*PI/2
+					else:
+						segment_sprites[segment].rotation = 0
