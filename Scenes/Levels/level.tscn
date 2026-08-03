@@ -2,16 +2,27 @@
 
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
 [ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/tile.png" id="1_yjxcc"]
-[ext_resource type="Texture2D" uid="uid://do23pe1ik3us5" path="res://Sprites/entry_tile.png" id="3_rv5g2"]
-[ext_resource type="Script" uid="uid://cjnp3w5oovwop" path="res://Scripts/Levels/level_tile_map.gd" id="3_tq1so"]
+[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_lhx7y"]
+[ext_resource type="Texture2D" uid="uid://ckb8i0m2rau81" path="res://Sprites/entry_tile_sheet.png" id="3_rxcld"]
+[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/tile_hard.png" id="4_i5435"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
-[ext_resource type="Script" uid="uid://sfpojtr8hkgc" path="res://Scripts/Entities/bug_factory.gd" id="5_lhx7y"]
-[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="7_lhx7y"]
-[ext_resource type="Script" uid="uid://cr3jqtmqcn7dp" path="res://Scripts/DragNDrop/bug_drag_icon.gd" id="8_i5435"]
-[ext_resource type="Script" uid="uid://4pecfhoa37fx" path="res://Scripts/DragNDrop/board_drop_area.gd" id="9_jbixu"]
+[ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/tile_hard_broken.png" id="5_jbixu"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="6_c5s4o"]
+[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/tile_indestructible.png" id="6_jbixu"]
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="11_j3yal"]
 [ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="11_r0lyn"]
+
+[sub_resource type="Resource" id="Resource_rxcld"]
+script = ExtResource("2_lhx7y")
+available_bugs = Dictionary[int, int]({
+0: 1,
+1: 2,
+2: 3,
+3: 3
+})
+max_move = 50
+metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -21,7 +32,28 @@ texture_region_size = Vector2i(128, 128)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lhx7y"]
 resource_name = "entry_cell"
-texture = ExtResource("3_rv5g2")
+texture = ExtResource("3_rxcld")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
+resource_name = "hard_cell"
+texture = ExtResource("4_i5435")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j3yal"]
+resource_name = "hard_broken_cell"
+texture = ExtResource("5_jbixu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r0lyn"]
+resource_name = "indestructible_cell"
+texture = ExtResource("6_jbixu")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
@@ -29,6 +61,9 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_rv5g2")
 sources/1 = SubResource("TileSetAtlasSource_lhx7y")
+sources/2 = SubResource("TileSetAtlasSource_rxcld")
+sources/3 = SubResource("TileSetAtlasSource_j3yal")
+sources/4 = SubResource("TileSetAtlasSource_r0lyn")
 
 [sub_resource type="Theme" id="Theme_kogc4"]
 
@@ -42,11 +77,12 @@ default_font_size = 50
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_tq1so")
+level_config = SubResource("Resource_rxcld")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAD9/wIAAQAAAAAAAAD+//3/AQAAAAAAAAACAAEAAQAAAAAAAAACAP7/AQAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAABAP7/AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+/wIAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=")
+position = Vector2(-300, 0)
+tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAAAAAAAAAAAAAACAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAEAAAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAgAAAAAAAAD9/wEAAQAAAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD+//3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAACAP//AgAAAAAAAAACAAEAAAAAAAAAAAAEAP//AAAAAAAAAAAEAAEAAAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AgAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAABAAEAAAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAD///3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_b136p")
-script = ExtResource("3_tq1so")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
 zoom = Vector2(0.58, 0.58)
@@ -54,8 +90,9 @@ zoom = Vector2(0.58, 0.58)
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
 script = ExtResource("4_rv5g2")
 
-[node name="BugFactory" type="Node" parent="." unique_id=726149244]
-script = ExtResource("5_lhx7y")
+[node name="JarManager" type="Node2D" parent="." unique_id=957168039]
+position = Vector2(320, -374)
+script = ExtResource("6_c5s4o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]
 layer = 10
@@ -67,26 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BoardDropArea" type="Control" parent="CanvasLayer/Interface" unique_id=376667881]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("9_jbixu")
-
-[node name="caterpillarDragIcon" type="TextureRect" parent="CanvasLayer/Interface" unique_id=329117434]
-layout_mode = 1
-offset_left = 1001.0
-offset_top = 48.0
-offset_right = 1129.0
-offset_bottom = 176.0
-scale = Vector2(0.695, 0.695)
-texture = ExtResource("7_lhx7y")
-script = ExtResource("8_i5435")
+mouse_filter = 2
 
 [node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
 layout_mode = 0
