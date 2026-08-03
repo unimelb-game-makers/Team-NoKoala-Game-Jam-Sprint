@@ -12,6 +12,7 @@
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_ci7i2")
 available_bugs = Dictionary[int, int]({
+0: 1,
 1: 1,
 2: 2,
 4: 2,
@@ -96,6 +97,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_r52a4")
 
 [node name="WinDetect" type="Node" parent="CanvasLayer/LevelCompleteUI" unique_id=707383008]
 script = ExtResource("8_7vu22")
+level_key = "apple"
 
 [node name="NextLevelButton" type="Button" parent="CanvasLayer/LevelCompleteUI" unique_id=170731153]
 layout_mode = 1

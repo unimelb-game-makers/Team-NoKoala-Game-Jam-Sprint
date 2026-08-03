@@ -16,8 +16,11 @@ var default_camera_position: Vector2 = Vector2.ZERO
 var default_camera_zoom: Vector2
 
 func _ready() -> void:
-	sprite.material = grayscale_shader
-	grayscale_shader.set_shader_parameter("gray_amount", 1.0)
+	if fruit_id == "apple":
+		isActive = true
+	else:
+		sprite.material = grayscale_shader
+		grayscale_shader.set_shader_parameter("gray_amount", 1.0)
 	
 	if default_camera_position == Vector2.ZERO:
 		default_camera_position = camera.global_position
@@ -28,10 +31,10 @@ func _ready() -> void:
 		TransitionLayer.bugged_fruits[fruit_id] = true
 		reload_scene()
 	
-	if TransitionLayer.active_fruits.get(fruit_id, false):
-		set_active()
-	if TransitionLayer.bugged_fruits.get(fruit_id, false):
-		set_bugged()
+	#if TransitionLayer.active_fruits.get(fruit_id, false):
+		#set_active()
+	#if TransitionLayer.bugged_fruits.get(fruit_id, false):
+		#set_bugged()
 
 func _on_mouse_entered() -> void:
 	if isActive:
@@ -58,10 +61,11 @@ func set_bugged() -> void:
 	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	# placeholder for actual 'activate' functionality
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if !isActive:
-			TransitionLayer.active_fruits[fruit_id] = true
-			set_active()
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and isActive:
+		# uncomment for debugging out of order tests
+		#if !isActive:
+			#TransitionLayer.active_fruits[fruit_id] = true
+			#set_active()
 		
 		load_level()
 

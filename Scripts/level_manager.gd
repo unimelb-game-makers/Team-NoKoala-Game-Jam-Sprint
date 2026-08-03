@@ -15,6 +15,7 @@ const level_select_scene := "res://Scenes/level_select.tscn"
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
 
+var star_count: int = 0
 
 const ACTIVATED_ALT_ID = 1
 const DEACTIVATED_ID = 0
