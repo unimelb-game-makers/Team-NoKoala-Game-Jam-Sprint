@@ -142,13 +142,13 @@ static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
 			"caterpillar_star":
 				level.add_bonus_star(
 					cell,
-					GlobalVars.BugTypes.CATERPILLAR_REAL
+					GlobalVars.BugTypes.CATERPILLAR
 				)
 				
 			"centipede_star":
 				level.add_bonus_star(
 					cell,
-					GlobalVars.BugTypes.CATERPILLAR
+					GlobalVars.BugTypes.CENTIPEDE
 				)
 				
 			"worm_star":
