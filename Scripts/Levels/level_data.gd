@@ -113,6 +113,8 @@ func print_debug_map() -> void:
 
 			if tile_data == null:
 				row += " "
+			elif not tile_data.is_empty():
+				row += "B"  # has a bug on it
 			else:
 				match tile_data.type:
 					LevelTileData.Type.NORMAL:
