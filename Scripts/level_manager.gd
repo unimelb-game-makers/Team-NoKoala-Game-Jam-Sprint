@@ -70,13 +70,29 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 		current_bug.z_index = 0
 		current_bug.place(cell)
 
-func begin_bug_selection(bug: Bug) -> void:
+func begin_bug_selection(bug_type: GlobalVars.BugTypes) -> void:
+	if _has_occupied_entry_point():
+		return
+	
 	if current_bug != null and not current_bug.is_placed:
 		cancel_bug_selection()
 
+	var bug := BugFactory.create_bug(bug_type)
 	tile_map_layer.add_child(bug)
 	bug.z_index = SELECTED_BUG_Z_INDEX
 	current_bug = bug
+
+func _has_occupied_entry_point() -> bool:
+	for tile_data in level_data.get_tile_datas():
+		if tile_data.type in [
+			LevelData.LevelTileData.Type.ENTRY_UP,
+			LevelData.LevelTileData.Type.ENTRY_DOWN,
+			LevelData.LevelTileData.Type.ENTRY_LEFT,
+			LevelData.LevelTileData.Type.ENTRY_RIGHT,
+		] and not tile_data.is_empty():
+			return true
+
+	return false
 
 func cancel_bug_selection() -> void:
 	if current_bug == null or current_bug.is_placed:

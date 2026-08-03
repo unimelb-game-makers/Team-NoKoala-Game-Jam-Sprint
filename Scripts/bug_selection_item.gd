@@ -35,8 +35,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 			_on_selected()
 
 func _on_selected():
-	var new_bug := BugFactory.create_bug(bug_type)
-	level_manager.begin_bug_selection(new_bug)
+	level_manager.begin_bug_selection(bug_type)
 
 func _generate_collision_shapes(bug: Bug) -> void:
 	var tile_size: Vector2 = bug.level_manager.tile_map_layer.tile_set.tile_size
