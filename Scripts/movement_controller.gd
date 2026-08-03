@@ -29,9 +29,6 @@ func commit_move(direction: Vector2i) -> bool:
 		return false
 	if !level_manager.current_bug.is_placed:
 		return false
-	if current_move <= 0:
-		print("Movement Error: Run out of Moves")
-		return false
 
 	var bug := level_manager.current_bug
 	var action := _capture_action(bug, &"move")
@@ -44,9 +41,8 @@ func commit_move(direction: Vector2i) -> bool:
 	move_committed.emit(current_move, max_move)
 	return true
 
-func record_placement(bug: Bug, source_jar: Jar, previous_bug: Bug) -> void:
+func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	var action := _capture_action(bug, &"placement")
-	action[&"source_jar"] = source_jar
 	action[&"previous_bug"] = previous_bug
 	undo_stack.append(action)
 
@@ -59,10 +55,11 @@ func undo() -> bool:
 	_restore_action_state(action)
 
 	if action[&"kind"] == &"placement":
-		var source_jar: Jar = action[&"source_jar"]
-		source_jar.create_handler_for_bug(bug)
+		var selection_menu := get_tree().get_first_node_in_group(&"bug_selection_menu") as BugSelectionMenu
+		if selection_menu != null:
+			selection_menu.return_bug(bug.type)
+		bug.queue_free()
 		level_manager.current_bug = action[&"previous_bug"]
-		level_manager.current_bug_handler = null
 	else:
 		level_manager.current_bug = bug
 
@@ -75,7 +72,6 @@ func _capture_action(bug: Bug, kind: StringName) -> Dictionary:
 		&"bug": bug,
 		&"bug_state": bug.capture_state(),
 		&"map_state": _capture_map_state(),
-		&"star_count": level_manager.star_count,
 		&"moves_before": current_move,
 	}
 
@@ -83,7 +79,6 @@ func _restore_action_state(action: Dictionary) -> void:
 	var bug: Bug = action[&"bug"]
 	bug.restore_state(action[&"bug_state"])
 	_restore_map_state(action[&"map_state"])
-	level_manager.star_count = action[&"star_count"]
 	current_move = action[&"moves_before"]
 
 func _capture_map_state() -> Dictionary:

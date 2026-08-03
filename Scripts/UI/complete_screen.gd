@@ -3,7 +3,7 @@ extends Control
 @onready var NextLevelButton : Button = $NextLevelButton
 @export var starCollectedIcon: Dictionary[GlobalVars.BugTypes, Texture2D] = {}
 @export var starUnCollectedIcon: Dictionary[GlobalVars.BugTypes, Texture2D] = {}
-@onready var star_container = $StarContainer
+@onready var star_container: HBoxContainer = $StarContainer
 
 const star_prefab = preload("res://Scenes/UI/star.tscn")
 func _ready() -> void:

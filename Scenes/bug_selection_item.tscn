@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1abxjq2abjgl"]
+
+[ext_resource type="Script" uid="uid://btqajgfys6rks" path="res://Scripts/bug_selection_item.gd" id="1_d87mk"]
+
+[node name="BugSelectionItem" type="Node2D" unique_id=550265229]
+script = ExtResource("1_d87mk")
+
+[node name="Icon" type="Node2D" parent="." unique_id=1456365151]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1622354336]
+
+[node name="Label" type="Label" parent="." unique_id=1176003419]
+offset_left = 57.0
+offset_top = 25.0
+offset_right = 97.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 24
+text = "x0"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

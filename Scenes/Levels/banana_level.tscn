@@ -4,13 +4,12 @@
 [ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_2be2k"]
 [ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_basjs"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_go8hj"]
-[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="5_ly64e"]
-[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="6_qc3t8"]
-[ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="7_57ku8"]
-[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="8_jwvj7"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_ly64e"]
+[ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_2be2k")
+level_key = "banana"
 available_bugs = Dictionary[int, int]({
 0: 1,
 1: 1,
@@ -21,16 +20,6 @@ available_bugs = Dictionary[int, int]({
 })
 max_move = 50
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
-
-[sub_resource type="Theme" id="Theme_kogc4"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r52a4"]
-bg_color = Color(0.3057823, 0.6538776, 0.74725175, 1)
-
-[sub_resource type="Theme" id="Theme_c5s4o"]
-
-[sub_resource type="Theme" id="Theme_r0lyn"]
-default_font_size = 50
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_3opr3")
@@ -47,81 +36,8 @@ zoom = Vector2(0.58, 0.58)
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
 script = ExtResource("4_go8hj")
 
-[node name="JarManager" type="Node2D" parent="." unique_id=957168039]
-position = Vector2(320, -374)
+[node name="BugSelectionMenu" type="Node2D" parent="." unique_id=1488638985]
+position = Vector2(850, -425)
 script = ExtResource("5_ly64e")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]
-layer = 10
-
-[node name="Interface" type="Control" parent="CanvasLayer" unique_id=1310635634]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MoveTracker" type="Label" parent="CanvasLayer/Interface" unique_id=1137709408]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 31.0
-offset_right = 520.0
-offset_bottom = 54.0
-script = ExtResource("6_qc3t8")
-
-[node name="LevelCompleteUI" type="Control" parent="CanvasLayer" unique_id=143121059]
-unique_name_in_owner = true
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_57ku8")
-
-[node name="Panel" type="Panel" parent="CanvasLayer/LevelCompleteUI" unique_id=1997921204]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5599951, 0.5980705)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = SubResource("Theme_kogc4")
-theme_override_styles/panel = SubResource("StyleBoxFlat_r52a4")
-
-[node name="WinDetect" type="Node" parent="CanvasLayer/LevelCompleteUI" unique_id=707383008]
-script = ExtResource("8_jwvj7")
-
-[node name="NextLevelButton" type="Button" parent="CanvasLayer/LevelCompleteUI" unique_id=170731153]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.0
-offset_top = 394.0
-offset_right = 61.20996
-offset_bottom = 446.45
-grow_horizontal = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = SubResource("Theme_c5s4o")
-text = "Back To Main "
-
-[node name="Title" type="Label" parent="CanvasLayer/LevelCompleteUI" unique_id=1754394913]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -184.0
-offset_top = 196.0
-offset_right = 186.0
-offset_bottom = 265.0
-grow_horizontal = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme = SubResource("Theme_r0lyn")
-text = "Level Complete"
+[node name="UI" parent="." instance=ExtResource("6_ui")]

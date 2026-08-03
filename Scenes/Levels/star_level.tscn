@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_70qr1"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_70qr1"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="14_beu6a"]
-[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="15_66f21"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="15_66f21"]
 
 [sub_resource type="Resource" id="Resource_i0dmq"]
 script = ExtResource("2_66f21")
@@ -34,8 +34,8 @@ zoom = Vector2(0.58, 0.58)
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
 script = ExtResource("14_beu6a")
 
-[node name="JarManager" type="Node2D" parent="." unique_id=590969543]
-position = Vector2(320, -374)
+[node name="BugSelectionMenu" type="Node2D" parent="." unique_id=590969543]
+position = Vector2(850, -425)
 script = ExtResource("15_66f21")
 
 [node name="UI" parent="." unique_id=1709876479 instance=ExtResource("6_70qr1")]
