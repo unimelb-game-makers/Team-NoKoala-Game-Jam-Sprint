@@ -1,11 +1,15 @@
 extends Bug
 class_name Worm
 
+@export var curve_alt: Texture2D
+@export var curve: Texture2D
+
 const BODY_REGULAR_SPRITE = preload("res://Sprites/worm-straight.png")
 const BODY_CORNER_SPRITE = preload("res://Sprites/worm-curved.png")
 const TAIL_SPRITE = preload("res://Sprites/worm-tail.png")
 var alternate: bool = false
 var is_moving: bool = false
+var curve_hold_active: bool = false
 
 func init_segments() -> void:
 	if length < 3: length = 3
@@ -95,7 +99,7 @@ func slide_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> vo
 			var new_pos: Vector2i = old_cells[i - 1]
 			segment_cells[i] = new_pos
 			tween.tween_property(segment_sprites[i], "position", tilemap.map_to_local(new_pos), 0.15).set_trans(Tween.TRANS_SINE)
-			var delay := i * 0.03  # stagger animation
+			var delay := i * 0.08  # stagger animation
 			tween.tween_callback(_update_segment_rotations.bind(i)).set_delay(delay)
 			
 		# handle head as special case
@@ -103,7 +107,6 @@ func slide_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> vo
 		tween.tween_property(segment_sprites[0], "position", tilemap.map_to_local(segment_cells[0]), 0.15).set_trans(Tween.TRANS_SINE)
 		tween.tween_callback(_update_segment_rotations.bind(0))
 		await tween.finished
-		
 
 func _update_segment_rotations(index: int) -> void:
 	# Segment rotation logic 
@@ -113,11 +116,12 @@ func _update_segment_rotations(index: int) -> void:
 	if segment == 0: 
 		var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
 		segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+		#_rotate_body(index + 1)
 		return
 	# Rotate Tail
 	elif segment == len(segment_cells) - 1:
 		var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
-		segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
+		#segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
 		return
 	
 	# Body Rotation/Sprite Logic
@@ -133,6 +137,7 @@ func _update_segment_rotations(index: int) -> void:
 	# It is a corner
 	else: 
 		segment_sprites[segment].texture = BODY_CORNER_SPRITE
+		_rotate_tail(index + 1)
 		
 		# Determine rotation of corner piece
 		if (segment_cells[segment].y > segment_cells[segment + 1].y and segment_cells[segment].x == segment_cells[segment + 1].x) \
@@ -148,3 +153,17 @@ func _update_segment_rotations(index: int) -> void:
 					segment_sprites[segment].rotation = 3*PI/2
 				else:
 					segment_sprites[segment].rotation = 0
+
+func _rotate_tail(index: int) -> void:
+	var direction_to_body = segment_cells[index - 1] - segment_cells[index]
+	var angle = wrapf(atan2(direction_to_body.y, direction_to_body.x) - segment_sprites[index].rotation, -PI, PI)
+	# tween rotation
+	var tween = create_tween()
+	tween.tween_property(segment_sprites[index], "rotation", angle + segment_sprites[index].rotation - PI/2, 0.3)
+
+func _rotate_body(index: int) -> void:
+	var direction_to_body = segment_cells[index - 1] - segment_cells[index]
+	var angle = wrapf(atan2(direction_to_body.y, direction_to_body.x) - segment_sprites[index].rotation, -PI, PI)
+	# tween rotation
+	var tween = create_tween()
+	tween.tween_property(segment_sprites[index], "rotation", angle + segment_sprites[index].rotation, 0.3)
