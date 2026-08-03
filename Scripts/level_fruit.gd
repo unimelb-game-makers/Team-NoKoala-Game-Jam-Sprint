@@ -7,7 +7,8 @@ extends Area2D
 @export var fade_colour: Color
 @export var fruit_id: String
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Pivot/Sprite2D
+@onready var pivot: Node2D = $Pivot
 
 var isActive: bool = false
 var isBugged: bool = false
@@ -46,9 +47,9 @@ func _on_mouse_exited() -> void:
 func set_hovered(is_hovered: bool) -> void:
 	var tween = create_tween()
 	if (is_hovered):
-		tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.15)
+		tween.tween_property(pivot, "scale", Vector2(1.1, 1.1), 0.15)
 	else:
-		tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.15)
+		tween.tween_property(pivot, "scale", Vector2(1.0, 1.0), 0.15)
 
 func set_active() -> void:
 	grayscale_shader.set_shader_parameter("gray_amount", 0.0)
