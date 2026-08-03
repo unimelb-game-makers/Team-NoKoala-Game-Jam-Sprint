@@ -6,6 +6,7 @@
 
 [node name="StagBeetle" type="Node2D" unique_id=721379921]
 script = ExtResource("1_4b8ck")
+check_in_between_tiles = false
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
 z_index = 1

@@ -44,7 +44,8 @@ func move(direction: Vector2i) -> bool:
 			break
 		
 		if not tile_data.is_empty():
-			break
+			if len(tile_data.bugs.filter(func(bug): return bug.get_name() != "Slug")) > 0:
+				break
 		
 		destination = next_cell
 		next_cell += direction

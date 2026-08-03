@@ -34,7 +34,6 @@ func move(direction: Vector2i) -> bool:
 	
 	# If heading same direction as facing: move forward 1 tile
 	if direction == facing_direction:
-		
 		if not check_tile(tile_data, direction, false, next_cell, true): return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.HARD:
@@ -83,8 +82,10 @@ func move(direction: Vector2i) -> bool:
 					if check_2 > 1: return false
 				
 		tile_data = level_data.get_tile_data(segment_cells[1] + direction)
-		
-		if not check_tile(tile_data, direction, true, next_cell, true): return false
+		if break_on_rotate and not check_in_between_tiles:
+			if not check_tile(tile_data, direction, true, segment_cells[1] + direction, true): return false
+		else:
+			if not check_tile(tile_data, direction, true, next_cell, true): return false
 		
 		level_data.remove_bug(self)
 		move_segment(0, segment_cells[1] + direction, direction)

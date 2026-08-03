@@ -20,6 +20,7 @@ const DEACTIVATED_ID = 0
 const SELECTED_BUG_Z_INDEX = 100
 
 signal config_changed(config: LevelConfig)
+signal status_message_requested(message: String)
 
 func _enter_tree() -> void:
 	add_to_group(&"level_manager")
@@ -81,6 +82,7 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 
 func begin_bug_selection(bug_type: GlobalVars.BugTypes) -> void:
 	if _has_occupied_entry_point():
+		status_message_requested.emit("Move the bug off the entry point first")
 		return
 	
 	if current_bug != null and not current_bug.is_placed:
