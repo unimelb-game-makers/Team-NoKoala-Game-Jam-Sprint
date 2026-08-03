@@ -11,6 +11,11 @@ const ANT_SCENE = preload("res://Scenes/Bugs/ant.tscn")
 const STAG_BEETLE_SCENE = preload("res://Scenes/Bugs/stag_beetle.tscn")
 const CATERPILLAR_SCENE = preload("res://Scenes/Bugs/caterpillar.tscn")
 
+
+#Experiemental Spine-Based Bug Scenes
+const CATERPILLAR_SPINE_SCENE = preload("res://Scenes/Bugs/caterpillar_spine.tscn")
+
+
 # Associate bugs with their relevant scene here:
 # Note: Enum "Bugs" located in global_vars.gd
 const bug_scenes: Dictionary = {
@@ -20,7 +25,7 @@ const bug_scenes: Dictionary = {
 	GlobalVars.BugTypes.WORM: WORM_SCENE,
 	GlobalVars.BugTypes.ANT: ANT_SCENE,
 	GlobalVars.BugTypes.STAG_BEETLE: STAG_BEETLE_SCENE,
-	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SCENE
+	GlobalVars.BugTypes.CATERPILLAR: CATERPILLAR_SPINE_SCENE
 }
 
 # Usage example: create_bug(GlobalVars.BugTypes.CATERPILLAR) to create a caterpillar
