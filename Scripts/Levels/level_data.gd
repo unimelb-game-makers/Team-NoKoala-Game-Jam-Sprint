@@ -196,9 +196,9 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 ## Only called in level_tile_map for bonus stars
 func add_bonus_star(cell: Vector2i, required_bug_type: int) -> LevelData:
 	if !_grid.has(cell):
-		print("making it to cell")
+		#print("making it to cell")
 		_grid[cell] = LevelTileData.new(LevelTileData.Type.BONUS_STAR, required_bug_type)
-		print("cell", _grid[cell], " req=", _grid[cell].required_bug_type)
+		#print("cell", _grid[cell], " req=", _grid[cell].required_bug_type)
 	_bonus_stars[cell] = [required_bug_type, false]
 	return self
 

@@ -16,7 +16,7 @@ var default_camera_position: Vector2 = Vector2.ZERO
 var default_camera_zoom: Vector2
 
 func _ready() -> void:
-	if fruit_id == "grape":
+	if fruit_id == "apple":
 		isActive = true
 	else:
 		sprite.material = grayscale_shader

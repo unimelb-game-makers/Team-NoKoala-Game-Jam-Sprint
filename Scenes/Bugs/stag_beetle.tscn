@@ -9,7 +9,6 @@ script = ExtResource("1_4b8ck")
 check_in_between_tiles = false
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
-z_index = 1
 texture = ExtResource("2_4b8ck")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
