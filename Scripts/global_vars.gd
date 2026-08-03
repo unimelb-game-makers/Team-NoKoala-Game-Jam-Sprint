@@ -1,6 +1,8 @@
 extends Node
 # Globally accessible variables. Access in other files as "GlobalVars"
 
+var protect_movement: bool = false
+
 # Enum of bug types:
 enum BugTypes {
 	CENTIPEDE,

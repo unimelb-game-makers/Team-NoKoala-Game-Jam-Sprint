@@ -89,6 +89,7 @@ func move(direction: Vector2i) -> bool:
 		return false
 	
 	is_moving = true
+	GlobalVars.protect_movement = true
 	level_data.remove_bug(self)
 	_do_slide(current_cell, destination, direction, level_data)
 	return true
@@ -97,6 +98,7 @@ func _do_slide(current_cell: Vector2i, destination: Vector2i, direction: Vector2
 	await slide_to(current_cell, destination, direction)
 	level_data.add_bug(self)
 	is_moving = false
+	GlobalVars.protect_movement = false
 
 func slide_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> void:
 	var tilemap = level_manager.tile_map_layer
