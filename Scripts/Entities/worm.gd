@@ -120,8 +120,8 @@ func _update_segment_rotations(index: int) -> void:
 	if segment == 0: 
 		var direction_to_body = segment_cells[segment] - segment_cells[segment + 1]
 		segment_sprites[segment].rotation = atan2(direction_to_body.y, direction_to_body.x)
-		#_rotate_body(index)
 		return
+	
 	# Rotate Tail
 	elif segment == len(segment_cells) - 1:
 		var direction_to_body = segment_cells[segment - 1] - segment_cells[segment]
@@ -156,19 +156,3 @@ func _update_segment_rotations(index: int) -> void:
 					segment_sprites[segment].rotation = 3*PI/2
 				else:
 					segment_sprites[segment].rotation = 0
-
-'''
-func _rotate_tail(index: int) -> void:
-	var direction_to_body = segment_cells[index - 1] - segment_cells[index]
-	var angle = wrapf(atan2(direction_to_body.y, direction_to_body.x) - segment_sprites[index].rotation, -PI, PI)
-	# tween rotation
-	var tween = create_tween()
-	tween.tween_property(segment_sprites[index], "rotation", angle + segment_sprites[index].rotation, 0.3)
-
-func _rotate_body(index: int) -> void:
-	var direction_to_body = segment_cells[index - 1] - segment_cells[index]
-	var angle = wrapf(atan2(direction_to_body.y, direction_to_body.x) - segment_sprites[index].rotation, -PI, PI)
-	# tween rotation
-	var tween = create_tween()
-	tween.tween_property(segment_sprites[index], "rotation", angle + segment_sprites[index].rotation, 0.3)
-'''
