@@ -10,7 +10,7 @@ func init_segments() -> void:
 	segment_sprites = [$Head]
 	segment_cells = []
 	for i in range(length):
-		match entry_point_direction:
+		match facing_direction:
 			Directions.RIGHT:
 				segment_cells.append(Vector2i(-i, 0))
 			Directions.LEFT:
