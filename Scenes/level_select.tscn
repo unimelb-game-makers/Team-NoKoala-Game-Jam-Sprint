@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cm23m8exu8k5m" path="res://Sprites/FruitBowl/moldy_grapes.png" id="9_yx562"]
 [ext_resource type="Texture2D" uid="uid://b1280tuw8xuv4" path="res://Sprites/FruitBowl/moldy_banana.png" id="11_wn3si"]
 [ext_resource type="Texture2D" uid="uid://cpokdhxjxjwvh" path="res://Sprites/FruitBowl/moldy_apple.png" id="13_r2u0r"]
-[ext_resource type="PackedScene" uid="uid://c4j3rt14mhgou" path="res://Scenes/Levels/level.tscn" id="14_ciagn"]
+[ext_resource type="PackedScene" uid="uid://c4j3rt14mhgou" path="res://Scenes/Levels/star_level.tscn" id="14_ciagn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgoug"]
 shader = ExtResource("5_tgoug")

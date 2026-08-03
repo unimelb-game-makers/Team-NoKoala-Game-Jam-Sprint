@@ -1,16 +1,16 @@
-[gd_scene format=4 uid="uid://rwl2q8fitapp"]
+[gd_scene format=3 uid="uid://ddkx1hhghi0it"]
 
-[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_tq1so"]
-[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_lhx7y"]
-[ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_rv5g2"]
-[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_rv5g2"]
-[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="6_c5s4o"]
-[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_rxcld"]
-[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="11_j3yal"]
-[ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="11_r0lyn"]
+[ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_xxcax"]
+[ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_sufl4"]
+[ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_l7ek2"]
+[ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="8_7hwwp"]
+[ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/jar_manager.gd" id="9_wunx2"]
+[ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="10_k0p41"]
+[ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="11_mbrqs"]
+[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="12_2f5yo"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
-script = ExtResource("2_lhx7y")
+script = ExtResource("2_sufl4")
 available_bugs = Dictionary[int, int]({
 0: 1,
 1: 2,
@@ -31,23 +31,23 @@ bg_color = Color(0.3057823, 0.6538776, 0.74725175, 1)
 default_font_size = 50
 
 [node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
-script = ExtResource("1_tq1so")
+script = ExtResource("1_xxcax")
 level_config = SubResource("Resource_rxcld")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
 position = Vector2(-300, 0)
-tile_map_data = PackedByteArray("AAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAAAAAAAAAAAAAACAP7/AAAAAAAAAAABAP7/BAAAAAAAAAAAAP7/AAAAAAAAAAD//wAAAAAAAAAAAAAAAAEAAAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAABAAAABAAAAAAAAAD+/wIAAAAAAAAAAAACAAIAAAAAAAAAAAD9/wEAAQAAAAEAAAAAAAAAAAAAAAAAAAADAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAP//AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/BAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD+//3/AAAAAAAAAAD///3/AgAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAABAP//BAAAAAAAAAADAP//BAAAAAAAAAADAAEABAAAAAAAAAACAP//AAAAAAAAAAACAAEAAAAAAAAAAAAEAP//AAAAAAAAAAAEAAEAAAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAADAPv/AAAAAAAAAAACAPv/AAAAAAAAAAABAPv/AAAAAAAAAAAAAPv/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAABAAEAAAAAAAAAAAA=")
-tile_set = ExtResource("3_rv5g2")
+tile_map_data = PackedByteArray(0, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 253, 255, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("3_l7ek2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
 zoom = Vector2(0.58, 0.58)
 
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
-script = ExtResource("4_rv5g2")
+script = ExtResource("8_7hwwp")
 
 [node name="JarManager" type="Node2D" parent="." unique_id=957168039]
 position = Vector2(320, -374)
-script = ExtResource("6_c5s4o")
+script = ExtResource("9_wunx2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1039771255]
 layer = 10
@@ -57,6 +57,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -24.0
+offset_right = -17.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -67,7 +71,7 @@ offset_left = 480.0
 offset_top = 31.0
 offset_right = 520.0
 offset_bottom = 54.0
-script = ExtResource("10_rxcld")
+script = ExtResource("10_k0p41")
 
 [node name="LevelCompleteUI" type="Control" parent="CanvasLayer" unique_id=143121059]
 unique_name_in_owner = true
@@ -79,7 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("11_r0lyn")
+script = ExtResource("11_mbrqs")
 
 [node name="Panel" type="Panel" parent="CanvasLayer/LevelCompleteUI" unique_id=1997921204]
 layout_mode = 1
@@ -94,7 +98,7 @@ theme = SubResource("Theme_kogc4")
 theme_override_styles/panel = SubResource("StyleBoxFlat_r52a4")
 
 [node name="WinDetect" type="Node" parent="CanvasLayer/LevelCompleteUI" unique_id=707383008]
-script = ExtResource("11_j3yal")
+script = ExtResource("12_2f5yo")
 
 [node name="NextLevelButton" type="Button" parent="CanvasLayer/LevelCompleteUI" unique_id=170731153]
 layout_mode = 1
