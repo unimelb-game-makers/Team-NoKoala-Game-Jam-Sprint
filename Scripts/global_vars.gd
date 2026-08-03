@@ -3,11 +3,11 @@ extends Node
 
 # Enum of bug types:
 enum BugTypes {
-	CATERPILLAR,
+	CENTIPEDE,
 	SLUG,
 	ANT,
 	STAG_BEETLE,
-	CATERPILLAR_REAL,
+	CATERPILLAR,
 	ROLY_POLY,
 	WORM
 }

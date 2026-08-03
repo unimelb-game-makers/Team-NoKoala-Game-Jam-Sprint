@@ -29,9 +29,6 @@ func commit_move(direction: Vector2i) -> bool:
 		return false
 	if !level_manager.current_bug.is_placed:
 		return false
-	if current_move <= 0:
-		print("Movement Error: Run out of Moves")
-		return false
 
 	var bug := level_manager.current_bug
 	var action := _capture_action(bug, &"move")
