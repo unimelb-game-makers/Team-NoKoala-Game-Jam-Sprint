@@ -13,7 +13,7 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
-	if _is_spine_move_animation_active():
+	if _is_deformable_move_animation_active():
 		return
 
 	if event.is_action_pressed("undo"):
@@ -32,7 +32,7 @@ func commit_move(direction: Vector2i) -> bool:
 		return false
 	if !level_manager.current_bug.is_placed:
 		return false
-	if _is_spine_move_animation_active():
+	if _is_deformable_move_animation_active():
 		return false
 
 	var bug := level_manager.current_bug
@@ -52,7 +52,7 @@ func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	undo_stack.append(action)
 
 func undo() -> bool:
-	if _is_spine_move_animation_active():
+	if _is_deformable_move_animation_active():
 		return false
 	if undo_stack.is_empty():
 		return false
@@ -122,6 +122,6 @@ func _on_config_changed(config: LevelConfig) -> void:
 	undo_stack.clear()
 	move_committed.emit(current_move, max_move)
 
-func _is_spine_move_animation_active() -> bool:
+func _is_deformable_move_animation_active() -> bool:
 	var bug := level_manager.current_bug
-	return bug is SpineBug and bug.is_move_animation_active()
+	return (bug is SpineBug or bug is MeshBug) and bug.is_move_animation_active()
