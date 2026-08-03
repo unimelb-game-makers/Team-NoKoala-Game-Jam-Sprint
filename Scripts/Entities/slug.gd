@@ -23,7 +23,7 @@ func init_segments() -> void:
 		# Spawn body segments based on length
 		if i > 1: 
 			var body_segment = Sprite2D.new()
-			body_segment.z_index = 0
+			body_segment.z_index = 1
 			add_child(body_segment)
 			segment_sprites.append(body_segment)
 			body_segment.texture = BODY_REGULAR_SPRITE
@@ -33,7 +33,7 @@ func init_segments() -> void:
 	tail_segment.name = "Tail"
 	tail_segment.texture = TAIL_SPRITE
 	add_child(tail_segment)
-	tail_segment.z_index = 0
+	tail_segment.z_index = 1
 	segment_sprites.append(tail_segment)
 	
 	rotate_segments()

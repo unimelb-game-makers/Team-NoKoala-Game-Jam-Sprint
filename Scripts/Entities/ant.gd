@@ -1,7 +1,7 @@
 extends Bug
 class_name Ant
 
-@export var check_in_between_tiles: bool = true
+@export var check_in_between_tiles: bool = false
 
 func init_segments() -> void:
 	segment_sprites = [$Head, $Body]

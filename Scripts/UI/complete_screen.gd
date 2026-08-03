@@ -11,6 +11,9 @@ func _ready() -> void:
 
 	
 func _instantiate_stars() -> void:
+	for child in star_container.get_children():
+		child.queue_free()
+		
 	var bonus_stars = level_manager.level_data._bonus_stars.values()
 	for bonus_star in bonus_stars:
 		var star_instance : Panel = star_prefab.instantiate()

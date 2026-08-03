@@ -9,4 +9,5 @@ z_index = 2
 script = ExtResource("1_jap24")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
+z_index = 1
 texture = ExtResource("2_jap24")
