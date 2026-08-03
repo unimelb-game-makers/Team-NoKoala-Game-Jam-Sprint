@@ -45,11 +45,26 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 		)
 		var cell := tile_map_layer.local_to_map(pos_local)
 		var tile_data := level_data.get_tile_data(cell)
-		if tile_data != null and tile_data.is_empty() and tile_data.type == LevelData.LevelTileData.Type.ENTRY:
-			current_bug.place(cell)
-			if current_bug_handler != null:
-				current_bug_handler.complete_selection()
-				current_bug_handler = null
+
+		if tile_data == null or !tile_data.is_empty():
+			return
+		
+		match tile_data.type:
+			LevelData.LevelTileData.Type.ENTRY_UP:
+				current_bug.set_entry_point_direction(Directions.UP)
+			LevelData.LevelTileData.Type.ENTRY_DOWN:
+				current_bug.set_entry_point_direction(Directions.DOWN)
+			LevelData.LevelTileData.Type.ENTRY_LEFT:
+				current_bug.set_entry_point_direction(Directions.LEFT)
+			LevelData.LevelTileData.Type.ENTRY_RIGHT:
+				current_bug.set_entry_point_direction(Directions.RIGHT)
+			_:
+				return
+		
+		current_bug.place(cell)
+		if current_bug_handler != null:
+			current_bug_handler.complete_selection()
+			current_bug_handler = null
 
 func begin_bug_selection(bug: Bug, handler: BugHandler) -> void:
 	if current_bug_handler != null:
@@ -66,12 +81,6 @@ func cancel_bug_selection() -> void:
 	current_bug_handler.cancel_selection()
 	current_bug = null
 	current_bug_handler = null
-
-func spawn_bug(bug_type: GlobalVars.BugTypes, length: int = -1) -> Bug:
-	var bug = BugFactory.create_bug(bug_type, length)
-	add_child(bug)
-	current_bug = bug
-	return bug
 
 func _unhandled_input(event: InputEvent) -> void:
 	# placeholder until actual exit level logic

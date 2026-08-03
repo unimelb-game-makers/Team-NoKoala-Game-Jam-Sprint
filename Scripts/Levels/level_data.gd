@@ -3,7 +3,10 @@ class_name LevelData
 class LevelTileData:
 	enum Type { 
 		NORMAL,
-		ENTRY 
+		ENTRY_UP,
+		ENTRY_DOWN,
+		ENTRY_LEFT,
+		ENTRY_RIGHT
 	}
 
 	var type: Type
@@ -39,6 +42,7 @@ static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
 
 		var source := tilemap.tile_set.get_source(source_id)
 		var tile_name := source.resource_name
+		var atlas_coordinates := tilemap.get_cell_atlas_coords(cell)
 
 		match tile_name:
 			"normal_cell":
@@ -48,10 +52,31 @@ static func from_tilemap(tilemap: TileMapLayer) -> LevelData:
 				)
 
 			"entry_cell":
-				level.add_tile(
-					cell,
-					LevelData.LevelTileData.Type.ENTRY
-				)
+				match atlas_coordinates:
+					Vector2i(0,0):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_DOWN
+						)
+					Vector2i(1,0):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_UP
+						)
+					Vector2i(0,1):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_RIGHT
+						)
+					Vector2i(1,1):
+						level.add_tile(
+							cell,
+							LevelData.LevelTileData.Type.ENTRY_LEFT
+						)
+					#level.add_tile(
+					#	cell,
+					#	LevelData.LevelTileData.Type.ENTRY
+					#)
 
 			_:
 				push_warning("Unknown tile source: " + tile_name)
@@ -119,11 +144,14 @@ func print_debug_map() -> void:
 
 			if tile_data == null:
 				row += " "
+			elif not tile_data.is_empty():
+				row += "B"  # has a bug on it
 			else:
 				match tile_data.type:
 					LevelTileData.Type.NORMAL:
 						row += "."
-					LevelTileData.Type.ENTRY:
+					LevelTileData.Type.ENTRY_UP, LevelTileData.Type.ENTRY_DOWN, \
+					LevelTileData.Type.ENTRY_LEFT, LevelTileData.Type.ENTRY_RIGHT:
 						row += "E"
 					_:
 						row += "?"
