@@ -13,10 +13,9 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
-	# Restrict movement when roly poly/worm is animating
-	if GlobalVars.protect_movement == true:
+	if _is_deformable_move_animation_active():
 		return
-		
+
 	if event.is_action_pressed("undo"):
 		undo()
 	elif event.is_action_pressed("up"):
@@ -32,6 +31,8 @@ func commit_move(direction: Vector2i) -> bool:
 	if level_manager.current_bug == null:
 		return false
 	if !level_manager.current_bug.is_placed:
+		return false
+	if _is_deformable_move_animation_active():
 		return false
 
 	var bug := level_manager.current_bug
@@ -51,9 +52,8 @@ func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	undo_stack.append(action)
 
 func undo() -> bool:
-	if level_manager.current_bug != null and not level_manager.current_bug.is_placed:
-		level_manager.cancel_bug_selection()
-
+	if _is_deformable_move_animation_active():
+		return false
 	if undo_stack.is_empty():
 		return false
 
@@ -121,3 +121,7 @@ func _on_config_changed(config: LevelConfig) -> void:
 	current_move = max_move
 	undo_stack.clear()
 	move_committed.emit(current_move, max_move)
+
+func _is_deformable_move_animation_active() -> bool:
+	var bug := level_manager.current_bug
+	return (bug is SpineBug or bug is MeshBug) and bug.is_move_animation_active()

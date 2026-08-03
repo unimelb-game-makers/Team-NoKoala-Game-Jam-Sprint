@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://nmqtvbl14nmq"]
+
+[ext_resource type="Script" path="res://Scripts/Entities/caterpillar_mesh_sprite.gd" id="1_cdw1k"]
+[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/catepillar_head.png" id="2_aqtix"]
+[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/catepillar_body.png" id="3_25g1v"]
+
+[node name="Caterpillar" type="Node2D" unique_id=95702695]
+script = ExtResource("1_cdw1k")
+
+[node name="Head" type="MeshInstance2D" parent="." unique_id=2091015478]
+z_index = 1
+texture = ExtResource("2_aqtix")
+
+[node name="Body" type="MeshInstance2D" parent="." unique_id=524831759]
+texture = ExtResource("3_25g1v")
+
+[node name="Tail" type="MeshInstance2D" parent="." unique_id=1467074159]
+texture = ExtResource("3_25g1v")

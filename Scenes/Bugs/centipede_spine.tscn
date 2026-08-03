@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bfmqle4k5deyk"]
+
+[ext_resource type="Script" uid="uid://caoj03c2sijtq" path="res://Scripts/Entities/caterpillar.gd" id="1_5x1ge"]
+[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="2_f4jy6"]
+[ext_resource type="Texture2D" uid="uid://7bfdy7a6orvj" path="res://Sprites/caterbodyt.png" id="3_rnq4s"]
+
+[node name="Centipede" type="Node2D" unique_id=721379921]
+script = ExtResource("1_5x1ge")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=202062952]
+z_index = 1
+texture = ExtResource("2_f4jy6")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=706890678]
+texture = ExtResource("3_rnq4s")
+
+[node name="Body2" type="Sprite2D" parent="."]
+texture = ExtResource("3_rnq4s")
+
+[node name="Tail" type="Sprite2D" parent="." unique_id=85632085]
+texture = ExtResource("3_rnq4s")
