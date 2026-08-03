@@ -13,6 +13,18 @@ func init_segments() -> void:
 		Vector2i(-1, 0)
 	]
 
+func capture_additional_state() -> Dictionary:
+	return {&"facing_direction": facing_direction}
+
+func restore_additional_state(state: Dictionary) -> void:
+	facing_direction = state[&"facing_direction"]
+
+func set_entry_point_direction(direction: Vector2i) -> void:
+	super.set_entry_point_direction(direction)
+	facing_direction = direction
+	for sprite in segment_sprites:
+		sprite.rotation = atan2(direction.y, direction.x)
+
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
 	var next_cell := segment_cells[0] + direction

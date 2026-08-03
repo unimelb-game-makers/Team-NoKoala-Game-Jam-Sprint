@@ -8,6 +8,7 @@ var segment_sprites: Array[Sprite2D]
 var segment_cells: Array[Vector2i]
 var length = -1
 var entry_point_direction: Vector2i = Directions.RIGHT
+var active_movement_tweens: Array[Tween] = []
 
 var type: GlobalVars.BugTypes
 
@@ -21,6 +22,62 @@ func set_entry_point_direction(direction: Vector2i) -> void:
 	rotate_segments()
 
 func rotate_segments() -> void:
+	pass
+
+func create_movement_tween() -> Tween:
+	var tween := create_tween()
+	active_movement_tweens.append(tween)
+	tween.finished.connect(_forget_movement_tween.bind(tween))
+	return tween
+
+func _forget_movement_tween(tween: Tween) -> void:
+	active_movement_tweens.erase(tween)
+
+func capture_state() -> Dictionary:
+	var rotations: Array[float] = []
+	var textures: Array[Texture2D] = []
+	for sprite in segment_sprites:
+		rotations.append(sprite.rotation)
+		textures.append(sprite.texture)
+
+	return {
+		&"segment_cells": segment_cells.duplicate(),
+		&"entry_point_direction": entry_point_direction,
+		&"is_placed": is_placed,
+		&"rotations": rotations,
+		&"textures": textures,
+		&"additional": capture_additional_state(),
+	}
+
+func capture_additional_state() -> Dictionary:
+	return {}
+
+func restore_state(state: Dictionary) -> void:
+	for tween in active_movement_tweens:
+		if tween.is_valid():
+			tween.kill()
+	active_movement_tweens.clear()
+
+	if is_placed:
+		level_manager.level_data.remove_bug(self)
+
+	segment_cells.assign(state[&"segment_cells"])
+	entry_point_direction = state[&"entry_point_direction"]
+	is_placed = state[&"is_placed"]
+
+	var tile_map := level_manager.tile_map_layer
+	var rotations: Array = state[&"rotations"]
+	var textures: Array = state[&"textures"]
+	for i in segment_cells.size():
+		segment_sprites[i].position = tile_map.map_to_local(segment_cells[i])
+		segment_sprites[i].rotation = rotations[i]
+		segment_sprites[i].texture = textures[i]
+
+	restore_additional_state(state[&"additional"])
+	if is_placed:
+		level_manager.level_data.add_bug(self)
+
+func restore_additional_state(_state: Dictionary) -> void:
 	pass
 
 func set_free_position(pos: Vector2) -> void:

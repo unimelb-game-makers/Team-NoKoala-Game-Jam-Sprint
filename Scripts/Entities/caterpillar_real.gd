@@ -62,7 +62,7 @@ Move the caterpillar:
 	- Add tilemap reference to a segment when a segment enters that tile
 '''
 func move_segment(index: int, next_cell: Vector2i, move_diff: Vector2) -> void:
-	var tween = create_tween()
+	var tween := create_movement_tween()
 	tween.set_parallel(true)
 
 	var tilemap := level_manager.tile_map_layer

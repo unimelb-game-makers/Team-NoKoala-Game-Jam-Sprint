@@ -6,6 +6,7 @@ var level_data: LevelData
 var current_bug: Bug
 ## Retained until placement is committed so a selection can return to its jar.
 var current_bug_handler: BugHandler
+var previous_bug_before_selection: Bug
 
 const level_select_scene := "res://Scenes/level_select.tscn"
 
@@ -69,16 +70,24 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 				current_bug.set_entry_point_direction(Directions.RIGHT)
 			_:
 				return
-		
+
+		var source_jar := current_bug_handler.get_parent() as Jar
+		movement_controller.record_placement(
+			current_bug,
+			source_jar,
+			previous_bug_before_selection
+		)
 		current_bug.place(cell)
 		if current_bug_handler != null:
 			current_bug_handler.complete_selection()
 			current_bug_handler = null
+		previous_bug_before_selection = null
 
 func begin_bug_selection(bug: Bug, handler: BugHandler) -> void:
 	if current_bug_handler != null:
 		cancel_bug_selection()
 
+	previous_bug_before_selection = current_bug if current_bug != bug else null
 	current_bug = bug
 	current_bug_handler = handler
 	handler.begin_selection()
@@ -88,7 +97,8 @@ func cancel_bug_selection() -> void:
 		return
 
 	current_bug_handler.cancel_selection()
-	current_bug = null
+	current_bug = previous_bug_before_selection
+	previous_bug_before_selection = null
 	current_bug_handler = null
 
 func _unhandled_input(event: InputEvent) -> void:
