@@ -15,7 +15,7 @@ func win_detect(current: float, maximum: float) -> bool:
 	for tile_data : LevelData.LevelTileData in level_data.get_tile_datas():
 		if ((tile_data.type == LevelData.LevelTileData.Type.NORMAL or 
 		tile_data.type == LevelData.LevelTileData.Type.BONUS_STAR)
-			and tile_data.bugs.is_empty() ):
+			and tile_data.bugs.is_empty() ) or level_manager._has_occupied_entry_point():
 				
 				return false
 

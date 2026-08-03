@@ -1,6 +1,8 @@
 extends Node
 # Globally accessible variables. Access in other files as "GlobalVars"
 
+var protect_movement: bool = false
+
 # Enum of bug types:
 enum BugTypes {
 	CENTIPEDE,
@@ -13,7 +15,7 @@ enum BugTypes {
 }
 
 # Array of level order:
-var LevelOrder = ["apple", "grape", "banana", "orange", "melon"]
+var LevelOrder = ["apple", "banana", "orange", "grape", "melon"]
 
 func get_next_level(level_key: String) -> String:
 	var idex = LevelOrder.find(level_key)

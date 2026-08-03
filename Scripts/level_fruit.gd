@@ -16,7 +16,7 @@ var default_camera_position: Vector2 = Vector2.ZERO
 var default_camera_zoom: Vector2
 
 func _ready() -> void:
-	if fruit_id == "apple":
+	if fruit_id == "grape":
 		isActive = true
 	else:
 		sprite.material = grayscale_shader
@@ -28,13 +28,12 @@ func _ready() -> void:
 	
 	# only on return
 	if TransitionLayer.zoom_target != Vector2.ZERO and TransitionLayer.zoom_fruit_id == fruit_id:
-		TransitionLayer.bugged_fruits[fruit_id] = true
 		reload_scene()
 	
-	#if TransitionLayer.active_fruits.get(fruit_id, false):
-		#set_active()
-	#if TransitionLayer.bugged_fruits.get(fruit_id, false):
-		#set_bugged()
+	if TransitionLayer.active_fruits.get(fruit_id, false):
+		set_active()
+	if TransitionLayer.bugged_fruits.get(fruit_id, false):
+		set_bugged()
 
 func _on_mouse_entered() -> void:
 	if isActive:

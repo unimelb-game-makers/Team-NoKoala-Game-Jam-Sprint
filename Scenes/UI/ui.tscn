@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/rolypoly_star.png" id="11_vhchw"]
 [ext_resource type="Texture2D" uid="uid://x5hbj82ejc06" path="res://Sprites/Tiles/worm_star.png" id="12_jx4bj"]
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
+[ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
 
 [sub_resource type="Theme" id="Theme_b31ov"]
 
@@ -28,6 +29,7 @@ default_font_size = 50
 
 [node name="UI" type="CanvasLayer" unique_id=1709876479]
 layer = 10
+script = ExtResource("14_game_ui")
 
 [node name="Interface" type="Control" parent="." unique_id=1622249462]
 layout_mode = 3
@@ -45,6 +47,22 @@ offset_top = 31.0
 offset_right = 520.0
 offset_bottom = 54.0
 script = ExtResource("1_fy0us")
+
+[node name="StatusMessage" type="Label" parent="Interface" unique_id=2045790279]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Status message"
+horizontal_alignment = 1
 
 [node name="LevelCompleteUI" type="Control" parent="." unique_id=200456765]
 unique_name_in_owner = true
