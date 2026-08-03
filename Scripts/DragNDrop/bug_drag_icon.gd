@@ -1,7 +1,7 @@
 class_name BugDragIcon
 extends TextureRect
 
-@export var bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.CATERPILLAR
+@export var bug_type: GlobalVars.BugTypes = GlobalVars.BugTypes.ROLY_POLY
 @export var hover_scale := 1.2
 @export var animation_duration := 0.12
 
