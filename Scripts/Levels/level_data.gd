@@ -30,7 +30,7 @@ class LevelTileData:
 		bugs.erase(bug)
 
 var _grid: Dictionary[Vector2i, LevelTileData]
-
+	
 func get_cells() -> Array[Vector2i]:
 	var cells: Array[Vector2i] = []
 
@@ -141,6 +141,10 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 func get_tile_data(cell: Vector2i) -> LevelTileData:
 	return _grid.get(cell)
 
+func get_tile_datas() -> Array[LevelTileData]:
+	var tiles: Array[LevelTileData] = _grid.values()
+	return tiles
+	
 func set_tile_data(cell: Vector2i, new_tile_type: LevelTileData.Type) -> void:
 	var tile = _grid.get(cell)
 	tile.type = new_tile_type
