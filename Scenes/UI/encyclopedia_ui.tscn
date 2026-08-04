@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4rp8lygktdnl" path="res://Sprites/UI/Encyclopedia/Book_no_worms_prev.png" id="5_42f11"]
 [ext_resource type="Texture2D" uid="uid://h7q3fxshghey" path="res://Sprites/UI/Encyclopedia/Book_no_worms.png" id="5_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://35ts7i13t5k5" path="res://Sprites/UI/Encyclopedia/book_frame_2.PNG" id="6_6arpw"]
-[ext_resource type="FontFile" uid="uid://cihb73n44mjdu" path="res://Fonts/LibreBaskerville-VariableFont_wght.ttf" id="6_42f11"]
+[ext_resource type="FontFile" uid="uid://xdgglal4ov8i" path="res://Fonts/Caveat-Regular.ttf" id="6_42f11"]
 [ext_resource type="Texture2D" uid="uid://h27imurwvv6k" path="res://Sprites/UI/Encyclopedia/Book_no_worms_next.png" id="6_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="10_16v7v"]
 [ext_resource type="Texture2D" uid="uid://bxegv58kpawig" path="res://Sprites/UI/Encyclopedia/caterpillar illus.PNG" id="10_67kpv"]
@@ -271,7 +271,7 @@ offset_bottom = 392.94
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.023529412, 1)
 theme_override_constants/line_spacing = 1
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "• Place bugs at fruit entrances.
 
 • Fill in all tiles with bugs.
@@ -308,7 +308,7 @@ offset_bottom = 604.8125
 theme_override_colors/font_color = Color(0.16862746, 0.101960786, 0.023529412, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Bonus Tile
 • Put the correct bug on
  it for an extra challenge.
@@ -423,7 +423,7 @@ offset_right = 636.0
 offset_bottom = 227.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "3 tiles long"
 
 [node name="Label3" type="Label" parent="TextureRect/Page1/Caterpillar" unique_id=1838133145]
@@ -434,7 +434,7 @@ offset_right = 586.0
 offset_bottom = 365.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Moves 1 tile at a time."
 
 [node name="MothImg" type="TextureRect" parent="TextureRect/Page1/Caterpillar" unique_id=2108211585]
@@ -471,7 +471,7 @@ offset_right = 863.0
 offset_bottom = 523.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Moves 1 tile at a time."
 
 [node name="Label6" type="Label" parent="TextureRect/Page1/Centipede" unique_id=683702548]
@@ -483,7 +483,7 @@ offset_bottom = 316.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "4
 tiles"
 horizontal_alignment = 1
@@ -579,7 +579,7 @@ offset_right = 618.0
 offset_bottom = 364.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "1 tile"
 
 [node name="Label3" type="Label" parent="TextureRect/Page2/RolyPoly" unique_id=1756956902]
@@ -590,7 +590,7 @@ offset_right = 599.0
 offset_bottom = 266.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "Moves in 
 straight line 
 till obstructed"
@@ -605,7 +605,7 @@ offset_right = 489.0
 offset_bottom = 411.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "Curls up
 to roll"
 horizontal_alignment = 1
@@ -669,7 +669,7 @@ offset_right = 931.0
 offset_bottom = 390.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 20
 text = "3 tiles"
 
 [node name="SlugImg2" type="TextureRect" parent="TextureRect/Page2/Slug" unique_id=245297958]
@@ -691,7 +691,7 @@ offset_right = 234.0
 offset_bottom = 291.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "Observations:
 • See-through
 • Can overlap with other bugs
@@ -763,7 +763,7 @@ offset_right = 592.0
 offset_bottom = 367.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "Moves until obstructed
 "
 
@@ -776,7 +776,7 @@ offset_bottom = 325.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "3 tiles"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -856,7 +856,7 @@ offset_right = 897.0
 offset_bottom = 278.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 14
 text = "Appears to either:
 • Walk forward
 • Rotate with 
@@ -874,7 +874,7 @@ offset_bottom = 286.94
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "2 tiles"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -943,7 +943,7 @@ offset_right = 871.8096
 offset_bottom = 525.7381
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 16
 text = "• Similar to ant
 • Can break certain tiles by walking
 or rotating into them
@@ -959,7 +959,7 @@ offset_bottom = 365.0
 theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
 theme_override_constants/line_spacing = -5
 theme_override_fonts/font = ExtResource("6_42f11")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 18
 text = "2 
 tiles"
 horizontal_alignment = 1
