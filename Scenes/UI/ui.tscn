@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dbfufqmkuxl4f" path="res://Sprites/UI/pause_menu_base.png" id="7_cqvjp"]
 [ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="7_hfaco"]
 [ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="9_1eb8u"]
-[ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/Beta/ant_star.png" id="9_hfaco"]
-[ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/Beta/caterpillar_star.png" id="10_1eb8u"]
 [ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="10_4acsd"]
 [ext_resource type="Script" uid="uid://db2byshpx47c8" path="res://Scripts/UI/encyclopedia_ui.gd" id="10_jx4bj"]
 [ext_resource type="Texture2D" uid="uid://dy2d5g1kvx65x" path="res://Sprites/UI/Encyclopedia/Book.PNG" id="10_vhchw"]
@@ -434,6 +432,7 @@ mouse_filter = 2
 script = ExtResource("1_ny3ap")
 
 [node name="MoveTracker" type="Label" parent="Interface" unique_id=1557268048]
+visible = false
 layout_mode = 0
 offset_left = 480.0
 offset_top = 31.0
