@@ -10,8 +10,6 @@ func _ready() -> void:
 		_on_encyclopedia_btn_pressed()
 
 func _on_reset_btn_pressed() -> void:
-	var player = SfxPlayer.play_sfx(&'reset')
-	await player.finished
 	level_manager.reset_level()
 
 func _on_pause_menu_btn_pressed() -> void:

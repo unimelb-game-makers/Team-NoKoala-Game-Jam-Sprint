@@ -126,6 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		reset_level()
 
 func reset_level() -> void:
+	var player = SfxPlayer.play_sfx(&'reset')
 	get_tree().reload_current_scene()
 
 func _on_bonus_star_activated(cell: Vector2i) -> void:

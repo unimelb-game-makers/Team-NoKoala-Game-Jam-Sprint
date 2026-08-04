@@ -14,6 +14,4 @@ func _on_move(current: int, maximum: int) -> void:
 	text = "%d / %d move used" % [maximum-current, maximum]
 
 func _on_undo_btn_pressed() -> void:
-	var player = SfxPlayer.play_sfx(&'undo')
-	await player.finished
 	movement_controller.undo()
