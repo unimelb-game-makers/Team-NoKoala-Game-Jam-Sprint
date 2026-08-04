@@ -15,6 +15,10 @@
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
 [ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
 [ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="17_4acsd"]
+[ext_resource type="Texture2D" uid="uid://c6du0n31kdm0i" path="res://Sprites/Menu/Settings Menu Blank.png" id="24_l5iwa"]
+[ext_resource type="PackedScene" uid="uid://2jp5rbxdn731" path="res://Scenes/UI/star.tscn" id="25_3h0f6"]
+[ext_resource type="FontFile" uid="uid://c3dw27802tyws" path="res://Fonts/MAIAN.TTF" id="27_i1f3g"]
+[ext_resource type="StyleBox" uid="uid://05pb1q08gn6h" path="res://button.tres" id="27_unbrw"]
 [ext_resource type="Texture2D" uid="uid://k4cb0ad8xarm" path="res://Sprites/Tiles/leaf_centipede.png" id="31_pd8cf"]
 [ext_resource type="Texture2D" uid="uid://c1b3bdb2po7a" path="res://Sprites/Tiles/leaf_ant.png" id="32_4acsd"]
 [ext_resource type="Texture2D" uid="uid://c6t26o2tf2ea7" path="res://Sprites/Tiles/leaf_rolypoly.png" id="33_6xe4j"]
@@ -27,8 +31,8 @@
 
 [sub_resource type="Theme" id="Theme_b31ov"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjwcc"]
-bg_color = Color(0.3057823, 0.6538776, 0.74725175, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jx4bj"]
+texture = ExtResource("24_l5iwa")
 
 [sub_resource type="Theme" id="Theme_a3ub3"]
 
@@ -196,7 +200,7 @@ grow_vertical = 2
 scale = Vector2(0.5599951, 0.5980705)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = SubResource("Theme_b31ov")
-theme_override_styles/panel = SubResource("StyleBoxFlat_qjwcc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_jx4bj")
 
 [node name="StarContainer" type="HBoxContainer" parent="LevelCompleteUI" unique_id=1335288216]
 layout_mode = 0
@@ -207,6 +211,9 @@ offset_bottom = 361.0
 theme = SubResource("Theme_a3ub3")
 theme_override_constants/separation = 40
 alignment = 1
+
+[node name="Star1" parent="LevelCompleteUI/StarContainer" unique_id=1838543989 instance=ExtResource("25_3h0f6")]
+layout_mode = 2
 
 [node name="WinDetect" type="Node" parent="LevelCompleteUI" unique_id=1765581322]
 script = ExtResource("13_rdq6y")
@@ -223,6 +230,11 @@ offset_bottom = 446.45
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = SubResource("Theme_beu6a")
+theme_override_colors/font_color = Color(0.1882353, 0.14901961, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("27_i1f3g")
+theme_override_styles/normal = ExtResource("27_unbrw")
+theme_override_styles/pressed = ExtResource("27_unbrw")
+theme_override_styles/hover = ExtResource("27_unbrw")
 text = "Back To Main "
 
 [node name="Title" type="Label" parent="LevelCompleteUI" unique_id=1502047214]
@@ -230,14 +242,18 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -184.0
-offset_top = 196.0
-offset_right = 186.0
-offset_bottom = 265.0
+offset_left = -203.0
+offset_top = 193.0
+offset_right = 205.0
+offset_bottom = 295.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme = SubResource("Theme_8wma8")
+theme_override_colors/font_color = Color(0.86898494, 0.8689849, 0.8689849, 1)
+theme_override_fonts/font = ExtResource("27_i1f3g")
+theme_override_font_sizes/font_size = 60
 text = "Level Complete"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="Interface/HBoxContainer/PauseMenuBtn" to="Interface" method="_on_pause_menu_btn_pressed"]
 [connection signal="pressed" from="Interface/HBoxContainer/UndoBtn" to="Interface/MoveTracker" method="_on_undo_btn_pressed"]
