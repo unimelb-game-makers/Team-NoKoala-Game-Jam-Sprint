@@ -223,6 +223,7 @@ func add_bug(bug: Bug) -> void:
 			tile_data.add_bug(bug)
 			if tile_data.is_bonus_active() and not was_active:
 				_bonus_stars[segment_cell][1] = true 
+				SfxPlayer.play_sfx(&"star")
 				bonus_star_activated.emit(segment_cell)
 				
 func remove_bug(bug: Bug) -> void:

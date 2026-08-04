@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://d27m4ev4lhllj" path="res://Sprites/Bugs/roly poly/Roly poly 2.png" id="4_tqkmi"]
 [ext_resource type="Texture2D" uid="uid://cbxnpx7jxjs12" path="res://Sprites/Bugs/roly poly/Roly Poly 1.png" id="4_tsniv"]
 
-[sub_resource type="Animation" id="Animation_4f6l5"]
+[sub_resource type="Animation" id="Animation_tsniv"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,10 +21,9 @@ tracks/0/keys = {
 "values": [ExtResource("4_tsniv")]
 }
 
-[sub_resource type="Animation" id="Animation_5n4yi"]
+[sub_resource type="Animation" id="Animation_tqkmi"]
 resource_name = "wriggle"
 loop_mode = 1
-step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,10 +37,10 @@ tracks/0/keys = {
 "values": [ExtResource("4_tsniv"), ExtResource("4_tqkmi")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytulw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4f6l5"]
 _data = {
-&"RESET": SubResource("Animation_4f6l5"),
-&"wriggle": SubResource("Animation_5n4yi")
+&"RESET": SubResource("Animation_tsniv"),
+&"wriggle": SubResource("Animation_tqkmi")
 }
 
 [node name="Rolypoly" type="Node2D" unique_id=969696181]
@@ -48,9 +48,9 @@ script = ExtResource("1_iarrc")
 rolled_sprite = ExtResource("2_ekqyc")
 static_sprite = ExtResource("4_tsniv")
 
-[node name="Body" type="Sprite2D" parent="." unique_id=550233098]
+[node name="Body" type="Sprite2D" parent="." unique_id=1681981515]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_tsniv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=37107551]
-libraries/ = SubResource("AnimationLibrary_ytulw")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=637937124]
+libraries/ = SubResource("AnimationLibrary_4f6l5")

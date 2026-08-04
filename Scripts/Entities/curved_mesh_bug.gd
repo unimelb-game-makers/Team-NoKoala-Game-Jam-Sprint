@@ -13,7 +13,7 @@ const CURVE_POINT_COUNT := 32
 
 #ideally between 1 and 64
 @export_range(1, 64, 1) var default_subdivisions := 32
-
+var movement_sfx : AudioStreamPlayer = null
 
 func _initialize_mesh_rendering() -> void:
 	var tile_size := level_manager.tile_map_layer.tile_set.tile_size
@@ -122,6 +122,7 @@ func _set_mesh_free_position(pos: Vector2) -> void:
 
 #used to set mesh snap to grid after movement completed 
 func _sync_mesh_to_cells() -> void:
+	if movement_sfx != null: movement_sfx.stop()
 	_render_mesh(_cells_to_local_centers(segment_cells))
 
 

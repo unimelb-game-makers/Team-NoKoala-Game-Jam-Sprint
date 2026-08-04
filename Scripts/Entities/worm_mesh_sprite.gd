@@ -84,6 +84,8 @@ func move(direction: Vector2i) -> bool:
 	is_moving = true
 	level_data.remove_bug(self)
 	_do_slide(current_cell, destination, direction, level_data)
+	SfxPlayer.play_sfx(&"slug")
+
 	return true
 
 
@@ -107,3 +109,4 @@ func _slide_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> v
 	for step in step_count:
 		var tween := _start_follow_step(direction)
 		await tween.finished
+	SfxPlayer.stop(&"slug")

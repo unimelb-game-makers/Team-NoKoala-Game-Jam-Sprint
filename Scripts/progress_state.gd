@@ -2,7 +2,7 @@ extends Node
 
 signal progress_changed
 
-var unlocked_fruits: Dictionary[String, bool] = {"apple": true}
+var unlocked_fruits: Dictionary[String, bool] = {"orange": true}
 var completed_fruits: Dictionary[String, bool] = {}
 
 

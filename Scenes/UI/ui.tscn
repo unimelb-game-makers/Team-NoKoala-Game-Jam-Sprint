@@ -5,24 +5,25 @@
 [ext_resource type="Texture2D" uid="uid://du30j2de12ns3" path="res://Sprites/UI/settings_menu_btn_temp.png" id="2_fevae"]
 [ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="2_h6tq4"]
 [ext_resource type="Texture2D" uid="uid://cp7vcy36pc425" path="res://Sprites/UI/undo_btn_temp.png" id="3_ny3ap"]
-[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/Beta/centipede_star_activated.png" id="3_t7te2"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="4_56q1t"]
 [ext_resource type="Texture2D" uid="uid://cie7078m3k6p1" path="res://Sprites/UI/reset_btn_temp.png" id="4_vqjbf"]
 [ext_resource type="Texture2D" uid="uid://8awnuvqjmfso" path="res://Sprites/UI/encyclopedia_btn_temp.png" id="5_cqvjp"]
-[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/Beta/caterpillar_star_activated.png" id="5_fevae"]
-[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/Beta/rolypoly_star_activated.png" id="6_ny3ap"]
 [ext_resource type="Texture2D" uid="uid://dbfufqmkuxl4f" path="res://Sprites/UI/pause_menu_base.png" id="7_cqvjp"]
 [ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="7_hfaco"]
-[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/Beta/worm_star_activated.png" id="7_vqjbf"]
-[ext_resource type="Texture2D" uid="uid://byee6ao1tboi2" path="res://Sprites/Tiles/Beta/centipede_star.png" id="8_cqvjp"]
 [ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="9_1eb8u"]
-[ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/Beta/ant_star.png" id="9_hfaco"]
-[ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/Beta/caterpillar_star.png" id="10_1eb8u"]
+[ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="10_4acsd"]
 [ext_resource type="PackedScene" uid="uid://cspmcrcbcmkk7" path="res://Scenes/UI/encyclopedia_ui.tscn" id="11_jx4bj"]
-[ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/Beta/rolypoly_star.png" id="11_vhchw"]
-[ext_resource type="Texture2D" uid="uid://x5hbj82ejc06" path="res://Sprites/Tiles/Beta/worm_star.png" id="12_jx4bj"]
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
 [ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
+[ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="17_4acsd"]
+[ext_resource type="Texture2D" uid="uid://k4cb0ad8xarm" path="res://Sprites/Tiles/leaf_centipede.png" id="31_pd8cf"]
+[ext_resource type="Texture2D" uid="uid://c1b3bdb2po7a" path="res://Sprites/Tiles/leaf_ant.png" id="32_4acsd"]
+[ext_resource type="Texture2D" uid="uid://c6t26o2tf2ea7" path="res://Sprites/Tiles/leaf_rolypoly.png" id="33_6xe4j"]
+[ext_resource type="Texture2D" uid="uid://bon10gyjt2wni" path="res://Sprites/Tiles/leaf_worm.png" id="34_x47be"]
+[ext_resource type="Texture2D" uid="uid://c1gw8b7wgh1cs" path="res://Sprites/Tiles/leaf_centipede_dull.png" id="35_gpq8t"]
+[ext_resource type="Texture2D" uid="uid://bn6bs6demfdqr" path="res://Sprites/Tiles/leaf_ant_dull.png" id="36_khanp"]
+[ext_resource type="Texture2D" uid="uid://tswwjbpbywoc" path="res://Sprites/Tiles/leaf_caterpillar_dull.png" id="37_lguq0"]
+[ext_resource type="Texture2D" uid="uid://84udtw5gbba2" path="res://Sprites/Tiles/leaf_rolypoly_dull.png" id="38_4wywi"]
+[ext_resource type="Texture2D" uid="uid://xhmivxhqynqf" path="res://Sprites/Tiles/leaf_worm_dull.png" id="39_co58q"]
 
 [sub_resource type="Theme" id="Theme_b31ov"]
 
@@ -51,6 +52,7 @@ mouse_filter = 2
 script = ExtResource("1_ny3ap")
 
 [node name="MoveTracker" type="Label" parent="Interface" unique_id=1557268048]
+visible = false
 layout_mode = 0
 offset_left = 480.0
 offset_top = 31.0
@@ -115,6 +117,11 @@ offset_right = 80.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.99462366)
+theme_override_constants/separation = 50
+
+[node name="VolumePanel" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=1195503976 instance=ExtResource("10_4acsd")]
+layout_mode = 2
 
 [node name="LevelSelectBtn" type="Button" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=183376967]
 layout_mode = 2
@@ -165,18 +172,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_h6tq4")
 starCollectedIcon = Dictionary[int, Texture2D]({
-0: ExtResource("3_t7te2"),
-2: ExtResource("4_56q1t"),
-4: ExtResource("5_fevae"),
-5: ExtResource("6_ny3ap"),
-6: ExtResource("7_vqjbf")
+0: ExtResource("31_pd8cf"),
+2: ExtResource("32_4acsd"),
+4: ExtResource("17_4acsd"),
+5: ExtResource("33_6xe4j"),
+6: ExtResource("34_x47be")
 })
 starUnCollectedIcon = Dictionary[int, Texture2D]({
-0: ExtResource("8_cqvjp"),
-2: ExtResource("9_hfaco"),
-4: ExtResource("10_1eb8u"),
-5: ExtResource("11_vhchw"),
-6: ExtResource("12_jx4bj")
+0: ExtResource("35_gpq8t"),
+2: ExtResource("36_khanp"),
+4: ExtResource("37_lguq0"),
+5: ExtResource("38_4wywi"),
+6: ExtResource("39_co58q")
 })
 
 [node name="Panel" type="Panel" parent="LevelCompleteUI" unique_id=1168239731]

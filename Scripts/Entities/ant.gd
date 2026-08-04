@@ -31,6 +31,9 @@ func move(direction: Vector2i) -> bool:
 		move_segment(1, segment_cells[0], Vector2(segment_cells[0]) - Vector2(segment_cells[1]))
 		move_segment(0, segment_cells[0] + direction, direction)
 		level_data.add_bug(self)
+		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
+		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
+
 		return true
 	
 	# Otherwise rotate around head as pivot
@@ -76,6 +79,9 @@ func move(direction: Vector2i) -> bool:
 		facing_direction = direction
 		segment_sprites[0].rotation = atan2(direction.y, direction.x)
 		segment_sprites[1].rotation = atan2(direction.y, direction.x)
+		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
+		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
+
 		return true
 ''' 
 Move the caterpillar:
