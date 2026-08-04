@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
 [ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit.png" id="7_o1e67"]
 [ext_resource type="PackedScene" uid="uid://chmxx2aoqqnfo" path="res://Scenes/level_select.tscn" id="8_level_select"]
+[ext_resource type="AudioStream" uid="uid://dgwlqmuxmjioc" path="res://Audio/Main menu theme.wav" id="10_8mikk"]
 
 [node name="TitleScreen" type="Node2D" unique_id=278402191]
 script = ExtResource("1_0061g")
@@ -97,6 +98,10 @@ offset_right = 877.0
 offset_bottom = 378.0
 texture = ExtResource("4_8mikk")
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=381861283]
+stream = ExtResource("10_8mikk")
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/StartButton" to="." method="_on_start_button_pressed"]
