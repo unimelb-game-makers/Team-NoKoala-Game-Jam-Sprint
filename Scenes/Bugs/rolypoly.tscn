@@ -1,13 +1,56 @@
 [gd_scene format=3 uid="uid://7jk6whh3pyl4"]
 
 [ext_resource type="Script" uid="uid://spfyi838lcta" path="res://Scripts/Entities/rolypoly.gd" id="1_iarrc"]
-[ext_resource type="Texture2D" uid="uid://cm3qekoyq4bmf" path="res://Sprites/roly-poly-rolled.png" id="2_ekqyc"]
-[ext_resource type="Texture2D" uid="uid://oma2mm6b5c1r" path="res://Sprites/roly-poly.png" id="2_iarrc"]
+[ext_resource type="Texture2D" uid="uid://cm3qekoyq4bmf" path="res://Sprites/Bugs/Beta/roly-poly-rolled.png" id="2_ekqyc"]
+[ext_resource type="Texture2D" uid="uid://d27m4ev4lhllj" path="res://Sprites/Bugs/roly poly/Roly poly 2.png" id="4_tqkmi"]
+[ext_resource type="Texture2D" uid="uid://cbxnpx7jxjs12" path="res://Sprites/Bugs/roly poly/Roly Poly 1.png" id="4_tsniv"]
+
+[sub_resource type="Animation" id="Animation_4f6l5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_tsniv")]
+}
+
+[sub_resource type="Animation" id="Animation_5n4yi"]
+resource_name = "wriggle"
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_tsniv"), ExtResource("4_tqkmi")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ytulw"]
+_data = {
+&"RESET": SubResource("Animation_4f6l5"),
+&"wriggle": SubResource("Animation_5n4yi")
+}
 
 [node name="Rolypoly" type="Node2D" unique_id=969696181]
 script = ExtResource("1_iarrc")
 rolled_sprite = ExtResource("2_ekqyc")
-static_sprite = ExtResource("2_iarrc")
+static_sprite = ExtResource("4_tsniv")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=550233098]
-texture = ExtResource("2_iarrc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_tsniv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=37107551]
+libraries/ = SubResource("AnimationLibrary_ytulw")

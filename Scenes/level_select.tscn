@@ -1,24 +1,24 @@
 [gd_scene format=3 uid="uid://chmxx2aoqqnfo"]
 
 [ext_resource type="Script" uid="uid://ewrgot0dxbkg" path="res://Scripts/fruit_bowl.gd" id="1_qnihq"]
-[ext_resource type="Texture2D" uid="uid://dj4wi4d5fijij" path="res://Sprites/FruitBowl/bowl.png" id="1_s6o25"]
-[ext_resource type="Texture2D" uid="uid://ou7l34nb2huc" path="res://Sprites/FruitBowl/melon.png" id="2_kb5mc"]
-[ext_resource type="Texture2D" uid="uid://crl3w0ju5gr8u" path="res://Sprites/FruitBowl/orange.png" id="3_qnihq"]
-[ext_resource type="Texture2D" uid="uid://xga0yve5ouqg" path="res://Sprites/FruitBowl/moldy_melon.png" id="4_07bvh"]
-[ext_resource type="Texture2D" uid="uid://chsi2froariao" path="res://Sprites/FruitBowl/grapes.png" id="4_tgoug"]
+[ext_resource type="Texture2D" uid="uid://b206tnkhdtxer" path="res://Sprites/FruitBowl/fruit bowl variants/bowl (alone).png" id="2_h2rck"]
+[ext_resource type="Texture2D" uid="uid://b0nxpxsdkk6rj" path="res://Sprites/FruitBowl/fruit bowl variants/Cantaloupe (fucked).png" id="4_y1k4n"]
 [ext_resource type="Shader" uid="uid://dyqialhhxtnni" path="res://Shaders/grayscale.gdshader" id="5_tgoug"]
-[ext_resource type="Texture2D" uid="uid://bmiw1yjisj1jf" path="res://Sprites/FruitBowl/banana.png" id="5_x038j"]
 [ext_resource type="PackedScene" uid="uid://b0g52jtajnryy" path="res://Scenes/Levels/melon_level.tscn" id="6_h2rck"]
 [ext_resource type="Script" uid="uid://darx1xp4kg2ep" path="res://Scripts/level_fruit.gd" id="6_kb5mc"]
-[ext_resource type="Texture2D" uid="uid://d1wk46bs4tk0s" path="res://Sprites/FruitBowl/apple.png" id="6_mlwxk"]
-[ext_resource type="Texture2D" uid="uid://wi57m1puakvw" path="res://Sprites/FruitBowl/moldy_orange.png" id="7_ciagn"]
+[ext_resource type="Texture2D" uid="uid://dkug73rsw58x" path="res://Sprites/FruitBowl/fruit bowl variants/cantaloupe (normal).png" id="7_y5eva"]
+[ext_resource type="Texture2D" uid="uid://kctuiv3h1u5u" path="res://Sprites/FruitBowl/fruit bowl variants/orange (fucked).png" id="8_l15rd"]
 [ext_resource type="PackedScene" uid="uid://c1m50u4n32yfx" path="res://Scenes/Levels/orange_level.tscn" id="9_y1k4n"]
-[ext_resource type="Texture2D" uid="uid://cm23m8exu8k5m" path="res://Sprites/FruitBowl/moldy_grapes.png" id="9_yx562"]
-[ext_resource type="Texture2D" uid="uid://b1280tuw8xuv4" path="res://Sprites/FruitBowl/moldy_banana.png" id="11_wn3si"]
+[ext_resource type="Texture2D" uid="uid://c2uf36f13ii0x" path="res://Sprites/FruitBowl/fruit bowl variants/orange (normal).png" id="10_gfib2"]
+[ext_resource type="Texture2D" uid="uid://di3avcog5umj2" path="res://Sprites/FruitBowl/fruit bowl variants/grapes (fucked).png" id="11_gqox3"]
 [ext_resource type="PackedScene" uid="uid://bhtfpxcqrwo3x" path="res://Scenes/Levels/grape_level.tscn" id="12_y5eva"]
-[ext_resource type="Texture2D" uid="uid://cpokdhxjxjwvh" path="res://Sprites/FruitBowl/moldy_apple.png" id="13_r2u0r"]
+[ext_resource type="Texture2D" uid="uid://bi88pgikbsl0c" path="res://Sprites/FruitBowl/fruit bowl variants/grapes (normal).png" id="13_ps72n"]
+[ext_resource type="Texture2D" uid="uid://bi86miostjrgv" path="res://Sprites/FruitBowl/fruit bowl variants/banana (fucked).png" id="14_1j2gv"]
 [ext_resource type="PackedScene" uid="uid://kn80x1rpgnlv" path="res://Scenes/Levels/banana_level.tscn" id="15_l15rd"]
+[ext_resource type="Texture2D" uid="uid://xfmmaan5jyf8" path="res://Sprites/FruitBowl/fruit bowl variants/bananas (normal).png" id="16_a6n8w"]
+[ext_resource type="Texture2D" uid="uid://ckmbh30qbiyoj" path="res://Sprites/FruitBowl/fruit bowl variants/apple (fucked).png" id="17_kymir"]
 [ext_resource type="PackedScene" uid="uid://d24wtgqkurbno" path="res://Scenes/Levels/apple_level.tscn" id="18_gfib2"]
+[ext_resource type="Texture2D" uid="uid://cilr7cun2c2vq" path="res://Sprites/FruitBowl/fruit bowl variants/apple (normal).png" id="19_lfb2g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgoug"]
 shader = ExtResource("5_tgoug")
@@ -62,97 +62,117 @@ radius = 101.00495
 zoom = Vector2(0.58, 0.58)
 
 [node name="FruitBowl" type="Node2D" parent="." unique_id=476594395]
-scale = Vector2(1.5, 1.5)
+position = Vector2(543, -714)
 script = ExtResource("1_qnihq")
 
 [node name="Bowl" type="Sprite2D" parent="FruitBowl" unique_id=216416692]
-texture = ExtResource("1_s6o25")
+texture = ExtResource("2_h2rck")
 
 [node name="Melon" type="Area2D" parent="FruitBowl" unique_id=1109297241 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_kb5mc")
-bugged_texture = ExtResource("4_07bvh")
+bugged_texture = ExtResource("4_y1k4n")
 grayscale_shader = SubResource("ShaderMaterial_tgoug")
 fruit_level_scene = ExtResource("6_h2rck")
 camera = NodePath("../../Camera2D")
-fade_colour = Color(0.43137255, 0.9372549, 0.5647059, 1)
+fade_colour = Color(0.3137255, 0.30980393, 0.25490198, 1)
 fruit_id = "melon"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Melon" unique_id=257785814]
-position = Vector2(110, -76)
-scale = Vector2(17.085, 17.085)
-shape = SubResource("CircleShape2D_8ts2w")
+[node name="Pivot" type="Node2D" parent="FruitBowl/Melon" unique_id=56389985]
+position = Vector2(-483, 574)
 
-[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Melon" unique_id=383196216]
-texture = ExtResource("2_kb5mc")
+[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Melon/Pivot" unique_id=383196216]
+texture = ExtResource("7_y5eva")
+offset = Vector2(483, -574)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Melon" unique_id=257785814]
+position = Vector2(-479, 590)
+scale = Vector2(23.47, 23.155)
+shape = SubResource("CircleShape2D_8ts2w")
 
 [node name="Orange" type="Area2D" parent="FruitBowl" unique_id=65314712 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_kb5mc")
-bugged_texture = ExtResource("7_ciagn")
+bugged_texture = ExtResource("8_l15rd")
 grayscale_shader = SubResource("ShaderMaterial_x038j")
 fruit_level_scene = ExtResource("9_y1k4n")
 camera = NodePath("../../Camera2D")
-fade_colour = Color(0.96862745, 0.40392157, 0.015686275, 1)
+fade_colour = Color(0.45882353, 0.33333334, 0.22745098, 1)
 fruit_id = "orange"
 
-[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Orange" unique_id=1855494357]
-texture = ExtResource("3_qnihq")
+[node name="Pivot" type="Node2D" parent="FruitBowl/Orange" unique_id=938589208]
+position = Vector2(-517, 733)
+
+[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Orange/Pivot" unique_id=1855494357]
+position = Vector2(517, -733)
+texture = ExtResource("10_gfib2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Orange" unique_id=1575107317]
-position = Vector2(197, 67)
-scale = Vector2(9.545, 9.545)
+position = Vector2(-523.00006, 735)
+scale = Vector2(14.755, 15.59)
 shape = SubResource("CircleShape2D_owhf0")
 
 [node name="Grapes" type="Area2D" parent="FruitBowl" unique_id=1540730669 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_kb5mc")
-bugged_texture = ExtResource("9_yx562")
+bugged_texture = ExtResource("11_gqox3")
 grayscale_shader = SubResource("ShaderMaterial_mlwxk")
 fruit_level_scene = ExtResource("12_y5eva")
 camera = NodePath("../../Camera2D")
-fade_colour = Color(0.6431373, 0.043137256, 0.8745098, 1)
+fade_colour = Color(0.2901961, 0.17254902, 0.15686275, 1)
 fruit_id = "grape"
 
-[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Grapes" unique_id=749920850]
-texture = ExtResource("4_tgoug")
+[node name="Pivot" type="Node2D" parent="FruitBowl/Grapes" unique_id=1746142993]
+position = Vector2(-767, 682)
+
+[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Grapes/Pivot" unique_id=749920850]
+position = Vector2(767, -682)
+texture = ExtResource("13_ps72n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Grapes" unique_id=1183297534]
-position = Vector2(-88.00001, -43.000004)
+position = Vector2(-767.99994, 676.99994)
 rotation = -0.116937056
-scale = Vector2(8.395, 8.395)
+scale = Vector2(8.395, 11.99)
 shape = SubResource("CapsuleShape2D_8ts2w")
 
 [node name="Banana" type="Area2D" parent="FruitBowl" unique_id=1689828589 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_kb5mc")
-bugged_texture = ExtResource("11_wn3si")
+bugged_texture = ExtResource("14_1j2gv")
 grayscale_shader = SubResource("ShaderMaterial_npf18")
 fruit_level_scene = ExtResource("15_l15rd")
 camera = NodePath("../../Camera2D")
-fade_colour = Color(0.9843137, 0.74509805, 0.21176471, 1)
+fade_colour = Color(0.4745098, 0.34901962, 0.24313726, 1)
 fruit_id = "banana"
 
-[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Banana" unique_id=318004561]
-texture = ExtResource("5_x038j")
+[node name="Pivot" type="Node2D" parent="FruitBowl/Banana" unique_id=312830680]
+position = Vector2(-193, 722)
+
+[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Banana/Pivot" unique_id=318004561]
+position = Vector2(193, -722)
+texture = ExtResource("16_a6n8w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Banana" unique_id=1106818217]
-position = Vector2(58, 67)
+position = Vector2(-185.00003, 726)
 rotation = 0.9302605
-scale = Vector2(6.135, 9.935)
+scale = Vector2(9.915, 13.465)
 shape = SubResource("CapsuleShape2D_owhf0")
 
 [node name="Apple" type="Area2D" parent="FruitBowl" unique_id=830928385 node_paths=PackedStringArray("camera")]
 script = ExtResource("6_kb5mc")
-bugged_texture = ExtResource("13_r2u0r")
+bugged_texture = ExtResource("17_kymir")
 grayscale_shader = SubResource("ShaderMaterial_bpfon")
 fruit_level_scene = ExtResource("18_gfib2")
 camera = NodePath("../../Camera2D")
-fade_colour = Color(0.8901961, 0, 0, 1)
+fade_colour = Color(0.39607844, 0.26666668, 0.21176471, 1)
 fruit_id = "apple"
 
-[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Apple" unique_id=468155039]
-texture = ExtResource("6_mlwxk")
+[node name="Pivot" type="Node2D" parent="FruitBowl/Apple" unique_id=1298510553]
+position = Vector2(-930, 701)
+
+[node name="Sprite2D" type="Sprite2D" parent="FruitBowl/Apple/Pivot" unique_id=468155039]
+position = Vector2(930, -701)
+texture = ExtResource("19_lfb2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FruitBowl/Apple" unique_id=785375223]
-position = Vector2(-165.00002, 68)
-scale = Vector2(1.315, 0.885)
+position = Vector2(-929.99994, 698)
+scale = Vector2(1.315, 1.275)
 shape = SubResource("CircleShape2D_130qg")
 
 [connection signal="input_event" from="FruitBowl/Melon" to="FruitBowl/Melon" method="_on_input_event"]

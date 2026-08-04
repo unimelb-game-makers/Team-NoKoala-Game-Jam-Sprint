@@ -4,9 +4,9 @@ class_name Worm
 @export var curve_alt: Texture2D
 @export var curve: Texture2D
 
-const BODY_REGULAR_SPRITE = preload("res://Sprites/worm-straight.png")
-const BODY_CORNER_SPRITE = preload("res://Sprites/worm-curved.png")
-const TAIL_SPRITE = preload("res://Sprites/worm-tail.png")
+const BODY_REGULAR_SPRITE = preload("res://Sprites/Bugs/Beta/worm-straight.png")
+const BODY_CORNER_SPRITE = preload("res://Sprites/Bugs/Beta/worm-curved.png")
+const TAIL_SPRITE = preload("res://Sprites/Bugs/Beta/worm-tail.png")
 var alternate: bool = false
 var is_moving: bool = false
 var curve_hold_active: bool = false

@@ -1,18 +1,115 @@
 [gd_scene format=3 uid="uid://cqnr3l7wneh4o"]
 
 [ext_resource type="Script" uid="uid://b3w3c17hmpyyd" path="res://Scripts/Entities/caterpillar_mesh_sprite.gd" id="1_pwyd5"]
-[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="2_pwyd5"]
-[ext_resource type="Texture2D" uid="uid://7bfdy7a6orvj" path="res://Sprites/caterbodyt.png" id="3_bk6hg"]
+[ext_resource type="Texture2D" uid="uid://d0fi824w6bl2w" path="res://Sprites/Bugs/centipede/head 1-export.png" id="2_bk6hg"]
+[ext_resource type="Texture2D" uid="uid://15imllcotiwx" path="res://Sprites/Bugs/centipede/second body 2-export.png" id="3_bk6hg"]
+[ext_resource type="Texture2D" uid="uid://biej1mdpkuqyi" path="res://Sprites/Bugs/centipede/head 2-export.png" id="3_trp7j"]
+[ext_resource type="Texture2D" uid="uid://c72w2tg8k5vof" path="res://Sprites/Bugs/centipede/tail 1-export.png" id="4_trp7j"]
+[ext_resource type="Texture2D" uid="uid://da5vs2jqyrshr" path="res://Sprites/Bugs/centipede/head 3-export-export.png" id="4_wk6e5"]
+[ext_resource type="Texture2D" uid="uid://cp23l7tii4e8o" path="res://Sprites/Bugs/centipede/second body 1-export.png" id="7_7mtyb"]
+[ext_resource type="Texture2D" uid="uid://dius8u11jd4u4" path="res://Sprites/Bugs/centipede/second body 3-export.png" id="8_4h4g7"]
+[ext_resource type="Texture2D" uid="uid://pf0gcfn1ijp2" path="res://Sprites/Bugs/centipede/tail 2-export.png" id="9_qumsq"]
+[ext_resource type="Texture2D" uid="uid://imb7ga5hanxv" path="res://Sprites/Bugs/centipede/tail 3-export.png" id="10_rx4sx"]
+
+[sub_resource type="Animation" id="Animation_7mtyb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bk6hg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_bk6hg")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Tail:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_trp7j")]
+}
+
+[sub_resource type="Animation" id="Animation_4h4g7"]
+resource_name = "wriggle"
+loop_mode = 1
+step = 0.33333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_bk6hg"), ExtResource("3_trp7j"), ExtResource("4_wk6e5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_7mtyb"), ExtResource("3_bk6hg"), ExtResource("8_4h4g7")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Tail:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_trp7j"), ExtResource("9_qumsq"), ExtResource("10_rx4sx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qumsq"]
+_data = {
+&"RESET": SubResource("Animation_7mtyb"),
+&"wriggle": SubResource("Animation_4h4g7")
+}
 
 [node name="Caterpillar" type="Node2D" unique_id=95702695]
 script = ExtResource("1_pwyd5")
 
 [node name="Head" type="MeshInstance2D" parent="." unique_id=2091015478]
 z_index = 1
-texture = ExtResource("2_pwyd5")
+texture = ExtResource("2_bk6hg")
 
 [node name="Body" type="MeshInstance2D" parent="." unique_id=524831759]
 texture = ExtResource("3_bk6hg")
 
 [node name="Tail" type="MeshInstance2D" parent="." unique_id=1467074159]
-texture = ExtResource("3_bk6hg")
+texture = ExtResource("4_trp7j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=805192076]
+root_node = NodePath("../Head")
+libraries/ = SubResource("AnimationLibrary_qumsq")

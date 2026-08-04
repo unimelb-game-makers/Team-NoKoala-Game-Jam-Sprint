@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://q2q7ix7j852v" path="res://Scripts/level_manager.gd" id="1_gmyv1"]
 [ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_ci7i2"]
 [ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_ebjdb"]
+[ext_resource type="Texture2D" uid="uid://cp524jmhthwpb" path="res://Sprites/Levels/apple puzzle/IMG_5258.PNG" id="3_gmyv1"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_lss8d"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_rs3w2"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
+[ext_resource type="Texture2D" uid="uid://snimdilue7ek" path="res://Sprites/Levels/apple puzzle/apple frame fixed.png" id="8_ci7i2"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_ci7i2")
@@ -25,9 +27,15 @@ metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 script = ExtResource("1_gmyv1")
 level_config = SubResource("Resource_rxcld")
 
+[node name="Square" type="Node2D" parent="." unique_id=974071415]
+
+[node name="Sprite2D" type="Sprite2D" parent="Square" unique_id=1748249414]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_gmyv1")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1832723553]
-position = Vector2(-300, 0)
-tile_map_data = PackedByteArray("AAABAP//AAAAAAAAAAACAP//CQAAAAAAAAADAP//AAAAAAAAAAAAAP//BQAAAAAAAAAEAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEACAAAAAAAAAADAAEAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAABAAAAAAAAAADAAAABAAAAAAAAAAGAAEAAQABAAEAAAA=")
+position = Vector2(-300, -42)
+tile_map_data = PackedByteArray("AAABAP//CwAAAAAAAAACAP//CQAAAAAAAAADAP//CwAAAAAAAAAAAP//BQAAAAAAAAAEAP//CwAAAAAAAAAAAAAACwAAAAAAAAAAAAEACwAAAAAAAAAAAAIACwAAAAAAAAABAAIACwAAAAAAAAACAAIACwAAAAAAAAADAAIACwAAAAAAAAAEAAIACwAAAAAAAAAEAAEACwAAAAAAAAAEAAAACwAAAAAAAAAFAAAACwAAAAAAAAAFAAEACwAAAAAAAAD//wAACwAAAAAAAAD//wEACwAAAAAAAAABAAEACwAAAAAAAAACAAEACAAAAAAAAAADAAEACwAAAAAAAAACAAAACwAAAAAAAAABAAAADAAAAAAAAAADAAAADQAAAAAAAAAGAAEAAQABAAEAAAA=")
 tile_set = ExtResource("3_ebjdb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
@@ -41,3 +49,9 @@ position = Vector2(850, -425)
 script = ExtResource("5_rs3w2")
 
 [node name="UI" parent="." unique_id=889772375 instance=ExtResource("6_ui")]
+
+[node name="Frame" type="Node2D" parent="." unique_id=1467541882]
+position = Vector2(18, 150)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=633404980]
+texture = ExtResource("8_ci7i2")

@@ -1,20 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://cn82yex80t8v4"]
 
-[ext_resource type="Script" path="res://Scripts/Entities/worm_mesh_sprite.gd" id="1_worm"]
-[ext_resource type="Texture2D" uid="uid://xrhi0wq6b76b" path="res://Sprites/worm-head.png" id="2_head"]
-[ext_resource type="Texture2D" path="res://Sprites/worm-straight.png" id="3_body"]
-[ext_resource type="Texture2D" path="res://Sprites/worm-tail.png" id="4_tail"]
+[ext_resource type="Script" uid="uid://brymklmw7c1t0" path="res://Scripts/Entities/worm_mesh_sprite.gd" id="1_worm"]
+[ext_resource type="Texture2D" uid="uid://d0t62lfoieahf" path="res://Sprites/Bugs/Worm/Head.PNG" id="2_owsiq"]
+[ext_resource type="Texture2D" uid="uid://dc8ekcpbjvmdq" path="res://Sprites/Bugs/Worm/Mid straight.PNG" id="3_khm12"]
+[ext_resource type="Texture2D" uid="uid://bhn8avvusxfwb" path="res://Sprites/Bugs/Worm/Tail.PNG" id="4_wp7ae"]
 
-[node name="Worm" type="Node2D"]
+[node name="Worm" type="Node2D" unique_id=1715683556]
 z_index = 2
 script = ExtResource("1_worm")
 
-[node name="Head" type="MeshInstance2D" parent="."]
+[node name="Head" type="MeshInstance2D" parent="." unique_id=2047719585]
 z_index = 1
-texture = ExtResource("2_head")
+texture = ExtResource("2_owsiq")
 
-[node name="Body" type="MeshInstance2D" parent="."]
-texture = ExtResource("3_body")
+[node name="Body" type="MeshInstance2D" parent="." unique_id=632536018]
+texture = ExtResource("3_khm12")
 
-[node name="Tail" type="MeshInstance2D" parent="."]
-texture = ExtResource("4_tail")
+[node name="Tail" type="MeshInstance2D" parent="." unique_id=1438182820]
+texture = ExtResource("4_wp7ae")

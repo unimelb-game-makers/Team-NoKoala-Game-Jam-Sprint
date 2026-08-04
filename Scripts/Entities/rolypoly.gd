@@ -20,6 +20,9 @@ func move(direction: Vector2i) -> bool:
 	# not top down: flip it!
 	if direction.x != 0:
 		segment_sprites[0].flip_h = direction.x > 0
+	#if direction.y != 0:
+		#segment_sprites[0].rotation = Vector2(direction).angle() + PI / 2
+		#segment_sprites[0].flip_v = direction.y > 0
 		
 	var level_data := level_manager.level_data
 	var current_cell := segment_cells[0]
