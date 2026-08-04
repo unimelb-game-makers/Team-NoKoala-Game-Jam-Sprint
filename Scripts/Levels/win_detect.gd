@@ -29,7 +29,10 @@ func win_detect(current: float, maximum: float) -> bool:
 	SfxPlayer.play_sfx(&'ding')
 
 	var level_key := level_manager.level_config.level_key
-	ProgressState.complete_level(level_key)
+	var unlocked_final_page := ProgressState.complete_level(level_key)
+	if unlocked_final_page:
+		var encyclopedia_menu = level_manager.interface.encyclopedia_menu
+		await encyclopedia_menu.closed
 
 	complete_screen._instantiate_stars()
 	complete_screen.show()

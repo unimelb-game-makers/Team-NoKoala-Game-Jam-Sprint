@@ -22,7 +22,7 @@ func are_all_levels_completed() -> bool:
 	return true
 
 
-func complete_level(fruit_id: String) -> void:
+func complete_level(fruit_id: String) -> bool:
 	var were_all_levels_completed := are_all_levels_completed()
 	completed_fruits[fruit_id] = true
 	unlocked_fruits[fruit_id] = true
@@ -32,5 +32,7 @@ func complete_level(fruit_id: String) -> void:
 		unlocked_fruits[next_fruit] = true
 
 	progress_changed.emit()
-	if not were_all_levels_completed and are_all_levels_completed():
+	var completed_all_levels := not were_all_levels_completed and are_all_levels_completed()
+	if completed_all_levels:
 		all_levels_completed.emit()
+	return completed_all_levels

@@ -1,5 +1,7 @@
 extends Panel
 
+signal closed
+
 @onready var anim_player = $AnimationPlayer
 @onready var texture_rect = $TextureRect
 @onready var prev_page_btn = $TextureRect/FlipPrevPageBtn
@@ -47,6 +49,8 @@ func _on_exit_btn_pressed() -> void:
 	SfxPlayer.play_sfx(&'button_click')
 	GlobalVars.pause_movement = false
 	anim_player.play("show_encyclopedia", -1, -ANIM_SPEED, true)
+	await anim_player.animation_finished
+	closed.emit()
 
 func _on_flip_next_page_btn_pressed() -> void:
 	if _is_busy() or current_page >= _last_unlocked_page(): return
