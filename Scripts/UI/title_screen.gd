@@ -27,11 +27,15 @@ func _ready() -> void:
 	if TransitionLayer.entering_level_select:
 		TransitionLayer.entering_level_select = false
 		title_menu.hide()
+		back_button.get_node("AnimationPlayer").play("show_back_button", -1, 2.0, false)
 		back_button.show()
 		fruit_bowl.set_interactive(true)
 		return
 
+	back_button.get_node("AnimationPlayer").play("show_back_button", -1, -2.0, true)
+	
 	back_button.hide()
+	
 	fruit_bowl.set_interactive(false)
 	camera.global_position = fruit_bowl.global_position
 	camera.zoom = TITLE_CAMERA_ZOOM
@@ -119,6 +123,7 @@ func _show_level_select() -> void:
 	await tween.finished
 	title_menu.hide()
 	back_button.show()
+	back_button.get_node("AnimationPlayer").play("show_back_button", -1, 2.0)
 	fruit_bowl.set_interactive(true)
 	transitioning = false
 
@@ -148,7 +153,8 @@ func _on_back_button_pressed() -> void:
 	tween.tween_property(camera, "zoom", TITLE_CAMERA_ZOOM, 1.0)
 	tween.tween_property(title_menu, "position:y", TITLE_MENU_FINAL_Y, 0.55).set_delay(0.35)
 	tween.tween_property(title_menu, "modulate:a", 1.0, 0.4).set_delay(0.35)
-
+	
+	back_button.get_node("AnimationPlayer").play("show_back_button", -1, -2.0, true)
 	await tween.finished
 	back_button.hide()
 	back_button.disabled = false

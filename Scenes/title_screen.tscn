@@ -26,6 +26,42 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="Animation" id="Animation_ycay6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bsy20"]
+resource_name = "show_back_button"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_07cxn"]
+_data = {
+&"RESET": SubResource("Animation_ycay6"),
+&"show_back_button": SubResource("Animation_bsy20")
+}
+
 [node name="TitleScreen" type="Node2D" unique_id=278402191]
 script = ExtResource("1_0061g")
 
@@ -56,12 +92,16 @@ color = Color(1, 0.95, 0.8, 0.42)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=589927194]
 
 [node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=1964638832]
+self_modulate = Color(1, 1, 1, 0)
 offset_left = 48.999996
 offset_top = 42.999996
 offset_right = 302.0
 offset_bottom = 295.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("4_ycay6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/BackButton" unique_id=514717793]
+libraries/ = SubResource("AnimationLibrary_07cxn")
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=939222987]
 layout_mode = 3

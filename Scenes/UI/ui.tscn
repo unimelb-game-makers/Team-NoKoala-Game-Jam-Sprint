@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dc6uxmblak1n7" path="res://Scripts/UI/move_tracker.gd" id="1_fy0us"]
 [ext_resource type="Script" uid="uid://ct0h1jrrljcdo" path="res://Scripts/interface.gd" id="1_ny3ap"]
-[ext_resource type="Texture2D" uid="uid://du30j2de12ns3" path="res://Sprites/UI/settings_menu_btn_temp.png" id="2_fevae"]
 [ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="2_h6tq4"]
-[ext_resource type="Texture2D" uid="uid://cp7vcy36pc425" path="res://Sprites/UI/undo_btn_temp.png" id="3_ny3ap"]
-[ext_resource type="Texture2D" uid="uid://cie7078m3k6p1" path="res://Sprites/UI/reset_btn_temp.png" id="4_vqjbf"]
-[ext_resource type="Texture2D" uid="uid://8awnuvqjmfso" path="res://Sprites/UI/encyclopedia_btn_temp.png" id="5_cqvjp"]
+[ext_resource type="Texture2D" uid="uid://bxakc1j47n0lv" path="res://Sprites/Menu/MenuButton.png" id="4_rdq6y"]
+[ext_resource type="Texture2D" uid="uid://bo776dmiej2b2" path="res://Sprites/Menu/BackButton.png" id="5_l5iwa"]
+[ext_resource type="Texture2D" uid="uid://bfkojp0b3mpp6" path="res://Sprites/Menu/RetryButton.png" id="6_3h0f6"]
 [ext_resource type="PackedScene" uid="uid://efh47ud6dtjp" path="res://Scenes/UI/pause_menu_ui.tscn" id="7_pause_menu"]
+[ext_resource type="Texture2D" uid="uid://bwexh7ro2v105" path="res://Sprites/Menu/Encyclopedia Button.png" id="7_unbrw"]
 [ext_resource type="PackedScene" uid="uid://cspmcrcbcmkk7" path="res://Scenes/UI/encyclopedia_ui.tscn" id="11_jx4bj"]
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
 [ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
@@ -61,28 +61,33 @@ offset_right = 520.0
 offset_bottom = 54.0
 script = ExtResource("1_fy0us")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Interface" unique_id=1529250170]
+[node name="MarginContainer" type="MarginContainer" parent="Interface" unique_id=1679572228]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.2, 0.2)
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/MarginContainer" unique_id=1529250170]
+layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="PauseMenuBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=170128663]
+[node name="PauseMenuBtn" type="TextureButton" parent="Interface/MarginContainer/HBoxContainer" unique_id=170128663]
 layout_mode = 2
-texture_normal = ExtResource("2_fevae")
+texture_normal = ExtResource("4_rdq6y")
 
-[node name="UndoBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=1910455435]
+[node name="UndoBtn" type="TextureButton" parent="Interface/MarginContainer/HBoxContainer" unique_id=1910455435]
 layout_mode = 2
-texture_normal = ExtResource("3_ny3ap")
+texture_normal = ExtResource("5_l5iwa")
 
-[node name="ResetBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=130189294]
+[node name="ResetBtn" type="TextureButton" parent="Interface/MarginContainer/HBoxContainer" unique_id=130189294]
 layout_mode = 2
-texture_normal = ExtResource("4_vqjbf")
+texture_normal = ExtResource("6_3h0f6")
 
-[node name="EncyclopediaBtn" type="TextureButton" parent="Interface/HBoxContainer" unique_id=266714847]
+[node name="EncyclopediaBtn" type="TextureButton" parent="Interface/MarginContainer/HBoxContainer" unique_id=266714847]
 layout_mode = 2
-texture_normal = ExtResource("5_cqvjp")
+texture_normal = ExtResource("7_unbrw")
 
 [node name="PauseMenuUI" parent="Interface" unique_id=796959748 instance=ExtResource("7_pause_menu")]
 layout_mode = 1
@@ -203,8 +208,8 @@ theme_override_font_sizes/font_size = 60
 text = "Level Complete"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Interface/HBoxContainer/PauseMenuBtn" to="Interface" method="_on_pause_menu_btn_pressed"]
-[connection signal="pressed" from="Interface/HBoxContainer/UndoBtn" to="Interface/MoveTracker" method="_on_undo_btn_pressed"]
-[connection signal="pressed" from="Interface/HBoxContainer/ResetBtn" to="Interface" method="_on_reset_btn_pressed"]
-[connection signal="pressed" from="Interface/HBoxContainer/EncyclopediaBtn" to="Interface" method="_on_encyclopedia_btn_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/HBoxContainer/PauseMenuBtn" to="Interface" method="_on_pause_menu_btn_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/HBoxContainer/UndoBtn" to="Interface/MoveTracker" method="_on_undo_btn_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/HBoxContainer/ResetBtn" to="Interface" method="_on_reset_btn_pressed"]
+[connection signal="pressed" from="Interface/MarginContainer/HBoxContainer/EncyclopediaBtn" to="Interface" method="_on_encyclopedia_btn_pressed"]
 [connection signal="level_select_requested" from="Interface/PauseMenuUI" to="Interface" method="_on_pause_menu_level_select_requested"]
