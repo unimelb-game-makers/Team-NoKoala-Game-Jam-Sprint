@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chbkib76kqudt"
-path="res://.godot/imported/Roly poly 2.png-5da899903c07549067d11e46d45a5bb3.ctex"
+uid="uid://0v1pbrljw0ta"
+path="res://.godot/imported/Stag_Front_3.png-d764eafa988d4ddcd4f140299bd7660a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bugs/roly poly/Roly poly 2.png"
-dest_files=["res://.godot/imported/Roly poly 2.png-5da899903c07549067d11e46d45a5bb3.ctex"]
+source_file="res://Sprites/Bugs/stagbeetle/Stag_Front_3.png"
+dest_files=["res://.godot/imported/Stag_Front_3.png-d764eafa988d4ddcd4f140299bd7660a.ctex"]
 
 [params]
 
