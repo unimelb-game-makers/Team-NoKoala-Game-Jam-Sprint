@@ -15,6 +15,26 @@ func _ready() -> void:
 
 	position.x = 850
 	position.y = -425
+	
+	match level_manager.name:
+		"OrangeLevel":
+			position.x = 845
+			position.y = -415
+		"BananaLevel":
+			position.x = 850
+			position.y = -425
+		"AppleLevel":
+			position.x = 930
+			position.y = -395
+		"GrapeLevel":
+			position.x = 1200
+			position.y = -425
+		"MelonLevel":
+			position.x = 970
+			position.y = -425
+		_:
+			position.x = 850
+			position.y = -425
 
 func _on_config_changed(config: LevelConfig) -> void:
 	items.clear()

@@ -1,17 +1,59 @@
 [gd_scene format=3 uid="uid://bdfow6pxqwue8"]
 
 [ext_resource type="Script" uid="uid://d4b1cc61u3lym" path="res://Scripts/Entities/stag_beetle.gd" id="1_4b8ck"]
-[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/Bugs/Beta/stag_beetle_head.png" id="2_4b8ck"]
-[ext_resource type="Texture2D" uid="uid://bh4kyl1wx7hcn" path="res://Sprites/Bugs/Beta/stag_beetle_body.png" id="3_s27io"]
+[ext_resource type="Texture2D" uid="uid://0v1pbrljw0ta" path="res://Sprites/Bugs/stagbeetle/Stag_Front_3.png" id="2_nfels"]
+[ext_resource type="Texture2D" uid="uid://c0vlkqer7qw3i" path="res://Sprites/Bugs/stagbeetle/Stag_Back_3.png" id="3_eb61l"]
+[ext_resource type="Texture2D" uid="uid://bkk53eqj871pm" path="res://Sprites/Bugs/stagbeetle/Stag_Front_0.png" id="4_eqnni"]
+[ext_resource type="Texture2D" uid="uid://hmj7qrflrfcv" path="res://Sprites/Bugs/stagbeetle/Stag_Front_1.png" id="5_2pbgw"]
+[ext_resource type="Texture2D" uid="uid://d3ekrvpft5pf7" path="res://Sprites/Bugs/stagbeetle/Stag_Front_2.png" id="6_p3x6d"]
+[ext_resource type="Texture2D" uid="uid://b8oltsa3pcun3" path="res://Sprites/Bugs/stagbeetle/Stag_Back_0.png" id="7_mdpgu"]
+[ext_resource type="Texture2D" uid="uid://dcpj6o5425lx1" path="res://Sprites/Bugs/stagbeetle/Stag_Back_1.png" id="8_1e7r7"]
+[ext_resource type="Texture2D" uid="uid://wdo63vwyd8d6" path="res://Sprites/Bugs/stagbeetle/Stag_Back_2.png" id="9_0gahw"]
+
+[sub_resource type="Animation" id="Animation_wpjwy"]
+resource_name = "wriggle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.008333325, 0.25833333, 0.5083333, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_eqnni"), ExtResource("5_2pbgw"), ExtResource("6_p3x6d"), ExtResource("2_nfels")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.74999994),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_mdpgu"), ExtResource("8_1e7r7"), ExtResource("9_0gahw"), ExtResource("3_eb61l")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hy444"]
+_data = {
+&"wriggle": SubResource("Animation_wpjwy")
+}
 
 [node name="StagBeetle" type="Node2D" unique_id=721379921]
 script = ExtResource("1_4b8ck")
 check_in_between_tiles = false
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
-texture = ExtResource("2_4b8ck")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_nfels")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
-texture = ExtResource("3_s27io")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_mdpgu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1377164078]
+libraries/ = SubResource("AnimationLibrary_hy444")

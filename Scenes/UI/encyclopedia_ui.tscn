@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://x3lbmo0c873v" path="res://Sprites/UI/Encyclopedia/book_frame_1.PNG" id="5_16v7v"]
 [ext_resource type="Texture2D" uid="uid://35ts7i13t5k5" path="res://Sprites/UI/Encyclopedia/book_frame_2.PNG" id="6_6arpw"]
 [ext_resource type="FontFile" uid="uid://cihb73n44mjdu" path="res://Fonts/LibreBaskerville-VariableFont_wght.ttf" id="6_42f11"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="7_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/Beta/tile_indestructible.png" id="8_d2fam"]
 [ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/Beta/tile_hard.png" id="9_q46ka"]
+[ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="10_16v7v"]
 [ext_resource type="Texture2D" uid="uid://bxegv58kpawig" path="res://Sprites/UI/Encyclopedia/caterpillar illus.PNG" id="10_67kpv"]
 [ext_resource type="Texture2D" uid="uid://dkp61x3pjiexj" path="res://Sprites/UI/Encyclopedia/square bracket.PNG" id="11_1v5i1"]
 [ext_resource type="Texture2D" uid="uid://dsocrj2m2t04s" path="res://Sprites/UI/Encyclopedia/moth illus.PNG" id="12_1rcph"]
@@ -329,7 +329,7 @@ theme_override_constants/separation = 86
 [node name="BonusTileImg" type="TextureRect" parent="TextureRect/Page0/Tiles/VBoxContainer" unique_id=1144178856]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("7_ljgkj")
+texture = ExtResource("10_16v7v")
 stretch_mode = 4
 
 [node name="IndestructibleTileImg" type="TextureRect" parent="TextureRect/Page0/Tiles/VBoxContainer" unique_id=130736594]

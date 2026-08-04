@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_q3si1"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_ohspq"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
+[ext_resource type="Texture2D" uid="uid://c3bnk5oroucuu" path="res://Sprites/Levels/melon_frame.png" id="7_kunh6"]
+[ext_resource type="Texture2D" uid="uid://wxtv7brqm3cs" path="res://Sprites/Levels/Level Backdrop.png" id="8_nqrg1"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_vjj0x")
@@ -21,7 +23,7 @@ available_bugs = Dictionary[int, int]({
 max_move = 50
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 
-[node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
+[node name="MelonLevel" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_nqrg1")
 level_config = SubResource("Resource_rxcld")
 
@@ -31,7 +33,8 @@ tile_map_data = PackedByteArray("AAAAAP3/AAAAAAAAAAABAP3/BwAAAAAAAAACAP3/AAAAAAA
 tile_set = ExtResource("3_cf0fu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=284126665]
-zoom = Vector2(0.58, 0.58)
+position = Vector2(37, -2)
+zoom = Vector2(0.52, 0.52)
 
 [node name="MovementController" type="Node" parent="." unique_id=2045647148]
 script = ExtResource("4_q3si1")
@@ -41,3 +44,17 @@ position = Vector2(320, -374)
 script = ExtResource("5_ohspq")
 
 [node name="UI" parent="." unique_id=1524154751 instance=ExtResource("6_ui")]
+
+[node name="Frame" type="Node2D" parent="." unique_id=746569022]
+position = Vector2(18, 150)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=1508697891]
+position = Vector2(-68, -168)
+texture = ExtResource("7_kunh6")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1318498974]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+z_index = -10
+position = Vector2(-50, 0)
+scale = Vector2(1.265, 1.265)
+texture = ExtResource("8_nqrg1")

@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_go8hj"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_ly64e"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
+[ext_resource type="Texture2D" uid="uid://do4nc3g8kb8lw" path="res://Sprites/Levels/banana frame.png" id="7_cntii"]
+[ext_resource type="Texture2D" uid="uid://wxtv7brqm3cs" path="res://Sprites/Levels/Level Backdrop.png" id="8_3opr3"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_2be2k")
@@ -21,7 +23,7 @@ available_bugs = Dictionary[int, int]({
 max_move = 50
 metadata/_custom_type_script = "uid://cy2ef5a7gd0uf"
 
-[node name="Level" type="Node2D" unique_id=738170765 groups=["level_manager"]]
+[node name="BananaLevel" type="Node2D" unique_id=738170765 groups=["level_manager"]]
 script = ExtResource("1_3opr3")
 level_config = SubResource("Resource_rxcld")
 
@@ -41,3 +43,17 @@ position = Vector2(850, -425)
 script = ExtResource("5_ly64e")
 
 [node name="UI" parent="." unique_id=368462508 instance=ExtResource("6_ui")]
+
+[node name="Frame" type="Node2D" parent="." unique_id=1922740302]
+position = Vector2(18, 150)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=70739804]
+position = Vector2(-62, -151)
+texture = ExtResource("7_cntii")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=765873484]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+z_index = -10
+position = Vector2(-50, 0)
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("8_3opr3")
