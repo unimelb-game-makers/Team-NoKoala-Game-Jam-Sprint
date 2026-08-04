@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cy2ef5a7gd0uf" path="res://Scripts/Levels/level_config.gd" id="2_66f21"]
 [ext_resource type="TileSet" uid="uid://dmyanylx80e78" path="res://TileSets/tile_set.tres" id="3_70qr1"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_70qr1"]
-[ext_resource type="AudioStream" uid="uid://dqfkh5sbft2i7" path="res://Audio/Main theme.wav" id="7_qt5g4"]
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="14_beu6a"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="15_66f21"]
 
@@ -40,7 +39,3 @@ position = Vector2(850, -425)
 script = ExtResource("15_66f21")
 
 [node name="UI" parent="." unique_id=1709876479 instance=ExtResource("6_70qr1")]
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="UI" unique_id=390824681]
-stream = ExtResource("7_qt5g4")
-autoplay = true

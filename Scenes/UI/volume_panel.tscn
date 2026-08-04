@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bmg187c85gyfc"]
+
+[ext_resource type="Script" uid="uid://dhekj3h35xxji" path="res://Scripts/UI/volume_panel.gd" id="1_kb7go"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8g1k"]
+
+[node name="VolumePanel" type="PanelContainer" unique_id=1195503976]
+offset_right = 500.0
+offset_bottom = 80.0
+scale = Vector2(1, 0.98348945)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k8g1k")
+script = ExtResource("1_kb7go")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=472464915]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1415919999]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer" unique_id=541659360]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer" unique_id=1797345377]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="VBoxContainer" unique_id=560375822]
+layout_mode = 2
+text = "Sfx"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer" unique_id=41789977]
+layout_mode = 2

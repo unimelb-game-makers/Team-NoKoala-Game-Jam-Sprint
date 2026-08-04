@@ -19,7 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://ckmbh30qbiyoj" path="res://Sprites/FruitBowl/fruit bowl variants/apple (fucked).png" id="17_kymir"]
 [ext_resource type="PackedScene" uid="uid://d24wtgqkurbno" path="res://Scenes/Levels/apple_level.tscn" id="18_gfib2"]
 [ext_resource type="Texture2D" uid="uid://cilr7cun2c2vq" path="res://Sprites/FruitBowl/fruit bowl variants/apple (normal).png" id="19_lfb2g"]
-[ext_resource type="AudioStream" uid="uid://dgwlqmuxmjioc" path="res://Audio/Main menu theme.wav" id="20_y1k4n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tgoug"]
 shader = ExtResource("5_tgoug")
@@ -175,10 +174,6 @@ texture = ExtResource("19_lfb2g")
 position = Vector2(-929.99994, 698)
 scale = Vector2(1.315, 1.275)
 shape = SubResource("CircleShape2D_130qg")
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1431372258]
-stream = ExtResource("20_y1k4n")
-autoplay = true
 
 [connection signal="input_event" from="FruitBowl/Melon" to="FruitBowl/Melon" method="_on_input_event"]
 [connection signal="mouse_entered" from="FruitBowl/Melon" to="FruitBowl/Melon" method="_on_mouse_entered"]

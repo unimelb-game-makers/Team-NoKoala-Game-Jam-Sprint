@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_rs3w2"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
 [ext_resource type="Texture2D" uid="uid://snimdilue7ek" path="res://Sprites/Levels/apple puzzle/apple frame fixed.png" id="8_ci7i2"]
-[ext_resource type="AudioStream" uid="uid://dqfkh5sbft2i7" path="res://Audio/Main theme.wav" id="9_ci7i2"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_ci7i2")
@@ -56,7 +55,3 @@ position = Vector2(18, 150)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Frame" unique_id=633404980]
 texture = ExtResource("8_ci7i2")
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1141851975]
-stream = ExtResource("9_ci7i2")
-autoplay = true

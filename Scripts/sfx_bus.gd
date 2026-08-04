@@ -51,6 +51,19 @@ func stop(sound_name: StringName) -> void:
 			player.stop()
 			player.queue_free()
 
+func set_volume_db(volume_db: float) -> void:
+	var bus_index := AudioServer.get_bus_index(BUS_NAME)
+
+	if bus_index != -1:
+		AudioServer.set_bus_volume_db(bus_index, volume_db)
+
+
+func set_muted(muted: bool) -> void:
+	var bus_index := AudioServer.get_bus_index(BUS_NAME)
+
+	if bus_index != -1:
+		AudioServer.set_bus_mute(bus_index, muted)
+
 func _on_player_finished(player: AudioStreamPlayer) -> void:
 	active_players.erase(player)
 	player.queue_free()
