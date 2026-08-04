@@ -43,6 +43,8 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	SfxPlayer.play_sfx(&"button_click")
+
 	play_title_button_action(start_button, _show_level_select)
 
 
@@ -125,6 +127,7 @@ func _open_options() -> void:
 
 
 func _on_back_button_pressed() -> void:
+	SfxPlayer.play_sfx(&"button_click")
 	if transitioning:
 		return
 

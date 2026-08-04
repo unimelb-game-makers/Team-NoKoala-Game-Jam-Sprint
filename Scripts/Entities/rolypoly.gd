@@ -6,6 +6,7 @@ class_name Rolypoly
 
 var is_moving: bool = false
 var spin_speed: float = 2.0
+var movement_sfx : AudioStreamPlayer
 
 func init_segments() -> void:
 	segment_sprites = [$Body]
@@ -63,6 +64,8 @@ func move(direction: Vector2i) -> bool:
 	level_data.remove_bug(self)
 	# keeps await animation separate and returns expected bool in timely manner
 	_do_roll(current_cell, destination, direction, level_data)
+	movement_sfx = SfxPlayer.play_sfx(&"crawling")
+
 	return true
 
 ''' 
@@ -100,3 +103,5 @@ func roll_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> voi
 	segment_sprites[0].texture = static_sprite
 	segment_sprites[0].rotation = atan2(-direction.y, -direction.x)
 	anim_player.play("wriggle")
+	if movement_sfx != null: movement_sfx.stop()
+	

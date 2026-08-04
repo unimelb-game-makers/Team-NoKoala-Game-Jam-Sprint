@@ -63,6 +63,8 @@ func move(direction: Vector2i) -> bool:
 	level_data.remove_bug(self)
 	_start_follow_step(direction)
 	level_data.add_bug(self)
+	movement_sfx = SfxPlayer.play_sfx(&"crawling")
+
 	return true
 
 func _on_body_texture_changed() -> void:
