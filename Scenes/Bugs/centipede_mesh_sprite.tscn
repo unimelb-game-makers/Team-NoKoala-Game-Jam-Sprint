@@ -113,3 +113,5 @@ texture = ExtResource("4_trp7j")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=805192076]
 root_node = NodePath("../Head")
 libraries/ = SubResource("AnimationLibrary_qumsq")
+
+[connection signal="texture_changed" from="Body" to="." method="_on_body_texture_changed"]

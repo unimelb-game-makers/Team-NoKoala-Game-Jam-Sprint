@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://pkm6ou2i806p"]
 
 [ext_resource type="Script" uid="uid://dtye3xf3684w1" path="res://Scripts/Entities/slug.gd" id="1_jap24"]
-[ext_resource type="Texture2D" uid="uid://blkxh3hbv8asy" path="res://Sprites/Bugs/Beta/slug_head_topdown.png" id="2_jap24"]
+[ext_resource type="Texture2D" uid="uid://dy6iswynikfoh" path="res://Sprites/Bugs/Slug/Head.PNG" id="2_k3vr5"]
 
 [node name="Slug" type="Node2D" unique_id=721379921]
 modulate = Color(1, 1, 1, 0.627451)
@@ -10,4 +10,6 @@ script = ExtResource("1_jap24")
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
 z_index = 1
-texture = ExtResource("2_jap24")
+texture = ExtResource("2_k3vr5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=621163863]

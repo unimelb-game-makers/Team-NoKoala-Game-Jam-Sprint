@@ -63,7 +63,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		#if !isActive:
 			#TransitionLayer.active_fruits[fruit_id] = true
 			#set_active()
-		
+		SfxPlayer.play_sfx(&"button_click")
 		load_level()
 
 func load_level() -> void:

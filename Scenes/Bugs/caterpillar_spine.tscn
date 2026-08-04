@@ -1,8 +1,98 @@
 [gd_scene format=3 uid="uid://db4f77knqjq3x"]
 
 [ext_resource type="Script" uid="uid://brh6gqplh1g1h" path="res://Scripts/Entities/caterpillar_spine.gd" id="1_5vpac"]
-[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/Bugs/Beta/catepillar_head.png" id="2_pslbv"]
-[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/Bugs/Beta/catepillar_body.png" id="3_dbeuj"]
+[ext_resource type="Texture2D" uid="uid://g200i4ciu74m" path="res://Sprites/Bugs/caterpillar/caterpillar head 1-export.png" id="2_n4nb0"]
+[ext_resource type="Texture2D" uid="uid://sam0i5ndw8lb" path="res://Sprites/Bugs/caterpillar/caterpillar body 1-export.png" id="3_qriwb"]
+[ext_resource type="Texture2D" uid="uid://bmmphvamlyfwd" path="res://Sprites/Bugs/caterpillar/caterpillar tail 1-export.png" id="4_f2w0h"]
+[ext_resource type="Texture2D" uid="uid://du8n0g71c8xwh" path="res://Sprites/Bugs/caterpillar/caterpillar head 2-export.png" id="5_4atkd"]
+[ext_resource type="Texture2D" uid="uid://c0u5robrw8igd" path="res://Sprites/Bugs/caterpillar/caterpillar body 2-export.png" id="6_s8fe2"]
+[ext_resource type="Texture2D" uid="uid://bdoemmovvxmqx" path="res://Sprites/Bugs/caterpillar/caterpillar tail 2-export.png" id="7_5dkbk"]
+
+[sub_resource type="Animation" id="Animation_3ut4v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_n4nb0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_qriwb")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_f2w0h")]
+}
+
+[sub_resource type="Animation" id="Animation_4f274"]
+resource_name = "wriggle"
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_n4nb0"), ExtResource("5_4atkd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_qriwb"), ExtResource("6_s8fe2")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tail:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_f2w0h"), ExtResource("7_5dkbk")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_losr4"]
+_data = {
+&"RESET": SubResource("Animation_3ut4v"),
+&"wriggle": SubResource("Animation_4f274")
+}
 
 [node name="Caterpillar" type="Node2D" unique_id=95702695]
 script = ExtResource("1_5vpac")
@@ -10,12 +100,15 @@ script = ExtResource("1_5vpac")
 [node name="Head" type="Line2D" parent="." unique_id=2091015478]
 points = PackedVector2Array(0, 2)
 width = 128.0
-texture = ExtResource("2_pslbv")
+texture = ExtResource("2_n4nb0")
 
 [node name="Body" type="Line2D" parent="." unique_id=524831759]
 width = 128.0
-texture = ExtResource("3_dbeuj")
+texture = ExtResource("3_qriwb")
 
 [node name="Tail" type="Line2D" parent="." unique_id=1467074159]
 points = PackedVector2Array(0, 0, 0, 0)
-texture = ExtResource("3_dbeuj")
+texture = ExtResource("4_f2w0h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=724828813]
+libraries/ = SubResource("AnimationLibrary_losr4")

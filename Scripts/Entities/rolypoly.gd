@@ -6,7 +6,7 @@ class_name Rolypoly
 
 var is_moving: bool = false
 var spin_speed: float = 2.0
-
+var movement_sfx : AudioStreamPlayer
 
 func init_segments() -> void:
 	segment_sprites = [$Body]
@@ -17,9 +17,10 @@ func init_segments() -> void:
 func move(direction: Vector2i) -> bool:
 	if is_moving:
 		return false
+	
 	# not top down: flip it!
-	if direction.x != 0:
-		segment_sprites[0].flip_h = direction.x > 0
+	#if direction.x != 0:
+		#segment_sprites[0].flip_h = direction.x > 0
 	#if direction.y != 0:
 		#segment_sprites[0].rotation = Vector2(direction).angle() + PI / 2
 		#segment_sprites[0].flip_v = direction.y > 0
@@ -63,6 +64,8 @@ func move(direction: Vector2i) -> bool:
 	level_data.remove_bug(self)
 	# keeps await animation separate and returns expected bool in timely manner
 	_do_roll(current_cell, destination, direction, level_data)
+	movement_sfx = SfxPlayer.play_sfx(&"crawling")
+
 	return true
 
 ''' 
@@ -80,7 +83,9 @@ func _do_roll(current_cell: Vector2i, destination: Vector2i, direction: Vector2i
 
 func roll_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> void:
 	var tilemap := level_manager.tile_map_layer
+	anim_player.stop()
 	segment_sprites[0].texture = rolled_sprite
+	
 	
 	var step_count: int = max(abs(to_cell.x - from_cell.x), abs(to_cell.y - from_cell.y))
 	
@@ -96,3 +101,7 @@ func roll_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> voi
 	
 	$Body.rotation = 0
 	segment_sprites[0].texture = static_sprite
+	segment_sprites[0].rotation = atan2(-direction.y, -direction.x)
+	anim_player.play("wriggle")
+	if movement_sfx != null: movement_sfx.stop()
+	

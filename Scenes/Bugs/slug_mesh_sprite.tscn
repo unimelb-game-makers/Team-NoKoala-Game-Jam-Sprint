@@ -19,3 +19,5 @@ texture = ExtResource("3_g76mf")
 
 [node name="Tail" type="MeshInstance2D" parent="." unique_id=2038859393]
 texture = ExtResource("4_emg8i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1482209931]
