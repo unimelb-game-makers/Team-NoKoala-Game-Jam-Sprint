@@ -13,6 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options_Highlight.png" id="8_ycay6"]
 [ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit_Highlight.png" id="10_bsy20"]
 
+[sub_resource type="Gradient" id="Gradient_dust_mote"]
+colors = PackedColorArray(1, 0.949, 0.78, 0.8, 1, 0.949, 0.78, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dust_mote"]
+gradient = SubResource("Gradient_dust_mote")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="TitleScreen" type="Node2D" unique_id=278402191]
 script = ExtResource("1_0061g")
 
@@ -20,6 +31,23 @@ script = ExtResource("1_0061g")
 position = Vector2(543, -714)
 scale = Vector2(1.171875, 1.171875)
 texture = ExtResource("1_klylv")
+
+[node name="DustMotes" type="CPUParticles2D" parent="." unique_id=553477913]
+position = Vector2(543, -714)
+amount = 70
+texture = SubResource("GradientTexture2D_dust_mote")
+lifetime = 12.0
+preprocess = 12.0
+randomness = 0.8
+emission_shape = 3
+emission_rect_extents = Vector2(2400, 1350)
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, -1.5)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+scale_amount_max = 2.0
+color = Color(1, 0.95, 0.8, 0.42)
 
 [node name="LevelSelect" parent="." unique_id=715502074 instance=ExtResource("8_level_select")]
 
