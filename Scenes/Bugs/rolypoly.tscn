@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://spfyi838lcta" path="res://Scripts/Entities/rolypoly.gd" id="1_iarrc"]
 [ext_resource type="Texture2D" uid="uid://cm3qekoyq4bmf" path="res://Sprites/Bugs/Beta/roly-poly-rolled.png" id="2_ekqyc"]
-[ext_resource type="Texture2D" uid="uid://oma2mm6b5c1r" path="res://Sprites/Bugs/Beta/roly-poly.png" id="2_iarrc"]
+[ext_resource type="Texture2D" uid="uid://cbxnpx7jxjs12" path="res://Sprites/Bugs/roly poly/Roly Poly 1.png" id="4_tsniv"]
 
 [node name="Rolypoly" type="Node2D" unique_id=969696181]
 script = ExtResource("1_iarrc")
 rolled_sprite = ExtResource("2_ekqyc")
-static_sprite = ExtResource("2_iarrc")
+static_sprite = ExtResource("4_tsniv")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=550233098]
-texture = ExtResource("2_iarrc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_tsniv")

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://nmqtvbl14nmq"]
 
 [ext_resource type="Script" uid="uid://b3w3c17hmpyyd" path="res://Scripts/Entities/caterpillar_mesh_sprite.gd" id="1_cdw1k"]
-[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/Bugs/Beta/catepillar_head.png" id="2_aqtix"]
-[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/Bugs/Beta/catepillar_body.png" id="3_25g1v"]
+[ext_resource type="Texture2D" uid="uid://g200i4ciu74m" path="res://Sprites/Bugs/caterpillar/caterpillar head 1-export.png" id="2_aqtix"]
+[ext_resource type="Texture2D" uid="uid://sam0i5ndw8lb" path="res://Sprites/Bugs/caterpillar/caterpillar body 1-export.png" id="3_25g1v"]
+[ext_resource type="Texture2D" uid="uid://bmmphvamlyfwd" path="res://Sprites/Bugs/caterpillar/caterpillar tail 1-export.png" id="4_fx8hl"]
 
 [node name="Caterpillar" type="Node2D" unique_id=95702695]
 script = ExtResource("1_cdw1k")
@@ -16,4 +17,4 @@ texture = ExtResource("2_aqtix")
 texture = ExtResource("3_25g1v")
 
 [node name="Tail" type="MeshInstance2D" parent="." unique_id=1467074159]
-texture = ExtResource("3_25g1v")
+texture = ExtResource("4_fx8hl")
