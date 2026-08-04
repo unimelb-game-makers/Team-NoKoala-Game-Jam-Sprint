@@ -12,15 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://35ts7i13t5k5" path="res://Sprites/UI/Encyclopedia/book_frame_2.PNG" id="6_6arpw"]
 [ext_resource type="FontFile" uid="uid://cihb73n44mjdu" path="res://Fonts/LibreBaskerville-VariableFont_wght.ttf" id="6_42f11"]
 [ext_resource type="Texture2D" uid="uid://h27imurwvv6k" path="res://Sprites/UI/Encyclopedia/Book_no_worms_next.png" id="6_ljgkj"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="7_ljgkj"]
-[ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/Beta/tile_indestructible.png" id="8_d2fam"]
-[ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/Beta/tile_hard.png" id="9_q46ka"]
 [ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="10_16v7v"]
 [ext_resource type="Texture2D" uid="uid://bxegv58kpawig" path="res://Sprites/UI/Encyclopedia/caterpillar illus.PNG" id="10_67kpv"]
 [ext_resource type="Texture2D" uid="uid://dkp61x3pjiexj" path="res://Sprites/UI/Encyclopedia/square bracket.PNG" id="11_1v5i1"]
 [ext_resource type="Texture2D" uid="uid://dsocrj2m2t04s" path="res://Sprites/UI/Encyclopedia/moth illus.PNG" id="12_1rcph"]
 [ext_resource type="Texture2D" uid="uid://3cm2f2jaigov" path="res://Sprites/UI/Encyclopedia/centipede illus.PNG" id="13_6jgvj"]
 [ext_resource type="Texture2D" uid="uid://jpcssk1844h2" path="res://Sprites/UI/Encyclopedia/roly poly 1 illus.PNG" id="14_5gmi8"]
+[ext_resource type="Texture2D" uid="uid://bj1ogmsvig6n7" path="res://Sprites/Tiles/indestructable.png" id="14_ljgkj"]
+[ext_resource type="Texture2D" uid="uid://b1tgmaw7b3rw" path="res://Sprites/Tiles/destructable.png" id="15_d2fam"]
 [ext_resource type="Texture2D" uid="uid://bk2g8prsdpte4" path="res://Sprites/UI/Encyclopedia/roly poly rolled up illus.PNG" id="15_q8v23"]
 [ext_resource type="Texture2D" uid="uid://bwqpsfqds44rk" path="res://Sprites/UI/Encyclopedia/slug see through.PNG" id="16_4dpur"]
 [ext_resource type="Texture2D" uid="uid://d27s0boriaflh" path="res://Sprites/UI/Encyclopedia/worm illus.PNG" id="17_j5scj"]
@@ -342,13 +341,13 @@ stretch_mode = 4
 [node name="IndestructibleTileImg" type="TextureRect" parent="TextureRect/Page0/Tiles/VBoxContainer" unique_id=130736594]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("8_d2fam")
+texture = ExtResource("14_ljgkj")
 stretch_mode = 4
 
 [node name="BreakableTileImg" type="TextureRect" parent="TextureRect/Page0/Tiles/VBoxContainer" unique_id=221409406]
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("9_q46ka")
+texture = ExtResource("15_d2fam")
 stretch_mode = 4
 
 [node name="Page1" type="Control" parent="TextureRect" unique_id=1277206650]
