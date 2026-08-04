@@ -99,7 +99,7 @@ offset_bottom = 378.0
 texture = ExtResource("4_8mikk")
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=381861283]
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=381861283]
 stream = ExtResource("10_8mikk")
 autoplay = true
 

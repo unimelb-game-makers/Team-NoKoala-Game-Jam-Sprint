@@ -40,12 +40,17 @@ func move(direction: Vector2i) -> bool:
 			var tilemap := level_manager.tile_map_layer
 			tilemap.set_cell(next_cell, 3, Vector2i(0, 0), 0)
 			level_data.set_tile_data(next_cell, LevelData.LevelTileData.Type.HARD_BROKEN)
+			SfxPlayer.play_sfx(&"break_tiles")
+
 		
 		# Move caterpillar segments
 		level_data.remove_bug(self)
 		move_segment(1, segment_cells[0], Vector2(segment_cells[0]) - Vector2(segment_cells[1]))
 		move_segment(0, segment_cells[0] + direction, direction)
 		level_data.add_bug(self)
+		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
+		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
+
 		return true
 	
 	# Otherwise rotate around head as pivot
@@ -94,6 +99,8 @@ func move(direction: Vector2i) -> bool:
 		facing_direction = direction
 		segment_sprites[0].rotation = atan2(direction.y, direction.x)
 		segment_sprites[1].rotation = atan2(direction.y, direction.x)
+		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
+		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
 		return true
 
 ''' 
@@ -135,6 +142,7 @@ func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i, rotatin
 			var tilemap := level_manager.tile_map_layer
 			tilemap.set_cell(cell, 3, Vector2i(0, 0), 0)
 			level_manager.level_data.set_tile_data(cell, LevelData.LevelTileData.Type.HARD_BROKEN)
+			SfxPlayer.play_sfx(&"break_tiles")
 			return true
 		else:
 			print("Movement Error: Can't move into hard tiles")
