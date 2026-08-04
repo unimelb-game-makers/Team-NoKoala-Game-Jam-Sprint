@@ -188,8 +188,10 @@ _data = {
 }
 
 [node name="EncyclopediaUI" type="Panel" unique_id=659311693]
+process_mode = 3
 visible = false
 self_modulate = Color(1, 1, 1, 0)
+z_index = 10
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1001,6 +1003,25 @@ offset_bottom = 131.18182
 texture = ExtResource("11_1v5i1")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="Page4" type="Control" parent="TextureRect" unique_id=152644758]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ThanksLabel" type="Label" parent="TextureRect/Page4" unique_id=10775148]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 240.0
+offset_right = 880.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.17, 0.10177334, 0.023799999, 1)
+theme_override_fonts/font = ExtResource("5_6arpw")
+theme_override_font_sizes/font_size = 64
+text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PageFlipFrame" type="TextureRect" parent="TextureRect" unique_id=1968614763]
 visible = false
