@@ -109,6 +109,7 @@ func stop_wriggle() -> void:
 
 func start_wriggle() -> void:
 	if anim_player:
+		if not anim_player.has_animation("wriggle"): return
 		anim_player.play("wriggle")
 
 # Length parameter used for some bugs: e.g. Slug 
