@@ -3,6 +3,7 @@ extends Node2D
 class_name Bug
 
 @onready var level_manager: LevelManager = get_tree().get_first_node_in_group("level_manager")
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 var is_placed: bool = false
 var segment_sprites: Array[Sprite2D]
 var segment_cells: Array[Vector2i]
