@@ -13,10 +13,7 @@ func init_segments() -> void:
 func set_facing_direction(direction: Vector2i) -> void:
 	super.set_facing_direction(direction)
 	for sprite in segment_sprites:
-		var tween = create_tween()
-		tween.set_parallel(true)
-		tween.tween_property(sprite, "rotation", atan2(direction.y, direction.x), 0.5)
-		#sprite.rotation = atan2(direction.y, direction.x)
+		sprite.rotation = atan2(direction.y, direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
