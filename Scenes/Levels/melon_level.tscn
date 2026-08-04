@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://ci22uawqro1gl" path="res://Scripts/movement_controller.gd" id="4_q3si1"]
 [ext_resource type="Script" uid="uid://1medp1ahlpqo" path="res://Scripts/bug_selection_menu.gd" id="5_ohspq"]
 [ext_resource type="PackedScene" uid="uid://cv5fhihqmka7" path="res://Scenes/UI/ui.tscn" id="6_ui"]
-[ext_resource type="AudioStream" uid="uid://dqfkh5sbft2i7" path="res://Audio/Main theme.wav" id="7_kunh6"]
 
 [sub_resource type="Resource" id="Resource_rxcld"]
 script = ExtResource("2_vjj0x")
@@ -42,7 +41,3 @@ position = Vector2(320, -374)
 script = ExtResource("5_ohspq")
 
 [node name="UI" parent="." unique_id=1524154751 instance=ExtResource("6_ui")]
-
-[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1789596601]
-stream = ExtResource("7_kunh6")
-autoplay = true

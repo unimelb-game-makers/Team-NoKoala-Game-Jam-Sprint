@@ -21,6 +21,7 @@ GlobalVars="*uid://dcdhulu6fo2wh"
 TransitionLayer="*uid://bhi6td15ecquw"
 ProgressState="*res://Scripts/progress_state.gd"
 SfxPlayer="*uid://dy3qe12bm5w83"
+MusicPlayer="*uid://f683j1mitf6e"
 
 [display]
 

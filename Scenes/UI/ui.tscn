@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="9_1eb8u"]
 [ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/Beta/ant_star.png" id="9_hfaco"]
 [ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/Beta/caterpillar_star.png" id="10_1eb8u"]
+[ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="10_4acsd"]
 [ext_resource type="Script" uid="uid://db2byshpx47c8" path="res://Scripts/UI/encyclopedia_ui.gd" id="10_jx4bj"]
 [ext_resource type="Texture2D" uid="uid://dy2d5g1kvx65x" path="res://Sprites/UI/Encyclopedia/Book.PNG" id="10_vhchw"]
 [ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/Beta/rolypoly_star.png" id="11_vhchw"]
@@ -462,7 +463,6 @@ layout_mode = 2
 texture_normal = ExtResource("5_cqvjp")
 
 [node name="PauseMenuUI" type="Panel" parent="Interface" unique_id=1901086451]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -495,6 +495,11 @@ offset_right = 80.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.99462366)
+theme_override_constants/separation = 50
+
+[node name="VolumePanel" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=1195503976 instance=ExtResource("10_4acsd")]
+layout_mode = 2
 
 [node name="LevelSelectBtn" type="Button" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=183376967]
 layout_mode = 2
