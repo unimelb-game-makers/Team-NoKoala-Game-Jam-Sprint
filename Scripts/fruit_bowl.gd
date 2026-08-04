@@ -2,8 +2,24 @@ extends Node2D
 
 var hovered_fruits: Array[Area2D] = []
 var active_fruit: Area2D = null
+var interactive: bool = true
+
+
+func set_interactive(value: bool) -> void:
+	interactive = value
+	for child in get_children():
+		if child is Area2D:
+			child.input_pickable = value
+
+	if not value:
+		if active_fruit:
+			active_fruit.set_hovered(false)
+		hovered_fruits.clear()
+		active_fruit = null
 
 func register_hover(fruit: Area2D) -> void:
+	if not interactive:
+		return
 	hovered_fruits.append(fruit)
 	update_active()
 	
