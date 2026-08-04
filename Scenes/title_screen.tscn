@@ -5,14 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://xe41j2emdti2" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_SmallChains.png" id="2_n82rj"]
 [ext_resource type="Texture2D" uid="uid://1557usi8yx2q" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Sign.png" id="3_0061g"]
 [ext_resource type="Texture2D" uid="uid://c5syh3gdom3b8" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_LargeChains.png" id="4_8mikk"]
+[ext_resource type="FontFile" uid="uid://c3dw27802tyws" path="res://Fonts/MAIAN.TTF" id="4_bsy20"]
+[ext_resource type="StyleBox" uid="uid://05pb1q08gn6h" path="res://button.tres" id="5_07cxn"]
 [ext_resource type="Texture2D" uid="uid://d2xwcqideorcf" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start.png" id="5_sqelc"]
-[ext_resource type="Texture2D" uid="uid://q0f66kvirbb5" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start_Highlight.png" id="6_o1e67"]
+[ext_resource type="Texture2D" uid="uid://c018u1u6fj3dc" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start_Highlight.png" id="6_o1e67"]
 [ext_resource type="Texture2D" uid="uid://duitulp0yjlje" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
 [ext_resource type="Texture2D" uid="uid://bh2o5gmktqexl" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit.png" id="7_o1e67"]
 [ext_resource type="PackedScene" uid="uid://chmxx2aoqqnfo" path="res://Scenes/level_select.tscn" id="8_level_select"]
+[ext_resource type="Texture2D" uid="uid://jl3wknb30rdr" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options_Highlight.png" id="8_ycay6"]
 [ext_resource type="AudioStream" uid="uid://dgwlqmuxmjioc" path="res://Audio/Main menu theme.wav" id="10_8mikk"]
-[ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options_Highlight.png" id="8_ycay6"]
-[ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit_Highlight.png" id="10_bsy20"]
+[ext_resource type="Texture2D" uid="uid://ddutvpejt4ouc" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit_Highlight.png" id="10_bsy20"]
 
 [sub_resource type="Gradient" id="Gradient_dust_mote"]
 colors = PackedColorArray(1, 0.949, 0.78, 0.8, 1, 0.949, 0.78, 0)
@@ -59,6 +61,14 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 144.0
 offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.1882353, 0.14901961, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("4_bsy20")
+theme_override_styles/normal = ExtResource("5_07cxn")
+theme_override_styles/pressed = ExtResource("5_07cxn")
+theme_override_styles/pressed_mirrored = ExtResource("5_07cxn")
+theme_override_styles/hover = ExtResource("5_07cxn")
+theme_override_styles/hover_pressed = ExtResource("5_07cxn")
+theme_override_styles/disabled = ExtResource("5_07cxn")
 text = "Back"
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=939222987]
