@@ -37,8 +37,7 @@ func move(direction: Vector2i) -> bool:
 		if not check_tile(tile_data, direction, false, next_cell, true): return false
 		
 		if tile_data.type == LevelData.LevelTileData.Type.HARD:
-			var tilemap := level_manager.tile_map_layer
-			tilemap.set_cell(next_cell, 3, Vector2i(0, 0), 0)
+			set_cell_animate(next_cell)
 			level_data.set_tile_data(next_cell, LevelData.LevelTileData.Type.HARD_BROKEN)
 			SfxPlayer.play_sfx(&"break_tiles")
 
@@ -139,8 +138,7 @@ func check_tile(tile_data: LevelData.LevelTileData, direction: Vector2i, rotatin
 	if tile_data.type == LevelData.LevelTileData.Type.HARD:
 		if not break_on_rotate and rotating: return false
 		if (break_on_rotate and rotating and end_pos) or not rotating:
-			var tilemap := level_manager.tile_map_layer
-			tilemap.set_cell(cell, 3, Vector2i(0, 0), 0)
+			set_cell_animate(cell)
 			level_manager.level_data.set_tile_data(cell, LevelData.LevelTileData.Type.HARD_BROKEN)
 			SfxPlayer.play_sfx(&"break_tiles")
 			return true
@@ -160,6 +158,15 @@ func turn_check(tile_1: Vector2i, tile_2: Vector2i, direction: Vector2i, level_d
 			else:
 				if not check_tile(temp_tile_data, direction, true, Vector2i(x, y), false): blocked_tile_count += 1
 	return blocked_tile_count
+
+func set_cell_animate(cell: Vector2i) -> void:
+	print("set cell animate")
+	var tilemap := level_manager.tile_map_layer
+	# set to inbetween
+	tilemap.set_cell(cell, 17, Vector2i(1, 0), 0)
+	await get_tree().create_timer(0.5).timeout
+	# set to broken
+	tilemap.set_cell(cell, 14, Vector2i(2, 0), 0)
 
 func rotate_segments() -> void:
 	for segment in range(len(segment_sprites)):

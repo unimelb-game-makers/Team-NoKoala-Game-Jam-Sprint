@@ -3,12 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://dg1q4cscsq8en" path="res://Sprites/Tiles/Beta/tile.png" id="1_chnd6"]
 [ext_resource type="Texture2D" uid="uid://ckb8i0m2rau81" path="res://Sprites/Tiles/Beta/entry_tile_sheet.png" id="2_kml1y"]
 [ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/Beta/tile_hard.png" id="3_aev0y"]
+[ext_resource type="Texture2D" uid="uid://krsbxmqbh1ie" path="res://Sprites/Tiles/broken.png" id="3_ctkgu"]
 [ext_resource type="Texture2D" uid="uid://cx4k505eo4dpw" path="res://Sprites/Levels/apple puzzle/apple tile (1).png" id="3_hg2lt"]
 [ext_resource type="Texture2D" uid="uid://c6fxuawpkipcm" path="res://Sprites/Tiles/Beta/tile_hard_broken.png" id="4_ojch6"]
 [ext_resource type="Texture2D" uid="uid://bg2eqimvh6er5" path="res://Sprites/Levels/apple puzzle/apple seed tile.png" id="4_wfrog"]
 [ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/Beta/tile_indestructible.png" id="5_kkmao"]
 [ext_resource type="Texture2D" uid="uid://dt7tkxtw0sdv0" path="res://Sprites/Levels/apple puzzle/apple seed tile-export.png" id="5_vkwt6"]
 [ext_resource type="Shader" uid="uid://klk8tp7vvjj3" path="res://Shaders/glow.gdshader" id="6_glow"]
+[ext_resource type="Texture2D" uid="uid://bj1ogmsvig6n7" path="res://Sprites/Tiles/indestructable.png" id="7_6fqdc"]
+[ext_resource type="Texture2D" uid="uid://cbd74wslivdq4" path="res://Sprites/Tiles/arrows.png" id="8_6fqdc"]
 [ext_resource type="Texture2D" uid="uid://c1b3bdb2po7a" path="res://Sprites/Tiles/leaf_ant.png" id="10_wfrog"]
 [ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="11_vkwt6"]
 [ext_resource type="Texture2D" uid="uid://k4cb0ad8xarm" path="res://Sprites/Tiles/leaf_centipede.png" id="12_ctkgu"]
@@ -30,6 +33,12 @@ texture_region_size = Vector2i(128, 128)
 1:1/0 = 0
 0:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qt4x"]
+resource_name = "hard_cell"
+texture = ExtResource("3_ctkgu")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2xvps"]
 resource_name = "normal_cell"
 texture = ExtResource("3_hg2lt")
@@ -48,6 +57,33 @@ resource_name = "indestructable_cell"
 texture = ExtResource("5_vkwt6")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo57w"]
+resource_name = "hard_broken_cell"
+texture = ExtResource("3_ctkgu")
+texture_region_size = Vector2i(128, 128)
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pn07g"]
+resource_name = "indestructable_cell"
+texture = ExtResource("7_6fqdc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eckrc"]
+resource_name = "entry_cell"
+texture = ExtResource("8_6fqdc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dyto"]
+resource_name = "hard_cell"
+texture = ExtResource("3_ctkgu")
+texture_region_size = Vector2i(128, 128)
+1:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
 resource_name = "hard_cell"
@@ -162,3 +198,8 @@ sources/9 = SubResource("TileSetAtlasSource_worm_star")
 sources/11 = SubResource("TileSetAtlasSource_2xvps")
 sources/12 = SubResource("TileSetAtlasSource_ctkgu")
 sources/13 = SubResource("TileSetAtlasSource_6fqdc")
+sources/10 = SubResource("TileSetAtlasSource_6qt4x")
+sources/14 = SubResource("TileSetAtlasSource_bo57w")
+sources/15 = SubResource("TileSetAtlasSource_pn07g")
+sources/16 = SubResource("TileSetAtlasSource_eckrc")
+sources/17 = SubResource("TileSetAtlasSource_8dyto")
