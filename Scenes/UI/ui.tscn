@@ -36,7 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://c6t26o2tf2ea7" path="res://Sprites/Tiles/leaf_rolypoly.png" id="33_6xe4j"]
 [ext_resource type="Texture2D" uid="uid://bon10gyjt2wni" path="res://Sprites/Tiles/leaf_worm.png" id="34_x47be"]
 [ext_resource type="Texture2D" uid="uid://c1gw8b7wgh1cs" path="res://Sprites/Tiles/leaf_centipede_dull.png" id="35_gpq8t"]
-[ext_resource type="Texture2D" uid="uid://soope01fhvf5" path="res://Sprites/Tiles/leaf_ant_dull.png" id="36_khanp"]
+[ext_resource type="Texture2D" uid="uid://bn6bs6demfdqr" path="res://Sprites/Tiles/leaf_ant_dull.png" id="36_khanp"]
 [ext_resource type="Texture2D" uid="uid://tswwjbpbywoc" path="res://Sprites/Tiles/leaf_caterpillar_dull.png" id="37_lguq0"]
 [ext_resource type="Texture2D" uid="uid://84udtw5gbba2" path="res://Sprites/Tiles/leaf_rolypoly_dull.png" id="38_4wywi"]
 [ext_resource type="Texture2D" uid="uid://xhmivxhqynqf" path="res://Sprites/Tiles/leaf_worm_dull.png" id="39_co58q"]
