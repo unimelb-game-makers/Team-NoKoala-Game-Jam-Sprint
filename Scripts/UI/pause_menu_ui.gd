@@ -8,6 +8,7 @@ signal level_select_requested
 
 
 func _ready() -> void:
+	visible = false
 	level_select_button.visible = show_level_select_button
 
 
