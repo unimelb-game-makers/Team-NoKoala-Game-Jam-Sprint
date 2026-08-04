@@ -37,6 +37,7 @@ func play_sfx(
 	player.bus = BUS_NAME
 	player.volume_db = volume_db
 	player.pitch_scale = pitch_scale	
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(player)
 	player.set_meta(&"sound_name", sound_name)
 	active_players.append(player)

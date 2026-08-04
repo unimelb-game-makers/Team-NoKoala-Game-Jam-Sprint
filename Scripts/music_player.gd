@@ -2,7 +2,7 @@ extends AudioStreamPlayer2D
 
 const LEVEL_MUSIC := {
     &"title_screen": preload("res://Audio/Main menu theme.wav"),
-    &"default": preload("res://Audio/Main theme.wav"),
+    &"default": preload("res://Audio/Main theme v2.wav"),
 }
 
 func _ready() -> void:
@@ -10,6 +10,7 @@ func _ready() -> void:
 
     get_tree().scene_changed.connect(_play_current_scene_music)
     call_deferred("_play_current_scene_music")
+    process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _play_current_scene_music() -> void:
     var current_scene := get_tree().current_scene

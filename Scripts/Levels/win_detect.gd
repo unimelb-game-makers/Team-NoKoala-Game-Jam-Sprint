@@ -20,14 +20,17 @@ func win_detect(current: float, maximum: float) -> bool:
 				return false
 				
 	var player = SfxPlayer.play_sfx(&'complete_level')
+
 	await player.finished
 
 	#await get_tree().create_timer(0.3).timeout
+	get_tree().paused = true
+
 	SfxPlayer.play_sfx(&'ding')
+
 	var level_key := level_manager.level_config.level_key
 	ProgressState.complete_level(level_key)
-		
-	get_tree().paused = true
+
 	complete_screen._instantiate_stars()
 	complete_screen.show()
 
