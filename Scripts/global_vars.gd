@@ -2,6 +2,8 @@ extends Node
 # Globally accessible variables. Access in other files as "GlobalVars"
 
 var protect_movement: bool = false
+var pause_movement: bool = false
+var players_first_level: bool = true
 
 # Enum of bug types:
 enum BugTypes {

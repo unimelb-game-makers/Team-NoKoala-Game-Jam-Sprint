@@ -12,3 +12,6 @@ func _ready() -> void:
 
 func _on_move(current: int, maximum: int) -> void:
 	text = "%d / %d move used" % [maximum-current, maximum]
+
+func _on_undo_btn_pressed() -> void:
+	movement_controller.undo()

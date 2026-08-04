@@ -14,7 +14,7 @@ texture = ExtResource("2_5ftgt")
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
 texture = ExtResource("3_qw07f")
 
-[node name="Body2" type="Sprite2D" parent="."]
+[node name="Body2" type="Sprite2D" parent="." unique_id=459157161]
 texture = ExtResource("3_qw07f")
 
 [node name="Tail" type="Sprite2D" parent="." unique_id=85632085]

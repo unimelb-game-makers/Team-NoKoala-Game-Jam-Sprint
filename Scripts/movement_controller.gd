@@ -13,6 +13,8 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
+	if GlobalVars.pause_movement: return
+	
 	if _is_deformable_move_animation_active():
 		return
 
@@ -52,6 +54,9 @@ func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	undo_stack.append(action)
 
 func undo() -> bool:
+	if level_manager.current_bug != null and not level_manager.current_bug.is_placed:
+		level_manager.cancel_bug_selection()
+
 	if _is_deformable_move_animation_active():
 		return false
 	if undo_stack.is_empty():
