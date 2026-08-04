@@ -85,8 +85,12 @@ layout_mode = 2
 texture_normal = ExtResource("5_cqvjp")
 
 [node name="PauseMenuUI" parent="Interface" unique_id=796959748 instance=ExtResource("7_pause_menu")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 
 [node name="EncyclopediaUI" parent="Interface" unique_id=659311693 instance=ExtResource("11_jx4bj")]
 layout_mode = 1
