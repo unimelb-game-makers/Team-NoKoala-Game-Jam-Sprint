@@ -6,7 +6,6 @@
 
 [node name="Ant" type="Node2D" unique_id=721379921]
 script = ExtResource("1_d0x5p")
-check_in_between_tiles = false
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
 z_index = 1
@@ -14,3 +13,5 @@ texture = ExtResource("2_y3nqo")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
 texture = ExtResource("3_jcsnt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=575227739]

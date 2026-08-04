@@ -3,7 +3,7 @@ extends Node2D
 class_name Bug
 
 @onready var level_manager: LevelManager = get_tree().get_first_node_in_group("level_manager")
-#@onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var is_placed: bool = false
 var segment_sprites: Array[Sprite2D]
@@ -104,14 +104,12 @@ func place(cell: Vector2i) -> void:
 			sprite.visible = true
 	
 func stop_wriggle() -> void:
-	pass
-	#if anim_player:
-	#	anim_player.stop()
+	if anim_player:
+		anim_player.stop()
 
 func start_wriggle() -> void:
-	pass
-	#if anim_player:
-	#	anim_player.play("wriggle")
+	if anim_player:
+		anim_player.play("wriggle")
 
 # Length parameter used for some bugs: e.g. Slug 
 @abstract

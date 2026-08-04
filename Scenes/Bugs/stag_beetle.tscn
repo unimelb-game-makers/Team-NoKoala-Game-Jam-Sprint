@@ -13,3 +13,5 @@ texture = ExtResource("2_4b8ck")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
 texture = ExtResource("3_s27io")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1377164078]

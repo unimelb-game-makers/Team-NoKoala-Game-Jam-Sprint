@@ -66,3 +66,6 @@ func move(direction: Vector2i) -> bool:
 	movement_sfx = SfxPlayer.play_sfx(&"crawling")
 
 	return true
+
+func _on_body_texture_changed() -> void:
+	get_node("Body2").texture = body_mesh.texture
