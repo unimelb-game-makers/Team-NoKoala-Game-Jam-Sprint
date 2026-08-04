@@ -18,9 +18,12 @@ func win_detect(current: float, maximum: float) -> bool:
 			and tile_data.bugs.is_empty() ) or level_manager._has_occupied_entry_point():
 				
 				return false
+				
+	var player = SfxPlayer.play_sfx(&'complete_level')
+	await player.finished
 
-	await get_tree().create_timer(0.3).timeout
-
+	#await get_tree().create_timer(0.3).timeout
+	SfxPlayer.play_sfx(&'ding')
 	var level_key := level_manager.level_config.level_key
 	ProgressState.complete_level(level_key)
 		

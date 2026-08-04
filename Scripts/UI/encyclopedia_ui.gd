@@ -13,11 +13,13 @@ func _input(event: InputEvent) -> void:
 
 func _on_exit_btn_pressed() -> void:
 	if anim_player.is_playing(): return
+	SfxPlayer.play_sfx(&'button_click')
 	GlobalVars.pause_movement = false
 	anim_player.play("show_encyclopedia", -1, -ANIM_SPEED, true)
 
 func _on_flip_next_page_btn_pressed() -> void:
 	if anim_player.is_playing(): return
+	SfxPlayer.play_sfx(&'page_turn')
 	if current_page <= 0: current_page = 0
 	
 	current_page += 1
@@ -29,6 +31,7 @@ func _on_flip_next_page_btn_pressed() -> void:
 
 func _on_flip_prev_page_btn_pressed() -> void:
 	if anim_player.is_playing(): return
+	SfxPlayer.play_sfx(&'page_turn')
 	if current_page >= 3: current_page = 3
 	
 	current_page -= 1

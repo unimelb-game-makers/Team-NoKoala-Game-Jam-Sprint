@@ -7,7 +7,16 @@ const SOUNDS := {
 	&"star": preload("res://audio/Stars sfx.wav"),
 	&"crawling": preload("res://audio/Caterpillar.wav"),
 	&"button_click": preload("res://audio/button click.wav"),
-	&'slug': preload("res://audio/temp_slug_sound.wav")
+	&'slug': preload("res://audio/temp_slug_sound.wav"),
+	&'page_turn': preload("res://Audio/Page Turning Sfx.wav"),
+	&'swish': preload("res://Audio/swish-2.wav"),
+	&'ding': preload("res://Audio/completetask_0.mp3"),
+	&'complete_level': preload("res://Audio/gmae.wav"),
+	&'thump' : preload("res://Audio/thump_02.ogg"),
+	&'crunch' : preload("res://Audio/whoosh.wav"),
+	&'crunch_reverse' : preload("res://Audio/whoosh_reverse.wav"),
+	&'reset' : preload("res://Audio/Punch2__007.ogg"),
+	&'undo' : preload("res://Audio/Punch2__008.ogg")
 }
 
 var active_players: Array[AudioStreamPlayer] = []
