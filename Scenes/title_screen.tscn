@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xe41j2emdti2" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_SmallChains.png" id="2_n82rj"]
 [ext_resource type="Texture2D" uid="uid://1557usi8yx2q" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Sign.png" id="3_0061g"]
 [ext_resource type="Texture2D" uid="uid://c5syh3gdom3b8" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_LargeChains.png" id="4_8mikk"]
+[ext_resource type="Texture2D" uid="uid://dp87sga1h8jky" path="res://Sprites/UI/BackButton.png" id="4_ycay6"]
 [ext_resource type="Texture2D" uid="uid://d2xwcqideorcf" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start.png" id="5_sqelc"]
 [ext_resource type="Texture2D" uid="uid://c018u1u6fj3dc" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start_Highlight.png" id="6_o1e67"]
 [ext_resource type="Texture2D" uid="uid://duitulp0yjlje" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
@@ -54,12 +55,11 @@ color = Color(1, 0.95, 0.8, 0.42)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=589927194]
 
-[node name="BackButton" type="Button" parent="CanvasLayer" unique_id=604517214]
-offset_left = 24.0
-offset_top = 24.0
-offset_right = 144.0
-offset_bottom = 72.0
-text = "Back"
+[node name="BackButton" type="TextureButton" parent="CanvasLayer" unique_id=1964638832]
+offset_right = 253.0
+offset_bottom = 252.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("4_ycay6")
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=939222987]
 layout_mode = 3
