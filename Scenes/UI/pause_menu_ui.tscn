@@ -1,0 +1,66 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://dbfufqmkuxl4f" path="res://Sprites/UI/pause_menu_base.png" id="1_background"]
+[ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="3_volume"]
+[ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="4_close"]
+
+[node name="PauseMenuUI" type="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture = ExtResource("1_background")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -15.5
+offset_right = 80.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.99462366)
+theme_override_constants/separation = 50
+
+[node name="VolumePanel" parent="TextureRect/VBoxContainer" instance=ExtResource("3_volume")]
+layout_mode = 2
+
+[node name="LevelSelectBtn" type="Button" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "Back to Level Select"
+
+[node name="ExitBtn" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -262.0
+offset_top = 103.99999
+offset_right = -134.0
+offset_bottom = 232.0
+grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("4_close")
+
+[connection signal="pressed" from="TextureRect/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
+[connection signal="pressed" from="TextureRect/ExitBtn" to="." method="_on_exit_btn_pressed"]

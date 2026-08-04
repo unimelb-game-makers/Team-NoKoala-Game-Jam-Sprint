@@ -21,6 +21,9 @@ func _on_pause_menu_btn_pressed() -> void:
 	pause_menu.show()
 	Engine.time_scale = 0
 
+func _on_pause_menu_level_select_requested() -> void:
+	level_manager.exit_level()
+
 func _on_encyclopedia_btn_pressed() -> void:
 	if GlobalVars.players_first_level == false:
 		SfxPlayer.play_sfx(&'button_click')

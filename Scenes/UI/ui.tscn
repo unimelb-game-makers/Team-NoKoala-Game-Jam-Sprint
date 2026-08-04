@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cp7vcy36pc425" path="res://Sprites/UI/undo_btn_temp.png" id="3_ny3ap"]
 [ext_resource type="Texture2D" uid="uid://cie7078m3k6p1" path="res://Sprites/UI/reset_btn_temp.png" id="4_vqjbf"]
 [ext_resource type="Texture2D" uid="uid://8awnuvqjmfso" path="res://Sprites/UI/encyclopedia_btn_temp.png" id="5_cqvjp"]
-[ext_resource type="Texture2D" uid="uid://dbfufqmkuxl4f" path="res://Sprites/UI/pause_menu_base.png" id="7_cqvjp"]
-[ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="7_hfaco"]
-[ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="9_1eb8u"]
-[ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="10_4acsd"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/pause_menu_ui.tscn" id="7_pause_menu"]
 [ext_resource type="PackedScene" uid="uid://cspmcrcbcmkk7" path="res://Scenes/UI/encyclopedia_ui.tscn" id="11_jx4bj"]
 [ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
 [ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
@@ -83,62 +80,7 @@ texture_normal = ExtResource("4_vqjbf")
 layout_mode = 2
 texture_normal = ExtResource("5_cqvjp")
 
-[node name="PauseMenuUI" type="Panel" parent="Interface" unique_id=1901086451]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_hfaco")
-
-[node name="TextureRect" type="TextureRect" parent="Interface/PauseMenuUI" unique_id=1589790718]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-offset_transform_enabled = true
-texture = ExtResource("7_cqvjp")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Interface/PauseMenuUI/TextureRect" unique_id=1564628002]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -15.5
-offset_right = 80.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 0.99462366)
-theme_override_constants/separation = 50
-
-[node name="VolumePanel" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=1195503976 instance=ExtResource("10_4acsd")]
-layout_mode = 2
-
-[node name="LevelSelectBtn" type="Button" parent="Interface/PauseMenuUI/TextureRect/VBoxContainer" unique_id=183376967]
-layout_mode = 2
-text = "Back to Level Select"
-
-[node name="ExitBtn" type="TextureButton" parent="Interface/PauseMenuUI/TextureRect" unique_id=1133681285]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -262.0
-offset_top = 103.99999
-offset_right = -134.0
-offset_bottom = 232.0
-grow_horizontal = 0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("9_1eb8u")
+[node name="PauseMenuUI" parent="Interface" instance=ExtResource("7_pause_menu")]
 
 [node name="EncyclopediaUI" parent="Interface" unique_id=659311693 instance=ExtResource("11_jx4bj")]
 layout_mode = 1
@@ -243,5 +185,4 @@ text = "Level Complete"
 [connection signal="pressed" from="Interface/HBoxContainer/UndoBtn" to="Interface/MoveTracker" method="_on_undo_btn_pressed"]
 [connection signal="pressed" from="Interface/HBoxContainer/ResetBtn" to="Interface" method="_on_reset_btn_pressed"]
 [connection signal="pressed" from="Interface/HBoxContainer/EncyclopediaBtn" to="Interface" method="_on_encyclopedia_btn_pressed"]
-[connection signal="pressed" from="Interface/PauseMenuUI/TextureRect/VBoxContainer/LevelSelectBtn" to="Interface/PauseMenuUI" method="_on_level_select_btn_pressed"]
-[connection signal="pressed" from="Interface/PauseMenuUI/TextureRect/ExitBtn" to="Interface/PauseMenuUI" method="_on_exit_btn_pressed"]
+[connection signal="level_select_requested" from="Interface/PauseMenuUI" to="Interface" method="_on_pause_menu_level_select_requested"]
