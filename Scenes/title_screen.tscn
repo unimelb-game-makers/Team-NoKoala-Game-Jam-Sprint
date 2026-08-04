@@ -3,37 +3,31 @@
 [ext_resource type="Script" uid="uid://c43qlp2rywume" path="res://Scripts/UI/title_screen.gd" id="1_0061g"]
 [ext_resource type="Texture2D" uid="uid://dmx7f1y4o1126" path="res://Sprites/UI/TitleScreen/menu BG.png" id="1_klylv"]
 [ext_resource type="Texture2D" uid="uid://xe41j2emdti2" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_SmallChains.png" id="2_n82rj"]
-[ext_resource type="Texture2D" uid="uid://cfcbireoset7q" path="res://Sprites/UI/fruit basket (normal).png" id="2_p3fck"]
 [ext_resource type="Texture2D" uid="uid://1557usi8yx2q" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Sign.png" id="3_0061g"]
 [ext_resource type="Texture2D" uid="uid://c5syh3gdom3b8" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_LargeChains.png" id="4_8mikk"]
 [ext_resource type="Texture2D" uid="uid://q0f66kvirbb5" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start.png" id="5_sqelc"]
 [ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
 [ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit.png" id="7_o1e67"]
+[ext_resource type="PackedScene" uid="uid://chmxx2aoqqnfo" path="res://Scenes/level_select.tscn" id="8_level_select"]
 
 [node name="TitleScreen" type="Node2D" unique_id=278402191]
 script = ExtResource("1_0061g")
 
+[node name="Background" type="Sprite2D" parent="." unique_id=2075088551]
+position = Vector2(543, -714)
+scale = Vector2(1.171875, 1.171875)
+texture = ExtResource("1_klylv")
+
+[node name="LevelSelect" parent="." unique_id=715502074 instance=ExtResource("8_level_select")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=589927194]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2075088551]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_klylv")
-expand_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer" unique_id=657364868]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_p3fck")
-expand_mode = 3
-metadata/_edit_use_anchors_ = true
+[node name="BackButton" type="Button" parent="CanvasLayer" unique_id=604517214]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 144.0
+offset_bottom = 72.0
+text = "Back"
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=939222987]
 layout_mode = 3
@@ -103,3 +97,7 @@ offset_right = 877.0
 offset_bottom = 378.0
 texture = ExtResource("4_8mikk")
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

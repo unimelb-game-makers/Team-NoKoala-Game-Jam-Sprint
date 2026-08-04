@@ -17,11 +17,8 @@ var default_camera_position: Vector2 = Vector2.ZERO
 var default_camera_zoom: Vector2
 
 func _ready() -> void:
-	if fruit_id == "apple":
-		isActive = true
-	else:
-		sprite.material = grayscale_shader
-		grayscale_shader.set_shader_parameter("gray_amount", 1.0)
+	sprite.material = grayscale_shader
+	grayscale_shader.set_shader_parameter("gray_amount", 1.0)
 	
 	if default_camera_position == Vector2.ZERO:
 		default_camera_position = camera.global_position
@@ -31,9 +28,9 @@ func _ready() -> void:
 	if TransitionLayer.zoom_target != Vector2.ZERO and TransitionLayer.zoom_fruit_id == fruit_id:
 		reload_scene()
 	
-	if TransitionLayer.active_fruits.get(fruit_id, false):
+	if ProgressState.is_unlocked(fruit_id):
 		set_active()
-	if TransitionLayer.bugged_fruits.get(fruit_id, false):
+	if ProgressState.is_completed(fruit_id):
 		set_bugged()
 
 func _on_mouse_entered() -> void:

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalVars="*uid://dcdhulu6fo2wh"
 TransitionLayer="*uid://bhi6td15ecquw"
+ProgressState="*res://Scripts/progress_state.gd"
 
 [display]
 
