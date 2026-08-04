@@ -157,4 +157,7 @@ func _on_back_button_pressed() -> void:
 
 
 func _quit_game() -> void:
-	get_tree().quit()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.history.back();")
+	else:
+		get_tree().quit()
