@@ -6,6 +6,19 @@
 [ext_resource type="FontFile" uid="uid://c3dw27802tyws" path="res://Fonts/MAIAN.TTF" id="4_0kpgm"]
 [ext_resource type="Texture2D" uid="uid://042wu5xbse0d" path="res://Sprites/UI/Chalk X.png" id="4_e3gms"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3gms"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0)
+
 [node name="PauseMenuUI" type="Panel" unique_id=1183260711]
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,6 +67,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_0kpgm")
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_e3gms")
 text = "Back to Level Select"
 
 [node name="ExitBtn" type="TextureButton" parent="TextureRect" unique_id=1749708171]
