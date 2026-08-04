@@ -1,8 +1,8 @@
 extends AudioStreamPlayer2D
 
 const LEVEL_MUSIC := {
-    &"title_screen": preload("res://audio/Main menu theme.wav"),
-    &"default": preload("res://audio/Main theme.wav"),
+    &"title_screen": preload("res://Audio/Main menu theme.wav"),
+    &"default": preload("res://Audio/Main theme.wav"),
 }
 
 func _ready() -> void:

@@ -79,6 +79,7 @@ func move(direction: Vector2i) -> bool:
 		facing_direction = direction
 		segment_sprites[0].rotation = atan2(direction.y, direction.x)
 		segment_sprites[1].rotation = atan2(direction.y, direction.x)
+		
 		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
 		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
 

@@ -4,10 +4,10 @@ const BUS_NAME: StringName = &"SFX"
 
 const SOUNDS := {
 	&"break_tiles": preload("res://Audio/Breaking tiles.wav"),
-	&"star": preload("res://audio/Stars sfx.wav"),
-	&"crawling": preload("res://audio/Caterpillar.wav"),
-	&"button_click": preload("res://audio/button click.wav"),
-	&'slug': preload("res://audio/temp_slug_sound.wav"),
+	&"star": preload("res://Audio/Stars sfx.wav"),
+	&"crawling": preload("res://Audio/Caterpillar.wav"),
+	&"button_click": preload("res://Audio/button click.wav"),
+	&'slug': preload("res://Audio/temp_slug_sound.wav"),
 	&'page_turn': preload("res://Audio/Page Turning Sfx.wav"),
 	&'swish': preload("res://Audio/swish-2.wav"),
 	&'ding': preload("res://Audio/completetask_0.mp3"),
