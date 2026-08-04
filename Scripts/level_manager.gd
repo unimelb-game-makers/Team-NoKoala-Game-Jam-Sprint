@@ -133,8 +133,9 @@ func _on_bonus_star_deactivated(cell: Vector2i) -> void:
 	tile_map_layer.set_cell(cell, source_id, atlas_coords, DEACTIVATED_ID)
 
 func exit_level() -> void:
+	
 	get_tree().paused = false
-
+	
 	# zoom out slightly
 	var tween = create_tween()
 	tween.set_parallel(true)
