@@ -78,12 +78,23 @@ texture_region_size = Vector2i(128, 128)
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dyto"]
 resource_name = "hard_cell"
 texture = ExtResource("3_ctkgu")
 texture_region_size = Vector2i(128, 128)
 1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oa1v3"]
+resource_name = "entry_cell"
+texture = ExtResource("8_6fqdc")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxcld"]
 resource_name = "hard_cell"
@@ -203,3 +214,4 @@ sources/14 = SubResource("TileSetAtlasSource_bo57w")
 sources/15 = SubResource("TileSetAtlasSource_pn07g")
 sources/16 = SubResource("TileSetAtlasSource_eckrc")
 sources/17 = SubResource("TileSetAtlasSource_8dyto")
+sources/18 = SubResource("TileSetAtlasSource_oa1v3")
