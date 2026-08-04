@@ -8,7 +8,7 @@ extends Node2D
 @onready var fruit_bowl: Node2D = $LevelSelect/FruitBowl
 
 const TITLE_MENU_INIT_Y: float = -500
-const TITLE_MENU_FINAL_Y: float = -24
+const TITLE_MENU_FINAL_Y: float = -28
 const TITLE_CAMERA_ZOOM := Vector2(0.24, 0.24)
 const LEVEL_SELECT_CAMERA_ZOOM := Vector2(0.58, 0.58)
 const LEVEL_SELECT_CAMERA_POSITION := Vector2.ZERO

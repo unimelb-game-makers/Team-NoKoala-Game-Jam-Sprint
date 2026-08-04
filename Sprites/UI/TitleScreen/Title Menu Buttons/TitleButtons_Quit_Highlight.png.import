@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duitulp0yjlje"
-path="res://.godot/imported/TitleButtons_Options.png-0c05e93a8165270ad863d86b0b90d07d.ctex"
+uid="uid://ddfv1ewvk333c"
+path="res://.godot/imported/TitleButtons_Quit_Highlight.png-83ac8e8e41feeae943f5840edf22146d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png"
-dest_files=["res://.godot/imported/TitleButtons_Options.png-0c05e93a8165270ad863d86b0b90d07d.ctex"]
+source_file="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit_Highlight.png"
+dest_files=["res://.godot/imported/TitleButtons_Quit_Highlight.png-83ac8e8e41feeae943f5840edf22146d.ctex"]
 
 [params]
 

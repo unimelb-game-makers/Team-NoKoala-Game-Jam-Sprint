@@ -5,10 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://xe41j2emdti2" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_SmallChains.png" id="2_n82rj"]
 [ext_resource type="Texture2D" uid="uid://1557usi8yx2q" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Sign.png" id="3_0061g"]
 [ext_resource type="Texture2D" uid="uid://c5syh3gdom3b8" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_LargeChains.png" id="4_8mikk"]
-[ext_resource type="Texture2D" uid="uid://q0f66kvirbb5" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start.png" id="5_sqelc"]
-[ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
-[ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit.png" id="7_o1e67"]
+[ext_resource type="Texture2D" uid="uid://d2xwcqideorcf" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start.png" id="5_sqelc"]
+[ext_resource type="Texture2D" uid="uid://q0f66kvirbb5" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Start_Highlight.png" id="6_o1e67"]
+[ext_resource type="Texture2D" uid="uid://duitulp0yjlje" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options.png" id="6_w5sh6"]
+[ext_resource type="Texture2D" uid="uid://bh2o5gmktqexl" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit.png" id="7_o1e67"]
 [ext_resource type="PackedScene" uid="uid://chmxx2aoqqnfo" path="res://Scenes/level_select.tscn" id="8_level_select"]
+[ext_resource type="Texture2D" uid="uid://cdr4dwhglnpka" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Options_Highlight.png" id="8_ycay6"]
+[ext_resource type="Texture2D" uid="uid://ddfv1ewvk333c" path="res://Sprites/UI/TitleScreen/Title Menu Buttons/TitleButtons_Quit_Highlight.png" id="10_bsy20"]
 
 [node name="TitleScreen" type="Node2D" unique_id=278402191]
 script = ExtResource("1_0061g")
@@ -31,13 +34,13 @@ text = "Back"
 
 [node name="TitleMenu" type="Control" parent="CanvasLayer" unique_id=939222987]
 layout_mode = 3
-anchor_left = 0.75
+anchor_left = 0.7
 anchor_right = 1.0
 offset_top = -24.0
 offset_right = 680.0
 offset_bottom = 2008.0
 grow_horizontal = 0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.33, 0.33)
 metadata/_edit_use_anchors_ = true
 
 [node name="TitleMenuButtons" type="Control" parent="CanvasLayer/TitleMenu" unique_id=263522233]
@@ -61,6 +64,7 @@ offset_top = 1233.0
 offset_right = 799.0
 offset_bottom = 1442.0
 texture_normal = ExtResource("5_sqelc")
+texture_hover = ExtResource("6_o1e67")
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsButton" type="TextureButton" parent="CanvasLayer/TitleMenu/TitleMenuButtons" unique_id=1678316824]
@@ -70,6 +74,7 @@ offset_top = 1449.0
 offset_right = 796.0
 offset_bottom = 1682.0
 texture_normal = ExtResource("6_w5sh6")
+texture_hover = ExtResource("8_ycay6")
 metadata/_edit_use_anchors_ = true
 
 [node name="QuitButton" type="TextureButton" parent="CanvasLayer/TitleMenu/TitleMenuButtons" unique_id=1640109982]
@@ -79,6 +84,7 @@ offset_top = 1675.0
 offset_right = 793.0
 offset_bottom = 1943.0
 texture_normal = ExtResource("7_o1e67")
+texture_hover = ExtResource("10_bsy20")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/TitleMenu" unique_id=122182817]
