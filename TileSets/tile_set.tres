@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/Beta/tile_indestructible.png" id="5_kkmao"]
 [ext_resource type="Texture2D" uid="uid://dt7tkxtw0sdv0" path="res://Sprites/Levels/apple puzzle/apple seed tile-export.png" id="5_vkwt6"]
 [ext_resource type="Shader" uid="uid://klk8tp7vvjj3" path="res://Shaders/glow.gdshader" id="6_glow"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="7_ant_star"]
-[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/Beta/caterpillar_star_activated.png" id="8_caterpillar_star"]
-[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/Beta/centipede_star_activated.png" id="9_centipede_star"]
-[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/Beta/rolypoly_star_activated.png" id="10_rolypoly_star"]
-[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/Beta/worm_star_activated.png" id="11_worm_star"]
+[ext_resource type="Texture2D" uid="uid://c1b3bdb2po7a" path="res://Sprites/Tiles/leaf_ant.png" id="10_wfrog"]
+[ext_resource type="Texture2D" uid="uid://d2uruaby6xt3h" path="res://Sprites/Tiles/leaf_caterpillar.png" id="11_vkwt6"]
+[ext_resource type="Texture2D" uid="uid://k4cb0ad8xarm" path="res://Sprites/Tiles/leaf_centipede.png" id="12_ctkgu"]
+[ext_resource type="Texture2D" uid="uid://c6t26o2tf2ea7" path="res://Sprites/Tiles/leaf_rolypoly.png" id="13_6fqdc"]
+[ext_resource type="Texture2D" uid="uid://bon10gyjt2wni" path="res://Sprites/Tiles/leaf_worm.png" id="14_6qt4x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv5g2"]
 resource_name = "normal_cell"
@@ -76,7 +76,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ant_star"]
 resource_name = "ant_star"
-texture = ExtResource("7_ant_star")
+texture = ExtResource("10_wfrog")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -92,7 +92,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_caterpillar_star"]
 resource_name = "caterpillar_star"
-texture = ExtResource("8_caterpillar_star")
+texture = ExtResource("11_vkwt6")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -108,7 +108,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_centipede_star"]
 resource_name = "centipede_star"
-texture = ExtResource("9_centipede_star")
+texture = ExtResource("12_ctkgu")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -124,7 +124,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rolypoly_star"]
 resource_name = "rolypoly_star"
-texture = ExtResource("10_rolypoly_star")
+texture = ExtResource("13_6fqdc")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
@@ -140,7 +140,7 @@ shader_parameter/pulse_speed = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_worm_star"]
 resource_name = "worm_star"
-texture = ExtResource("11_worm_star")
+texture = ExtResource("14_6qt4x")
 texture_region_size = Vector2i(128, 128)
 0:0/next_alternative_id = 2
 0:0/0 = 0
