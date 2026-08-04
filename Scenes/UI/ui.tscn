@@ -463,6 +463,7 @@ layout_mode = 2
 texture_normal = ExtResource("5_cqvjp")
 
 [node name="PauseMenuUI" type="Panel" parent="Interface" unique_id=1901086451]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
