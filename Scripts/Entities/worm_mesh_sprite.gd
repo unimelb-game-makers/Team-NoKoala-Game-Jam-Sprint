@@ -54,7 +54,8 @@ func move(direction: Vector2i) -> bool:
 			break
 
 		if not tile_data.is_empty():
-			break
+			if len(tile_data.bugs.filter(func(bug): return bug.get_name() != "Slug")) > 0:
+				break
 
 		if tile_data.type in [
 			LevelData.LevelTileData.Type.HARD,
