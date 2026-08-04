@@ -5,7 +5,7 @@ extends CurvedMeshBug
 @onready var head_mesh: MeshInstance2D = $Head
 @onready var body_mesh: MeshInstance2D = $Body
 @onready var tail_mesh: MeshInstance2D = $Tail
-
+	
 #initialise each segment of the bug 
 func init_segments() -> void:
 	var segment_count = SEGMENT_LENGTH

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c86wdceub2tys"
-path="res://.godot/imported/head 3-export.png-b6fd5aba7b08fa855e7634bea881cf8f.ctex"
+uid="uid://da5vs2jqyrshr"
+path="res://.godot/imported/head 3-export-export.png-0eec0fbb247bace57f50070aabaa486d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bugs/centipede/head 3-export.png"
-dest_files=["res://.godot/imported/head 3-export.png-b6fd5aba7b08fa855e7634bea881cf8f.ctex"]
+source_file="res://Sprites/Bugs/centipede/head 3-export-export.png"
+dest_files=["res://.godot/imported/head 3-export-export.png-0eec0fbb247bace57f50070aabaa486d.ctex"]
 
 [params]
 

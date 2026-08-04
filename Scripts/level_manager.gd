@@ -6,6 +6,7 @@ var level_data: LevelData
 var current_bug: Bug
 var previous_bug_before_selection: Bug
 
+
 const level_select_scene := "res://Scenes/level_select.tscn"
 
 @export var level_config: LevelConfig
