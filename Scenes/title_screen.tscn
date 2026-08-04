@@ -106,4 +106,5 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/TitleMenu/TitleMenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

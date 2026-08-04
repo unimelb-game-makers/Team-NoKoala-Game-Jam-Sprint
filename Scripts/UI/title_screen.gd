@@ -3,6 +3,8 @@ extends Node2D
 @onready var title_menu: Control = $CanvasLayer/TitleMenu
 @onready var title_menu_buttons: Control = $CanvasLayer/TitleMenu/TitleMenuButtons
 @onready var start_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/StartButton
+@onready var options_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/OptionsButton
+@onready var quit_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/QuitButton
 @onready var back_button: Button = $CanvasLayer/BackButton
 @onready var camera: Camera2D = $LevelSelect/Camera2D
 @onready var fruit_bowl: Node2D = $LevelSelect/FruitBowl
@@ -12,8 +14,12 @@ const TITLE_MENU_FINAL_Y: float = -28
 const TITLE_CAMERA_ZOOM := Vector2(0.24, 0.24)
 const LEVEL_SELECT_CAMERA_ZOOM := Vector2(0.58, 0.58)
 const LEVEL_SELECT_CAMERA_POSITION := Vector2.ZERO
+const BUTTON_CONFIRM_OFFSET_X: float = 24.0
+const BUTTON_CONFIRM_MOVE_DURATION: float = 0.12
+const BUTTON_CONFIRM_WAIT_DURATION: float = 0.3
 
 var transitioning: bool = false
+var title_button_animating: bool = false
 
 
 func _ready() -> void:
@@ -37,6 +43,60 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	play_title_button_action(start_button, _show_level_select)
+
+
+func _on_options_button_pressed() -> void:
+	play_title_button_action(options_button, _open_options)
+
+
+func _on_quit_button_pressed() -> void:
+	play_title_button_action(quit_button, _quit_game)
+
+
+func play_title_button_action(button: BaseButton, callback: Callable) -> void:
+	if title_button_animating or transitioning:
+		return
+
+	title_button_animating = true
+	set_title_buttons_disabled(true)
+	var original_x := button.position.x
+
+	var move_tween := create_tween()
+	move_tween.set_trans(Tween.TRANS_CUBIC)
+	move_tween.set_ease(Tween.EASE_OUT)
+	move_tween.tween_property(
+		button,
+		"position:x",
+		original_x + BUTTON_CONFIRM_OFFSET_X,
+		BUTTON_CONFIRM_MOVE_DURATION
+	)
+	await move_tween.finished
+	await get_tree().create_timer(BUTTON_CONFIRM_WAIT_DURATION).timeout
+
+	set_title_buttons_disabled(false)
+	callback.call()
+
+	var return_tween := create_tween()
+	return_tween.set_trans(Tween.TRANS_CUBIC)
+	return_tween.set_ease(Tween.EASE_OUT)
+	return_tween.tween_property(
+		button,
+		"position:x",
+		original_x,
+		BUTTON_CONFIRM_MOVE_DURATION
+	)
+	await return_tween.finished
+	title_button_animating = false
+
+
+func set_title_buttons_disabled(value: bool) -> void:
+	start_button.disabled = value
+	options_button.disabled = value
+	quit_button.disabled = value
+
+
+func _show_level_select() -> void:
 	if transitioning:
 		return
 
@@ -57,6 +117,11 @@ func _on_start_button_pressed() -> void:
 	back_button.show()
 	fruit_bowl.set_interactive(true)
 	transitioning = false
+
+
+func _open_options() -> void:
+	# Placeholder until the options screen is implemented.
+	pass
 
 
 func _on_back_button_pressed() -> void:
@@ -87,5 +152,5 @@ func _on_back_button_pressed() -> void:
 	transitioning = false
 
 
-func _on_quit_button_pressed() -> void:
+func _quit_game() -> void:
 	get_tree().quit()
