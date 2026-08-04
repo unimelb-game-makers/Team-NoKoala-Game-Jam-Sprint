@@ -20,6 +20,7 @@ func set_interactive(value: bool) -> void:
 func register_hover(fruit: Area2D) -> void:
 	if not interactive:
 		return
+	SfxPlayer.play_sfx(&'swish', -8.0, randf_range(0.9, 1.1))
 	hovered_fruits.append(fruit)
 	update_active()
 	

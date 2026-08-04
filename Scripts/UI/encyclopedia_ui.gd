@@ -36,16 +36,19 @@ func _input(event: InputEvent) -> void:
 
 func _on_exit_btn_pressed() -> void:
 	if _is_busy(): return
+	SfxPlayer.play_sfx(&'button_click')
 	GlobalVars.pause_movement = false
 	anim_player.play("show_encyclopedia", -1, -ANIM_SPEED, true)
 
 func _on_flip_next_page_btn_pressed() -> void:
 	if _is_busy() or current_page >= LAST_PAGE: return
+	SfxPlayer.play_sfx(&'page_turn')
 	texture_rect.texture = book_normal_texture
 	_flip_to_page(current_page + 1)
 
 func _on_flip_prev_page_btn_pressed() -> void:
 	if _is_busy() or current_page <= 0: return
+	SfxPlayer.play_sfx(&'page_turn')
 	texture_rect.texture = book_normal_texture
 	_flip_to_page(current_page - 1)
 

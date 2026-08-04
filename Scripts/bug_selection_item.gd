@@ -24,6 +24,7 @@ func _ready() -> void:
 	_generate_collision_shapes(bug)
 
 func _on_area_2d_mouse_entered() -> void:
+	SfxPlayer.play_sfx(&'swish', -8.0, randf_range(0.9, 1.1))
 	_set_hovered(true)
 
 func _on_area_2d_mouse_exited() -> void:

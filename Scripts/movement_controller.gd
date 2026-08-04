@@ -54,6 +54,7 @@ func record_placement(bug: Bug, previous_bug: Bug) -> void:
 	undo_stack.append(action)
 
 func undo() -> bool:
+	SfxPlayer.play_sfx(&'undo')
 	if level_manager.current_bug != null and not level_manager.current_bug.is_placed:
 		level_manager.cancel_bug_selection()
 
