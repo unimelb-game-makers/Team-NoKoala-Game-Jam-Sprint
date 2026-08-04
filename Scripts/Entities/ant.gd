@@ -13,7 +13,10 @@ func init_segments() -> void:
 func set_facing_direction(direction: Vector2i) -> void:
 	super.set_facing_direction(direction)
 	for sprite in segment_sprites:
-		sprite.rotation = atan2(direction.y, direction.x)
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(sprite, "rotation", atan2(direction.y, direction.x), 0.5)
+		#sprite.rotation = atan2(direction.y, direction.x)
 
 # Update positions of each segment
 func move(direction: Vector2i) -> bool:
@@ -79,6 +82,7 @@ func move(direction: Vector2i) -> bool:
 		facing_direction = direction
 		segment_sprites[0].rotation = atan2(direction.y, direction.x)
 		segment_sprites[1].rotation = atan2(direction.y, direction.x)
+		
 		var sfxplayer = SfxPlayer.play_sfx(&"crawling")
 		get_tree().create_timer(0.3).timeout.connect(sfxplayer.stop)
 
