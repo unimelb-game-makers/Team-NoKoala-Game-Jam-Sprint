@@ -10,10 +10,15 @@ signal level_select_requested
 func _ready() -> void:
 	level_select_button.visible = show_level_select_button
 
-func _on_exit_btn_pressed() -> void:
+
+func close() -> void:
 	hide()
 	GlobalVars.pause_movement = false
 	Engine.time_scale = 1.0
+
+
+func _on_exit_btn_pressed() -> void:
+	close()
 
 func _on_level_select_btn_pressed() -> void:
 	GlobalVars.pause_movement = false
