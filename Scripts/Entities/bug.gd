@@ -3,6 +3,8 @@ extends Node2D
 class_name Bug
 
 @onready var level_manager: LevelManager = get_tree().get_first_node_in_group("level_manager")
+#@onready var anim_player: AnimationPlayer = $AnimationPlayer
+
 var is_placed: bool = false
 var segment_sprites: Array[Sprite2D]
 var segment_cells: Array[Vector2i]
@@ -14,6 +16,11 @@ var type: GlobalVars.BugTypes
 
 func _ready() -> void:
 	init_segments()
+
+func _exit_tree() -> void:
+	if is_placed and is_instance_valid(level_manager) and level_manager.level_data != null:
+		level_manager.level_data.remove_bug(self)
+		is_placed = false
 
 func set_facing_direction(direction: Vector2i) -> void:
 	facing_direction = direction
@@ -95,6 +102,16 @@ func place(cell: Vector2i) -> void:
 		level_manager.level_data.add_bug(self)
 		for sprite in segment_sprites:
 			sprite.visible = true
+	
+func stop_wriggle() -> void:
+	pass
+	#if anim_player:
+	#	anim_player.stop()
+
+func start_wriggle() -> void:
+	pass
+	#if anim_player:
+	#	anim_player.play("wriggle")
 
 # Length parameter used for some bugs: e.g. Slug 
 @abstract

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbogo8xm4sdfb"]
 
 [ext_resource type="Script" uid="uid://cxmmhkttsu3lf" path="res://Scripts/Entities/centipede.gd" id="1_mv0ib"]
-[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/caterhead.png" id="2_5ftgt"]
-[ext_resource type="Texture2D" uid="uid://7bfdy7a6orvj" path="res://Sprites/caterbodyt.png" id="3_qw07f"]
+[ext_resource type="Texture2D" uid="uid://ebbdkjuvdcew" path="res://Sprites/Bugs/Beta/caterhead.png" id="2_5ftgt"]
+[ext_resource type="Texture2D" uid="uid://7bfdy7a6orvj" path="res://Sprites/Bugs/Beta/caterbodyt.png" id="3_qw07f"]
 
 [node name="Centipede" type="Node2D" unique_id=721379921]
 script = ExtResource("1_mv0ib")
@@ -14,7 +14,7 @@ texture = ExtResource("2_5ftgt")
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
 texture = ExtResource("3_qw07f")
 
-[node name="Body2" type="Sprite2D" parent="."]
+[node name="Body2" type="Sprite2D" parent="." unique_id=459157161]
 texture = ExtResource("3_qw07f")
 
 [node name="Tail" type="Sprite2D" parent="." unique_id=85632085]

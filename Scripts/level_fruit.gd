@@ -7,7 +7,8 @@ extends Area2D
 @export var fade_colour: Color
 @export var fruit_id: String
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Pivot/Sprite2D
+@onready var pivot: Node2D = $Pivot
 
 var isActive: bool = false
 var isBugged: bool = false
@@ -28,13 +29,12 @@ func _ready() -> void:
 	
 	# only on return
 	if TransitionLayer.zoom_target != Vector2.ZERO and TransitionLayer.zoom_fruit_id == fruit_id:
-		TransitionLayer.bugged_fruits[fruit_id] = true
 		reload_scene()
 	
-	#if TransitionLayer.active_fruits.get(fruit_id, false):
-		#set_active()
-	#if TransitionLayer.bugged_fruits.get(fruit_id, false):
-		#set_bugged()
+	if TransitionLayer.active_fruits.get(fruit_id, false):
+		set_active()
+	if TransitionLayer.bugged_fruits.get(fruit_id, false):
+		set_bugged()
 
 func _on_mouse_entered() -> void:
 	if isActive:
@@ -47,9 +47,9 @@ func _on_mouse_exited() -> void:
 func set_hovered(is_hovered: bool) -> void:
 	var tween = create_tween()
 	if (is_hovered):
-		tween.tween_property(self, "scale", Vector2(1.1, 1.1), 0.15)
+		tween.tween_property(pivot, "scale", Vector2(1.1, 1.1), 0.15)
 	else:
-		tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.15)
+		tween.tween_property(pivot, "scale", Vector2(1.0, 1.0), 0.15)
 
 func set_active() -> void:
 	grayscale_shader.set_shader_parameter("gray_amount", 0.0)

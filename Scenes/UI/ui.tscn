@@ -5,27 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://du30j2de12ns3" path="res://Sprites/UI/settings_menu_btn_temp.png" id="2_fevae"]
 [ext_resource type="Script" uid="uid://dod0filj0kcj4" path="res://Scripts/UI/complete_screen.gd" id="2_h6tq4"]
 [ext_resource type="Texture2D" uid="uid://cp7vcy36pc425" path="res://Sprites/UI/undo_btn_temp.png" id="3_ny3ap"]
-[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/centipede_star_activated.png" id="3_t7te2"]
-[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/ant_star_activated.png" id="4_56q1t"]
 [ext_resource type="Texture2D" uid="uid://cie7078m3k6p1" path="res://Sprites/UI/reset_btn_temp.png" id="4_vqjbf"]
 [ext_resource type="Texture2D" uid="uid://8awnuvqjmfso" path="res://Sprites/UI/encyclopedia_btn_temp.png" id="5_cqvjp"]
-[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/caterpillar_star_activated.png" id="5_fevae"]
-[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/rolypoly_star_activated.png" id="6_ny3ap"]
 [ext_resource type="Texture2D" uid="uid://dbfufqmkuxl4f" path="res://Sprites/UI/pause_menu_base.png" id="7_cqvjp"]
 [ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="7_hfaco"]
-[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/worm_star_activated.png" id="7_vqjbf"]
-[ext_resource type="Texture2D" uid="uid://byee6ao1tboi2" path="res://Sprites/Tiles/centipede_star.png" id="8_cqvjp"]
 [ext_resource type="Texture2D" uid="uid://dmubl5g3r1f0a" path="res://Sprites/UI/x_btn_temp.png" id="9_1eb8u"]
-[ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/ant_star.png" id="9_hfaco"]
-[ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/caterpillar_star.png" id="10_1eb8u"]
 [ext_resource type="Script" uid="uid://db2byshpx47c8" path="res://Scripts/UI/encyclopedia_ui.gd" id="10_jx4bj"]
 [ext_resource type="Texture2D" uid="uid://dy2d5g1kvx65x" path="res://Sprites/UI/Encyclopedia/Book.PNG" id="10_vhchw"]
-[ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/rolypoly_star.png" id="11_vhchw"]
-[ext_resource type="Texture2D" uid="uid://x5hbj82ejc06" path="res://Sprites/Tiles/worm_star.png" id="12_jx4bj"]
 [ext_resource type="Texture2D" uid="uid://bxegv58kpawig" path="res://Sprites/UI/Encyclopedia/caterpillar illus.PNG" id="12_rdq6y"]
 [ext_resource type="Texture2D" uid="uid://dkp61x3pjiexj" path="res://Sprites/UI/Encyclopedia/square bracket.PNG" id="13_cnm7j"]
 [ext_resource type="Texture2D" uid="uid://dsocrj2m2t04s" path="res://Sprites/UI/Encyclopedia/moth illus.PNG" id="13_l5iwa"]
-[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
 [ext_resource type="FontFile" uid="uid://dcqbkrwc2b5r" path="res://Fonts/MonteCarlo-Regular.ttf" id="14_ipvm5"]
 [ext_resource type="Texture2D" uid="uid://bwqpsfqds44rk" path="res://Sprites/UI/Encyclopedia/slug see through.PNG" id="14_l5iwa"]
 [ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/tile_indestructible.png" id="15_1ohgd"]
@@ -39,6 +28,18 @@
 [ext_resource type="Texture2D" uid="uid://d27s0boriaflh" path="res://Sprites/UI/Encyclopedia/worm illus.PNG" id="21_llrls"]
 [ext_resource type="Texture2D" uid="uid://ctx4hx4ucwmmc" path="res://Sprites/UI/Encyclopedia/ant illus.PNG" id="22_8rt22"]
 [ext_resource type="Texture2D" uid="uid://djxn22c4avjbi" path="res://Sprites/UI/Encyclopedia/stag beetle illus.PNG" id="23_1ohgd"]
+[ext_resource type="Texture2D" uid="uid://bc7fw804xt8lw" path="res://Sprites/Tiles/Beta/centipede_star_activated.png" id="3_t7te2"]
+[ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="4_56q1t"]
+[ext_resource type="Texture2D" uid="uid://barl6tqbqptbn" path="res://Sprites/Tiles/Beta/caterpillar_star_activated.png" id="5_fevae"]
+[ext_resource type="Texture2D" uid="uid://b7xkwmbl6wnhi" path="res://Sprites/Tiles/Beta/rolypoly_star_activated.png" id="6_ny3ap"]
+[ext_resource type="Texture2D" uid="uid://cx6ged4dscmgg" path="res://Sprites/Tiles/Beta/worm_star_activated.png" id="7_vqjbf"]
+[ext_resource type="Texture2D" uid="uid://byee6ao1tboi2" path="res://Sprites/Tiles/Beta/centipede_star.png" id="8_cqvjp"]
+[ext_resource type="Texture2D" uid="uid://bejxyndg08crl" path="res://Sprites/Tiles/Beta/ant_star.png" id="9_hfaco"]
+[ext_resource type="Texture2D" uid="uid://cv1l46yadcuqf" path="res://Sprites/Tiles/Beta/caterpillar_star.png" id="10_1eb8u"]
+[ext_resource type="Texture2D" uid="uid://ce6x0ihyl7pie" path="res://Sprites/Tiles/Beta/rolypoly_star.png" id="11_vhchw"]
+[ext_resource type="Texture2D" uid="uid://x5hbj82ejc06" path="res://Sprites/Tiles/Beta/worm_star.png" id="12_jx4bj"]
+[ext_resource type="Script" uid="uid://uhayvryjvlju" path="res://Scripts/Levels/win_detect.gd" id="13_rdq6y"]
+[ext_resource type="Script" uid="uid://sk8ly24p31c5" path="res://Scripts/UI/game_ui.gd" id="14_game_ui"]
 
 [sub_resource type="Animation" id="Animation_1eb8u"]
 length = 0.001
@@ -417,6 +418,7 @@ default_font_size = 50
 
 [node name="UI" type="CanvasLayer" unique_id=1709876479]
 layer = 10
+script = ExtResource("14_game_ui")
 
 [node name="Interface" type="Control" parent="." unique_id=1622249462]
 layout_mode = 3
@@ -1334,6 +1336,22 @@ texture_normal = ExtResource("9_1eb8u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interface/EncyclopediaUI" unique_id=1546540500]
 libraries/ = SubResource("AnimationLibrary_jx4bj")
+
+[node name="StatusMessage" type="Label" parent="Interface" unique_id=2045790279]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 72.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Status message"
+horizontal_alignment = 1
 
 [node name="LevelCompleteUI" type="Control" parent="." unique_id=200456765]
 unique_name_in_owner = true

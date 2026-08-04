@@ -28,16 +28,25 @@ class LevelTileData:
 		required_bug_type = p_required_bug_type
 	
 	func is_empty() -> bool:
+		prune_invalid_bugs()
 		return bugs.is_empty()
 
 	func add_bug(bug: Bug) -> void:
+		prune_invalid_bugs()
 		if not bugs.has(bug):
 			bugs.append(bug)
 	
 	func remove_bug(bug: Bug) -> void:
 		bugs.erase(bug)
+		prune_invalid_bugs()
+
+	func prune_invalid_bugs() -> void:
+		for index in range(bugs.size() - 1, -1, -1):
+			if not is_instance_valid(bugs[index]):
+				bugs.remove_at(index)
 	
 	func is_bonus_active() -> bool:
+		prune_invalid_bugs()
 		if type != Type.BONUS_STAR || required_bug_type == -1:
 			return false
 		for bug in bugs:
@@ -187,9 +196,9 @@ func add_tile(cell: Vector2i, tileType: LevelTileData.Type = LevelTileData.Type.
 ## Only called in level_tile_map for bonus stars
 func add_bonus_star(cell: Vector2i, required_bug_type: int) -> LevelData:
 	if !_grid.has(cell):
-		print("making it to cell")
+		#print("making it to cell")
 		_grid[cell] = LevelTileData.new(LevelTileData.Type.BONUS_STAR, required_bug_type)
-		print("cell", _grid[cell], " req=", _grid[cell].required_bug_type)
+		#print("cell", _grid[cell], " req=", _grid[cell].required_bug_type)
 	_bonus_stars[cell] = [required_bug_type, false]
 	return self
 
@@ -217,14 +226,16 @@ func add_bug(bug: Bug) -> void:
 				bonus_star_activated.emit(segment_cell)
 				
 func remove_bug(bug: Bug) -> void:
-	for segment_cell in bug.segment_cells:
-		var tile_data := get_tile_data(segment_cell)
-		if tile_data != null:
-			var was_active = tile_data.is_bonus_active()
-			tile_data.remove_bug(bug)
-			if !tile_data.is_bonus_active() and was_active:
-				_bonus_stars[segment_cell][1] = false
-				bonus_star_deactivated.emit(segment_cell)
+	for cell: Vector2i in _grid:
+		var tile_data: LevelTileData = _grid[cell]
+		var was_active := (
+			bool(_bonus_stars[cell][1]) if _bonus_stars.has(cell)
+			else tile_data.is_bonus_active()
+		)
+		tile_data.remove_bug(bug)
+		if not tile_data.is_bonus_active() and was_active:
+			_bonus_stars[cell][1] = false
+			bonus_star_deactivated.emit(cell)
 				
 func print_debug_map() -> void:
 	if _grid.is_empty():

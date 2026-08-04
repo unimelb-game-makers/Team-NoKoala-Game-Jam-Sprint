@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://db4f77knqjq3x"]
+
+[ext_resource type="Script" uid="uid://brh6gqplh1g1h" path="res://Scripts/Entities/caterpillar_spine.gd" id="1_5vpac"]
+[ext_resource type="Texture2D" uid="uid://bh46vwi6nkity" path="res://Sprites/Bugs/Beta/catepillar_head.png" id="2_pslbv"]
+[ext_resource type="Texture2D" uid="uid://cfsssmk6cprxy" path="res://Sprites/Bugs/Beta/catepillar_body.png" id="3_dbeuj"]
+
+[node name="Caterpillar" type="Node2D" unique_id=95702695]
+script = ExtResource("1_5vpac")
+
+[node name="Head" type="Line2D" parent="." unique_id=2091015478]
+points = PackedVector2Array(0, 2)
+width = 128.0
+texture = ExtResource("2_pslbv")
+
+[node name="Body" type="Line2D" parent="." unique_id=524831759]
+width = 128.0
+texture = ExtResource("3_dbeuj")
+
+[node name="Tail" type="Line2D" parent="." unique_id=1467074159]
+points = PackedVector2Array(0, 0, 0, 0)
+texture = ExtResource("3_dbeuj")

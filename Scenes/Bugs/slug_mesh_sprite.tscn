@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://itug1v2mfwe8"]
+
+[ext_resource type="Script" uid="uid://8iq213p2rc7" path="res://Scripts/Entities/slug_mesh_sprite.gd" id="1_slug"]
+[ext_resource type="Texture2D" uid="uid://dy6iswynikfoh" path="res://Sprites/Bugs/Slug/Head.PNG" id="2_lhhg2"]
+[ext_resource type="Texture2D" uid="uid://bewe5e6qd3y0h" path="res://Sprites/Bugs/Slug/Mid straight-export.png" id="3_g76mf"]
+[ext_resource type="Texture2D" uid="uid://d3psvcvwit140" path="res://Sprites/Bugs/Slug/Tail.PNG" id="4_emg8i"]
+
+[node name="Slug" type="Node2D" unique_id=760979600]
+modulate = Color(1, 1, 1, 0.627451)
+z_index = 2
+script = ExtResource("1_slug")
+
+[node name="Head" type="MeshInstance2D" parent="." unique_id=1352694458]
+z_index = 1
+texture = ExtResource("2_lhhg2")
+
+[node name="Body" type="MeshInstance2D" parent="." unique_id=590408072]
+texture = ExtResource("3_g76mf")
+
+[node name="Tail" type="MeshInstance2D" parent="." unique_id=2038859393]
+texture = ExtResource("4_emg8i")

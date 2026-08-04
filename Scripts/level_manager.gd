@@ -5,7 +5,6 @@ var level_data: LevelData
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
 var previous_bug_before_selection: Bug
-
 const level_select_scene := "res://Scenes/level_select.tscn"
 
 @export var level_config: LevelConfig
@@ -20,6 +19,7 @@ const DEACTIVATED_ID = 0
 const SELECTED_BUG_Z_INDEX = 100
 
 signal config_changed(config: LevelConfig)
+signal status_message_requested(message: String)
 
 func _enter_tree() -> void:
 	add_to_group(&"level_manager")
@@ -81,16 +81,21 @@ func try_place_bug(mouse_pos: Vector2) -> void:
 
 func begin_bug_selection(bug_type: GlobalVars.BugTypes) -> void:
 	if _has_occupied_entry_point():
+		status_message_requested.emit("Move the bug off the entry point first")
 		return
 	
 	if current_bug != null and not current_bug.is_placed:
 		cancel_bug_selection()
+	
+	if current_bug != null:
+		current_bug.stop_wriggle()
 
 	previous_bug_before_selection = current_bug
 	var bug := BugFactory.create_bug(bug_type)
 	tile_map_layer.add_child(bug)
 	bug.z_index = SELECTED_BUG_Z_INDEX
 	current_bug = bug
+	current_bug.start_wriggle()
 
 func _has_occupied_entry_point() -> bool:
 	for tile_data in level_data.get_tile_datas():

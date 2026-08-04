@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bdfow6pxqwue8"]
 
 [ext_resource type="Script" uid="uid://d4b1cc61u3lym" path="res://Scripts/Entities/stag_beetle.gd" id="1_4b8ck"]
-[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/stag_beetle_head.png" id="2_4b8ck"]
-[ext_resource type="Texture2D" uid="uid://bh4kyl1wx7hcn" path="res://Sprites/stag_beetle_body.png" id="3_s27io"]
+[ext_resource type="Texture2D" uid="uid://drk0bhv6lm55l" path="res://Sprites/Bugs/Beta/stag_beetle_head.png" id="2_4b8ck"]
+[ext_resource type="Texture2D" uid="uid://bh4kyl1wx7hcn" path="res://Sprites/Bugs/Beta/stag_beetle_body.png" id="3_s27io"]
 
 [node name="StagBeetle" type="Node2D" unique_id=721379921]
 script = ExtResource("1_4b8ck")
+check_in_between_tiles = false
 
 [node name="Head" type="Sprite2D" parent="." unique_id=202062952]
-z_index = 1
 texture = ExtResource("2_4b8ck")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=706890678]
