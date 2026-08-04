@@ -26,7 +26,6 @@ MusicPlayer="*uid://f683j1mitf6e"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [global_group]
 
