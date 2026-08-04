@@ -11,6 +11,7 @@ const title_screen_scene := "res://Scenes/title_screen.tscn"
 @onready var movement_controller: MovementController = $MovementController
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
 @onready var camera: Camera2D = $Camera2D
+@onready var interface = $UI/Interface
 
 var star_count: int = 0
 
@@ -118,9 +119,9 @@ func cancel_bug_selection() -> void:
 	previous_bug_before_selection = null
 
 func _unhandled_input(event: InputEvent) -> void:
-	# placeholder until actual exit level logic
-	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		exit_level()
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		interface.toggle_pause_menu()
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("reset"):
 		reset_level()
 

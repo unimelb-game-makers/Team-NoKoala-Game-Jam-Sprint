@@ -15,6 +15,9 @@ extends Panel
 @export var book_normal_texture: Texture2D
 @export var book_next_texture: Texture2D
 @export var book_prev_texture: Texture2D
+@export var book_no_worms: Texture2D
+@export var book_no_worms_prev_texture: Texture2D
+@export var book_no_worms_next_texture: Texture2D
 @export var book_frame_1: Texture2D
 @export var book_frame_2: Texture2D
 
@@ -43,13 +46,13 @@ func _on_exit_btn_pressed() -> void:
 func _on_flip_next_page_btn_pressed() -> void:
 	if _is_busy() or current_page >= LAST_PAGE: return
 	SfxPlayer.play_sfx(&'page_turn')
-	texture_rect.texture = book_normal_texture
+	_set_book_texture(book_normal_texture, book_no_worms)
 	_flip_to_page(current_page + 1)
 
 func _on_flip_prev_page_btn_pressed() -> void:
 	if _is_busy() or current_page <= 0: return
 	SfxPlayer.play_sfx(&'page_turn')
-	texture_rect.texture = book_normal_texture
+	_set_book_texture(book_normal_texture, book_no_worms)
 	_flip_to_page(current_page - 1)
 
 func _flip_to_page(target_page: int) -> void:
@@ -108,22 +111,25 @@ func _is_busy() -> bool:
 
 func _on_page_flip_finished() -> void:
 	page_flip_tween = null
-	texture_rect.texture = book_normal_texture
+	_set_book_texture(book_normal_texture, book_no_worms)
 	if current_page > 0 and prev_page_btn.is_hovered():
-		texture_rect.texture = book_prev_texture
+		_set_book_texture(book_prev_texture, book_no_worms_prev_texture)
 	elif current_page < LAST_PAGE and next_page_btn.is_hovered():
-		texture_rect.texture = book_next_texture
+		_set_book_texture(book_next_texture, book_no_worms_next_texture)
+
+func _set_book_texture(page_zero_texture: Texture2D, later_page_texture: Texture2D) -> void:
+	texture_rect.texture = later_page_texture if current_page > 0 else page_zero_texture
 
 func _on_flip_next_page_btn_mouse_entered() -> void:
 	if current_page != LAST_PAGE:
-		texture_rect.texture = book_next_texture
+		_set_book_texture(book_next_texture, book_no_worms_next_texture)
 
 func _on_flip_next_page_btn_mouse_exited() -> void:
-	texture_rect.texture = book_normal_texture
+	_set_book_texture(book_normal_texture, book_no_worms)
 
 func _on_flip_prev_page_btn_mouse_entered() -> void:
 	if current_page != 0:
-		texture_rect.texture = book_prev_texture
+		_set_book_texture(book_prev_texture, book_no_worms_prev_texture)
 
 func _on_flip_prev_page_btn_mouse_exited() -> void:
-	texture_rect.texture = book_normal_texture
+	_set_book_texture(book_normal_texture, book_no_worms)
