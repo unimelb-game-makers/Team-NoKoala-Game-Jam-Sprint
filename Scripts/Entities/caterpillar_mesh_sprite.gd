@@ -64,3 +64,6 @@ func move(direction: Vector2i) -> bool:
 	_start_follow_step(direction)
 	level_data.add_bug(self)
 	return true
+
+func _on_body_texture_changed() -> void:
+	get_node("Body2").texture = body_mesh.texture

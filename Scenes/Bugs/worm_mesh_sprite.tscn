@@ -18,3 +18,5 @@ texture = ExtResource("3_khm12")
 
 [node name="Tail" type="MeshInstance2D" parent="." unique_id=1438182820]
 texture = ExtResource("4_wp7ae")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=335233248]

@@ -1,18 +1,86 @@
 [gd_scene format=3 uid="uid://c1r7ey3epk408"]
 
 [ext_resource type="Script" uid="uid://caoj03c2sijtq" path="res://Scripts/Entities/caterpillar.gd" id="1_382te"]
+[ext_resource type="Texture2D" uid="uid://g200i4ciu74m" path="res://Sprites/Bugs/caterpillar/caterpillar head 1-export.png" id="2_e2vlt"]
 [ext_resource type="Texture2D" uid="uid://sam0i5ndw8lb" path="res://Sprites/Bugs/caterpillar/caterpillar body 1-export.png" id="2_mv0ib"]
 [ext_resource type="Texture2D" uid="uid://bmmphvamlyfwd" path="res://Sprites/Bugs/caterpillar/caterpillar tail 1-export.png" id="3_5ftgt"]
+[ext_resource type="Texture2D" uid="uid://du8n0g71c8xwh" path="res://Sprites/Bugs/caterpillar/caterpillar head 2-export.png" id="3_e0eqk"]
+[ext_resource type="Texture2D" uid="uid://c0u5robrw8igd" path="res://Sprites/Bugs/caterpillar/caterpillar body 2-export.png" id="5_1mdgt"]
+[ext_resource type="Texture2D" uid="uid://bdoemmovvxmqx" path="res://Sprites/Bugs/caterpillar/caterpillar tail 2-export.png" id="7_wlmlg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b136p"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e2vlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_e0eqk")
+}],
+"loop": 1,
+"name": &"wriggle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ll53q"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mv0ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1mdgt")
+}],
+"loop": 1,
+"name": &"wriggle",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwpmh"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5ftgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wlmlg")
+}],
+"loop": 1,
+"name": &"wriggle",
+"speed": 5.0
+}]
 
 [node name="Caterpillar" type="Node2D" unique_id=95702695]
 script = ExtResource("1_382te")
 
-[node name="Head" type="Sprite2D" parent="." unique_id=1711904933]
+[node name="Head" type="AnimatedSprite2D" parent="." unique_id=1087702591]
 z_index = 1
-texture = ExtResource("2_mv0ib")
+sprite_frames = SubResource("SpriteFrames_b136p")
+animation = &"wriggle"
+frame_progress = 0.11805461
 
-[node name="Body" type="Sprite2D" parent="." unique_id=1141348196]
-texture = ExtResource("2_mv0ib")
+[node name="Body" type="AnimatedSprite2D" parent="." unique_id=1676181222]
+sprite_frames = SubResource("SpriteFrames_ll53q")
+animation = &"wriggle"
+frame_progress = 0.5711877
 
-[node name="Tail" type="Sprite2D" parent="." unique_id=1957973154]
-texture = ExtResource("3_5ftgt")
+[node name="Tail" type="AnimatedSprite2D" parent="." unique_id=1463164369]
+sprite_frames = SubResource("SpriteFrames_nwpmh")
+animation = &"wriggle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=88812437]
