@@ -58,3 +58,10 @@ z_index = -10
 position = Vector2(239, 0)
 scale = Vector2(1.205, 1.205)
 texture = ExtResource("8_wwl4s")
+
+[node name="Background2" type="Sprite2D" parent="." unique_id=1973261951]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+z_index = -11
+position = Vector2(258, -10)
+scale = Vector2(1.425, 1.425)
+texture = ExtResource("8_wwl4s")
