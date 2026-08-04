@@ -1,10 +1,33 @@
 extends Panel
 
 @onready var anim_player = $AnimationPlayer
+@onready var texture_rect = $TextureRect
 @onready var prev_page_btn = $TextureRect/FlipPrevPageBtn
 @onready var next_page_btn = $TextureRect/FlipNextPageBtn
+@onready var page_flip_frame: TextureRect = $TextureRect/PageFlipFrame
+@onready var pages: Array[Control] = [
+	$TextureRect/Page0,
+	$TextureRect/Page1,
+	$TextureRect/Page2,
+	$TextureRect/Page3,
+]
+
+@export var book_normal_texture: Texture2D
+@export var book_next_texture: Texture2D
+@export var book_prev_texture: Texture2D
+@export var book_frame_1: Texture2D
+@export var book_frame_2: Texture2D
+
 var current_page: int = 0
+var page_flip_tween: Tween
+
 const ANIM_SPEED: float = 1.7
+const LAST_PAGE: int = 3
+const PAGE_FADE_DURATION: float = 0.4 / ANIM_SPEED
+const PAGE_HIDE_DELAY: float = 0.43333334 / ANIM_SPEED
+const PAGE_SHOW_DELAY: float = 0.5 / ANIM_SPEED
+const PAGE_FADE_IN_DELAY: float = 0.53333336 / ANIM_SPEED
+const FLIP_FRAME_DURATION: float = 0.1
 
 func _input(event: InputEvent) -> void:
 	if visible:
@@ -12,28 +35,92 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("right"): _on_flip_next_page_btn_pressed()
 
 func _on_exit_btn_pressed() -> void:
-	if anim_player.is_playing(): return
+	if _is_busy(): return
 	GlobalVars.pause_movement = false
 	anim_player.play("show_encyclopedia", -1, -ANIM_SPEED, true)
 
 func _on_flip_next_page_btn_pressed() -> void:
-	if anim_player.is_playing(): return
-	if current_page <= 0: current_page = 0
-	
-	current_page += 1
-	
-	match current_page:
-		1: anim_player.play("flip_to_page_1", -1, ANIM_SPEED)
-		2: anim_player.play("flip_to_page_2", -1, ANIM_SPEED)
-		3: anim_player.play("flip_to_page_3", -1, ANIM_SPEED)
+	if _is_busy() or current_page >= LAST_PAGE: return
+	texture_rect.texture = book_normal_texture
+	_flip_to_page(current_page + 1)
 
 func _on_flip_prev_page_btn_pressed() -> void:
-	if anim_player.is_playing(): return
-	if current_page >= 3: current_page = 3
-	
-	current_page -= 1
-	
-	match current_page:
-		0: anim_player.play("flip_to_page_1", -1, -ANIM_SPEED, true)
-		1: anim_player.play("flip_to_page_2", -1, -ANIM_SPEED, true)
-		2: anim_player.play("flip_to_page_3", -1, -ANIM_SPEED, true)
+	if _is_busy() or current_page <= 0: return
+	texture_rect.texture = book_normal_texture
+	_flip_to_page(current_page - 1)
+
+func _flip_to_page(target_page: int) -> void:
+	var outgoing_page := pages[current_page]
+	var incoming_page := pages[target_page]
+	var flipping_forward := target_page > current_page
+
+	incoming_page.modulate.a = 0.0
+	page_flip_tween = create_tween().set_parallel(true)
+	page_flip_tween.tween_property(
+		outgoing_page, "modulate:a", 0.0, PAGE_FADE_DURATION
+	)
+	page_flip_tween.tween_callback(
+		func() -> void: outgoing_page.visible = false
+	).set_delay(PAGE_HIDE_DELAY)
+	page_flip_tween.tween_callback(
+		func() -> void: incoming_page.visible = true
+	).set_delay(PAGE_SHOW_DELAY)
+	page_flip_tween.tween_property(
+		incoming_page, "modulate:a", 1.0, PAGE_FADE_DURATION
+	).set_delay(PAGE_FADE_IN_DELAY)
+	_play_book_flip_frames(flipping_forward)
+
+	if current_page == 0 or target_page == 0:
+		_fade_page_button(prev_page_btn, target_page > 0, flipping_forward)
+	if current_page == LAST_PAGE or target_page == LAST_PAGE:
+		_fade_page_button(next_page_btn, target_page < LAST_PAGE, flipping_forward)
+
+	current_page = target_page
+	page_flip_tween.finished.connect(_on_page_flip_finished)
+
+func _play_book_flip_frames(flipping_forward: bool) -> void:
+	var first_frame := book_frame_1 if flipping_forward else book_frame_2
+	var second_frame := book_frame_2 if flipping_forward else book_frame_1
+	var frame_start := PAGE_HIDE_DELAY
+
+	page_flip_tween.tween_callback(func() -> void:
+		page_flip_frame.texture = first_frame
+		page_flip_frame.visible = true
+	).set_delay(frame_start)
+	page_flip_tween.tween_callback(func() -> void:
+		page_flip_frame.texture = second_frame
+	).set_delay(frame_start + FLIP_FRAME_DURATION)
+	page_flip_tween.tween_callback(func() -> void:
+		page_flip_frame.visible = false
+	).set_delay(frame_start + FLIP_FRAME_DURATION * 2.0)
+
+func _fade_page_button(button: TextureButton, fade_in: bool, flipping_forward: bool) -> void:
+	var delay := PAGE_FADE_IN_DELAY if flipping_forward else 0.0
+	page_flip_tween.tween_property(
+		button, "modulate:a", float(fade_in), PAGE_FADE_DURATION
+	).set_delay(delay)
+
+func _is_busy() -> bool:
+	return anim_player.is_playing() or page_flip_tween != null
+
+func _on_page_flip_finished() -> void:
+	page_flip_tween = null
+	texture_rect.texture = book_normal_texture
+	if current_page > 0 and prev_page_btn.is_hovered():
+		texture_rect.texture = book_prev_texture
+	elif current_page < LAST_PAGE and next_page_btn.is_hovered():
+		texture_rect.texture = book_next_texture
+
+func _on_flip_next_page_btn_mouse_entered() -> void:
+	if current_page != LAST_PAGE:
+		texture_rect.texture = book_next_texture
+
+func _on_flip_next_page_btn_mouse_exited() -> void:
+	texture_rect.texture = book_normal_texture
+
+func _on_flip_prev_page_btn_mouse_entered() -> void:
+	if current_page != 0:
+		texture_rect.texture = book_prev_texture
+
+func _on_flip_prev_page_btn_mouse_exited() -> void:
+	texture_rect.texture = book_normal_texture
