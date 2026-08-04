@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cr2l5uyibadu2" path="res://Sprites/UI/Settings Menu Blank.png" id="2_pdymr"]
 [ext_resource type="Script" uid="uid://llidqw0l13f8" path="res://Scripts/UI/pause_menu_ui.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://bmg187c85gyfc" path="res://Scenes/UI/volume_panel.tscn" id="3_volume"]
+[ext_resource type="FontFile" uid="uid://c3dw27802tyws" path="res://Fonts/MAIAN.TTF" id="4_0kpgm"]
 [ext_resource type="Texture2D" uid="uid://042wu5xbse0d" path="res://Sprites/UI/Chalk X.png" id="4_e3gms"]
 
 [node name="PauseMenuUI" type="Panel" unique_id=1183260711]
@@ -43,7 +44,7 @@ offset_right = 80.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1, 0.99462366)
+scale = Vector2(1, 0.98942983)
 theme_override_constants/separation = 50
 
 [node name="VolumePanel" parent="TextureRect/VBoxContainer" unique_id=1071022064 instance=ExtResource("3_volume")]
@@ -51,6 +52,8 @@ layout_mode = 2
 
 [node name="LevelSelectBtn" type="Button" parent="TextureRect/VBoxContainer" unique_id=941847382]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0kpgm")
+theme_override_font_sizes/font_size = 22
 text = "Back to Level Select"
 
 [node name="ExitBtn" type="TextureButton" parent="TextureRect" unique_id=1749708171]

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bmg187c85gyfc"]
 
 [ext_resource type="Script" uid="uid://dhekj3h35xxji" path="res://Scripts/UI/volume_panel.gd" id="1_kb7go"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/chalk_slider.tscn" id="2_chalk_slider"]
+[ext_resource type="PackedScene" uid="uid://5rn8l26qmxkm" path="res://Scenes/UI/chalk_slider.tscn" id="2_chalk_slider"]
+[ext_resource type="FontFile" uid="uid://c3dw27802tyws" path="res://Fonts/MAIAN.TTF" id="2_o7fs4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8g1k"]
 
@@ -20,6 +21,8 @@ layout_mode = 2
 
 [node name="MusicLabel" type="Label" parent="VBoxContainer" unique_id=541659360]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o7fs4")
+theme_override_font_sizes/font_size = 20
 text = "Music"
 
 [node name="MusicSlider" parent="VBoxContainer" unique_id=1797345377 instance=ExtResource("2_chalk_slider")]
@@ -27,6 +30,8 @@ layout_mode = 2
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer" unique_id=560375822]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_o7fs4")
+theme_override_font_sizes/font_size = 20
 text = "Sfx"
 
 [node name="SFXSlider" parent="VBoxContainer" unique_id=41789977 instance=ExtResource("2_chalk_slider")]
