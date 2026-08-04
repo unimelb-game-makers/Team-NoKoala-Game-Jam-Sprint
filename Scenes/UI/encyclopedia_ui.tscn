@@ -7,8 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://vhljk388x474" path="res://Sprites/UI/Encyclopedia/Book_prev.png" id="4_ueapa"]
 [ext_resource type="FontFile" uid="uid://dcqbkrwc2b5r" path="res://Fonts/MonteCarlo-Regular.ttf" id="5_6arpw"]
 [ext_resource type="Texture2D" uid="uid://x3lbmo0c873v" path="res://Sprites/UI/Encyclopedia/book_frame_1.PNG" id="5_16v7v"]
+[ext_resource type="Texture2D" uid="uid://c4rp8lygktdnl" path="res://Sprites/UI/Encyclopedia/Book_no_worms_prev.png" id="5_42f11"]
+[ext_resource type="Texture2D" uid="uid://h7q3fxshghey" path="res://Sprites/UI/Encyclopedia/Book_no_worms.png" id="5_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://35ts7i13t5k5" path="res://Sprites/UI/Encyclopedia/book_frame_2.PNG" id="6_6arpw"]
 [ext_resource type="FontFile" uid="uid://cihb73n44mjdu" path="res://Fonts/LibreBaskerville-VariableFont_wght.ttf" id="6_42f11"]
+[ext_resource type="Texture2D" uid="uid://h27imurwvv6k" path="res://Sprites/UI/Encyclopedia/Book_no_worms_next.png" id="6_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://b76rx23ovmkkg" path="res://Sprites/Tiles/Beta/ant_star_activated.png" id="7_ljgkj"]
 [ext_resource type="Texture2D" uid="uid://mxy8xphdtuqg" path="res://Sprites/Tiles/Beta/tile_indestructible.png" id="8_d2fam"]
 [ext_resource type="Texture2D" uid="uid://ck5kr8cov2r3c" path="res://Sprites/Tiles/Beta/tile_hard.png" id="9_q46ka"]
@@ -196,6 +199,9 @@ script = ExtResource("1_i5kdx")
 book_normal_texture = ExtResource("2_ueapa")
 book_next_texture = ExtResource("3_ueapa")
 book_prev_texture = ExtResource("4_ueapa")
+book_no_worms = ExtResource("5_ljgkj")
+book_no_worms_prev_texture = ExtResource("5_42f11")
+book_no_worms_next_texture = ExtResource("6_ljgkj")
 book_frame_1 = ExtResource("5_16v7v")
 book_frame_2 = ExtResource("6_6arpw")
 
