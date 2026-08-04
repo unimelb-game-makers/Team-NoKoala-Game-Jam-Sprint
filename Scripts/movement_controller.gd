@@ -13,6 +13,8 @@ func _ready() -> void:
 	level_manager.config_changed.connect(_on_config_changed)
 
 func _input(event: InputEvent) -> void:
+	if GlobalVars.pause_movement: return
+	
 	if _is_deformable_move_animation_active():
 		return
 

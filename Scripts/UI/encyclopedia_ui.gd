@@ -6,8 +6,14 @@ extends Panel
 var current_page: int = 0
 const ANIM_SPEED: float = 1.7
 
+func _input(event: InputEvent) -> void:
+	if visible:
+		if event.is_action_pressed("left"): _on_flip_prev_page_btn_pressed()
+		if event.is_action_pressed("right"): _on_flip_next_page_btn_pressed()
+
 func _on_exit_btn_pressed() -> void:
 	if anim_player.is_playing(): return
+	GlobalVars.pause_movement = false
 	anim_player.play("show_encyclopedia", -1, -ANIM_SPEED, true)
 
 func _on_flip_next_page_btn_pressed() -> void:
