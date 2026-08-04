@@ -5,7 +5,8 @@ extends Node2D
 @onready var start_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/StartButton
 @onready var options_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/OptionsButton
 @onready var quit_button: TextureButton = $CanvasLayer/TitleMenu/TitleMenuButtons/QuitButton
-@onready var back_button: Button = $CanvasLayer/BackButton
+@onready var back_button: TextureButton = $CanvasLayer/BackButton
+@onready var options_menu: Panel = $CanvasLayer/PauseMenuUI
 @onready var camera: Camera2D = $LevelSelect/Camera2D
 @onready var fruit_bowl: Node2D = $LevelSelect/FruitBowl
 
@@ -44,15 +45,16 @@ func _ready() -> void:
 
 func _on_start_button_pressed() -> void:
 	SfxPlayer.play_sfx(&"button_click")
-
 	play_title_button_action(start_button, _show_level_select)
 
 
 func _on_options_button_pressed() -> void:
+	SfxPlayer.play_sfx(&"button_click")
 	play_title_button_action(options_button, _open_options)
 
 
 func _on_quit_button_pressed() -> void:
+	SfxPlayer.play_sfx(&"button_click")
 	play_title_button_action(quit_button, _quit_game)
 
 
@@ -122,8 +124,7 @@ func _show_level_select() -> void:
 
 
 func _open_options() -> void:
-	# Placeholder until the options screen is implemented.
-	pass
+	options_menu.show()
 
 
 func _on_back_button_pressed() -> void:
@@ -156,4 +157,7 @@ func _on_back_button_pressed() -> void:
 
 
 func _quit_game() -> void:
-	get_tree().quit()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.history.back();")
+	else:
+		get_tree().quit()
