@@ -5,7 +5,7 @@ var level_data: LevelData
 ## Stores the currently controlled bug so players aren't controlling multiple bugs at once
 var current_bug: Bug
 var previous_bug_before_selection: Bug
-const level_select_scene := "res://Scenes/level_select.tscn"
+const title_screen_scene := "res://Scenes/title_screen.tscn"
 
 @export var level_config: LevelConfig
 @onready var movement_controller: MovementController = $MovementController
@@ -140,7 +140,8 @@ func _on_bonus_star_deactivated(cell: Vector2i) -> void:
 func exit_level() -> void:
 	
 	get_tree().paused = false
-	
+	TransitionLayer.entering_level_select = true
+
 	# zoom out slightly
 	var tween = create_tween()
 	tween.set_parallel(true)
@@ -150,8 +151,8 @@ func exit_level() -> void:
 	await tween.finished
 	
 	# change scenes
-	if (level_select_scene):
-		get_tree().change_scene_to_file(level_select_scene)
+	if title_screen_scene:
+		get_tree().change_scene_to_file(title_screen_scene)
 	
 	await TransitionLayer.get_tree().process_frame
 	await TransitionLayer.fade_in()
