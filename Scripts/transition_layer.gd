@@ -2,15 +2,12 @@ extends CanvasLayer
 
 @onready var fade_rect: ColorRect = $FadeRect
 
-# keep track of fruit states
-var active_fruits: Dictionary[String, bool] = {}
-var bugged_fruits: Dictionary[String, bool] = {}
-
 # to be passed between scenes
 var zoom_target: Vector2
 var zoom_colour: Color = Color.BLACK
 var zoom_amount: Vector2 = Vector2(4, 4)
 var zoom_fruit_id: String = ""
+var entering_level_select: bool = false
 
 func fade_out(duration: float = 0.15) -> void:
 	fade_rect.color = zoom_colour

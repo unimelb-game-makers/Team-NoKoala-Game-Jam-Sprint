@@ -22,10 +22,7 @@ func win_detect(current: float, maximum: float) -> bool:
 	await get_tree().create_timer(0.3).timeout
 
 	var level_key := level_manager.level_config.level_key
-	TransitionLayer.bugged_fruits[level_key] = true
-	var next_fruit = GlobalVars.get_next_level(level_key)
-	if next_fruit != "":
-		TransitionLayer.active_fruits[next_fruit] = true
+	ProgressState.complete_level(level_key)
 		
 	get_tree().paused = true
 	complete_screen._instantiate_stars()
