@@ -17,9 +17,10 @@ func init_segments() -> void:
 func move(direction: Vector2i) -> bool:
 	if is_moving:
 		return false
+	
 	# not top down: flip it!
-	if direction.x != 0:
-		segment_sprites[0].flip_h = direction.x > 0
+	#if direction.x != 0:
+		#segment_sprites[0].flip_h = direction.x > 0
 	#if direction.y != 0:
 		#segment_sprites[0].rotation = Vector2(direction).angle() + PI / 2
 		#segment_sprites[0].flip_v = direction.y > 0
@@ -96,3 +97,4 @@ func roll_to(from_cell: Vector2i, to_cell: Vector2i, direction: Vector2i) -> voi
 	
 	$Body.rotation = 0
 	segment_sprites[0].texture = static_sprite
+	segment_sprites[0].rotation = atan2(-direction.y, -direction.x)
