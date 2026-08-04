@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://05pb1q08gn6h"]
+
+[ext_resource type="Texture2D" uid="uid://fjecq0w50ma3" path="res://Sprites/Menu/GenericBackButton_Whole.png" id="1_updu2"]
+
+[resource]
+texture = ExtResource("1_updu2")
