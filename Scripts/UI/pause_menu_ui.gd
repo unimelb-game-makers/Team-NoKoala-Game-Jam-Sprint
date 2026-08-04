@@ -19,6 +19,7 @@ func close() -> void:
 
 
 func _on_exit_btn_pressed() -> void:
+	SfxPlayer.play_sfx(&'button_click')
 	close()
 
 func _on_level_select_btn_pressed() -> void:
