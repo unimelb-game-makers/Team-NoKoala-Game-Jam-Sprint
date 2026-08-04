@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfsp0gb2m060c"
-path="res://.godot/imported/roly poly 1.png-aa802a6661319be14128cc3befecf1ec.ctex"
+uid="uid://kj245qew2sk6"
+path="res://.godot/imported/Roly Poly 1.png-7dba1ba7573e7ea86e184fa13945515e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bugs/roly poly/roly poly 1.png"
-dest_files=["res://.godot/imported/roly poly 1.png-aa802a6661319be14128cc3befecf1ec.ctex"]
+source_file="res://Sprites/Bugs/roly poly/Roly Poly 1.png"
+dest_files=["res://.godot/imported/Roly Poly 1.png-7dba1ba7573e7ea86e184fa13945515e.ctex"]
 
 [params]
 
